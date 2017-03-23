@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		013EDF76E7B77030D0A1A47A /* Pods_ResourceManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2D54B3294D414F3F399907 /* Pods_ResourceManagerTests.framework */; };
+		265653E61E82397600F37064 /* RMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E51E82397600F37064 /* RMViewController.swift */; };
+		265653E81E825A7700F37064 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E71E825A7700F37064 /* RMModel.swift */; };
+		265653EA1E825BC200F37064 /* RMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E91E825BC200F37064 /* RMUser.swift */; };
+		265653EC1E8261E000F37064 /* RMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653EB1E8261DF00F37064 /* RMLoginViewController.swift */; };
+		265653EE1E826A3700F37064 /* RMExchangeRootSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653ED1E826A3700F37064 /* RMExchangeRootSegue.swift */; };
+		265653F01E8279C600F37064 /* RMDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653EF1E8279C600F37064 /* RMDog.swift */; };
+		265653F21E827A1300F37064 /* RMAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653F11E827A1300F37064 /* RMAnimal.swift */; };
 		269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48951E822FD30024FC17 /* RMAppDelegate.swift */; };
-		269A48981E822FD30024FC17 /* RMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48971E822FD30024FC17 /* RMViewController.swift */; };
 		269A489B1E822FD30024FC17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269A48991E822FD30024FC17 /* Main.storyboard */; };
 		269A489D1E822FD30024FC17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269A489C1E822FD30024FC17 /* Assets.xcassets */; };
 		269A48A01E822FD30024FC17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269A489E1E822FD30024FC17 /* LaunchScreen.storyboard */; };
 		269A48AB1E822FD30024FC17 /* ResourceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48AA1E822FD30024FC17 /* ResourceManagerTests.swift */; };
 		269A48B61E822FD30024FC17 /* ResourceManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48B51E822FD30024FC17 /* ResourceManagerUITests.swift */; };
+		26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */; };
+		26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */; };
 		D097AD6149BDF471AEB37461 /* Pods_ResourceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A5250EB005BD868F340F58 /* Pods_ResourceManager.framework */; };
 		D197FF263FCA7735213FA957 /* Pods_ResourceManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BC1AF07CFC7DE8E82A800D /* Pods_ResourceManagerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -38,9 +46,15 @@
 
 /* Begin PBXFileReference section */
 		1BC7CD2E51D927C3295F609B /* Pods-ResourceManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceManagerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResourceManagerUITests/Pods-ResourceManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		265653E51E82397600F37064 /* RMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMViewController.swift; sourceTree = "<group>"; };
+		265653E71E825A7700F37064 /* RMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
+		265653E91E825BC200F37064 /* RMUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMUser.swift; sourceTree = "<group>"; };
+		265653EB1E8261DF00F37064 /* RMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginViewController.swift; sourceTree = "<group>"; };
+		265653ED1E826A3700F37064 /* RMExchangeRootSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMExchangeRootSegue.swift; sourceTree = "<group>"; };
+		265653EF1E8279C600F37064 /* RMDog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDog.swift; sourceTree = "<group>"; };
+		265653F11E827A1300F37064 /* RMAnimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAnimal.swift; sourceTree = "<group>"; };
 		269A48921E822FD30024FC17 /* ResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269A48951E822FD30024FC17 /* RMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAppDelegate.swift; sourceTree = "<group>"; };
-		269A48971E822FD30024FC17 /* RMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMViewController.swift; sourceTree = "<group>"; };
 		269A489A1E822FD30024FC17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		269A489C1E822FD30024FC17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		269A489F1E822FD30024FC17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +65,8 @@
 		269A48B11E822FD30024FC17 /* ResourceManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResourceManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		269A48B51E822FD30024FC17 /* ResourceManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManagerUITests.swift; sourceTree = "<group>"; };
 		269A48B71E822FD30024FC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMNetworkServices.swift; sourceTree = "<group>"; };
+		26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResponseObject.swift; sourceTree = "<group>"; };
 		60BC1AF07CFC7DE8E82A800D /* Pods_ResourceManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResourceManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6326FA90DF8232AA91C5506A /* Pods-ResourceManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResourceManager/Pods-ResourceManager.release.xcconfig"; sourceTree = "<group>"; };
 		7B2D54B3294D414F3F399907 /* Pods_ResourceManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResourceManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +131,12 @@
 			isa = PBXGroup;
 			children = (
 				269A48951E822FD30024FC17 /* RMAppDelegate.swift */,
-				269A48971E822FD30024FC17 /* RMViewController.swift */,
+				5B8755F77DEA6057E7FBDD58 /* Views */,
+				5B875B08AD75AEE4268E89F5 /* ViewModels */,
+				5B875BF820F0D1159EB51853 /* Domain */,
+				5B87568BE203B1FB3F418888 /* Data */,
+				5B87502A8DF8904F050CCFBE /* Services */,
+				5B87581C2581DE97C54A91FE /* Model */,
 				269A48991E822FD30024FC17 /* Main.storyboard */,
 				269A489C1E822FD30024FC17 /* Assets.xcassets */,
 				269A489E1E822FD30024FC17 /* LaunchScreen.storyboard */,
@@ -140,6 +161,57 @@
 				269A48B71E822FD30024FC17 /* Info.plist */,
 			);
 			path = ResourceManagerUITests;
+			sourceTree = "<group>";
+		};
+		5B87502A8DF8904F050CCFBE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5B8755F77DEA6057E7FBDD58 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				265653E51E82397600F37064 /* RMViewController.swift */,
+				265653ED1E826A3700F37064 /* RMExchangeRootSegue.swift */,
+				265653EB1E8261DF00F37064 /* RMLoginViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B87568BE203B1FB3F418888 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5B87581C2581DE97C54A91FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				265653E71E825A7700F37064 /* RMModel.swift */,
+				265653E91E825BC200F37064 /* RMUser.swift */,
+				265653EF1E8279C600F37064 /* RMDog.swift */,
+				265653F11E827A1300F37064 /* RMAnimal.swift */,
+				26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B875B08AD75AEE4268E89F5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5B875BF820F0D1159EB51853 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		7715C9C96F5F2330EF24B99A /* Frameworks */ = {
@@ -450,8 +522,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				269A48981E822FD30024FC17 /* RMViewController.swift in Sources */,
 				269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */,
+				265653EE1E826A3700F37064 /* RMExchangeRootSegue.swift in Sources */,
+				26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */,
+				265653F21E827A1300F37064 /* RMAnimal.swift in Sources */,
+				265653F01E8279C600F37064 /* RMDog.swift in Sources */,
+				265653EC1E8261E000F37064 /* RMLoginViewController.swift in Sources */,
+				26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */,
+				265653EA1E825BC200F37064 /* RMUser.swift in Sources */,
+				265653E61E82397600F37064 /* RMViewController.swift in Sources */,
+				265653E81E825A7700F37064 /* RMModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				INFOPLIST_FILE = ResourceManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -620,6 +701,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				INFOPLIST_FILE = ResourceManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -708,6 +790,7 @@
 				269A48BC1E822FD30024FC17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		269A48BD1E822FD30024FC17 /* Build configuration list for PBXNativeTarget "ResourceManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -716,6 +799,7 @@
 				269A48BF1E822FD30024FC17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		269A48C01E822FD30024FC17 /* Build configuration list for PBXNativeTarget "ResourceManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -724,6 +808,7 @@
 				269A48C21E822FD30024FC17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

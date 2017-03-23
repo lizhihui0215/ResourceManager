@@ -12,6 +12,12 @@ import UIKit
 class RMAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    open class var shared: RMAppDelegate {
+        get {
+            return UIApplication.shared.delegate as! RMAppDelegate
+        }
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

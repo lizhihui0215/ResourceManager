@@ -9,10 +9,13 @@
 import UIKit
 
 class RMViewController: UIViewController {
-
+    
+    var name: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        performSegue(withIdentifier: "test", sender: self)
     }
 
     override func didReceiveMemoryWarning() {
