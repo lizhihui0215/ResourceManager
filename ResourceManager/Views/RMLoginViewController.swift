@@ -37,9 +37,7 @@ class RMLoginViewController: UIViewController {
                 switch event {
                 case .next(let responseObject):
                     print(responseObject)
-                       try? responseObject.results?.first!.save()
-                    
-                    let user = RMUser.all()
+                      let a = try? responseObject.results?.first!
                     
                     break
                     
@@ -47,8 +45,24 @@ class RMLoginViewController: UIViewController {
                 default: break
                 }
                                                     
-            }
+            }.dispose()
         
+       let a = RMNetworkServices.shared.request(.login(usernameTextField.text!,
+                                                       passwordTextField.text!)).subscribe
+                                                        { event in
+                                                            switch event {
+                                                            case .next(let responseObject):
+                                                                print(responseObject)
+                                                                try? responseObject.results?.first!
+                                                                
+                                                                break
+                                                                 
+                                                                
+                                                            default: break
+                                                            }
+                                                            
+                                                        }.dispose()
+
     }
     
     /*

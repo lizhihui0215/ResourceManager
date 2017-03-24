@@ -12,6 +12,10 @@ import RealmSwift
 
 class RMModel: Object, Mappable {
     
+    static func config(_ config: Realm.Configuration) {
+        Realm.Configuration.defaultConfiguration = config
+    }
+    
     required convenience init?(map: Map) {
         self.init()
     }
@@ -24,11 +28,6 @@ class RMModel: Object, Mappable {
         try? self.realm?.write {
             self.realm?.add(self)
         }
-    }
-    
-    static func all<T: Object>() -> Any {
-        let realm = try? Realm(fileURL: URL(string: "/Users/lizhihui/Desktop/RM.realm")!);
-        return try? realm?.objects(T.self)
     }
     
 }

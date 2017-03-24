@@ -19,20 +19,21 @@ class RMResponseObject<T: RMModel>: Mappable {
     
     var results: List<T>?
     
-    
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
-        message <- map["message"]
+        message <- map[RMNetworkServices.kMessage!]
         
-        let results = map["result"].currentValue
+        code <- map[RMNetworkServices.kCode!]
         
-        if results is Array<T> {
-            self.results <- (map["result"], ListTransform<T>())
+        let results = map[RMNetworkServices.kResults!].currentValue
+        
+        if results is Array<Any> {
+            self.results <- (map[RMNetworkServices.kResults!], ListTransform<T>())
         }else{
-            let map = Map(mappingType: map.mappingType, JSON: ["result" : [results]])
-            self.results <- (map["result"], ListTransform<T>())
+            let map = Map(mappingType: map.mappingType, JSON: [RMNetworkServices.kResults! : [results]])
+            self.results <- (map[RMNetworkServices.kResults!], ListTransform<T>())
         }
     }
 }

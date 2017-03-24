@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class RMAppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,13 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        var config = Realm.Configuration()
+        
+        config.fileURL = URL(string: "/Users/lizhihui/Desktop/default.realm")
+        
+        RMModel.config(config)
+        
         return true
     }
 

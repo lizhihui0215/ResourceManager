@@ -8,6 +8,7 @@
 
 import Foundation
 import Moya
+import RxSwift
 
 private func JSONResponseDataFormatter(_ data: Data) -> Data {
     do {
@@ -19,14 +20,34 @@ private func JSONResponseDataFormatter(_ data: Data) -> Data {
     }
 }
 
-let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkServices>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
+let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
-public enum RMNetworkServices {
+class RMNetworkServices {
+    static let shared = RMNetworkServices()
+    static var kMessage : String? = nil
+    static var kCode : String? = nil
+    static var kResults : String? = nil
+
+    func config(messageKey: String? = "message",
+                codeKey: String? = "code",
+                resultsKey: String? = "results")  {
+        RMNetworkServices.kMessage = messageKey!
+        RMNetworkServices.kCode = codeKey!
+        RMNetworkServices.kResults = resultsKey!
+    }
+    
+    func request<T: RMModel>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
+        return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
+        
+    }
+}
+
+public enum RMNetworkAPI {
     case login(String, String)
 }
 
-extension RMNetworkServices: TargetType {
+extension RMNetworkAPI: TargetType {
     public var baseURL: URL {
         return URL(string: "http://localhost:8080/api/test")!
     }
