@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
 
 class RMViewController: UIViewController {
     
-    var name: String?
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        performSegue(withIdentifier: "test", sender: self)
     }
 
     override func didReceiveMemoryWarning() {

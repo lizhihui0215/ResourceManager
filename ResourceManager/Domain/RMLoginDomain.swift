@@ -31,13 +31,15 @@ class RMLoginValidate: RMDomain {
 
 class RMLoginDomain: RMDomain {
     static let shared = RMLoginDomain()
-    func sigin(username: String, password: String) -> Observable<RMResult<RMUser>> {
-        return RMLoginDomain.repository.sigin(username: username, password: password).map({ response in
+    func sigin(username: String, password: String) -> Driver<RMResult<RMUser>> {
+       return RMLoginDomain.repository.sigin(username: username, password: password).map({ response in
             if response.code == 0 {
                 return .success((response.results?.first)!)
             }
             return .failure(response.code!, response.message!)
-        })
+         }).asDriver { error  in
+            return Driver.just(.failure(0, error.localizedDescription))
+        }
     }
 
 }

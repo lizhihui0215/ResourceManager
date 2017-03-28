@@ -12,7 +12,7 @@ import Moya_ObjectMapper
 import RxSwift
 import RxCocoa
 
-class RMLoginViewController: UIViewController {
+class RMLoginViewController: RMViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -20,7 +20,6 @@ class RMLoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
-    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +37,6 @@ class RMLoginViewController: UIViewController {
         viewModel.signedIn.drive(onNext: { result in
             
         }).disposed(by: disposeBag)
-        
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,37 +46,6 @@ class RMLoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        RMNetworkServicesProvider.request(.login(usernameTextField.text!,
-                                                 passwordTextField.text!)).mapObject(RMResponseObject<RMUser>.self).subscribe
-            { event in
-                switch event {
-                case .next(let responseObject):
-                    print(responseObject)
-                      let a = try? responseObject.results?.first!
-                    
-                    break
-                    
-                    
-                default: break
-                }
-                                                    
-            }.dispose()
-        
-       let a = RMNetworkServices.shared.request(.login(usernameTextField.text!,
-                                                       passwordTextField.text!)).subscribe
-                                                        { event in
-                                                            switch event {
-                                                            case .next(let responseObject):
-                                                                print(responseObject)
-                                                                try? responseObject.results?.first!
-                                                                
-                                                                break
-                                                                 
-                                                                
-                                                            default: break
-                                                            }
-                                                            
-                                                        }.dispose()
 
     }
     

@@ -19,7 +19,7 @@ class RMLoginViewModel {
 
     var username: Driver<ValidationResult>
     var password: Driver<ValidationResult>
-    var signedIn: Driver<String>
+    var signedIn: Driver<RMResult<RMUser>>
     
     init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>),
          dependency: (domain: RMLoginDomain, vilidate: RMLoginValidate)) {
@@ -38,7 +38,7 @@ class RMLoginViewModel {
 
         
         signedIn = input.loginTaps.withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
-            return domain.sigin(username: username, password: password).asDriver(onErrorJustReturn: "")
+            return domain.sigin(username: username, password: password)
         })
     }
     
