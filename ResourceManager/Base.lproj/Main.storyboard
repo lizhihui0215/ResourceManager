@@ -68,6 +68,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="1p2-ig-z5j" id="kuT-UR-s06"/>
                         <outlet property="passwordTextField" destination="ohV-36-1Je" id="iwv-LE-G86"/>
                         <outlet property="usernameTextField" destination="Y6m-yV-LSG" id="2EH-Ux-jWH"/>
                     </connections>

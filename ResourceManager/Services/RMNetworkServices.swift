@@ -38,9 +38,15 @@ class RMNetworkServices {
     }
     
     func request<T: RMModel>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
-        return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
         
+        let a = RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
+     
+        
+       return a
     }
+    
+    
+   
 }
 
 public enum RMNetworkAPI {
@@ -59,7 +65,7 @@ extension RMNetworkAPI: TargetType {
     public var method: Moya.Method {
         switch self {
         case .login( _ , _):
-            return .post
+            return .post        
         }
     }
     

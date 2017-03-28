@@ -23,8 +23,10 @@ target 'ResourceManager' do
   
   # https://github.com/ivanbruel/Moya-ObjectMapper
   pod 'Moya-ObjectMapper/RxSwift'
-  pod 'RxSwift'
   
+  # https://github.com/ReactiveX/RxSwift
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'ResourceManagerTests' do
     inherit! :search_paths
