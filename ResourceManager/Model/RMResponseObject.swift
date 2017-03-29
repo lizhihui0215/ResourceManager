@@ -23,17 +23,17 @@ class RMResponseObject<T: RMModel>: Mappable {
     }
     
     func mapping(map: Map) {
-        message <- map[RMNetworkServices.kMessage!]
+        message <- map[RMNetworkServices.kMessage]
         
-        code <- map[RMNetworkServices.kCode!]
+        code <- map[RMNetworkServices.kCode]
         
-        let results = map[RMNetworkServices.kResults!].currentValue
+        let results = map[RMNetworkServices.kResults].currentValue
         
         if results is Array<Any> {
-            self.results <- (map[RMNetworkServices.kResults!], ListTransform<T>())
+            self.results <- (map[RMNetworkServices.kResults], ListTransform<T>())
         }else{
-            let map = Map(mappingType: map.mappingType, JSON: [RMNetworkServices.kResults! : [results]])
-            self.results <- (map[RMNetworkServices.kResults!], ListTransform<T>())
+            let map = Map(mappingType: map.mappingType, JSON: [RMNetworkServices.kResults : [results]])
+            self.results <- (map[RMNetworkServices.kResults], ListTransform<T>())
         }
     }
 }

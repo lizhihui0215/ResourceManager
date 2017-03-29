@@ -57,6 +57,7 @@ enum StoryboardScene {
 enum StoryboardSegue {
   enum Main: String, StoryboardSegueType {
     case toLogin
+    case toMain
   }
 }
 

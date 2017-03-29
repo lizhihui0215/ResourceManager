@@ -27,6 +27,9 @@ target 'ResourceManager' do
   # https://github.com/ReactiveX/RxSwift
   pod 'RxSwift'
   pod 'RxCocoa'
+  
+#  # https://github.com/forkingdog/FDStackView/tree/master
+#  pod 'FDStackView'
 
   target 'ResourceManagerTests' do
     inherit! :search_paths

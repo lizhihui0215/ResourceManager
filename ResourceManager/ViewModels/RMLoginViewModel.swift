@@ -9,17 +9,14 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
-
-
+import Result
+import Moya
 
 class RMLoginViewModel {
-    
     var disposeBag = DisposeBag()
-
     var username: Driver<ValidationResult>
     var password: Driver<ValidationResult>
-    var signedIn: Driver<RMResult<RMUser>>
+    var signedIn: Driver<Result<RMUser, Moya.Error>>
     
     init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>),
          dependency: (domain: RMLoginDomain, vilidate: RMLoginValidate)) {
@@ -35,17 +32,13 @@ class RMLoginViewModel {
         })
         
         let usernameAndPassword = Driver.combineLatest(input.username, input.password) { ($0, $1) }
-
-        
+      
         signedIn = input.loginTaps.withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
             return domain.sigin(username: username, password: password)
         })
     }
     
-    
-    
-    
-    
-    
-    
+    func test(title: String) -> Observable<Array<String>> {
+        return Observable.just(["1","2",title])
+    }
 }

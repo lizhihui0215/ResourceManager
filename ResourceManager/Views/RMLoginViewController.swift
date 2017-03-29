@@ -24,8 +24,6 @@ class RMLoginViewController: RMViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
         let input = (usernameTextField.rx.text.orEmpty.asDriver(),
                      passwordTextField.rx.text.orEmpty.asDriver(),
                      loginButton.rx.tap.asDriver())
@@ -34,8 +32,8 @@ class RMLoginViewController: RMViewController {
         
         let viewModel = RMLoginViewModel(input: input,dependency: dependency)
         
-        viewModel.signedIn.drive(onNext: { result in
-            
+        viewModel.signedIn.drive(onNext: { [weak self] result in
+            self?.perform(segue: StoryboardSegue.Main.toMain, sender: self)
         }).disposed(by: disposeBag)
     }
     

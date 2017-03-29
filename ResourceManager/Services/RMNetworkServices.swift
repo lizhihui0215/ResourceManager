@@ -8,7 +8,9 @@
 
 import Foundation
 import Moya
+import Result
 import RxSwift
+import RealmSwift
 
 private func JSONResponseDataFormatter(_ data: Data) -> Data {
     do {
@@ -25,9 +27,9 @@ let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(plugins: [NetworkLo
 
 class RMNetworkServices {
     static let shared = RMNetworkServices()
-    static var kMessage : String? = nil
-    static var kCode : String? = nil
-    static var kResults : String? = nil
+    static var kMessage : String = ""
+    static var kCode : String = ""
+    static var kResults : String = ""
 
     func config(messageKey: String? = "message",
                 codeKey: String? = "code",
@@ -38,15 +40,8 @@ class RMNetworkServices {
     }
     
     func request<T: RMModel>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
-        
-        let a = RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
-     
-        
-       return a
+       return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
     }
-    
-    
-   
 }
 
 public enum RMNetworkAPI {

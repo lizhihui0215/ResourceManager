@@ -8,6 +8,8 @@
 
 import RxCocoa
 import RxSwift
+import Moya
+import Result
 
 class RMLoginValidate: RMDomain {
     static let shared = RMLoginValidate()
@@ -31,15 +33,17 @@ class RMLoginValidate: RMDomain {
 
 class RMLoginDomain: RMDomain {
     static let shared = RMLoginDomain()
-    func sigin(username: String, password: String) -> Driver<RMResult<RMUser>> {
-       return RMLoginDomain.repository.sigin(username: username, password: password).map({ response in
-            if response.code == 0 {
-                return .success((response.results?.first)!)
+    func sigin(username: String, password: String) -> Driver<Result<RMUser, Moya.Error>> {
+        return RMLoginDomain.repository.sigin(username: username, password: password).map({ result in
+            switch result {
+            case .success(let user) :
+                return Result(value: user)
+            case .failure(let error):
+                return Result(error: error)
             }
-            return .failure(response.code!, response.message!)
-         }).asDriver { error  in
-            return Driver.just(.failure(0, error.localizedDescription))
-        }
+        }).asDriver(onErrorRecover: { error in
+            let x  = error as! Moya.Error;
+            return Driver.just(Result(error: x))
+        })
     }
-
 }

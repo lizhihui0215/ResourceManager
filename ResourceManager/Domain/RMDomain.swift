@@ -8,10 +8,6 @@
 
 import Foundation
 
-enum RMResult<T> {
-    case success(T)
-    case failure(Int,String)
-}
 
 class RMDomain {
     static let repository = RMDataRepository()
