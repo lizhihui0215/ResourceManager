@@ -19,14 +19,15 @@ class RMModel: Object, Mappable {
     required convenience init?(map: Map) {
         self.init()
     }
-
+    
     func mapping(map: Map) {
         
     }
     
     func save() throws {
-        try? self.realm?.write {
-            self.realm?.add(self)
+        let realm = try Realm()
+        try realm.write {
+            realm.add(self)
         }
     }
     

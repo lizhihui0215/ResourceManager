@@ -12,14 +12,18 @@ import RxCocoa
 import Result
 import Moya
 
+protocol RMLoginViewModelAction: RMViewModelAction {
+}
+
 class RMLoginViewModel {
     var disposeBag = DisposeBag()
     var username: Driver<ValidationResult>
     var password: Driver<ValidationResult>
-    var signedIn: Driver<Result<RMUser, Moya.Error>>
+    var signedIn: Driver<Bool>
     
     init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>),
-         dependency: (domain: RMLoginDomain, vilidate: RMLoginValidate)) {
+         dependency: (domain: RMLoginDomain, vilidate: RMLoginValidate),
+         loginAction: RMLoginViewModelAction) {
         let validate = dependency.vilidate
         let domain = dependency.domain
         self.username = input.username.flatMapLatest({ username in
@@ -32,9 +36,19 @@ class RMLoginViewModel {
         })
         
         let usernameAndPassword = Driver.combineLatest(input.username, input.password) { ($0, $1) }
-      
+        
         signedIn = input.loginTaps.withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
-            return domain.sigin(username: username, password: password)
+            
+            let sigin = domain.sigin(username: username, password: password).asDriver(onErrorRecover: { error in
+                let x  = error as! Moya.Error;
+                return Driver.just(Result(error: x))
+            }).asObservable()
+            
+            let alert = sigin.flatMapLatest({ result in
+                return loginAction.alert(result: result)
+            })
+            
+            return alert.asDriver(onErrorJustReturn: false)
         })
     }
     

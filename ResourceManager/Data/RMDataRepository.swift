@@ -32,17 +32,9 @@ class RMDataRepository {
             if response.code == 0 {
                 return Result(value: response.results!)
             }else {
-                return Result(error: MoyaError.requestMapping("xx"))
+                return Result(error: MoyaError.underlying(RMError(code: response.code!, message: response.message!)))
             }
         }
     }
 }
 
-
-
-
-//public enum Error: MoyaError {
-//    case serverError(Int, String)
-//    
-//    
-//}

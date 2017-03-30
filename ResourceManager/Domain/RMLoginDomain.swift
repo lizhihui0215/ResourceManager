@@ -37,6 +37,11 @@ class RMLoginDomain: RMDomain {
         return RMLoginDomain.repository.sigin(username: username, password: password).map({ result in
             switch result {
             case .success(let user) :
+                do{
+                    try user.save()
+                }catch{
+                    print(error)
+                }
                 return Result(value: user)
             case .failure(let error):
                 return Result(error: error)

@@ -12,14 +12,15 @@ import Moya_ObjectMapper
 import RxSwift
 import RxCocoa
 
-class RMLoginViewController: RMViewController {
+
+
+class RMLoginViewController: RMViewController, RMLoginViewModelAction {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var usernameTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,13 @@ class RMLoginViewController: RMViewController {
         
         let dependency = (RMLoginDomain.shared, RMLoginValidate.shared)
         
-        let viewModel = RMLoginViewModel(input: input,dependency: dependency)
+        let viewModel = RMLoginViewModel(input: input,dependency: dependency, loginAction: self)
         
-        viewModel.signedIn.drive(onNext: { [weak self] result in
-            self?.perform(segue: StoryboardSegue.Main.toMain, sender: self)
+        viewModel.signedIn.drive(onNext: { [weak self] success in
+            if success { self?.perform(segue: StoryboardSegue.Main.toMain, sender: self) }
         }).disposed(by: disposeBag)
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,17 +46,19 @@ class RMLoginViewController: RMViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-
+        
     }
     
-    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        switch StoryboardSegue.Main(rawValue: segue.identifier!)! {
+        case .toMain: break
+        default: break
+        }
      }
-     */
     
 }

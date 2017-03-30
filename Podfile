@@ -31,6 +31,12 @@ target 'ResourceManager' do
 #  # https://github.com/forkingdog/FDStackView/tree/master
 #  pod 'FDStackView'
 
+  # https://github.com/dennisweissmann/DeviceKit
+  pod 'DeviceKit'
+  
+  #  https://github.com/kishikawakatsumi/KeychainAccess
+  pod 'KeychainAccess'
+
   target 'ResourceManagerTests' do
     inherit! :search_paths
     # Pods for testing

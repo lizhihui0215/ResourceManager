@@ -10,6 +10,23 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+extension UIViewController: RMViewModelAction {
+    internal func showErrorAlert(_ message: String, cancelAction: String?) -> Observable<Bool> {
+        return Observable.create{
+            observer in
+            let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            
+            alertView.addAction(UIAlertAction(title: cancelAction ?? "OK", style: .cancel) { action in
+                observer.on(.next(false))
+            })
+            
+            self.present(alertView, animated: true, completion: nil)
+            return Disposables.create{
+                alertView.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+}
 
 class RMViewController: UIViewController {
     
@@ -24,7 +41,5 @@ class RMViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

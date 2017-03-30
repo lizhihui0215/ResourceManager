@@ -30,7 +30,7 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
         
         RMModel.config(config)
         
-        RMNetworkServices.shared.config(messageKey: "message", codeKey: "code", resultsKey: "result")
+        RMNetworkServices.shared.config(messageKey: "errmsg", codeKey: "errcode", resultsKey: "result")
         
         return true
     }

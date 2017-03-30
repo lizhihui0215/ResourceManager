@@ -12,6 +12,7 @@ import Result
 import RxSwift
 import RealmSwift
 
+
 private func JSONResponseDataFormatter(_ data: Data) -> Data {
     do {
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)
@@ -50,11 +51,14 @@ public enum RMNetworkAPI {
 
 extension RMNetworkAPI: TargetType {
     public var baseURL: URL {
-        return URL(string: "http://localhost:8080/api/test")!
+        return URL(string: "http://115.28.157.117:9080/resourcemanage/")!
     }
     
     public var path: String {
-        return ""
+        switch self {
+        case .login(_, _):
+            return "login"
+        }
     }
     
     public var method: Moya.Method {
@@ -68,7 +72,11 @@ extension RMNetworkAPI: TargetType {
         switch self {
         case .login(let username, let password):
             return ["username" : username,
-                    "password" : password]
+                    "password" : password,
+                    "osType": 1,
+                    "osVersion" : device.systemVersion,
+                    "appVersion" : device.appVersion,
+                    "devicetoken": device.uuid]
         }
     }
     
