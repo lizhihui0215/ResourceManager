@@ -9,20 +9,21 @@
 import RxSwift
 import Result
 import Moya
+import RxCocoa
 
 protocol RMViewModelAction {
-    func showErrorAlert(_ message: String, cancelAction: String?) -> Observable<Bool>
+    func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool>
 }
 
 
 extension RMViewModelAction {
     
-    func alert<T: RMModel>(result: Result<T, MoyaError>) -> Observable<Bool> {
+    func alert<T>(result: Result<T, MoyaError>) -> Driver<Bool> {
         switch result {
         case .failure(let error):
             return showErrorAlert(error.errorDescription!, cancelAction: nil)
         case.success:
-            return Observable.just(true)
+            return Driver.just(true)
         }
     }
     

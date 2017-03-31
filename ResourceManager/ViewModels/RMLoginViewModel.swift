@@ -17,8 +17,8 @@ protocol RMLoginViewModelAction: RMViewModelAction {
 
 class RMLoginViewModel {
     var disposeBag = DisposeBag()
-    var username: Driver<Result<String,Moya.Error>>
-    var password: Driver<Result<String,Moya.Error>>
+    var username: Driver<Result<String,MoyaError>>
+    var password: Driver<Result<String,MoyaError>>
     var signedIn: Driver<Bool>
     
     init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>),
@@ -36,9 +36,14 @@ class RMLoginViewModel {
                 .asDriver(onErrorJustReturn: Result(error: error(code: 0, message: nil)))
         })
         
-        let usernameAndPassword = Driver.combineLatest(self.username, self.password) { ($0, $1) }
+        let usernameAndPassword = Driver.combineLatest(username, password) { ($0, $1) }
         
-        signedIn = input.loginTaps.withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
+        
+        signedIn = input.loginTaps.withLatestFrom(self.username).flatMapLatest({ username in
+            return loginAction.alert(result: username)
+        }).withLatestFrom(self.password).flatMapLatest { password in
+            return loginAction.alert(result: password)
+        }.withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
             return domain.sigin(username: username.value!, password: password.value!)
                 .asDriver(onErrorRecover: { Driver.just(Result(error: $0 as! MoyaError))})
         }).flatMapLatest { result  in
