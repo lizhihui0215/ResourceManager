@@ -6,6 +6,8 @@
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
+import Moya
+
 public enum RMError: Swift.Error{
     init(code: Int, message: String) {
         self = .serverError(code, message)
@@ -29,4 +31,8 @@ extension RMError: CustomDebugStringConvertible {
             return "error code is {\(code)}\n message is\(message)"
         }
     }
+}
+
+func error(code: Int?, message: String?) -> MoyaError {
+    return MoyaError.underlying(RMError(code: code ?? 0, message: message ?? "unknow"))
 }

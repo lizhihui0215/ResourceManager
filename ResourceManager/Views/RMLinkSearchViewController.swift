@@ -9,16 +9,15 @@
 import UIKit
 
 class RMLinkCell: UITableViewCell {
-    
+
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
+    
 }
-
 
 class RMLinkSearchViewController: RMViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

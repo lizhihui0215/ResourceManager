@@ -38,6 +38,7 @@
 		2672C0FF1E8CCB8700AD19EA /* RMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2672C0FE1E8CCB8700AD19EA /* RMViewModel.swift */; };
 		2672C1011E8CE44900AD19EA /* RMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2672C1001E8CE44900AD19EA /* RMError.swift */; };
 		2672C1031E8CFABC00AD19EA /* RMDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2672C1021E8CFABC00AD19EA /* RMDevice.swift */; };
+		26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26807FDC1E8E097F005624E5 /* RMTableViewController.swift */; };
 		269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48951E822FD30024FC17 /* RMAppDelegate.swift */; };
 		269A489B1E822FD30024FC17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269A48991E822FD30024FC17 /* Main.storyboard */; };
 		269A489D1E822FD30024FC17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269A489C1E822FD30024FC17 /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		2672C0FE1E8CCB8700AD19EA /* RMViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMViewModel.swift; sourceTree = "<group>"; };
 		2672C1001E8CE44900AD19EA /* RMError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMError.swift; sourceTree = "<group>"; };
 		2672C1021E8CFABC00AD19EA /* RMDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDevice.swift; sourceTree = "<group>"; };
+		26807FDC1E8E097F005624E5 /* RMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
 		269A48921E822FD30024FC17 /* ResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269A48951E822FD30024FC17 /* RMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAppDelegate.swift; sourceTree = "<group>"; };
 		269A489A1E822FD30024FC17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				2632CAC01E8B80E50064AF1E /* RMResourceManagerViewController.swift */,
 				2632CAC21E8B8D1C0064AF1E /* RMLinkSearchViewController.swift */,
 				2621A8661E8BB85A00B31681 /* RMLinkNodeView.swift */,
+				26807FDC1E8E097F005624E5 /* RMTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				265653F01E8279C600F37064 /* RMDog.swift in Sources */,
 				265653EC1E8261E000F37064 /* RMLoginViewController.swift in Sources */,
 				2632CAC31E8B8D1C0064AF1E /* RMLinkSearchViewController.swift in Sources */,
+				26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */,
 				26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */,
 				260C109A1E8A565200011A8E /* Protocols.swift in Sources */,
 				2672C0FF1E8CCB8700AD19EA /* RMViewModel.swift in Sources */,

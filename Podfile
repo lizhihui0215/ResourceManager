@@ -34,8 +34,19 @@ target 'ResourceManager' do
   # https://github.com/dennisweissmann/DeviceKit
   pod 'DeviceKit'
   
-  #  https://github.com/kishikawakatsumi/KeychainAccess
+  # https://github.com/kishikawakatsumi/KeychainAccess
   pod 'KeychainAccess'
+  
+  # https://github.com/RxSwiftCommunity/RxRealm
+  pod 'RxRealm'
+
+  # https://github.com/CoderMJLee/MJRefresh
+  pod 'MJRefresh'
+  
+  # https://github.com/hackiftekhar/IQKeyboardManager
+  pod 'IQKeyboardManagerSwift'
+  
+
 
   target 'ResourceManagerTests' do
     inherit! :search_paths

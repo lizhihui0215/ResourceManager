@@ -17,8 +17,8 @@ protocol RMLoginViewModelAction: RMViewModelAction {
 
 class RMLoginViewModel {
     var disposeBag = DisposeBag()
-    var username: Driver<ValidationResult>
-    var password: Driver<ValidationResult>
+    var username: Driver<Result<String,Moya.Error>>
+    var password: Driver<Result<String,Moya.Error>>
     var signedIn: Driver<Bool>
     
     init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>),
@@ -28,28 +28,23 @@ class RMLoginViewModel {
         let domain = dependency.domain
         self.username = input.username.flatMapLatest({ username in
             return validate.validateUsername(username)
-                .asDriver(onErrorJustReturn: .failed(message: "Error contacting server", value: username))
+                .asDriver(onErrorJustReturn: Result(error: error(code: 0, message: nil)))
         })
         
         self.password = input.password.flatMapLatest({ password in
-            return validate.validateUsername(password).asDriver(onErrorJustReturn: .failed(message: "Error contacting server", value: password))
+            return validate.validateUsername(password)
+                .asDriver(onErrorJustReturn: Result(error: error(code: 0, message: nil)))
         })
         
-        let usernameAndPassword = Driver.combineLatest(input.username, input.password) { ($0, $1) }
+        let usernameAndPassword = Driver.combineLatest(self.username, self.password) { ($0, $1) }
         
         signedIn = input.loginTaps.withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
-            
-            let sigin = domain.sigin(username: username, password: password).asDriver(onErrorRecover: { error in
-                let x  = error as! Moya.Error;
-                return Driver.just(Result(error: x))
-            }).asObservable()
-            
-            let alert = sigin.flatMapLatest({ result in
-                return loginAction.alert(result: result)
-            })
-            
-            return alert.asDriver(onErrorJustReturn: false)
-        })
+            return domain.sigin(username: username.value!, password: password.value!)
+                .asDriver(onErrorRecover: { Driver.just(Result(error: $0 as! MoyaError))})
+        }).flatMapLatest { result  in
+            return loginAction.alert(result: result).asDriver(onErrorJustReturn: false)
+        }
+        
     }
     
     func test(title: String) -> Observable<Array<String>> {

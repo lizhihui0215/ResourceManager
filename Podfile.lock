@@ -3,6 +3,7 @@ PODS:
   - DeviceKit (1.0.1)
   - IQKeyboardManagerSwift (4.0.8)
   - KeychainAccess (3.0.1)
+  - MJRefresh (3.1.12)
   - Moya (8.0.3):
     - Moya/Core (= 8.0.3)
   - Moya-ObjectMapper/Core (2.3.1):
@@ -31,6 +32,9 @@ PODS:
   - Result (3.2.1)
   - RxCocoa (3.3.1):
     - RxSwift (~> 3.3)
+  - RxRealm (0.5.2):
+    - RealmSwift (~> 2.4)
+    - RxSwift (~> 3.1)
   - RxSwift (3.3.1)
   - SnapKit (3.2.0)
 
@@ -38,11 +42,13 @@ DEPENDENCIES:
   - DeviceKit
   - IQKeyboardManagerSwift
   - KeychainAccess
+  - MJRefresh
   - Moya-ObjectMapper/RxSwift
   - NVActivityIndicatorView
   - ObjectMapper+Realm
   - RealmSwift
   - RxCocoa
+  - RxRealm
   - RxSwift
   - SnapKit
 
@@ -51,6 +57,7 @@ SPEC CHECKSUMS:
   DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
   Moya-ObjectMapper: 952be2b261d38cf8d973b7e429708eb03d256e23
   NVActivityIndicatorView: 8c10abd410a0657afd21aa853373e1a3cfc25e7f
@@ -60,9 +67,10 @@ SPEC CHECKSUMS:
   RealmSwift: 9f1a8f624f2f153410115c2cb7d486be9976565d
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
+  RxRealm: df024f04e64c3a9723dab63a6ec8621b3db6473f
   RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: c74fb3befac9dc0ec55351a3f0ef32507722a240
+PODFILE CHECKSUM: 3a38f70308d2719c8e84b28df838e53dc5bc4a8a
 
 COCOAPODS: 1.2.0

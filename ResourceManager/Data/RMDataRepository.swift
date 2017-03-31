@@ -32,7 +32,7 @@ class RMDataRepository {
             if response.code == 0 {
                 return Result(value: response.results!)
             }else {
-                return Result(error: MoyaError.underlying(RMError(code: response.code!, message: response.message!)))
+                return Result(error: error(code: response.code, message: response.message) )
             }
         }
     }

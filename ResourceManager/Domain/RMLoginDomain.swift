@@ -14,20 +14,18 @@ import Result
 class RMLoginValidate: RMDomain {
     static let shared = RMLoginValidate()
     
-    func validateUsername(_ username: String) -> Observable<ValidationResult> {
+    func validateUsername(_ username: String) -> Observable<Result<String,Moya.Error>> {
         if username.characters.count == 0 {
-            return .just(.empty)
+            return .just(Result(error: error(code: 0, message: "code must > 0")))
         }
         
         if username.rangeOfCharacter(from: CharacterSet.alphanumerics.inverted) != nil {
-            return .just(.failed(message: "Username can only contain numbers or digits",value: username))
+            return .just(Result(error: error(code: 0, message: "Username can only contain numbers or digits")))
         }
-        
-        let loadingValue = ValidationResult.validating
         
         // do some network
         
-        return Observable.just(.ok(message: "Username available", value: username)).startWith(loadingValue)
+        return Observable.just(Result(value: username))
     }
 }
 
