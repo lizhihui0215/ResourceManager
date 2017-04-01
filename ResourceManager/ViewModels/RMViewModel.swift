@@ -11,13 +11,16 @@ import Result
 import Moya
 import RxCocoa
 
-protocol RMViewModelAction {
-    func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool>
+class RMViewModel {
+    
 }
 
+protocol RMViewModelAction {
+    func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool>
+    func animation(start: Bool) -> Driver<Bool>
+}
 
 extension RMViewModelAction {
-    
     func alert<T>(result: Result<T, MoyaError>) -> Driver<Bool> {
         switch result {
         case .failure(let error):
@@ -26,5 +29,4 @@ extension RMViewModelAction {
             return Driver.just(true)
         }
     }
-    
 }

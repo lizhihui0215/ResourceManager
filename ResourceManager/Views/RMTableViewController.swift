@@ -9,15 +9,28 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import MJRefresh
+
 
 class RMTableViewCell: UITableViewCell {
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var username: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
+    private(set) var disposeBag = DisposeBag()
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag() // because life cicle of every cell ends on prepare for reuse
+    }
     
 }
 
-
-class RMTableViewController: RMViewController {
+class RMTableViewController: RMViewController, UITableViewDataSource, RMTableViewRefresh {
+    
     @IBOutlet var tableViews: [UITableView]!
+    
+    var viewModel: RMListViewModel = RMListViewModel()
     
     var tableView: UITableView {
         return tableViews[0]
@@ -25,21 +38,35 @@ class RMTableViewController: RMViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        let items = Observable.just([1,2,3,4])
-        
-        items.bindTo(tableView.rx.items){ (xxx, row, element) in
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell")!
-            cell.textLabel?.text = "\(element) @ row \(row)"
-            return cell
+        self.emptyFooterView()
+    }
+    
+    func emptyFooterView()  {
+        for tableView in self.tableViews {
+            tableView.tableFooterView = UIView()
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 40
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RMTableViewCell
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.numberOfRowsInSection(section: section)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.viewModel.numberOfSection()
     }
     
     /*
@@ -53,17 +80,37 @@ class RMTableViewController: RMViewController {
     */
 }
 
-extension RMTableViewController: UITableViewDataSource {
-    @available(iOS 2.0, *)
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RMTableViewCell
-        
-        
-        
-        return cell
-    }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+protocol RMTableViewRefresh {
+    func headerRefreshingFor(tableView: UITableView)
+    
+    func footerRefreshingFor(tableView: UITableView)
+}
+
+extension RMTableViewRefresh {
+    func footerRefreshingFor(tableView: UITableView) {}
+    
+    func headerRefreshingFor(tableView: UITableView) {}
+}
+
+extension UITableView {
+    func headerRefresh(enable: Bool,target: RMTableViewRefresh)  {
+        if enable {
+            self.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+                target.headerRefreshingFor(tableView: self)
+            })
+        }else{
+            self.mj_header = nil
+        }
+    }
+    
+    func footerRefresh(enable: Bool, target: RMTableViewRefresh) {
+        if enable {
+            self.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+                target.footerRefreshingFor(tableView: self)
+            })
+        }else{
+            self.mj_footer = nil
+        }
     }
 }

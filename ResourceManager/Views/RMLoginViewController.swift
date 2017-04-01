@@ -31,7 +31,7 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
         
         let dependency = (RMLoginDomain.shared, RMLoginValidate.shared)
         
-        let viewModel = RMLoginViewModel(input: input,dependency: dependency, loginAction: self)
+        let viewModel = RMLoginViewModel(input: input,dependency: dependency , loginAction: self)
         
         viewModel.signedIn.drive(onNext: { [weak self] success in
             if success { self?.perform(segue: StoryboardSegue.Main.toMain, sender: self) }

@@ -47,6 +47,8 @@ class RMNetworkServices {
 
 public enum RMNetworkAPI {
     case login(String, String)
+    case linkDetail(String, String)
+    case linkList(String, String, Int, Int)
 }
 
 extension RMNetworkAPI: TargetType {
@@ -58,25 +60,36 @@ extension RMNetworkAPI: TargetType {
         switch self {
         case .login(_, _):
             return "login"
+        case let .linkDetail(accessToken):
+            return "cabinet/query?\(accessToken)"
+        case let .linkList(accessToken):
+            return "cabinet/fuzzyquery?access_token=\(accessToken)"
         }
+        
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login( _ , _):
-            return .post        
+        case .login( _ , _), .linkDetail(_), .linkList(_):
+           return .post
         }
     }
     
     public var parameters: [String: Any]? {
         switch self {
-        case .login(let username, let password):
+        case let .login(username, password):
             return ["username" : username,
                     "password" : password,
                     "osType": 1,
                     "osVersion" : device.systemVersion,
                     "appVersion" : device.appVersion,
                     "devicetoken": device.uuid]
+        case let .linkDetail(_, linkCode):
+            return ["linkCode": linkCode]
+        case let .linkList(_,accountOrName, pageSize, pageNO):
+            return ["accountOrName": accountOrName,
+                    "pageSize": pageSize,
+                    "pageNO": pageNO]
         }
     }
     

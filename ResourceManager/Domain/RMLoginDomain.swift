@@ -11,9 +11,9 @@ import RxSwift
 import Moya
 import Result
 
-class RMLoginValidate: RMDomain {
+class RMLoginValidate: RMValidate {
     static let shared = RMLoginValidate()
-    
+
     func validateUsername(_ username: String) -> Observable<Result<String,Moya.Error>> {
         if username.characters.count == 0 {
             return .just(Result(error: error(code: 0, message: "code must > 0")))
@@ -37,6 +37,7 @@ class RMLoginDomain: RMDomain {
             case .success(let user) :
                 do{
                     try user.save()
+                    RMDomain.user = user
                 }catch{
                     print(error)
                 }

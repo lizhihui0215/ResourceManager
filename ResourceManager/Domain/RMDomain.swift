@@ -8,8 +8,12 @@
 
 import Foundation
 
+class RMValidate {
+}
 
 class RMDomain {
     static let repository = RMDataRepository()
+    
+    static var user: RMUser?
     
 }

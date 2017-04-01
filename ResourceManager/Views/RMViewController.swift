@@ -9,22 +9,36 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import NVActivityIndicatorView
 
-extension UIViewController: RMViewModelAction {
+extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
     internal func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool> {
         return Observable.create{
-            observer in
+            [weak self] observer in
             let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
             
             alertView.addAction(UIAlertAction(title: cancelAction ?? "OK", style: .cancel) { action in
-//                observer.on(.next(false))
-                
                 observer.on(.completed)
             })
             
-            self.present(alertView, animated: true, completion: nil)
+            self?.present(alertView, animated: true, completion: nil)
             return Disposables.create{
                 alertView.dismiss(animated: true, completion: nil)
+            }
+        }.asDriver(onErrorJustReturn: false)
+    }
+    
+    
+    func animation(start: Bool) -> Driver<Bool>  {
+        return Observable.create {[weak self] observer in
+            if start {
+                self?.startAnimating(message: "")
+                observer.on(.next(true))
+            }else {
+                self?.stopAnimating()
+            }
+            return Disposables.create {
+                self?.stopAnimating()
             }
         }.asDriver(onErrorJustReturn: false)
     }

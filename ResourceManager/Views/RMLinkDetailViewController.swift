@@ -1,19 +1,19 @@
 //
-//  RMRootViewController.swift
+//  RMLinkDetailViewController.swift
 //  ResourceManager
 //
-//  Created by 李智慧 on 2017/3/29.
-//  Copyright © 2017年 北京海睿兴业. All rights reserved.
+//  Created by 李智慧 on 01/04/2017.
+//  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
 import UIKit
 
-class RMRootViewController: UIViewController {
+class RMLinkDetailViewController: RMViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

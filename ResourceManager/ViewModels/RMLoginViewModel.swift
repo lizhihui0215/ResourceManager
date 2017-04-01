@@ -15,7 +15,7 @@ import Moya
 protocol RMLoginViewModelAction: RMViewModelAction {
 }
 
-class RMLoginViewModel {
+class RMLoginViewModel: RMViewModel {
     var disposeBag = DisposeBag()
     var username: Driver<Result<String,MoyaError>>
     var password: Driver<Result<String,MoyaError>>
@@ -43,16 +43,16 @@ class RMLoginViewModel {
             return loginAction.alert(result: username)
         }).withLatestFrom(self.password).flatMapLatest { password in
             return loginAction.alert(result: password)
-        }.withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
-            return domain.sigin(username: username.value!, password: password.value!)
-                .asDriver(onErrorRecover: { Driver.just(Result(error: $0 as! MoyaError))})
-        }).flatMapLatest { result  in
-            return loginAction.alert(result: result).asDriver(onErrorJustReturn: false)
-        }
+            }.flatMapLatest({ validate  in
+                return loginAction.animation(start: true)
+            }).withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
+                return domain.sigin(username: username.value!, password: password.value!)
+                    .asDriver(onErrorRecover: { Driver.just(Result(error: $0 as! MoyaError))})
+            }).flatMapLatest { result  in
+                return loginAction.alert(result: result).asDriver(onErrorJustReturn: false)
+            }.do( onCompleted: {
+                let _ =  loginAction.animation(start: false)
+            })
         
-    }
-    
-    func test(title: String) -> Observable<Array<String>> {
-        return Observable.just(["1","2",title])
     }
 }

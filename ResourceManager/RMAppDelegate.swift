@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class RMAppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,11 +25,13 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        var config = Realm.Configuration()
+//        var config = Realm.Configuration()
         
-        config.fileURL = URL(string: "/Users/lizhihui/Desktop/default.realm")
+//        config.fileURL = URL(string: "/Users/lizhihui/Desktop/default.realm")
         
-        RMModel.config(config)
+//        RMModel.config(config)
+        
+        IQKeyboardManager.sharedManager().enable = true
         
         RMNetworkServices.shared.config(messageKey: "errmsg", codeKey: "errcode", resultsKey: "result")
         

@@ -4,6 +4,7 @@
 target 'ResourceManager' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+  inhibit_all_warnings!
 
   # Pods for ResourceManager
   # https://github.com/realm/realm-cocoa
@@ -46,8 +47,9 @@ target 'ResourceManager' do
   # https://github.com/hackiftekhar/IQKeyboardManager
   pod 'IQKeyboardManagerSwift'
   
-
-
+  # https://github.com/MxABC/swiftScan
+  pod 'swiftScan', :git => 'https://github.com/MxABC/swiftScan.git', :tag => '1.0.9'
+  
   target 'ResourceManagerTests' do
     inherit! :search_paths
     # Pods for testing
