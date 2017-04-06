@@ -39,20 +39,23 @@ class RMLoginViewModel: RMViewModel {
         let usernameAndPassword = Driver.combineLatest(username, password) { ($0, $1) }
         
         
-        signedIn = input.loginTaps.withLatestFrom(self.username).flatMapLatest({ username in
-            return loginAction.alert(result: username)
-        }).withLatestFrom(self.password).flatMapLatest { password in
-            return loginAction.alert(result: password)
+        signedIn = input.loginTaps.withLatestFrom(self.username)
+            .flatMapLatest({ username in
+                return loginAction.alert(result: username)
+            }).withLatestFrom(self.password)
+            .flatMapLatest { password in
+                return loginAction.alert(result: password)
             }.flatMapLatest({ validate  in
                 return loginAction.animation(start: true)
-            }).withLatestFrom(usernameAndPassword).flatMapLatest({ username, password in
+            }).withLatestFrom(usernameAndPassword)
+            .flatMapLatest({ username, password in
                 return domain.sigin(username: username.value!, password: password.value!)
                     .asDriver(onErrorRecover: { Driver.just(Result(error: $0 as! MoyaError))})
+            }).do( onNext: { _ in
+                let _ =  loginAction.animation(start: false)
             }).flatMapLatest { result  in
                 return loginAction.alert(result: result).asDriver(onErrorJustReturn: false)
-            }.do( onCompleted: {
-                let _ =  loginAction.animation(start: false)
-            })
+            }
         
     }
 }

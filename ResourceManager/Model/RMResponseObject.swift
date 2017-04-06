@@ -11,13 +11,13 @@ import RealmSwift
 import ObjectMapper_Realm
 
 
-class RMResponseObject<T: RMModel>: Mappable {
+class RMResponseObject<T: Mappable>: Mappable {
     
     var message: String?
     
     var code: Int?
     
-    var results: List<T>?
+    var results: T?
     
     required init?(map: Map) {
     }
@@ -27,14 +27,7 @@ class RMResponseObject<T: RMModel>: Mappable {
         
         code <- map[RMNetworkServices.kCode]
         
-        let results = map[RMNetworkServices.kResults].currentValue
-        
-        if results is Array<Any> {
-            self.results <- (map[RMNetworkServices.kResults], ListTransform<T>())
-        }else{
-            let map = Map(mappingType: map.mappingType, JSON: [RMNetworkServices.kResults : [results]])
-            self.results <- (map[RMNetworkServices.kResults], ListTransform<T>())
-        }
+        results <- map[RMNetworkServices.kResults]
     }
 }
 

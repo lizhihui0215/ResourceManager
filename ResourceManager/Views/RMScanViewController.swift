@@ -8,8 +8,13 @@
 
 import UIKit
 import swiftScan
+import RxSwift
+import RxCocoa
 
 class RMScanViewController: LBXScanViewController {
+    
+    var viewModel = RMScanViewModel()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +33,10 @@ class RMScanViewController: LBXScanViewController {
         self.scanStyle = style;
     }
     
-    override func handleCodeResult(arrayResult:[LBXScanResult]){
-        
+    override func handleCodeResult(arrayResult: [LBXScanResult]){
+        self.viewModel.scaned(of: (arrayResult.first?.strScanned)!).drive( onCompleted: { 
+            self.performSegue(withIdentifier: "toDetail", sender: nil)
+        });
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,14 +45,16 @@ class RMScanViewController: LBXScanViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let linkDetailViewController = segue.destination as! RMLinkDetailViewController
+        linkDetailViewController. self.viewModel.link
     }
-    */
+    
 
 }

@@ -117,10 +117,6 @@
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="password" destination="Rfz-vQ-XEr" id="5tc-Ph-HWn"/>
-                                            <outlet property="username" destination="9FJ-WY-sIP" id="iDR-UR-VS5"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -253,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUq-6Y-ujj">
-                                <rect key="frame" x="0.0" y="64" width="320" height="120"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="154"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="571@E11052500998" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hxl-DC-T84">
                                         <rect key="frame" x="20" y="8" width="225" height="30"/>
@@ -268,7 +264,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9cl-qy-qRu">
-                                        <rect key="frame" x="20" y="82" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="116" width="280" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoM-0R-19g">
                                                 <rect key="frame" x="0.0" y="0.0" width="135" height="30"/>
@@ -302,25 +298,34 @@
                                             <segue destination="lzl-lp-cZd" kind="show" identifier="toScan" id="ul9-EO-Bg8"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号/名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ST-pr-Fe1">
+                                        <rect key="frame" x="20" y="81" width="280" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="5ST-pr-Fe1" firstAttribute="top" secondItem="3mf-s4-aaH" secondAttribute="bottom" constant="5" id="4kA-SA-UiG"/>
                                     <constraint firstItem="hxl-DC-T84" firstAttribute="top" secondItem="WMR-kB-y9p" secondAttribute="top" id="AXy-ks-wsf"/>
                                     <constraint firstAttribute="bottom" secondItem="9cl-qy-qRu" secondAttribute="bottom" constant="8" id="FcU-lk-TpS"/>
+                                    <constraint firstItem="5ST-pr-Fe1" firstAttribute="trailing" secondItem="3mf-s4-aaH" secondAttribute="trailing" id="Fsm-c5-1FB"/>
                                     <constraint firstItem="3mf-s4-aaH" firstAttribute="top" secondItem="hxl-DC-T84" secondAttribute="bottom" constant="8" symbolic="YES" id="JTU-qZ-Ph4"/>
                                     <constraint firstItem="WMR-kB-y9p" firstAttribute="trailing" secondItem="3mf-s4-aaH" secondAttribute="trailing" id="OHf-1S-VcS"/>
                                     <constraint firstAttribute="trailing" secondItem="9cl-qy-qRu" secondAttribute="trailing" constant="20" id="OqO-zQ-QaR"/>
                                     <constraint firstItem="WMR-kB-y9p" firstAttribute="top" secondItem="eUq-6Y-ujj" secondAttribute="top" constant="8" id="XBf-4u-SP0"/>
+                                    <constraint firstItem="5ST-pr-Fe1" firstAttribute="leading" secondItem="3mf-s4-aaH" secondAttribute="leading" id="Xya-Ge-rEI"/>
+                                    <constraint firstItem="9cl-qy-qRu" firstAttribute="top" secondItem="5ST-pr-Fe1" secondAttribute="bottom" constant="5" id="Y2u-g7-QzR"/>
                                     <constraint firstItem="9cl-qy-qRu" firstAttribute="leading" secondItem="hxl-DC-T84" secondAttribute="leading" id="aoB-gD-cLE"/>
                                     <constraint firstItem="WMR-kB-y9p" firstAttribute="leading" secondItem="hxl-DC-T84" secondAttribute="trailing" constant="5" id="fjf-Ig-l4s"/>
                                     <constraint firstItem="9cl-qy-qRu" firstAttribute="trailing" secondItem="3mf-s4-aaH" secondAttribute="trailing" id="na0-r2-se6"/>
-                                    <constraint firstItem="9cl-qy-qRu" firstAttribute="top" secondItem="3mf-s4-aaH" secondAttribute="bottom" constant="6" id="ql7-h4-Jm1"/>
                                     <constraint firstItem="9cl-qy-qRu" firstAttribute="leading" secondItem="eUq-6Y-ujj" secondAttribute="leading" constant="20" id="sXR-cb-S5V"/>
                                     <constraint firstItem="3mf-s4-aaH" firstAttribute="leading" secondItem="hxl-DC-T84" secondAttribute="leading" id="sv3-Yg-JQB"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="23" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zcH-oQ-3G7">
-                                <rect key="frame" x="0.0" y="184" width="320" height="335"/>
+                                <rect key="frame" x="0.0" y="218" width="320" height="301"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RMLinkTableViewCell" rowHeight="26" id="rVf-qc-jOK" customClass="RMLinkTableViewCell" customModule="ResourceManager" customModuleProvider="target">
@@ -389,6 +394,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="链路查询" id="mQV-Vs-ZJQ"/>
                     <connections>
+                        <outlet property="accountTextField" destination="3mf-s4-aaH" id="GaF-ho-xsT"/>
+                        <outlet property="customerTextField" destination="5ST-pr-Fe1" id="ELs-Fq-L5w"/>
+                        <outlet property="linkCodeTextField" destination="hxl-DC-T84" id="ygE-Br-11x"/>
+                        <outlet property="searchButton" destination="Kcm-tY-Qba" id="cZX-K6-vSL"/>
                         <outletCollection property="tableViews" destination="zcH-oQ-3G7" collectionClass="NSMutableArray" id="4cq-3m-jbp"/>
                     </connections>
                 </viewController>

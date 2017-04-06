@@ -22,6 +22,7 @@ extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
             })
             
             self?.present(alertView, animated: true, completion: nil)
+            observer.on(.next(false))
             return Disposables.create{
                 alertView.dismiss(animated: true, completion: nil)
             }

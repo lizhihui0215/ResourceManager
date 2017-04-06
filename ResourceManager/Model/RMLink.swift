@@ -11,6 +11,21 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
+class RMLinkResponse: Mappable {
+    var total: Int?
+    
+    var links: [RMLink]?
+    
+    required init?(map: Map) {
+    
+    }
+
+    func mapping(map: Map) {
+        total <- map["total"]
+        links <- map["links"]
+    }
+}
+
 
 class RMLink: RMModel {
     dynamic var linkCode: String?

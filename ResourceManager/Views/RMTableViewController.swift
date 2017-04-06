@@ -13,9 +13,6 @@ import MJRefresh
 
 
 class RMTableViewCell: UITableViewCell {
-    @IBOutlet weak var username: UITextField!
-    
-    @IBOutlet weak var password: UITextField!
     
     private(set) var disposeBag = DisposeBag()
 
@@ -26,12 +23,10 @@ class RMTableViewCell: UITableViewCell {
     
 }
 
-class RMTableViewController: RMViewController, UITableViewDataSource, RMTableViewRefresh {
+class RMTableViewController: RMViewController, RMTableViewRefresh {
     
     @IBOutlet var tableViews: [UITableView]!
-    
-    var viewModel: RMListViewModel = RMListViewModel()
-    
+        
     var tableView: UITableView {
         return tableViews[0]
     }
@@ -54,21 +49,7 @@ class RMTableViewController: RMViewController, UITableViewDataSource, RMTableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RMTableViewCell
         
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.numberOfRowsInSection(section: section)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.viewModel.numberOfSection()
-    }
-    
     /*
     // MARK: - Navigation
 
@@ -106,7 +87,8 @@ extension UITableView {
     
     func footerRefresh(enable: Bool, target: RMTableViewRefresh) {
         if enable {
-            self.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            
+            self.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
                 target.footerRefreshingFor(tableView: self)
             })
         }else{

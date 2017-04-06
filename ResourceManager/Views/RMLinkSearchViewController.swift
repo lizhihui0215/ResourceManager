@@ -11,21 +11,33 @@ import swiftScan
 
 class RMLinkTableViewCell: RMTableViewCell {
     
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var titleLabel: UILabel!
-    
 }
 
-class RMLinkSearchViewController: RMTableViewController {
+class RMLinkSearchViewController: RMTableViewController, UITableViewDataSource, RMSearchListAction {
     
+    var viewModel: RMLinkSearchViewModel?
     
+    @IBOutlet weak var linkCodeTextField: UITextField!
+    @IBOutlet weak var customerTextField: UITextField!
+    @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
+        self.viewModel = RMLinkSearchViewModel(actions: self)
         
+        let _ = self.accountTextField.rx.textInput <-> (self.viewModel?.account)!
+        
+        let _ = self.customerTextField.rx.textInput <-> (self.viewModel?.customerName)!
+        
+        let _ = self.linkCodeTextField.rx.textInput <-> (self.viewModel?.linkCode)!
+        
+        self.tableView.headerRefresh(enable: true, target: self)
+        
+        self.tableView.footerRefresh(enable: true, target: self)
     }
     
     @IBAction func scanButtonPressed(_ sender: UIButton) {
@@ -33,17 +45,38 @@ class RMLinkSearchViewController: RMTableViewController {
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        
+        self.viewModel?.linkList(refresh: true).drive(onNext: { (result) in
+            print("next")
+        }, onCompleted: {
+            self.tableView.reloadData()
+        }, onDisposed: {
+            print("onDisposed")
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "RMLinkTableViewCell", for: indexPath) as! RMLinkTableViewCell
+    func headerRefreshingFor(tableView: UITableView ) {
+        
+    }
+    
+    func footerRefreshingFor(tableView: UITableView) {
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RMLinkTableViewCell", for: indexPath) as! RMLinkTableViewCell
+        
+        
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel?.numberOfRowsInSection(section: section) ?? 0
     }
     
     override func didReceiveMemoryWarning() {

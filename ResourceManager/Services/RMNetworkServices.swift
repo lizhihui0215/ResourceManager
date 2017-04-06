@@ -40,7 +40,7 @@ class RMNetworkServices {
         RMNetworkServices.kResults = resultsKey!
     }
     
-    func request<T: RMModel>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
+    func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
        return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
     }
 }
@@ -48,7 +48,7 @@ class RMNetworkServices {
 public enum RMNetworkAPI {
     case login(String, String)
     case linkDetail(String, String)
-    case linkList(String, String, Int, Int)
+    case linkList(String, String, String, String, Int, Int)
 }
 
 extension RMNetworkAPI: TargetType {
@@ -60,10 +60,10 @@ extension RMNetworkAPI: TargetType {
         switch self {
         case .login(_, _):
             return "login"
-        case let .linkDetail(accessToken):
+        case let .linkDetail(accessToken,_):
             return "cabinet/query?\(accessToken)"
-        case let .linkList(accessToken):
-            return "cabinet/fuzzyquery?access_token=\(accessToken)"
+        case let .linkList(accessToken,_,_,_,_,_):
+            return "iosapi/link/fuzzyquery?access_token=\(accessToken)"
         }
         
     }
@@ -86,8 +86,10 @@ extension RMNetworkAPI: TargetType {
                     "devicetoken": device.uuid]
         case let .linkDetail(_, linkCode):
             return ["linkCode": linkCode]
-        case let .linkList(_,accountOrName, pageSize, pageNO):
-            return ["accountOrName": accountOrName,
+        case let .linkList(_,account, customerName, linkCode, pageNO, pageSize):
+            return ["account": account,
+                    "customerName": customerName,
+                    "linkCode": linkCode,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
         }
