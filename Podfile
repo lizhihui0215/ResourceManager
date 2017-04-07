@@ -47,8 +47,6 @@ target 'ResourceManager' do
   # https://github.com/hackiftekhar/IQKeyboardManager
   pod 'IQKeyboardManagerSwift'
   
-  # https://github.com/MxABC/swiftScan
-  pod 'swiftScan', :git => 'https://github.com/MxABC/swiftScan.git', :tag => '1.0.9'
   
   target 'ResourceManagerTests' do
     inherit! :search_paths

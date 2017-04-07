@@ -15,10 +15,10 @@ import Result
 class RMScanDomain: RMDomain {
     static let shared = RMScanDomain()
     
-    func linkList(linkCode: String) -> Driver<Result<RMLink, Moya.Error>> {
-    
-    
+    func link(linkCode: String) -> Driver<Result<RMLink, Moya.Error>> {
+        return RMScanDomain.repository.link(linkCode: linkCode).asDriver(onErrorRecover:  { error in
+            let x  = error as! Moya.Error;
+            return Driver.just(Result(error: x))
+        })
     }
-
-
 }

@@ -11,13 +11,12 @@ import RealmSwift
 import ObjectMapper_Realm
 
 
-class RMResponseObject<T: Mappable>: Mappable {
-    
+class RMResponseArray<T: Mappable>: Mappable {
     var message: String?
     
     var code: Int?
     
-    var results: T?
+    var results: [T]?
     
     required init?(map: Map) {
     }
@@ -28,6 +27,26 @@ class RMResponseObject<T: Mappable>: Mappable {
         code <- map[RMNetworkServices.kCode]
         
         results <- map[RMNetworkServices.kResults]
+    }
+}
+
+class RMResponseObject<T: Mappable>: Mappable {
+    
+    var message: String?
+    
+    var code: Int?
+    
+    var result: T?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        message <- map[RMNetworkServices.kMessage]
+        
+        code <- map[RMNetworkServices.kCode]
+        
+        result <- map[RMNetworkServices.kResults]
     }
 }
 

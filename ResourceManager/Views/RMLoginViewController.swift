@@ -22,20 +22,18 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    var viewModel: RMLoginViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let input = (usernameTextField.rx.text.orEmpty.asDriver(),
-                     passwordTextField.rx.text.orEmpty.asDriver(),
-                     loginButton.rx.tap.asDriver())
         
-        let dependency = (RMLoginDomain.shared, RMLoginValidate.shared)
+        self.viewModel = RMLoginViewModel(loginAction: self)
         
-        let viewModel = RMLoginViewModel(input: input,dependency: dependency , loginAction: self)
+        let _ = self.usernameTextField.rx.textInput <-> (self.viewModel?.username)!
         
-        viewModel.signedIn.drive(onNext: { [weak self] success in
-            if success { self?.perform(segue: StoryboardSegue.Main.toMain, sender: self) }
-        }).disposed(by: disposeBag)
+        let _ = self.passwordTextField.rx.textInput <-> (self.viewModel?.password)!
+       
     }
 
     
@@ -46,7 +44,9 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        
+        self.viewModel?.sigin().drive(onNext: { success in
+            if success { self.perform(segue: StoryboardSegue.Main.toMain, sender: self) }
+        }).disposed(by: disposeBag)
     }
     
      // MARK: - Navigation

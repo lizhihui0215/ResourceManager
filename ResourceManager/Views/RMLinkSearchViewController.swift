@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import swiftScan
 
-class RMLinkTableViewCell: RMTableViewCell {
-    
-}
 
-class RMLinkSearchViewController: RMTableViewController, UITableViewDataSource, RMSearchListAction {
+
+class RMLinkSearchViewController: RMViewController, RMSearchListAction {
     
     var viewModel: RMLinkSearchViewModel?
     
@@ -35,48 +32,14 @@ class RMLinkSearchViewController: RMTableViewController, UITableViewDataSource, 
         
         let _ = self.linkCodeTextField.rx.textInput <-> (self.viewModel?.linkCode)!
         
-        self.tableView.headerRefresh(enable: true, target: self)
-        
-        self.tableView.footerRefresh(enable: true, target: self)
-    }
-    
-    @IBAction func scanButtonPressed(_ sender: UIButton) {
-        //设置扫码区域参数
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        self.viewModel?.linkList(refresh: true).drive(onNext: { (result) in
-            print("next")
-        }, onCompleted: {
-            self.tableView.reloadData()
-        }, onDisposed: {
-            print("onDisposed")
+        self.viewModel?.linkList(refresh: true).drive(onNext: { success in
+            if success {
+                self.performSegue(withIdentifier: "toLinkList", sender: nil)
+            }
         }).disposed(by: disposeBag)
-    }
-    
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        
-    }
-    
-    func headerRefreshingFor(tableView: UITableView ) {
-        
-    }
-    
-    func footerRefreshingFor(tableView: UITableView) {
-        
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RMLinkTableViewCell", for: indexPath) as! RMLinkTableViewCell
-        
-        
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel?.numberOfRowsInSection(section: section) ?? 0
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,14 +47,24 @@ class RMLinkSearchViewController: RMTableViewController, UITableViewDataSource, 
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "toLinkList" {
+            let linkListViewController = segue.destination as! RMLinkListViewController
+            
+            linkListViewController.viewModel = RMLinkListViewModel(action: linkListViewController)
+            
+            let _ = linkListViewController.viewModel?.section(at: 0).append(contentsOf: (self.viewModel?.links)!)
+            
+            linkListViewController.viewModel?.account.value = (self.viewModel?.account.value)!
+            
+            linkListViewController.viewModel?.customerName.value = (self.viewModel?.customerName.value)!
+            linkListViewController.viewModel?.linkCode.value = (self.viewModel?.linkCode.value)!
+        }
+    }
 }

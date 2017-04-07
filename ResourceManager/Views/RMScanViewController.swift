@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import swiftScan
 import RxSwift
 import RxCocoa
 
-class RMScanViewController: LBXScanViewController {
+class RMScanViewController: LBXScanViewController, RMScanAction {
     
-    var viewModel = RMScanViewModel()
-    
+
+    var disposeBag = DisposeBag()
+
+    var viewModel: RMScanViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +32,20 @@ class RMScanViewController: LBXScanViewController {
         style.colorAngle = UIColor(red: 0.0/255, green: 200.0/255.0, blue: 20.0/255.0, alpha: 1.0)
         style.animationImage = UIImage(named: "CodeScan.bundle/qrcode_Scan_weixin_Line")
         self.scanStyle = style;
+        self.viewModel = RMScanViewModel(action: self)
     }
     
     override func handleCodeResult(arrayResult: [LBXScanResult]){
-        self.viewModel.scaned(of: (arrayResult.first?.strScanned)!).drive( onCompleted: { 
-            self.performSegue(withIdentifier: "toDetail", sender: nil)
-        });
+        self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
+            success in
+            if success {
+                self.performSegue(withIdentifier: "toDetail", sender: nil)
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    func restartScan() {
+        self.startScan()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +62,8 @@ class RMScanViewController: LBXScanViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let linkDetailViewController = segue.destination as! RMLinkDetailViewController
-        linkDetailViewController. self.viewModel.link
+        
+        linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.link)!)
     }
     
 

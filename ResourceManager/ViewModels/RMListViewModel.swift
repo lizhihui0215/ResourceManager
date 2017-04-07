@@ -56,10 +56,10 @@ class RMSection<Element, Item> {
     
 
     
-    init(item: Item?, isOpen: Bool? = false, items: [RMSectionItem<Element>]) {
+    init(item: Item? = nil, isOpen: Bool? = false, items: [RMSectionItem<Element>]? = []) {
         self.item = item
         self.isOpen = isOpen!
-        self.items = items
+        self.items = items!
     }
 }
 
@@ -69,7 +69,7 @@ protocol RMListDataSource {
     
     var datasource: Array<RMSection<Self.Element, Self.SectionItem>> {get set}
     
-    func elementAt(indexPath: NSIndexPath) -> Self.Element
+    func elementAt(indexPath: IndexPath) -> Self.Element
 }
 
 extension RMListDataSource {
@@ -82,7 +82,7 @@ extension RMListDataSource {
         return self.datasource[at]
     }
     
-    func elementAt(indexPath: NSIndexPath) -> Element {
+    func elementAt(indexPath: IndexPath) -> Element {
         return self.section(at: indexPath.section).items[indexPath.row].item
     }
     
@@ -97,5 +97,6 @@ extension RMListDataSource {
     func numberOfSection() -> Int {
         return self.datasource.count
     }
-    
 }
+
+

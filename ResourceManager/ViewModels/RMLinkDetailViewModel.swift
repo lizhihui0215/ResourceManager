@@ -9,5 +9,12 @@
 import UIKit
 
 class RMLinkDetailViewModel: RMViewModel {
+    
+    var link: RMLink
+    
+    init(link: RMLink) {
+        self.link = link
+    }
+    
 
 }

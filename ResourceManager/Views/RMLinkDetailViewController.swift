@@ -10,7 +10,7 @@ import UIKit
 
 class RMLinkDetailViewController: RMViewController {
     
-    let viewModel: RMLinkDetailViewModel?
+    var viewModel: RMLinkDetailViewModel? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()

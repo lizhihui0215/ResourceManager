@@ -16,46 +16,28 @@ protocol RMLoginViewModelAction: RMViewModelAction {
 }
 
 class RMLoginViewModel: RMViewModel {
-    var disposeBag = DisposeBag()
-    var username: Driver<Result<String,MoyaError>>
-    var password: Driver<Result<String,MoyaError>>
-    var signedIn: Driver<Bool>
+    var username = Variable("")
+    var password = Variable("")
+    var loginAction: RMLoginViewModelAction
     
-    init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>),
-         dependency: (domain: RMLoginDomain, vilidate: RMLoginValidate),
-         loginAction: RMLoginViewModelAction) {
-        let validate = dependency.vilidate
-        let domain = dependency.domain
-        self.username = input.username.flatMapLatest({ username in
-            return validate.validateUsername(username)
-                .asDriver(onErrorJustReturn: Result(error: error(code: 0, message: nil)))
-        })
-        
-        self.password = input.password.flatMapLatest({ password in
-            return validate.validateUsername(password)
-                .asDriver(onErrorJustReturn: Result(error: error(code: 0, message: nil)))
-        })
-        
-        let usernameAndPassword = Driver.combineLatest(username, password) { ($0, $1) }
-        
-        
-        signedIn = input.loginTaps.withLatestFrom(self.username)
-            .flatMapLatest({ username in
-                return loginAction.alert(result: username)
-            }).withLatestFrom(self.password)
-            .flatMapLatest { password in
-                return loginAction.alert(result: password)
-            }.flatMapLatest({ validate  in
-                return loginAction.animation(start: true)
-            }).withLatestFrom(usernameAndPassword)
-            .flatMapLatest({ username, password in
-                return domain.sigin(username: username.value!, password: password.value!)
-                    .asDriver(onErrorRecover: { Driver.just(Result(error: $0 as! MoyaError))})
-            }).do( onNext: { _ in
-                let _ =  loginAction.animation(start: false)
-            }).flatMapLatest { result  in
-                return loginAction.alert(result: result).asDriver(onErrorJustReturn: false)
-            }
-        
+    init(loginAction: RMLoginViewModelAction) {
+        self.loginAction = loginAction
+    }
+    
+    func sigin() -> Driver<Bool> {
+        self.loginAction.animation.value = true
+        return RMLoginValidate.shared.validateUsername(self.username.value)
+            .flatMapLatest{ result in
+                return self.loginAction.alert(result: result)
+            }.flatMapLatest{ result in
+                return RMLoginValidate.shared.validateUsername(self.password.value)
+            }.flatMapLatest{ result in
+                return self.loginAction.alert(result: result)
+            }.flatMapLatest{ _ in
+                return RMLoginDomain.shared.sigin(username: self.username.value, password: self.password.value)
+            }.flatMapLatest{ result in
+                self.loginAction.animation.value = false
+                return self.loginAction.alert(result: result)
+        }
     }
 }

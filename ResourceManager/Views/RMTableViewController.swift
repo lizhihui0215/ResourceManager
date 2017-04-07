@@ -24,6 +24,10 @@ class RMTableViewCell: UITableViewCell {
 }
 
 class RMTableViewController: RMViewController, RMTableViewRefresh {
+    func footerRefreshingFor(tableView: UITableView) {}
+
+    func headerRefreshingFor(tableView: UITableView) {}
+
     
     @IBOutlet var tableViews: [UITableView]!
         
@@ -66,12 +70,6 @@ protocol RMTableViewRefresh {
     func headerRefreshingFor(tableView: UITableView)
     
     func footerRefreshingFor(tableView: UITableView)
-}
-
-extension RMTableViewRefresh {
-    func footerRefreshingFor(tableView: UITableView) {}
-    
-    func headerRefreshingFor(tableView: UITableView) {}
 }
 
 extension UITableView {

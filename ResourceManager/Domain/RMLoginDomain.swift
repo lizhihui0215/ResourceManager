@@ -14,7 +14,7 @@ import Result
 class RMLoginValidate: RMValidate {
     static let shared = RMLoginValidate()
 
-    func validateUsername(_ username: String) -> Observable<Result<String,Moya.Error>> {
+    func validateUsername(_ username: String) -> Driver<Result<String,Moya.Error>> {
         if username.characters.count == 0 {
             return .just(Result(error: error(code: 0, message: "code must > 0")))
         }
@@ -25,7 +25,7 @@ class RMLoginValidate: RMValidate {
         
         // do some network
         
-        return Observable.just(Result(value: username))
+        return Driver.just(Result(value: username))
     }
 }
 

@@ -27,8 +27,8 @@ class RMDataRepository {
         }
     }
     
-    func linkList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<RMLinkResponse, Moya.Error>> {
-        let resukt: Observable<RMResponseObject<RMLinkResponse>> = RMNetworkServices.shared.request(.linkList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
+    func linkList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMLink], Moya.Error>> {
+        let resukt: Observable<RMResponseArray<RMLink>> = RMNetworkServices.shared.request(.linkList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
         
         return self.handlerError(response: resukt).map({ result in
             switch result {
@@ -40,14 +40,38 @@ class RMDataRepository {
         })
     }
     
+    func link(linkCode: String) -> Observable<Result<RMLink, Moya.Error>> {
+        let result: Observable<RMResponseObject<RMLink>> = RMNetworkServices.shared.request(.linkDetail((RMDomain.user?.accessToken)!, linkCode))
+        
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let link):
+                return Result(value: link)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+    
     func handlerError<T>(response: Observable<RMResponseObject<T>>) -> Observable<Result<T, Moya.Error>> {
         return response.map { response  in
             if response.code == 0 {
-                return Result(value: response.results!)
+                return Result(value: response.result!)
             }else {
                 return Result(error: error(code: response.code, message: response.message) )
             }
         }
     }
+    
+    func handlerError<T>(response: Observable<RMResponseArray<T>>) -> Observable<Result<[T], Moya.Error>> {
+        return response.map { response  in
+            if response.code == 0 {
+                return Result(value: response.results ?? [])
+            }else {
+                return Result(error: error(code: response.code, message: response.message) )
+            }
+        }
+    }
+
 }
 

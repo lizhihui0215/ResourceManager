@@ -11,10 +11,27 @@ import RxCocoa
 import RxSwift
 import NVActivityIndicatorView
 
+fileprivate var animationContext: UInt8 = 0
+
+
 extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
+    
+    var animation: Variable<Bool> {
+        if let animation = objc_getAssociatedObject(self, &animationContext) as? Variable<Bool> {
+            return animation
+        }
+        
+        let animation = Variable(false)
+        
+        objc_setAssociatedObject(self, &animationContext, animation, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        return animation
+    }
+    
     internal func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool> {
         return Observable.create{
             [weak self] observer in
+            self?.animation.value = false
             let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
             
             alertView.addAction(UIAlertAction(title: cancelAction ?? "OK", style: .cancel) { action in
@@ -22,38 +39,32 @@ extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
             })
             
             self?.present(alertView, animated: true, completion: nil)
-            observer.on(.next(false))
             return Disposables.create{
                 alertView.dismiss(animated: true, completion: nil)
             }
-        }.asDriver(onErrorJustReturn: false)
-    }
-    
-    
-    func animation(start: Bool) -> Driver<Bool>  {
-        return Observable.create {[weak self] observer in
-            if start {
-                self?.startAnimating(message: "")
-                observer.on(.next(true))
-            }else {
-                self?.stopAnimating()
-            }
-            return Disposables.create {
-                self?.stopAnimating()
-            }
-        }.asDriver(onErrorJustReturn: false)
+            }.asDriver(onErrorJustReturn: false)
     }
 }
 
 class RMViewController: UIViewController {
     
     var disposeBag = DisposeBag()
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.animation.asObservable().subscribe(onNext: { flag in
+            if flag {
+                self.startAnimating()
+            }else{
+                self.stopAnimating()
+            }
+        },onDisposed: {
+            self.stopAnimating()
+        }).disposed(by: disposeBag)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

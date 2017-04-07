@@ -12,12 +12,14 @@ import Moya
 import RxCocoa
 
 class RMViewModel {
-    
+    var disposeBag = DisposeBag()    
 }
 
 protocol RMViewModelAction {
     func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool>
-    func animation(start: Bool) -> Driver<Bool>
+    
+    var animation: Variable<Bool> { get }
+    
 }
 
 extension RMViewModelAction {

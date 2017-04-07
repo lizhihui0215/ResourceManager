@@ -1,26 +1,24 @@
 //
-//  RMLinkSearchViewModel.swift
+//  RMLinkListViewModel.swift
 //  ResourceManager
 //
-//  Created by 李智慧 on 06/04/2017.
+//  Created by 李智慧 on 07/04/2017.
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
 import UIKit
-import RxSwift
 import RxCocoa
-import RealmSwift
-import Result
-import Moya
+import RxSwift
 
-protocol RMSearchListAction: RMViewModelAction {
+
+protocol RMLinkListAction: RMViewModelAction  {
     
 }
 
-class RMLinkSearchViewModel: RMViewModel {
-    var links = [RMLink]()
+class RMLinkListViewModel: RMListDataSource {
+    var datasource: Array<RMSection<RMLink, Void>> = []
     
-    var actions: RMSearchListAction
+    var action: RMLinkListAction
     
     var account = Variable("")
     
@@ -28,27 +26,32 @@ class RMLinkSearchViewModel: RMViewModel {
     
     var customerName = Variable("")
     
-    init(actions: RMSearchListAction) {
-        self.actions = actions
-        super.init()
+    
+    init(action: RMLinkListAction) {
+        self.datasource.append(RMSection())
+        self.action = action
     }
     
     func linkList(refresh: Bool) -> Driver<Bool> {
-        self.actions.animation.value = true
+        self.action.animation.value = true
         return RMLinkSearchDomain.shared.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):
-                        strongSelf.links = links
+                        if refresh {
+                          strongSelf.section(at: 0).removeAll()
+                        }
+                        let _ =  strongSelf.section(at: 0).append(contentsOf: links)
                     case.failure(_): break
                     }
-                    self?.actions.animation.value = false
+                    strongSelf.action.animation.value = false
                 }
             })
             .flatMapLatest({ result  in
-                return self.actions.alert(result: result)
+                return self.action.alert(result: result)
             })
     }
+
 }

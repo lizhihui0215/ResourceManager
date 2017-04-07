@@ -11,22 +11,6 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
-class RMLinkResponse: Mappable {
-    var total: Int?
-    
-    var links: [RMLink]?
-    
-    required init?(map: Map) {
-    
-    }
-
-    func mapping(map: Map) {
-        total <- map["total"]
-        links <- map["links"]
-    }
-}
-
-
 class RMLink: RMModel {
     dynamic var linkCode: String?
     dynamic var account: String?
@@ -53,22 +37,22 @@ class RMLink: RMModel {
     
     override func mapping(map: Map) {
         super.mapping(map: map)
-        linkCode <- map["link.linkCode"]
-        account <- map["link.account"]
-        customerName <- map["link.customerName"]
-        barcode <- map["link.barcode"]
-        linkRate <- map["link.linkRate"]
-        customerLevel <- map["link.customerLevel"]
-        accessDeviceName <- map["link.accessDeviceName"]
-        accessDevicePort <- map["link.accessDevicePort"]
-        accessDeviceUpTime <- map["link.accessDeviceUpTime"]
-        localODFName <- map["link.localODFName"]
-        localODFID <- map["link.localODFID"]
-        localODFPort <- map["link.localODFPort"]
-        farendDeviceName <- map["link.farendDeviceName"]
-        farendODFName <- map["link.farendODFName"]
-        farendODFID <- map["link.farendODFID"]
-        farendODFPort <- map["link.farendODFPort"]
+        linkCode <- map["linkCode"]
+        account <- map["account"]
+        customerName <- map["customerName"]
+        barcode <- map["barcode"]
+        linkRate <- map["linkRate"]
+        customerLevel <- map["customerLevel"]
+        accessDeviceName <- map["accessDeviceName"]
+        accessDevicePort <- map["accessDevicePort"]
+        accessDeviceUpTime <- map["accessDeviceUpTime"]
+        localODFName <- map["localODFName"]
+        localODFID <- map["localODFID"]
+        localODFPort <- map["localODFPort"]
+        farendDeviceName <- map["farendDeviceName"]
+        farendODFName <- map["farendODFName"]
+        farendODFID <- map["farendODFID"]
+        farendODFPort <- map["farendODFPort"]
     }
 
 

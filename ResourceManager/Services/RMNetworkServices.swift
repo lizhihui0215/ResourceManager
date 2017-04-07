@@ -43,6 +43,10 @@ class RMNetworkServices {
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
        return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
     }
+    
+    func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseArray<T>> {
+        return RMNetworkServicesProvider.request(token).mapObject(RMResponseArray<T>.self)
+    }
 }
 
 public enum RMNetworkAPI {
@@ -53,7 +57,7 @@ public enum RMNetworkAPI {
 
 extension RMNetworkAPI: TargetType {
     public var baseURL: URL {
-        return URL(string: "http://115.28.157.117:9080/resourcemanage/")!
+        return URL(string: "http://115.28.157.117:9080/resourcemanage/iosapi")!
     }
     
     public var path: String {
@@ -61,9 +65,9 @@ extension RMNetworkAPI: TargetType {
         case .login(_, _):
             return "login"
         case let .linkDetail(accessToken,_):
-            return "cabinet/query?\(accessToken)"
+            return "link/query?access_token=\(accessToken)"
         case let .linkList(accessToken,_,_,_,_,_):
-            return "iosapi/link/fuzzyquery?access_token=\(accessToken)"
+            return "link/fuzzyquery?access_token=\(accessToken)"
         }
         
     }
@@ -118,9 +122,3 @@ private extension String {
         return self.data(using: .utf8)!
     }
 }
-
-
-
-
-
-

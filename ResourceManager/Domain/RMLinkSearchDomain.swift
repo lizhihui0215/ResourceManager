@@ -20,9 +20,9 @@ class RMLinkSearchDomain: RMDomain {
     
     var size = 20
     
-    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<RMLinkResponse, Moya.Error>> {
+    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], Moya.Error>> {
         if refresh { page = 0 } else { page += 1 }
-        return RMLinkSearchDomain.repository.linkList(account: account, customerName: customerName, linkCode: linkCode , page: 0, size: size).asDriver(onErrorRecover: {[weak self] error in
+        return RMLinkSearchDomain.repository.linkList(account: account, customerName: customerName, linkCode: linkCode , page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
             let x  = error as! Moya.Error;
