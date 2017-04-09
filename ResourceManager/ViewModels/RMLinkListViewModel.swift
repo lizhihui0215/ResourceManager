@@ -16,6 +16,7 @@ protocol RMLinkListAction: RMViewModelAction  {
 }
 
 class RMLinkListViewModel: RMListDataSource {
+    
     var datasource: Array<RMSection<RMLink, Void>> = []
     
     var action: RMLinkListAction

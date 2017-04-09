@@ -8,7 +8,15 @@
 
 import UIKit
 
-class RMResourceManagerViewController: RMViewController, UICollectionViewDataSource {
+class RMResourceManagerCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+}
+
+class RMResourceManagerViewController: RMViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    var viewModel = RMResourceManagerViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +32,26 @@ class RMResourceManagerViewController: RMViewController, UICollectionViewDataSou
     
     @available(iOS 6.0, *)
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.viewModel.numberOfRowsInSection(section: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "xx", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMResourceManagerCell", for: indexPath) as! RMResourceManagerCell
+        
+        cell.titleLabel.text = self.viewModel.elementAt(indexPath: indexPath).title()
+        cell.imageView.image = self.viewModel.elementAt(indexPath: indexPath).image()
+        
+        return cell
     }
     
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+       let identifier = self.viewModel.elementAt(indexPath: indexPath).idenfitier()
+        
+        self.performSegue(withIdentifier: identifier, sender: indexPath)
 
-    /*
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -43,6 +59,6 @@ class RMResourceManagerViewController: RMViewController, UICollectionViewDataSou
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

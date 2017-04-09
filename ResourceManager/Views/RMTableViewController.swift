@@ -15,6 +15,11 @@ import MJRefresh
 class RMTableViewCell: UITableViewCell {
     
     private(set) var disposeBag = DisposeBag()
+    
+    override func awakeFromNib() {
+        self.layoutMargins = UIEdgeInsetsZero //or UIEdgeInsetsMake(top, left, bottom, right)
+        self.separatorInset = UIEdgeInsetsZero //if you also want to adjust separatorInset
+    }
 
     override func prepareForReuse() {
         super.prepareForReuse()

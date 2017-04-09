@@ -9,6 +9,11 @@
 import UIKit
 class RMLinkTableViewCell: RMTableViewCell {
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10) //if you also want to adjust separatorInset
+    }
 }
 
 class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITableViewDataSource {
@@ -22,6 +27,10 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         self.tableView.headerRefresh(enable: true, target: self)
         
         self.tableView.footerRefresh(enable: true, target: self)
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.estimatedRowHeight = 40
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +59,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.numberOfRowsInSection(section: section) ?? 0

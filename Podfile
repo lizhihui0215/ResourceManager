@@ -47,6 +47,9 @@ target 'ResourceManager' do
   # https://github.com/hackiftekhar/IQKeyboardManager
   pod 'IQKeyboardManagerSwift'
   
+  # https://github.com/yeahdongcn/UIColor-Hex-Swift
+  pod 'UIColor_Hex_Swift'
+  
   
   target 'ResourceManagerTests' do
     inherit! :search_paths
