@@ -22,7 +22,7 @@ enum RMResourceItem {
         case .cabinetSearch:
             return "toCabinetSearch"
         case .linkModify:
-            return ""
+            return "toLinkModify"
         case .inspect:
             return ""
         }
@@ -61,13 +61,13 @@ class RMResourceManagerViewModel: RMViewModel, RMListDataSource {
     
     override init() {
         let section: RMSection<RMResourceItem, Void> = RMSection()
-        let _ = section.append(item: .linkSearch)
-        let _ = section.append(item: .cabinetSearch)
-        let _ = section.append(item: .linkModify)
-        let _ = section.append(item: .inspect)
+        section.append(item: .linkSearch)
+        section.append(item: .cabinetSearch)
+        section.append(item: .linkModify)
+        section.append(item: .inspect)
         self.datasource.append(section)
     }
     
     
-
+    
 }

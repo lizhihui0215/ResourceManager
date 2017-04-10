@@ -1,5 +1,5 @@
 //
-//  RMLinkSearchViewController.swift
+//  RMSearchViewController.swift
 //  ResourceManager
 //
 //  Created by 李智慧 on 29/03/2017.
@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class RMLinkSearchViewController: RMViewController, RMSearchListAction {
+class RMSearchViewController: RMViewController, RMSearchListAction {
     
     var viewModel: RMSearchViewModel?
     
@@ -23,14 +23,14 @@ class RMLinkSearchViewController: RMViewController, RMSearchListAction {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let _ = self.accountTextField.rx.textInput <-> (self.viewModel?.account)!
+        self.accountTextField.rx.textInput <-> (self.viewModel?.account)!
         
-        let _ = self.customerTextField.rx.textInput <-> (self.viewModel?.customerName)!
+        self.customerTextField.rx.textInput <-> (self.viewModel?.customerName)!
         
-        let _ = self.linkCodeTextField.rx.textInput <-> (self.viewModel?.linkCode)!
+        self.linkCodeTextField.rx.textInput <-> (self.viewModel?.linkCode)!
         
     }
-
+    
     @IBAction func scanButtonPressed(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: (self.viewModel?.identifier(for: .toScan))!, sender: nil)
     }
@@ -63,8 +63,9 @@ class RMLinkSearchViewController: RMViewController, RMSearchListAction {
         if segue.identifier == "toLinkList" {
             let linkListViewController = segue.destination as! RMLinkListViewController
             if let linkSearchViewModel = self.viewModel as? RMLinkSearchViewModel {
-                let linkListViewModel = RMLinkListViewModel(action: linkListViewController)
-                let _ = linkListViewModel.section(at: 0).append(contentsOf: (linkSearchViewModel.links))
+                let linkListViewModel = RMLinkListViewModel(action: linkListViewController,
+                                                            isModify:linkSearchViewModel.isModify)
+                linkListViewModel.section(at: 0).append(contentsOf: (linkSearchViewModel.links))
                 linkListViewModel.account.value = (linkSearchViewModel.account.value)
                 linkListViewModel.customerName.value = (linkSearchViewModel.customerName.value)
                 linkListViewModel.linkCode.value = (linkSearchViewModel.linkCode.value)
@@ -74,7 +75,7 @@ class RMLinkSearchViewController: RMViewController, RMSearchListAction {
             let cabinetListViewController = segue.destination as! RMCabinetListViewController
             if let cabinetSearchViewModel = self.viewModel as? RMCabinetSearchViewModel {
                 let cabinetListViewModel = RMCabinetListViewModel(action: cabinetListViewController)
-                let _ = cabinetListViewModel.section(at: 0).append(contentsOf: (cabinetSearchViewModel.links))
+                cabinetListViewModel.section(at: 0).append(contentsOf: (cabinetSearchViewModel.links))
                 cabinetListViewModel.account.value = (cabinetSearchViewModel.account.value)
                 cabinetListViewModel.customerName.value = (cabinetSearchViewModel.customerName.value)
                 cabinetListViewModel.linkCode.value = (cabinetSearchViewModel.linkCode.value)
@@ -82,7 +83,10 @@ class RMLinkSearchViewController: RMViewController, RMSearchListAction {
             }
         }else if segue.identifier == "toLinkScan" {
             let scanViewController = segue.destination as! RMScanViewController
-            scanViewController.viewModel = RMLinkScanViewModel(action: scanViewController)
+            if let linkSearchViewModel = self.viewModel as? RMLinkSearchViewModel {
+                scanViewController.viewModel = RMLinkScanViewModel(action: scanViewController,
+                                                                   isModify: linkSearchViewModel.isModify)
+            }
         }else if segue.identifier == "toCabinetScan" {
             let scanViewController = segue.destination as! RMScanViewController
             scanViewController.viewModel = RMCabinetScanViewModel(action: scanViewController)

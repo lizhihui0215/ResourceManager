@@ -24,10 +24,12 @@ class RMLinkDetailViewModel: RMViewModel {
     var accessDevicePort: Variable<String>
     var accessDeviceName: Variable<String>
     
+    var isModify: Bool
     
     
-    init(link: RMLink) {
+    init(link: RMLink, isModify: Bool = false) {
         self.link = link
+        self.isModify = isModify
         account = Variable(link.account ?? "")
         linkRate = Variable(link.linkRate ?? "")
         customerAddress = Variable("")

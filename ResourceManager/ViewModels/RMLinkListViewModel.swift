@@ -26,9 +26,12 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
     
     var customerName = Variable("")
     
+    var isModify: Bool
     
-    init(action: RMLinkListAction) {
+    
+    init(action: RMLinkListAction, isModify: Bool = false) {
         self.datasource.append(RMSection())
+        self.isModify = isModify
         self.action = action
     }
     
@@ -43,7 +46,7 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
                         if refresh {
                           strongSelf.section(at: 0).removeAll()
                         }
-                        let _ =  strongSelf.section(at: 0).append(contentsOf: links)
+                        strongSelf.section(at: 0).append(contentsOf: links)
                     case.failure(_): break
                     }
                     strongSelf.action.animation.value = false

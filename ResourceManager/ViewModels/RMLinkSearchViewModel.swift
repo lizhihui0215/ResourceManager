@@ -20,7 +20,11 @@ protocol RMSearchListAction: RMSearchAction {
 class RMLinkSearchViewModel: RMSearchViewModel {
     var links = [RMLink]()
     
-    init(actions: RMSearchListAction) {
+    var isModify: Bool
+    
+    
+    init(actions: RMSearchListAction, isModify: Bool = false) {
+        self.isModify = isModify
         super.init(actions: actions)
     }
     

@@ -42,7 +42,7 @@ class RMCabinetListViewModel:RMViewModel, RMListDataSource {
                         if refresh {
                             strongSelf.section(at: 0).removeAll()
                         }
-                        let _ =  strongSelf.section(at: 0).append(contentsOf: links)
+                        strongSelf.section(at: 0).append(contentsOf: links)
                     case.failure(_): break
                     }
                     strongSelf.action.animation.value = false

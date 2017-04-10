@@ -33,7 +33,7 @@ func nonMarkedText(_ textInput: UITextInput) -> String? {
     return (textInput.text(in: startRange) ?? "") + (textInput.text(in: endRange) ?? "")
 }
 
-
+@discardableResult
 func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<String>) -> Disposable {
     
     let bindToUIDisposable = variable.asObservable().bindTo(textInput.text)

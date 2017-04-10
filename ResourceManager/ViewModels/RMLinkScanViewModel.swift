@@ -14,8 +14,10 @@ protocol RMLinkScanAction: RMScanAction {
 }
 
 class RMLinkScanViewModel: RMScanViewModel {
-    
-    init(action: RMLinkScanAction) {
+    var isModify: Bool
+
+    init(action: RMLinkScanAction, isModify: Bool = false) {
+        self.isModify = isModify
         super.init(action: action)
     }
     

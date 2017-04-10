@@ -190,6 +190,7 @@
                     <connections>
                         <segue destination="t6A-qv-fwT" kind="show" identifier="toLinkSearch" id="VAp-Qn-Bg9"/>
                         <segue destination="t6A-qv-fwT" kind="show" identifier="toCabinetSearch" id="Gjo-KW-lX4"/>
+                        <segue destination="t6A-qv-fwT" kind="show" identifier="toLinkModify" id="y9U-tH-ge9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJx-Ls-oQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,7 +200,7 @@
         <!--链路查询-->
         <scene sceneID="iut-y0-mdj">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="t6A-qv-fwT" customClass="RMLinkSearchViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="t6A-qv-fwT" customClass="RMSearchViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rPv-YR-k68"/>
                         <viewControllerLayoutGuide type="bottom" id="jWK-ZO-lOr"/>
@@ -1785,7 +1786,7 @@
         <image name="xxx" width="190" height="99"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gjo-KW-lX4"/>
+        <segue reference="y9U-tH-ge9"/>
         <segue reference="QE4-ib-8jO"/>
         <segue reference="GjW-M3-fJb"/>
     </inferredMetricsTieBreakers>

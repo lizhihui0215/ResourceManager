@@ -24,7 +24,7 @@ class RMCabinetDetailViewModel: RMViewModel, RMListDataSource {
         
         let section = RMSection<RMDevice, Void>()
         
-        let _ = section.append(contentsOf: cabinet.devices?.toArray() ?? [])
+        section.append(contentsOf: cabinet.devices?.toArray() ?? [])
 
         datasource.append(section)
     }

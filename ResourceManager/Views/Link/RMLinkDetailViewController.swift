@@ -16,33 +16,33 @@ class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var customerNameTextField: UITextField!
     @IBOutlet weak var customerLevelTextField: UITextField!
     var viewModel: RMLinkDetailViewModel? = nil
-
+    
     @IBOutlet weak var farendDevicePortTextField: UITextField!
     @IBOutlet weak var farendDeviceNameTextField: UITextField!
     @IBOutlet weak var accessDevicePortTextField: UITextField!
     @IBOutlet weak var accessDeviceNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         if let viewModel = self.viewModel {
-            let _ = accountTextField.rx.textInput <-> viewModel.account
-            let _ = linkRateTextField.rx.textInput <-> viewModel.linkRate
-            let _ = customerAddressTextField.rx.textInput <-> viewModel.customerAddress
-            let _ = linkCodeTextField.rx.textInput <-> viewModel.linkCode
-            let _ = customerNameTextField.rx.textInput <-> viewModel.customerName
-            let _ = customerLevelTextField.rx.textInput <-> viewModel.customerLevel
-            let _ = farendDeviceNameTextField.rx.textInput <-> viewModel.farendDeviceName
-            let _ = farendDevicePortTextField.rx.textInput <-> viewModel.farendDevicePort
-            let _ = accessDeviceNameTextField.rx.textInput <-> viewModel.accessDeviceName
-            let _ = accessDevicePortTextField.rx.textInput <-> viewModel.accessDevicePort
+            accountTextField.rx.textInput <-> viewModel.account
+            linkRateTextField.rx.textInput <-> viewModel.linkRate
+            customerAddressTextField.rx.textInput <-> viewModel.customerAddress
+            linkCodeTextField.rx.textInput <-> viewModel.linkCode
+            customerNameTextField.rx.textInput <-> viewModel.customerName
+            customerLevelTextField.rx.textInput <-> viewModel.customerLevel
+            farendDeviceNameTextField.rx.textInput <-> viewModel.farendDeviceName
+            farendDevicePortTextField.rx.textInput <-> viewModel.farendDevicePort
+            accessDeviceNameTextField.rx.textInput <-> viewModel.accessDeviceName
+            accessDevicePortTextField.rx.textInput <-> viewModel.accessDevicePort
         }
     }
     @IBAction func test(_ sender: UIBarButtonItem) {
         print(viewModel?.link ?? "")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,15 +50,15 @@ class RMLinkDetailViewController: RMViewController {
     
     
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

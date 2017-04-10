@@ -63,14 +63,16 @@ class RMResourceManagerViewController: RMViewController, UICollectionViewDataSou
         
         switch item {
         case .linkSearch:
-            let searchViewController = segue.destination as! RMLinkSearchViewController
+            let searchViewController = segue.destination as! RMSearchViewController
             searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController)
             
         case .cabinetSearch:
-            let searchViewController = segue.destination as! RMLinkSearchViewController
+            let searchViewController = segue.destination as! RMSearchViewController
             searchViewController.viewModel = RMCabinetSearchViewModel(actions: searchViewController)
         case .linkModify:
-            print("")
+            let searchViewController = segue.destination as! RMSearchViewController
+            searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController, isModify: true)
+
         case .inspect:
             break
         }
