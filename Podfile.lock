@@ -30,12 +30,12 @@ PODS:
   - RealmSwift (2.5.1):
     - Realm (= 2.5.1)
   - Result (3.2.1)
-  - RxCocoa (3.3.1):
-    - RxSwift (~> 3.3)
+  - RxCocoa (3.4.0):
+    - RxSwift (~> 3.4)
   - RxRealm (0.5.2):
     - RealmSwift (~> 2.4)
     - RxSwift (~> 3.1)
-  - RxSwift (3.3.1)
+  - RxSwift (3.4.0)
   - SnapKit (3.2.0)
   - UIColor_Hex_Swift (3.0.2)
 
@@ -68,9 +68,9 @@ SPEC CHECKSUMS:
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
-  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
+  RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
   RxRealm: df024f04e64c3a9723dab63a6ec8621b3db6473f
-  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 

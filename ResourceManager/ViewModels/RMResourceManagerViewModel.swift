@@ -10,7 +10,7 @@ import UIKit
 
 enum RMResourceItem {
     case linkSearch
-    case cabinet
+    case cabinetSearch
     case linkModify
     case inspect
     
@@ -19,8 +19,8 @@ enum RMResourceItem {
         switch self {
         case .linkSearch:
             return "toLinkSearch"
-        case .cabinet:
-            return ""
+        case .cabinetSearch:
+            return "toCabinetSearch"
         case .linkModify:
             return ""
         case .inspect:
@@ -32,7 +32,7 @@ enum RMResourceItem {
         switch self {
         case .linkSearch:
             return "链路查询"
-        case .cabinet:
+        case .cabinetSearch:
             return "机柜查询"
         case .linkModify:
             return "链路修改"
@@ -45,7 +45,7 @@ enum RMResourceItem {
         switch self {
         case .linkSearch:
             return UIImage(named: "xxx")!
-        case .cabinet:
+        case .cabinetSearch:
             return UIImage(named: "xxx")!
         case .linkModify:
             return UIImage(named: "xxx")!
@@ -62,7 +62,7 @@ class RMResourceManagerViewModel: RMViewModel, RMListDataSource {
     override init() {
         let section: RMSection<RMResourceItem, Void> = RMSection()
         let _ = section.append(item: .linkSearch)
-        let _ = section.append(item: .cabinet)
+        let _ = section.append(item: .cabinetSearch)
         let _ = section.append(item: .linkModify)
         let _ = section.append(item: .inspect)
         self.datasource.append(section)

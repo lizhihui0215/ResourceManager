@@ -1,8 +1,8 @@
 //
-//  RMLinkListViewModel.swift
+//  RMCabinetViewModel.swift
 //  ResourceManager
 //
-//  Created by 李智慧 on 07/04/2017.
+//  Created by 李智慧 on 10/04/2017.
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
@@ -10,15 +10,15 @@ import RxCocoa
 import RxSwift
 
 
-protocol RMLinkListAction: RMViewModelAction  {
+protocol RMCabinetListAction: RMViewModelAction  {
     
 }
 
-class RMLinkListViewModel:RMViewModel, RMListDataSource {
+class RMCabinetListViewModel:RMViewModel, RMListDataSource {
     
-    var datasource: Array<RMSection<RMLink, Void>> = []
+    var datasource: Array<RMSection<RMCabinet, Void>> = []
     
-    var action: RMLinkListAction
+    var action: RMCabinetListAction
     
     var account = Variable("")
     
@@ -27,21 +27,20 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
     var customerName = Variable("")
     
     
-    init(action: RMLinkListAction) {
+    init(action: RMCabinetListAction) {
         self.datasource.append(RMSection())
         self.action = action
     }
     
-    func linkList(refresh: Bool) -> Driver<Bool> {
+    func cabinetList(refresh: Bool) -> Driver<Bool> {
         self.action.animation.value = true
-        return RMLinkSearchDomain.shared.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
+        return RMCabinetSearchDomain.shared.cabinetList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
             .do(onNext: { [weak self] result in
-                
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):
                         if refresh {
-                          strongSelf.section(at: 0).removeAll()
+                            strongSelf.section(at: 0).removeAll()
                         }
                         let _ =  strongSelf.section(at: 0).append(contentsOf: links)
                     case.failure(_): break
@@ -53,5 +52,5 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
                 return self.action.alert(result: result)
             })
     }
-
+    
 }

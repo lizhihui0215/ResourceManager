@@ -40,8 +40,34 @@ class RMDataRepository {
         })
     }
     
+    func cabinetList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMCabinet], Moya.Error>> {
+        let resukt: Observable<RMResponseArray<RMCabinet>> = RMNetworkServices.shared.request(.cabinetList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
+        
+        return self.handlerError(response: resukt).map({ result in
+            switch result {
+            case .success(let links):
+                return Result(value: links)
+            case .failure(let error):
+                return Result(error: error)
+            }
+        })
+    }
+    
     func link(linkCode: String) -> Observable<Result<RMLink, Moya.Error>> {
         let result: Observable<RMResponseObject<RMLink>> = RMNetworkServices.shared.request(.linkDetail((RMDomain.user?.accessToken)!, linkCode))
+        
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let link):
+                return Result(value: link)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+    
+    func cabinet(linkCode: String) -> Observable<Result<RMCabinet, Moya.Error>> {
+        let result: Observable<RMResponseObject<RMCabinet>> = RMNetworkServices.shared.request(.cabinetDetail((RMDomain.user?.accessToken)!, linkCode))
         
         return self.handlerError(response: result).map{ result in
             switch result {
