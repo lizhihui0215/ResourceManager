@@ -1,50 +1,38 @@
 //
-//  RMLinkListViewModel.swift
+//  RMInspectListViewModel.swift
 //  ResourceManager
 //
-//  Created by 李智慧 on 07/04/2017.
+//  Created by 李智慧 on 11/04/2017.
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
 import RxCocoa
 import RxSwift
 
-
-protocol RMLinkListAction: RMViewModelAction  {
+protocol RMInpsectListAction: RMViewModelAction {
     
 }
 
-class RMLinkListViewModel:RMViewModel, RMListDataSource {
+class RMInspectListViewModel: RMViewModel, RMListDataSource {
+    var datasource: Array<RMSection<RMInspect, Void>> = []
     
-    var datasource: Array<RMSection<RMLink, Void>> = []
+    var action: RMInpsectListAction
     
-    var action: RMLinkListAction
-    
-    var account = Variable("")
-    
-    var linkCode = Variable("")
-    
-    var customerName = Variable("")
-    
-    var isModify: Bool
-    
-    
-    init(action: RMLinkListAction, isModify: Bool = false) {
+    init(action: RMInpsectListAction) {
         self.datasource.append(RMSection())
-        self.isModify = isModify
         self.action = action
     }
     
-    func linkList(refresh: Bool) -> Driver<Bool> {
+    func inspectList(refresh: Bool) -> Driver<Bool> {
         self.action.animation.value = true
-        return RMLinkSearchDomain.shared.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
+        return RMInspectListDomain.shared.inspectList(refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):
                         if refresh {
-                          strongSelf.section(at: 0).removeAll()
+                            strongSelf.section(at: 0).removeAll()
                         }
                         strongSelf.section(at: 0).append(contentsOf: links)
                     case.failure(_): break
@@ -56,5 +44,4 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
                 return self.action.alert(result: result)
             })
     }
-
 }

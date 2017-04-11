@@ -1,16 +1,15 @@
 //
-//  RMLinkDetailViewController.swift
+//  RMInspectPhotoViewController.swift
 //  ResourceManager
 //
-//  Created by 李智慧 on 01/04/2017.
+//  Created by 李智慧 on 11/04/2017.
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
 import UIKit
+import MWPhotoBowser
 
-class RMLinkDetailViewController: RMViewController {
-    
-    var viewModel: RMLinkDetailViewModel? = nil
+class RMInspectPhotoViewController: RMViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

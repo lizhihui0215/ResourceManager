@@ -8,7 +8,10 @@
 
 import UIKit
 class RMLinkTableViewCell: RMTableViewCell {
-    
+    @IBOutlet weak var accessDevicePortLabel: UILabel!
+    @IBOutlet weak var accessDeviceNameLabel: UILabel!
+    @IBOutlet weak var codeLabel: UILabel!
+    @IBOutlet weak var customerNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -57,6 +60,14 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RMLinkTableViewCell", for: indexPath) as! RMLinkTableViewCell
         
+        if let viewModel = self.viewModel {
+            let link = viewModel.elementAt(indexPath: indexPath)
+            cell.accessDeviceNameLabel.text = link.accessDeviceName
+            cell.accessDevicePortLabel.text = link.accessDevicePort
+            cell.customerNameLabel.text = link.customerName
+            cell.codeLabel.text = link.barcode
+        }
+        
         return cell
     }
     
@@ -66,14 +77,23 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let linkDetailViewController = segue.destination as! RMLinkDetailViewController
+        
+        if let viewModel = self.viewModel {
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            
+            let link = viewModel.elementAt(indexPath: indexPath!)
+            
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link)
+        }
+        
     }
-    */
 
 }

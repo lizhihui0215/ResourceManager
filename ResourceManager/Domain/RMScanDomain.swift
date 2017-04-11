@@ -21,4 +21,11 @@ class RMScanDomain: RMDomain {
             return Driver.just(Result(error: x))
         })
     }
+    
+    func cabinet(linkCode: String) -> Driver<Result<RMCabinet, Moya.Error>> {
+        return RMScanDomain.repository.cabinet(linkCode: linkCode).asDriver(onErrorRecover:  { error in
+            let x  = error as! Moya.Error;
+            return Driver.just(Result(error: x))
+        })
+    }
 }

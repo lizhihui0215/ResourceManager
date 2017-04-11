@@ -1,8 +1,10 @@
 PODS:
   - Alamofire (4.4.0)
+  - DACircularProgress (2.3.1)
   - DeviceKit (1.0.1)
   - IQKeyboardManagerSwift (4.0.9)
   - KeychainAccess (3.0.2)
+  - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.12)
   - Moya (8.0.3):
     - Moya/Core (= 8.0.3)
@@ -19,6 +21,10 @@ PODS:
   - Moya/RxSwift (8.0.3):
     - Moya/Core
     - RxSwift (~> 3.0)
+  - MWPhotoBrowser (2.1.2):
+    - DACircularProgress (~> 2.3)
+    - MBProgressHUD (~> 0.9)
+    - SDWebImage (!= 3.7.2, ~> 3.7)
   - NVActivityIndicatorView (3.6.0)
   - ObjectMapper (2.2.5)
   - ObjectMapper+Realm (0.3):
@@ -30,12 +36,15 @@ PODS:
   - RealmSwift (2.5.1):
     - Realm (= 2.5.1)
   - Result (3.2.1)
-  - RxCocoa (3.3.1):
-    - RxSwift (~> 3.3)
+  - RxCocoa (3.4.0):
+    - RxSwift (~> 3.4)
   - RxRealm (0.5.2):
     - RealmSwift (~> 2.4)
     - RxSwift (~> 3.1)
-  - RxSwift (3.3.1)
+  - RxSwift (3.4.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SnapKit (3.2.0)
   - UIColor_Hex_Swift (3.0.2)
 
@@ -45,6 +54,7 @@ DEPENDENCIES:
   - KeychainAccess
   - MJRefresh
   - Moya-ObjectMapper/RxSwift
+  - MWPhotoBrowser
   - NVActivityIndicatorView
   - ObjectMapper+Realm
   - RealmSwift
@@ -56,24 +66,28 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
   IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
   Moya-ObjectMapper: 952be2b261d38cf8d973b7e429708eb03d256e23
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
-  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
+  RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
   RxRealm: df024f04e64c3a9723dab63a6ec8621b3db6473f
-  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: fec6a9c863fe6bc9137b283ce7812a4ee0a0fece
+PODFILE CHECKSUM: 4d36e9c0cf4904719a58959354c4a7f16b28c1ef
 
 COCOAPODS: 1.2.0

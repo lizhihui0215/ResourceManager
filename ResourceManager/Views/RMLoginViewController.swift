@@ -30,12 +30,12 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
         
         self.viewModel = RMLoginViewModel(loginAction: self)
         
-        let _ = self.usernameTextField.rx.textInput <-> (self.viewModel?.username)!
+        self.usernameTextField.rx.textInput <-> (self.viewModel?.username)!
         
-        let _ = self.passwordTextField.rx.textInput <-> (self.viewModel?.password)!
-       
+        self.passwordTextField.rx.textInput <-> (self.viewModel?.password)!
+        
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,16 +49,16 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
         }).disposed(by: disposeBag)
     }
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         switch StoryboardSegue.Main(rawValue: segue.identifier!)! {
         case .toMain: break
         default: break
         }
-     }
+    }
     
 }

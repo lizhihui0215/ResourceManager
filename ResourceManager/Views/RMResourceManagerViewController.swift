@@ -58,6 +58,29 @@ class RMResourceManagerViewController: RMViewController, UICollectionViewDataSou
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    
+        let item = self.viewModel.elementAt(indexPath: sender as! IndexPath)
+        
+        switch item {
+        case .linkSearch:
+            let searchViewController = segue.destination as! RMSearchViewController
+            searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController)
+            
+        case .cabinetSearch:
+            let searchViewController = segue.destination as! RMSearchViewController
+            searchViewController.viewModel = RMCabinetSearchViewModel(actions: searchViewController)
+        case .linkModify:
+            let searchViewController = segue.destination as! RMSearchViewController
+            searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController, isModify: true)
+
+        case .inspect:
+            let inspectListViewController = segue.destination as! RMInspectListViewController
+            
+            inspectListViewController.viewModel = RMInspectListViewModel(action: inspectListViewController)
+
+            break
+        }
+        
     }
     
 

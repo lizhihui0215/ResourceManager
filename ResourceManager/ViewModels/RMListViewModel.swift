@@ -27,16 +27,19 @@ class RMSection<Element, Item> {
     var isOpen: Bool
     var items: [RMSectionItem<Element>]
     
+    @discardableResult
     func append(item: Element, isSelected: Bool? = false) -> Element {
         self.items.append(RMSectionItem(isSelected: isSelected!, item: item))
         return item
     }
     
+    @discardableResult
     func append(contentsOf contents: [RMSectionItem<Element>]) -> [RMSectionItem<Element>] {
         self.items.append(contentsOf: contents)
         return contents
     }
     
+    @discardableResult
     func append(contentsOf contents: [Element]) -> [RMSectionItem<Element>] {
         
         var sectionItems = [RMSectionItem<Element>]()

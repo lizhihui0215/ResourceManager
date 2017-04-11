@@ -6,7 +6,6 @@
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
-import UIKit
 import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm

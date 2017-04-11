@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RMScanViewController: LBXScanViewController, RMScanAction {
+class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction {
     
 
     var disposeBag = DisposeBag()
@@ -32,7 +32,6 @@ class RMScanViewController: LBXScanViewController, RMScanAction {
         style.colorAngle = UIColor(red: 0.0/255, green: 200.0/255.0, blue: 20.0/255.0, alpha: 1.0)
         style.animationImage = UIImage(named: "CodeScan.bundle/qrcode_Scan_weixin_Line")
         self.scanStyle = style;
-        self.viewModel = RMScanViewModel(action: self)
     }
     
     override func handleCodeResult(arrayResult: [LBXScanResult]){
@@ -63,7 +62,7 @@ class RMScanViewController: LBXScanViewController, RMScanAction {
         // Pass the selected object to the new view controller.
         let linkDetailViewController = segue.destination as! RMLinkDetailViewController
         
-        linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.link)!)
+        linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink)
     }
     
 

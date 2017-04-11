@@ -1,8 +1,8 @@
 //
-//  RMLinkSearchViewModel.swift
+//  RMCabinetSearchViewModel.swift
 //  ResourceManager
 //
-//  Created by 李智慧 on 06/04/2017.
+//  Created by 李智慧 on 10/04/2017.
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
@@ -13,37 +13,33 @@ import RealmSwift
 import Result
 import Moya
 
-protocol RMSearchListAction: RMSearchAction {
+protocol RMCabinetSearchAction: RMSearchAction {
     
 }
 
-class RMLinkSearchViewModel: RMSearchViewModel {
-    var links = [RMLink]()
+class RMCabinetSearchViewModel: RMSearchViewModel {
+    var links = [RMCabinet]()
     
-    var isModify: Bool
-    
-    
-    init(actions: RMSearchListAction, isModify: Bool = false) {
-        self.isModify = isModify
+    init(actions: RMSearchListAction) {
         super.init(actions: actions)
     }
     
     override func identifier(`for`: RMSearchIdentifier) -> String{
         switch `for` {
         case .toScan:
-            return "toLinkScan"
+            return "toCabinetScan"
         case .toSearchList:
-            return "toLinkList"
+            return "toCabinetList"
         }
     }
     
     override func search() -> Driver<Bool> {
-        return linkList(refresh: true)
+        return cabinetList(refresh: true)
     }
     
-    func linkList(refresh: Bool) -> Driver<Bool> {
+    func cabinetList(refresh: Bool) -> Driver<Bool> {
         self.actions.animation.value = true
-        return RMLinkSearchDomain.shared.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
+        return RMCabinetSearchDomain.shared.cabinetList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
