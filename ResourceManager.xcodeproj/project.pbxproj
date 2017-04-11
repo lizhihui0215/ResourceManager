@@ -56,6 +56,7 @@
 		26786E901E9B25D600AB42FF /* RMCabinetSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26786E8F1E9B25D600AB42FF /* RMCabinetSearchViewModel.swift */; };
 		26786E921E9B263800AB42FF /* RMCabinetSearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26786E911E9B263800AB42FF /* RMCabinetSearchDomain.swift */; };
 		26786E941E9B276700AB42FF /* RMCabinetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */; };
+		267AD87C1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */; };
 		26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26807FDC1E8E097F005624E5 /* RMTableViewController.swift */; };
 		268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B423B1E8F471200ADAC83 /* RMListViewModel.swift */; };
 		269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48951E822FD30024FC17 /* RMAppDelegate.swift */; };
@@ -162,6 +163,7 @@
 		26786E8F1E9B25D600AB42FF /* RMCabinetSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetSearchViewModel.swift; sourceTree = "<group>"; };
 		26786E911E9B263800AB42FF /* RMCabinetSearchDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetSearchDomain.swift; sourceTree = "<group>"; };
 		26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetListViewModel.swift; sourceTree = "<group>"; };
+		267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewController.swift; sourceTree = "<group>"; };
 		26807FDC1E8E097F005624E5 /* RMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
 		268B423B1E8F471200ADAC83 /* RMListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMListViewModel.swift; sourceTree = "<group>"; };
 		269A48921E822FD30024FC17 /* ResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,6 +355,7 @@
 				2632CAC01E8B80E50064AF1E /* RMResourceManagerViewController.swift */,
 				269C8CA81E8F9E400049970E /* RMScanViewController.swift */,
 				260C3C3D1E9CC97A00DE7C46 /* RMInspectListViewController.swift */,
+				267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */,
 				26CB6A691E9761070092E3E9 /* Scan */,
 				2632CAE21E8B9D0F0064AF1E /* FDStackView */,
 				5B87561556318D27513BB2E8 /* Link */,
@@ -824,6 +827,7 @@
 				268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */,
 				260C10A01E8A6F1800011A8E /* RMDataRepository.swift in Sources */,
 				265653EA1E825BC200F37064 /* RMUser.swift in Sources */,
+				267AD87C1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift in Sources */,
 				2632CAF71E8B9D0F0064AF1E /* FDStackView.m in Sources */,
 				262C7E811E8ADDF9004BD333 /* RMStoryboardSegue.swift in Sources */,
 				265653E61E82397600F37064 /* RMViewController.swift in Sources */,

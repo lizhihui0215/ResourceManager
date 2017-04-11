@@ -1544,6 +1544,24 @@
             </objects>
             <point key="canvasLocation" x="3952.5" y="-1084.8591549295775"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="0Ka-Fh-3HF">
+            <objects>
+                <viewController id="qlr-KL-Ooj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qie-Qu-Ttf"/>
+                        <viewControllerLayoutGuide type="bottom" id="sMZ-BM-evJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MY7-HI-loT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8LT-xh-fOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4691" y="-1085"/>
+        </scene>
         <!--机柜详情-->
         <scene sceneID="QIh-Ar-Su9">
             <objects>
