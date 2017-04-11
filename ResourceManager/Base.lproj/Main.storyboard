@@ -1518,6 +1518,7 @@
                                         <connections>
                                             <outlet property="contentLabel" destination="m4V-3f-CG4" id="gRT-2a-wJv"/>
                                             <outlet property="titleLabel" destination="Rm3-cC-ujP" id="Lkc-qB-lFO"/>
+                                            <segue destination="qlr-KL-Ooj" kind="show" id="tw9-dP-qm1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1544,10 +1545,10 @@
             </objects>
             <point key="canvasLocation" x="3952.5" y="-1084.8591549295775"/>
         </scene>
-        <!--View Controller-->
+        <!--Inspect Photo View Controller-->
         <scene sceneID="0Ka-Fh-3HF">
             <objects>
-                <viewController id="qlr-KL-Ooj" sceneMemberID="viewController">
+                <viewController id="qlr-KL-Ooj" customClass="RMInspectPhotoViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qie-Qu-Ttf"/>
                         <viewControllerLayoutGuide type="bottom" id="sMZ-BM-evJ"/>

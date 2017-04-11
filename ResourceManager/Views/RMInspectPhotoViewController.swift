@@ -7,21 +7,47 @@
 //
 
 import UIKit
-import MWPhotoBowser
+import MWPhotoBrowser
 
-class RMInspectPhotoViewController: RMViewController {
+class RMInspectPhotoViewController: MWPhotoBrowser, MWPhotoBrowserDelegate {
+    
+    var viewModel: RMInspectPhotoViewModel?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+//        self.reloadData()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
+        if let viewModel = self.viewModel {
+            return UInt(viewModel.numberOfRowsInSection(section: 0))
+        }
+        
+        return 0
+    }
+
+    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
+        
+        if let viewModel = self.viewModel {
+            let indexPath = IndexPath(row: Int(index), section: 0)
+            
+            return viewModel.elementAt(indexPath: indexPath)
+        }
+        
+        return nil
+    }
+
 
     /*
     // MARK: - Navigation

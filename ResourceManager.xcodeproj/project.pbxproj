@@ -32,6 +32,7 @@
 		2632CAFA1E8B9D0F0064AF1E /* FDStackViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAEE1E8B9D0F0064AF1E /* FDStackViewExtensions.m */; };
 		2632CAFB1E8B9D0F0064AF1E /* FDStackViewLayoutArrangement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAF01E8B9D0F0064AF1E /* FDStackViewLayoutArrangement.m */; };
 		2632CAFC1E8B9D0F0064AF1E /* FDTransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAF21E8B9D0F0064AF1E /* FDTransformLayer.m */; };
+		263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */; };
 		265653E61E82397600F37064 /* RMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E51E82397600F37064 /* RMViewController.swift */; };
 		265653E81E825A7700F37064 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E71E825A7700F37064 /* RMModel.swift */; };
 		265653EA1E825BC200F37064 /* RMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E91E825BC200F37064 /* RMUser.swift */; };
@@ -139,6 +140,7 @@
 		2632CAF11E8B9D0F0064AF1E /* FDTransformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTransformLayer.h; sourceTree = "<group>"; };
 		2632CAF21E8B9D0F0064AF1E /* FDTransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTransformLayer.m; sourceTree = "<group>"; };
 		2632CAFE1E8B9D940064AF1E /* ResourceManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ResourceManager-Bridging-Header.h"; path = "ResourceManager/ResourceManager-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewModel.swift; sourceTree = "<group>"; };
 		265653E51E82397600F37064 /* RMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMViewController.swift; sourceTree = "<group>"; };
 		265653E71E825A7700F37064 /* RMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
 		265653E91E825BC200F37064 /* RMUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMUser.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				262AB6981E9B345700986173 /* RMCabinetScanViewModel.swift */,
 				26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */,
 				267641861E9B62F7000EFB23 /* RMCabinetDetailViewModel.swift */,
+				263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				26786E921E9B263800AB42FF /* RMCabinetSearchDomain.swift in Sources */,
 				2672C1011E8CE44900AD19EA /* RMError.swift in Sources */,
 				26CB6A761E9761070092E3E9 /* LBXScanViewStyle.swift in Sources */,
+				263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */,
 				26786E8C1E9B221D00AB42FF /* RMSearchViewModel.swift in Sources */,
 				2632CAFB1E8B9D0F0064AF1E /* FDStackViewLayoutArrangement.m in Sources */,
 				2632CAF61E8B9D0F0064AF1E /* FDLayoutSpacer.m in Sources */,

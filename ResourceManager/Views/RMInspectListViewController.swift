@@ -71,14 +71,30 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // Get the new view controller using 
+        let inspectViewController = segue.destination as! RMInspectPhotoViewController
+        
+        if let viewModel = self.viewModel {
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            
+            let inspect = viewModel.elementAt(indexPath: indexPath!)
+            
+            let viewModel = RMInspectPhotoViewModel(pictures: (inspect.pictures?.toArray())!, caption: inspect.reportContent)
+            inspectViewController.viewModel = viewModel
+            
+        }
+        
+        inspectViewController.displayActionButton = false
+        inspectViewController.displayNavArrows = true
+        
+        
+        inspectViewController.delegate = inspectViewController
+        
     }
-    */
 
 }
