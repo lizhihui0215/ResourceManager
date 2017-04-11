@@ -74,6 +74,10 @@ class RMResourceManagerViewController: RMViewController, UICollectionViewDataSou
             searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController, isModify: true)
 
         case .inspect:
+            let inspectListViewController = segue.destination as! RMInspectListViewController
+            
+            inspectListViewController.viewModel = RMInspectListViewModel(action: inspectListViewController)
+
             break
         }
         

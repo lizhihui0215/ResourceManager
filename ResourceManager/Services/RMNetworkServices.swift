@@ -55,6 +55,7 @@ public enum RMNetworkAPI {
     case linkList(String, String, String, String, Int, Int)
     case cabinetList(String, String, String, String, Int, Int)
     case cabinetDetail(String, String)
+    case inspectList(String,Int, Int)
 
 }
 
@@ -75,6 +76,8 @@ extension RMNetworkAPI: TargetType {
             return "cabinet/query?access_token=\(accessToken)"
         case let .cabinetList(accessToken,_,_,_,_,_):
             return "cabinet/fuzzyquery?access_token=\(accessToken)"
+        case let .inspectList(accessToken,_,_):
+            return "inspect/query?access_token=\(accessToken)"
             
         }
         
@@ -82,7 +85,7 @@ extension RMNetworkAPI: TargetType {
     
     public var method: Moya.Method {
         switch self {
-        case .login, .linkDetail, .linkList, .cabinetDetail, .cabinetList:
+        case .login, .linkDetail, .linkList, .cabinetDetail, .cabinetList, .inspectList:
            return .post
         }
     }
@@ -111,6 +114,9 @@ extension RMNetworkAPI: TargetType {
                     "customerName": customerName,
                     "cabinetCode": linkCode,
                     "pageSize": pageSize,
+                    "pageNO": pageNO]
+        case let .inspectList(_,pageNO, pageSize):
+            return ["pageSize": pageSize,
                     "pageNO": pageNO]
         }
     }

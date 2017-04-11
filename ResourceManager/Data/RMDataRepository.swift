@@ -40,6 +40,19 @@ class RMDataRepository {
         })
     }
     
+    func inspectList(page: Int, size: Int) -> Observable<Result<[RMInspect], Moya.Error>> {
+        let resukt: Observable<RMResponseArray<RMInspect>> = RMNetworkServices.shared.request(.inspectList((RMDomain.user?.accessToken)!, page, size))
+        
+        return self.handlerError(response: resukt).map({ result in
+            switch result {
+            case .success(let links):
+                return Result(value: links)
+            case .failure(let error):
+                return Result(error: error)
+            }
+        })
+    }
+    
     func cabinetList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMCabinet], Moya.Error>> {
         let resukt: Observable<RMResponseArray<RMCabinet>> = RMNetworkServices.shared.request(.cabinetList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
         

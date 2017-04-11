@@ -24,7 +24,7 @@ enum RMResourceItem {
         case .linkModify:
             return "toLinkModify"
         case .inspect:
-            return ""
+            return "toInspect"
         }
     }
     
