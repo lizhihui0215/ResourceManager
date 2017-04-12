@@ -7,18 +7,19 @@
 //
 
 import UIKit
-import MWPhotoBrowser
 
 class RMInspectPhotoViewModel: RMViewModel, RMListDataSource {
-    var datasource: Array<RMSection<MWPhoto, Void>> = []
+    var datasource: Array<RMSection<RMPicture, Void>> = []
+    
+    var caption = ""
+    
     
     init(pictures: [RMPicture], caption: String?) {
         super.init()
+        self.caption = caption ?? ""
         self.datasource.append(RMSection())
         for picture in pictures {
-            let photo = MWPhoto(url: URL(string: picture.picUrl!))
-            photo?.caption = caption
-            self.section(at: 0).append(item: photo!)
+            self.section(at: 0).append(item: picture)
         }
     }
 

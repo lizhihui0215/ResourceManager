@@ -7,9 +7,42 @@
 //
 
 import UIKit
-import MWPhotoBrowser
 
-class RMInspectPhotoViewController: MWPhotoBrowser, MWPhotoBrowserDelegate {
+class RMInspectPhotoViewController: UIPageViewController, UIPageViewControllerDataSource {
+
+    
+    var contentViewControllers = [RMContentViewController]()
+    
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        let index = contentViewControllers.index(of: viewController as! RMContentViewController)
+        self.navigationItem.title = "\(index! + 1 )/ \(contentViewControllers.count)"
+
+        if var i = index, ++i < contentViewControllers.count {
+            let contentViewController = contentViewControllers[i]
+            
+            
+            
+            return contentViewController
+        }else{
+            return nil
+        }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
+        let index = contentViewControllers.index(of: viewController as! RMContentViewController)
+        self.navigationItem.title = "\(index! + 1 )/ \(contentViewControllers.count)"
+
+        if var i = index, --i >= 0 {
+            let contentViewController = contentViewControllers[i]
+            
+            return contentViewController
+        }else{
+            return nil
+        }
+    }
     
     var viewModel: RMInspectPhotoViewModel?
     
@@ -18,34 +51,24 @@ class RMInspectPhotoViewController: MWPhotoBrowser, MWPhotoBrowserDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let viewModel = self.viewModel {
+            for sectionItem in viewModel.section(at: 0).items {
+                let contentViewController =  self.storyboard?.instantiateViewController(withIdentifier: "contentViewController") as! RMContentViewController
+                contentViewController.picture = sectionItem.item
+                contentViewController.content = viewModel.caption
+                contentViewControllers.append(contentViewController)
+            }
+        }
         
-//        self.reloadData()
+        self.setViewControllers([contentViewControllers[0]], direction: .reverse, animated: true, completion: nil)
         
-        
+        self.navigationItem.title = "1/ \(contentViewControllers.count)"
+        self.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
-        if let viewModel = self.viewModel {
-            return UInt(viewModel.numberOfRowsInSection(section: 0))
-        }
-        
-        return 0
-    }
-
-    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        
-        if let viewModel = self.viewModel {
-            let indexPath = IndexPath(row: Int(index), section: 0)
-            
-            return viewModel.elementAt(indexPath: indexPath)
-        }
-        
-        return nil
     }
 
 

@@ -50,9 +50,11 @@ target 'ResourceManager' do
   # https://github.com/yeahdongcn/UIColor-Hex-Swift
   pod 'UIColor_Hex_Swift'
   
-  #  https://github.com/mwaterfall/MWPhotoBrowser
-  pod 'MWPhotoBrowser'
+  # https://github.com/suzuki-0000/SKPhotoBrowser
+#  pod 'SKPhotoBrowser'
 
+  # https://github.com/onevcat/Kingfisher
+  pod 'Kingfisher'
   
   target 'ResourceManagerTests' do
     inherit! :search_paths

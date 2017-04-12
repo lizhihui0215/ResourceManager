@@ -86,15 +86,7 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
             
             let viewModel = RMInspectPhotoViewModel(pictures: (inspect.pictures?.toArray())!, caption: inspect.reportContent)
             inspectViewController.viewModel = viewModel
-            
         }
-        
-        inspectViewController.displayActionButton = false
-        inspectViewController.displayNavArrows = true
-        
-        
-        inspectViewController.delegate = inspectViewController
-        
     }
 
 }

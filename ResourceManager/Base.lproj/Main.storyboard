@@ -1320,7 +1320,7 @@
         <!--机柜列表-->
         <scene sceneID="gMf-fe-j2U">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Pec-r1-te8" customClass="RMCabinetListViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Pec-r1-te8" customClass="RMCabinetListViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yI5-g3-7Z7"/>
                         <viewControllerLayoutGuide type="bottom" id="feS-4F-YPP"/>
@@ -1518,7 +1518,7 @@
                                         <connections>
                                             <outlet property="contentLabel" destination="m4V-3f-CG4" id="gRT-2a-wJv"/>
                                             <outlet property="titleLabel" destination="Rm3-cC-ujP" id="Lkc-qB-lFO"/>
-                                            <segue destination="qlr-KL-Ooj" kind="show" id="tw9-dP-qm1"/>
+                                            <segue destination="rMT-tW-aST" kind="show" id="nXS-Pw-LEd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1546,22 +1546,70 @@
             <point key="canvasLocation" x="3952.5" y="-1084.8591549295775"/>
         </scene>
         <!--Inspect Photo View Controller-->
-        <scene sceneID="0Ka-Fh-3HF">
+        <scene sceneID="pwd-W1-Ddm">
             <objects>
-                <viewController id="qlr-KL-Ooj" customClass="RMInspectPhotoViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="rMT-tW-aST" customClass="RMInspectPhotoViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zz9-Dc-dr9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4764" y="-1085"/>
+        </scene>
+        <!--Content View Controller-->
+        <scene sceneID="VOz-b1-Puz">
+            <objects>
+                <viewController storyboardIdentifier="contentViewController" id="lSm-AP-RaF" customClass="RMContentViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qie-Qu-Ttf"/>
-                        <viewControllerLayoutGuide type="bottom" id="sMZ-BM-evJ"/>
+                        <viewControllerLayoutGuide type="top" id="Sak-qR-R9J"/>
+                        <viewControllerLayoutGuide type="bottom" id="wSQ-T2-cgs"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MY7-HI-loT">
+                    <view key="view" contentMode="scaleToFill" id="bIA-OH-RiW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xxx" translatesAutoresizingMaskIntoConstraints="NO" id="DRa-yg-F6J">
+                                <rect key="frame" x="65" y="234.5" width="190" height="99"/>
+                            </imageView>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FmA-Hg-k0S">
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="rTI-NT-xl2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd8-hi-1Nx">
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DRa-yg-F6J" firstAttribute="centerY" secondItem="bIA-OH-RiW" secondAttribute="centerY" id="14e-aC-QtM"/>
+                            <constraint firstItem="FmA-Hg-k0S" firstAttribute="leading" secondItem="bIA-OH-RiW" secondAttribute="leading" id="1vw-vY-jeE"/>
+                            <constraint firstAttribute="bottom" secondItem="FmA-Hg-k0S" secondAttribute="bottom" id="3Rz-cV-bFC"/>
+                            <constraint firstItem="Qd8-hi-1Nx" firstAttribute="leading" secondItem="FmA-Hg-k0S" secondAttribute="leading" id="MEE-lq-DL2"/>
+                            <constraint firstItem="Qd8-hi-1Nx" firstAttribute="bottom" secondItem="FmA-Hg-k0S" secondAttribute="bottom" id="U6C-q2-7vi"/>
+                            <constraint firstItem="Qd8-hi-1Nx" firstAttribute="top" secondItem="FmA-Hg-k0S" secondAttribute="top" id="YNe-dn-1Tn"/>
+                            <constraint firstItem="Qd8-hi-1Nx" firstAttribute="trailing" secondItem="FmA-Hg-k0S" secondAttribute="trailing" id="cW9-aN-Otv"/>
+                            <constraint firstAttribute="trailing" secondItem="FmA-Hg-k0S" secondAttribute="trailing" id="fUm-jd-pH2"/>
+                            <constraint firstItem="DRa-yg-F6J" firstAttribute="centerX" secondItem="bIA-OH-RiW" secondAttribute="centerX" id="kq6-Da-JPg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="6NR-Cv-zzk"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="contentLabel" destination="Qd8-hi-1Nx" id="e2X-6z-fRc"/>
+                        <outlet property="imageView" destination="DRa-yg-F6J" id="VeY-LH-0IF"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8LT-xh-fOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3N3-H6-Tg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4691" y="-1085"/>
+            <point key="canvasLocation" x="5551.875" y="-1085.9154929577464"/>
         </scene>
         <!--机柜详情-->
         <scene sceneID="QIh-Ar-Su9">
