@@ -89,6 +89,10 @@ extension RMListDataSource {
         return self.section(at: indexPath.section).items[indexPath.row].item
     }
     
+    func removeAt(indexPath: IndexPath) -> Void {
+        self.section(at: indexPath.section).items.remove(at: indexPath.row)
+    }
+    
     func elementOf(selected: Bool, at section: Int) -> [Self.Element] {
         return self.section(at: section).items.filter { $0.isSelected == selected }.map{ $0.item }
     }

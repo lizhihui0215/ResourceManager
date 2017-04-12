@@ -31,6 +31,9 @@ PODS:
   - RealmSwift (2.5.1):
     - Realm (= 2.5.1)
   - Result (3.2.1)
+  - RSKGrowingTextView (2.0.0):
+    - RSKPlaceholderTextView (= 2.0.0)
+  - RSKPlaceholderTextView (2.0.0)
   - RxCocoa (3.4.0):
     - RxSwift (~> 3.4)
   - RxRealm (0.5.2):
@@ -38,6 +41,7 @@ PODS:
     - RxSwift (~> 3.1)
   - RxSwift (3.4.0)
   - SnapKit (3.2.0)
+  - TZImagePickerController (1.7.9)
   - UIColor_Hex_Swift (3.0.2)
 
 DEPENDENCIES:
@@ -50,10 +54,12 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - ObjectMapper+Realm
   - RealmSwift
+  - RSKGrowingTextView
   - RxCocoa
   - RxRealm
   - RxSwift
   - SnapKit
+  - TZImagePickerController
   - UIColor_Hex_Swift
 
 SPEC CHECKSUMS:
@@ -71,12 +77,15 @@ SPEC CHECKSUMS:
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
+  RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
   RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
   RxRealm: df024f04e64c3a9723dab63a6ec8621b3db6473f
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: 7fa9329f42a9be10b3596bedcdc598dd80a6e713
+PODFILE CHECKSUM: ab757d5e93ea7e13b799c3555ff7587a4aaf7a6c
 
 COCOAPODS: 1.2.0

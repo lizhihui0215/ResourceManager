@@ -56,6 +56,12 @@ target 'ResourceManager' do
   # https://github.com/onevcat/Kingfisher
   pod 'Kingfisher'
   
+  #  https://github.com/banchichen/TZImagePickerController
+  pod 'TZImagePickerController'
+  
+  #  https://github.com/ruslanskorb/RSKGrowingTextView
+  pod 'RSKGrowingTextView'
+
   target 'ResourceManagerTests' do
     inherit! :search_paths
     # Pods for testing

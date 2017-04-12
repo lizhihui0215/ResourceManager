@@ -34,6 +34,7 @@
 		2632CAFC1E8B9D0F0064AF1E /* FDTransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAF21E8B9D0F0064AF1E /* FDTransformLayer.m */; };
 		263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */; };
 		264BF2AF1E9DDACA00627C55 /* RMContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */; };
+		264C47D01E9DFA86008FE357 /* RMInspectUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C47CF1E9DFA86008FE357 /* RMInspectUploadViewController.swift */; };
 		265653E61E82397600F37064 /* RMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E51E82397600F37064 /* RMViewController.swift */; };
 		265653E81E825A7700F37064 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E71E825A7700F37064 /* RMModel.swift */; };
 		265653EA1E825BC200F37064 /* RMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E91E825BC200F37064 /* RMUser.swift */; };
@@ -61,6 +62,7 @@
 		267AD87C1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */; };
 		26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26807FDC1E8E097F005624E5 /* RMTableViewController.swift */; };
 		268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B423B1E8F471200ADAC83 /* RMListViewModel.swift */; };
+		268DEB3E1E9E182400056FC9 /* RMInspectUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */; };
 		269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48951E822FD30024FC17 /* RMAppDelegate.swift */; };
 		269A489B1E822FD30024FC17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269A48991E822FD30024FC17 /* Main.storyboard */; };
 		269A489D1E822FD30024FC17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269A489C1E822FD30024FC17 /* Assets.xcassets */; };
@@ -79,6 +81,7 @@
 		26CB6A771E9761070092E3E9 /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A701E9761070092E3E9 /* LBXScanWrapper.swift */; };
 		26CB6A7E1E978B840092E3E9 /* RMResourceManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */; };
 		26CB6A821E9795500092E3E9 /* RMLinkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */; };
+		26DB115B1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB115A1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift */; };
 		26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */; };
 		26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */; };
 		5B8757791E4552E3EC89752B /* RMLinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8751C125D8CC3F4D812FFD /* RMLinkListViewController.swift */; };
@@ -143,6 +146,7 @@
 		2632CAFE1E8B9D940064AF1E /* ResourceManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ResourceManager-Bridging-Header.h"; path = "ResourceManager/ResourceManager-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewModel.swift; sourceTree = "<group>"; };
 		264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMContentViewController.swift; sourceTree = "<group>"; };
+		264C47CF1E9DFA86008FE357 /* RMInspectUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadViewController.swift; sourceTree = "<group>"; };
 		265653E51E82397600F37064 /* RMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMViewController.swift; sourceTree = "<group>"; };
 		265653E71E825A7700F37064 /* RMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
 		265653E91E825BC200F37064 /* RMUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMUser.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 		267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewController.swift; sourceTree = "<group>"; };
 		26807FDC1E8E097F005624E5 /* RMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
 		268B423B1E8F471200ADAC83 /* RMListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMListViewModel.swift; sourceTree = "<group>"; };
+		268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadViewModel.swift; sourceTree = "<group>"; };
 		269A48921E822FD30024FC17 /* ResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269A48951E822FD30024FC17 /* RMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAppDelegate.swift; sourceTree = "<group>"; };
 		269A489A1E822FD30024FC17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -194,6 +199,7 @@
 		26CB6A701E9761070092E3E9 /* LBXScanWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
 		26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResourceManagerViewModel.swift; sourceTree = "<group>"; };
 		26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkListViewModel.swift; sourceTree = "<group>"; };
+		26DB115A1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ContentSize.swift"; sourceTree = "<group>"; };
 		26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMNetworkServices.swift; sourceTree = "<group>"; };
 		26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResponseObject.swift; sourceTree = "<group>"; };
 		5B8751C125D8CC3F4D812FFD /* RMLinkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkListViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +367,8 @@
 				260C3C3D1E9CC97A00DE7C46 /* RMInspectListViewController.swift */,
 				267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */,
 				264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */,
+				264C47CF1E9DFA86008FE357 /* RMInspectUploadViewController.swift */,
+				26DB115A1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift */,
 				26CB6A691E9761070092E3E9 /* Scan */,
 				2632CAE21E8B9D0F0064AF1E /* FDStackView */,
 				5B87561556318D27513BB2E8 /* Link */,
@@ -430,6 +438,7 @@
 				262AB6961E9B344C00986173 /* RMLinkScanViewModel.swift */,
 				262AB6981E9B345700986173 /* RMCabinetScanViewModel.swift */,
 				26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */,
+				268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */,
 				267641861E9B62F7000EFB23 /* RMCabinetDetailViewModel.swift */,
 				263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */,
 			);
@@ -782,6 +791,7 @@
 				26786E901E9B25D600AB42FF /* RMCabinetSearchViewModel.swift in Sources */,
 				26CB6A821E9795500092E3E9 /* RMLinkListViewModel.swift in Sources */,
 				262C7E7D1E8ACE53004BD333 /* RMRootViewController.swift in Sources */,
+				26DB115B1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift in Sources */,
 				26CB6A741E9761070092E3E9 /* LBXScanView.swift in Sources */,
 				2632CAFA1E8B9D0F0064AF1E /* FDStackViewExtensions.m in Sources */,
 				26CB6A721E9761070092E3E9 /* LBXScanLineAnimation.swift in Sources */,
@@ -811,6 +821,7 @@
 				260C3C421E9CCA5500DE7C46 /* RMInspectListDomain.swift in Sources */,
 				260C10981E8A502D00011A8E /* Operators.swift in Sources */,
 				2632CAC11E8B80E50064AF1E /* RMResourceManagerViewController.swift in Sources */,
+				268DEB3E1E9E182400056FC9 /* RMInspectUploadViewModel.swift in Sources */,
 				2672C1031E8CFABC00AD19EA /* Device+RMDevice.swift in Sources */,
 				2632CAF91E8B9D0F0064AF1E /* FDStackViewDistributionLayoutArrangement.m in Sources */,
 				269C8CB01E8FB33B0049970E /* RMLink.swift in Sources */,
@@ -830,6 +841,7 @@
 				267641811E9B5647000EFB23 /* RMCabinet.swift in Sources */,
 				26CB6A731E9761070092E3E9 /* LBXScanNetAnimation.swift in Sources */,
 				266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */,
+				264C47D01E9DFA86008FE357 /* RMInspectUploadViewController.swift in Sources */,
 				2672C0FF1E8CCB8700AD19EA /* RMViewModel.swift in Sources */,
 				26317AEF1E981A4000125BCD /* UIView+Inspectable.swift in Sources */,
 				268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */,
