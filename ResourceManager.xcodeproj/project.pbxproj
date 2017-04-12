@@ -72,6 +72,9 @@
 		269C8CA91E8F9E400049970E /* RMScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269C8CA81E8F9E400049970E /* RMScanViewController.swift */; };
 		269C8CAB1E8FA5350049970E /* CodeScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 269C8CAA1E8FA5350049970E /* CodeScan.bundle */; };
 		269C8CB01E8FB33B0049970E /* RMLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269C8CAF1E8FB33B0049970E /* RMLink.swift */; };
+		26B189D11E9E8F9500A67B53 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B189D01E9E8F9500A67B53 /* LocationManager.swift */; };
+		26BFE8AD1E9E798D00A636AA /* RMLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE8AC1E9E798D00A636AA /* RMLocationViewController.swift */; };
+		26BFE8AF1E9E7CD100A636AA /* RMLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */; };
 		26CB6A711E9761070092E3E9 /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A6A1E9761070092E3E9 /* LBXPermissions.swift */; };
 		26CB6A721E9761070092E3E9 /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A6B1E9761070092E3E9 /* LBXScanLineAnimation.swift */; };
 		26CB6A731E9761070092E3E9 /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A6C1E9761070092E3E9 /* LBXScanNetAnimation.swift */; };
@@ -190,6 +193,9 @@
 		269C8CA81E8F9E400049970E /* RMScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMScanViewController.swift; sourceTree = "<group>"; };
 		269C8CAA1E8FA5350049970E /* CodeScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CodeScan.bundle; sourceTree = "<group>"; };
 		269C8CAF1E8FB33B0049970E /* RMLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLink.swift; sourceTree = "<group>"; };
+		26B189D01E9E8F9500A67B53 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		26BFE8AC1E9E798D00A636AA /* RMLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationViewController.swift; sourceTree = "<group>"; };
+		26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationViewModel.swift; sourceTree = "<group>"; };
 		26CB6A6A1E9761070092E3E9 /* LBXPermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
 		26CB6A6B1E9761070092E3E9 /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
 		26CB6A6C1E9761070092E3E9 /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 		5B87502A8DF8904F050CCFBE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				26B189D01E9E8F9500A67B53 /* LocationManager.swift */,
 				26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */,
 				2672C1001E8CE44900AD19EA /* RMError.swift */,
 				2672C1021E8CFABC00AD19EA /* Device+RMDevice.swift */,
@@ -368,6 +375,7 @@
 				267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */,
 				264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */,
 				264C47CF1E9DFA86008FE357 /* RMInspectUploadViewController.swift */,
+				26BFE8AC1E9E798D00A636AA /* RMLocationViewController.swift */,
 				26DB115A1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift */,
 				26CB6A691E9761070092E3E9 /* Scan */,
 				2632CAE21E8B9D0F0064AF1E /* FDStackView */,
@@ -431,6 +439,7 @@
 				26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */,
 				26786E8B1E9B221D00AB42FF /* RMSearchViewModel.swift */,
 				26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */,
+				26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */,
 				260C3C3F1E9CC9F500DE7C46 /* RMInspectListViewModel.swift */,
 				2670EDE61E96536D00D2CA07 /* RMLinkDetailViewModel.swift */,
 				260C10971E8A502D00011A8E /* Operators.swift */,
@@ -784,8 +793,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BFE8AF1E9E7CD100A636AA /* RMLocationViewModel.swift in Sources */,
 				269C8CA91E8F9E400049970E /* RMScanViewController.swift in Sources */,
 				26CB6A771E9761070092E3E9 /* LBXScanWrapper.swift in Sources */,
+				26B189D11E9E8F9500A67B53 /* LocationManager.swift in Sources */,
 				260C10A21E8A6F2300011A8E /* RMDomain.swift in Sources */,
 				2632CAFC1E8B9D0F0064AF1E /* FDTransformLayer.m in Sources */,
 				26786E901E9B25D600AB42FF /* RMCabinetSearchViewModel.swift in Sources */,
@@ -835,6 +846,7 @@
 				267641831E9B5696000EFB23 /* RMDevice.swift in Sources */,
 				26CB6A751E9761070092E3E9 /* LBXScanViewController.swift in Sources */,
 				26786E8E1E9B258100AB42FF /* RMCabinetListViewController.swift in Sources */,
+				26BFE8AD1E9E798D00A636AA /* RMLocationViewController.swift in Sources */,
 				260C3C401E9CC9F500DE7C46 /* RMInspectListViewModel.swift in Sources */,
 				264BF2AF1E9DDACA00627C55 /* RMContentViewController.swift in Sources */,
 				26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */,

@@ -61,7 +61,7 @@ target 'ResourceManager' do
   
   #  https://github.com/ruslanskorb/RSKGrowingTextView
   pod 'RSKGrowingTextView'
-
+  
   target 'ResourceManagerTests' do
     inherit! :search_paths
     # Pods for testing

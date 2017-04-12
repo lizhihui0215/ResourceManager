@@ -54,6 +54,8 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
         
         return cell
     }
+    
+    
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -61,6 +63,8 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
         
         return  count > 9 ? 9 : count
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let imageItem = self.viewModel.elementAt(indexPath: indexPath)
@@ -93,6 +97,9 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
     
     var viewModel = RMInspectUploadViewModel()
     
+    @IBAction func locationTapped(_ sender: UITapGestureRecognizer) {
+        self.shouldPerformSegue(withIdentifier: "toLocation", sender: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
