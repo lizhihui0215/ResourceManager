@@ -458,18 +458,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xxx" translatesAutoresizingMaskIntoConstraints="NO" id="GLN-oB-Fra">
-                                                    <rect key="frame" x="19" y="11" width="80" height="80"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="dct-mT-yw0"/>
-                                                        <constraint firstAttribute="width" constant="80" id="fq3-TC-J7S"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link-search.menu.selected" translatesAutoresizingMaskIntoConstraints="NO" id="GLN-oB-Fra">
+                                                    <rect key="frame" x="37" y="39" width="44" height="44"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="GLN-oB-Fra" firstAttribute="centerX" secondItem="3zR-Kd-K6y" secondAttribute="centerX" id="6xy-NF-fts"/>
-                                            <constraint firstItem="jfV-4V-9ak" firstAttribute="top" secondItem="GLN-oB-Fra" secondAttribute="bottom" constant="5" id="MV2-e3-HrG"/>
+                                            <constraint firstItem="GLN-oB-Fra" firstAttribute="centerY" secondItem="3zR-Kd-K6y" secondAttribute="centerY" id="GsI-qN-PVV"/>
                                             <constraint firstItem="jfV-4V-9ak" firstAttribute="centerX" secondItem="3zR-Kd-K6y" secondAttribute="centerX" id="X5o-dt-DZy"/>
                                             <constraint firstAttribute="bottom" secondItem="jfV-4V-9ak" secondAttribute="bottom" constant="10" id="zCu-gT-0Ye"/>
                                         </constraints>
@@ -2338,6 +2334,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="link-search.menu.selected" width="44" height="44"/>
         <image name="resource" width="23" height="23"/>
         <image name="xxx" width="190" height="99"/>
     </resources>

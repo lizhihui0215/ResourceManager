@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "4467E776-A750-4DA6-A0C7-AFBF8EF0E02D.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "resource-manager.tab@2x.png",
       "scale" : "2x"
     },
     {
