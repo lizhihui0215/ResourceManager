@@ -44,13 +44,26 @@ enum RMResourceItem {
     func image() -> UIImage {
         switch self {
         case .linkSearch:
-            return UIImage(named: "xxx")!
+            return UIImage(named: "resource-mamager.link-search.menu.normal")!
         case .cabinetSearch:
-            return UIImage(named: "xxx")!
+            return UIImage(named: "resource-manager.cabinet-search.menu.normal")!
         case .linkModify:
-            return UIImage(named: "xxx")!
+            return UIImage(named: "resource-manager.link-modify.menu.normal")!
         case .inspect:
-            return UIImage(named: "xxx")!
+            return UIImage(named: "resource-manager.inspect.menu.normal")!
+        }
+    }
+    
+    func selectedImage() -> UIImage {
+        switch self {
+        case .linkSearch:
+            return UIImage(named: "resource-mamager.link-search.menu.selected")!
+        case .cabinetSearch:
+            return UIImage(named: "resource-manager.cabinet-search.menu.selected")!
+        case .linkModify:
+            return UIImage(named: "resource-manager.link-modify.menu.selected")!
+        case .inspect:
+            return UIImage(named: "resource-manager.inspect.menu.selected")!
         }
     }
 }
