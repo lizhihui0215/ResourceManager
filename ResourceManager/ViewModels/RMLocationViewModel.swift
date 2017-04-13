@@ -8,23 +8,44 @@
 
 import RxCocoa
 import RxSwift
-import SwiftLocation
+import MapKit
 
+protocol RMLocationAction: RMViewModelAction {
+    func reload()
+}
 
 class RMLocationViewModel: RMViewModel, RMListDataSource {
-    var datasource: Array<RMSection<RMLink, Void>> = []
+    var datasource: Array<RMSection<MKMapItem, Void>> = []
+    var locationManager = LocationManager.sharedInstance
+    var action: RMLocationAction
+    var query = Variable("")
     
-    override init() {
+     init(action: RMLocationAction) {
         self.datasource.append(RMSection())
+        self.action = action
+        locationManager.autoUpdate = true
     }
     
     
-    func xxxx()  {
-        Location.getLocation(accuracy: .city, frequency: .continuous, success: { (request, location) -> (Void) in
+    func start (query: String = "supermarket,village,Community，Shop,Restaurant，School，hospital，Company，Street，Convenience store，Shopping Centre，Place names，Hotel，Grocery store")  {
+        
+        locationManager.startUpdatingLocationWithCompletionHandler { (latitude, longitude, status, verboseMessage, error) in
             
-        }) { (request, location, error) -> (Void) in
+            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
             
+            self.locationManager.search(query: query, coordinate: coordinate, region: 1000, completionHandler: { (response, error) in
+                self.datasource.removeAll()
+                
+                let section = RMSection<MKMapItem, Void>()
+                if let mapItems = response?.mapItems {
+                    section.append(contentsOf: mapItems)
+                    self.datasource.append(section)
+                    self.action.reload()
+                }
+            })
         }
     }
-
+    
+    
+    
 }

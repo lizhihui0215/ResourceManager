@@ -44,6 +44,7 @@
 		265653F21E827A1300F37064 /* RMAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653F11E827A1300F37064 /* RMAnimal.swift */; };
 		266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */; };
 		266597841E95D82A0035D344 /* RMLinkSearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266597831E95D82A0035D344 /* RMLinkSearchDomain.swift */; };
+		267035461E9F5D4D0049F0CC /* RMUploadScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267035451E9F5D4D0049F0CC /* RMUploadScanViewModel.swift */; };
 		2670EDE31E964FC900D2CA07 /* RMScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670EDE21E964FC900D2CA07 /* RMScanViewModel.swift */; };
 		2670EDE51E96522A00D2CA07 /* RMScanDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670EDE41E96522A00D2CA07 /* RMScanDomain.swift */; };
 		2670EDE71E96536D00D2CA07 /* RMLinkDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670EDE61E96536D00D2CA07 /* RMLinkDetailViewModel.swift */; };
@@ -63,6 +64,7 @@
 		26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26807FDC1E8E097F005624E5 /* RMTableViewController.swift */; };
 		268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B423B1E8F471200ADAC83 /* RMListViewModel.swift */; };
 		268DEB3E1E9E182400056FC9 /* RMInspectUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */; };
+		269631561E9F8BA400EFB0A3 /* RMPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269631551E9F8BA400EFB0A3 /* RMPickerView.swift */; };
 		269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48951E822FD30024FC17 /* RMAppDelegate.swift */; };
 		269A489B1E822FD30024FC17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269A48991E822FD30024FC17 /* Main.storyboard */; };
 		269A489D1E822FD30024FC17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269A489C1E822FD30024FC17 /* Assets.xcassets */; };
@@ -159,6 +161,7 @@
 		265653F11E827A1300F37064 /* RMAnimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAnimal.swift; sourceTree = "<group>"; };
 		266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkSearchViewModel.swift; sourceTree = "<group>"; };
 		266597831E95D82A0035D344 /* RMLinkSearchDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkSearchDomain.swift; sourceTree = "<group>"; };
+		267035451E9F5D4D0049F0CC /* RMUploadScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMUploadScanViewModel.swift; sourceTree = "<group>"; };
 		2670EDE21E964FC900D2CA07 /* RMScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMScanViewModel.swift; sourceTree = "<group>"; };
 		2670EDE41E96522A00D2CA07 /* RMScanDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMScanDomain.swift; sourceTree = "<group>"; };
 		2670EDE61E96536D00D2CA07 /* RMLinkDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkDetailViewModel.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		26807FDC1E8E097F005624E5 /* RMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
 		268B423B1E8F471200ADAC83 /* RMListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMListViewModel.swift; sourceTree = "<group>"; };
 		268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadViewModel.swift; sourceTree = "<group>"; };
+		269631551E9F8BA400EFB0A3 /* RMPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPickerView.swift; sourceTree = "<group>"; };
 		269A48921E822FD30024FC17 /* ResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269A48951E822FD30024FC17 /* RMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAppDelegate.swift; sourceTree = "<group>"; };
 		269A489A1E822FD30024FC17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 			children = (
 				265653E51E82397600F37064 /* RMViewController.swift */,
 				26807FDC1E8E097F005624E5 /* RMTableViewController.swift */,
+				269631551E9F8BA400EFB0A3 /* RMPickerView.swift */,
 				262C7E801E8ADDF8004BD333 /* RMStoryboardSegue.swift */,
 				262C7E7C1E8ACE53004BD333 /* RMRootViewController.swift */,
 				2632CABE1E8B7F4B0064AF1E /* RMTabBarViewController.swift */,
@@ -445,6 +450,7 @@
 				260C10971E8A502D00011A8E /* Operators.swift */,
 				2670EDE21E964FC900D2CA07 /* RMScanViewModel.swift */,
 				262AB6961E9B344C00986173 /* RMLinkScanViewModel.swift */,
+				267035451E9F5D4D0049F0CC /* RMUploadScanViewModel.swift */,
 				262AB6981E9B345700986173 /* RMCabinetScanViewModel.swift */,
 				26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */,
 				268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */,
@@ -850,6 +856,7 @@
 				260C3C401E9CC9F500DE7C46 /* RMInspectListViewModel.swift in Sources */,
 				264BF2AF1E9DDACA00627C55 /* RMContentViewController.swift in Sources */,
 				26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */,
+				269631561E9F8BA400EFB0A3 /* RMPickerView.swift in Sources */,
 				267641811E9B5647000EFB23 /* RMCabinet.swift in Sources */,
 				26CB6A731E9761070092E3E9 /* LBXScanNetAnimation.swift in Sources */,
 				266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */,
@@ -858,6 +865,7 @@
 				26317AEF1E981A4000125BCD /* UIView+Inspectable.swift in Sources */,
 				268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */,
 				260C10A01E8A6F1800011A8E /* RMDataRepository.swift in Sources */,
+				267035461E9F5D4D0049F0CC /* RMUploadScanViewModel.swift in Sources */,
 				265653EA1E825BC200F37064 /* RMUser.swift in Sources */,
 				267AD87C1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift in Sources */,
 				2632CAF71E8B9D0F0064AF1E /* FDStackView.m in Sources */,

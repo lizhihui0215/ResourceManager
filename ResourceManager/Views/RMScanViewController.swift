@@ -10,10 +10,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction {
+protocol RMScanViewControllerDelegate: NSObjectProtocol {
+      func scaned(code: String, of scanViewController: RMScanViewController) -> Void
+}
+
+class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction,RMUploadScanAction {
     
 
     var disposeBag = DisposeBag()
+    
+    var delegate: RMScanViewControllerDelegate?
 
     var viewModel: RMScanViewModel?
 
@@ -41,6 +47,15 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
                 self.performSegue(withIdentifier: "toDetail", sender: nil)
             }
         }).disposed(by: disposeBag)
+        
+        if let delegate = self.delegate {
+            delegate.scaned(code:(arrayResult.first?.strScanned)! , of: self)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func navigationTo()  {
+        
     }
     
     func restartScan() {

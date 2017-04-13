@@ -75,16 +75,19 @@ protocol RMListDataSource {
     func elementAt(indexPath: IndexPath) -> Self.Element
 }
 
+
 extension RMListDataSource {
-    
+    @discardableResult
     func sectionItem(at: Int) -> SectionItem? {
         return self.section(at: at).item
     }
     
+    @discardableResult
     func section(at: Int) -> RMSection<Self.Element, Self.SectionItem> {
         return self.datasource[at]
     }
     
+    @discardableResult
     func elementAt(indexPath: IndexPath) -> Element {
         return self.section(at: indexPath.section).items[indexPath.row].item
     }
@@ -92,6 +95,7 @@ extension RMListDataSource {
     func removeAt(indexPath: IndexPath) -> Void {
         self.section(at: indexPath.section).items.remove(at: indexPath.row)
     }
+    
     
     func elementOf(selected: Bool, at section: Int) -> [Self.Element] {
         return self.section(at: section).items.filter { $0.isSelected == selected }.map{ $0.item }

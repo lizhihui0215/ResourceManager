@@ -125,6 +125,15 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         
     }
     
+    func search(query: String ,coordinate: CLLocationCoordinate2D, region: Double, completionHandler: @escaping MapKit.MKLocalSearchCompletionHandler)  {
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, region, region)
+        let request = MKLocalSearchRequest()
+        request.region = region
+        request.naturalLanguageQuery = query
+        
+        MKLocalSearch(request: request).start (completionHandler: completionHandler)
+    }
+    
     func startUpdatingLocationWithCompletionHandler(_ completionHandler:((_ latitude:Double, _ longitude:Double, _ status:String, _ verboseMessage:String, _ error:String?)->())? = nil){
         
         self.completionHandler = completionHandler
@@ -183,10 +192,8 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     fileprivate func startLocationManger(){
         
         if(autoUpdate){
-            
             locationManager.startUpdatingLocation()
         }else{
-            
             locationManager.startMonitoringSignificantLocationChanges()
         }
         

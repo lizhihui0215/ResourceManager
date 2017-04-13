@@ -28,12 +28,15 @@ class RMInspectUploadCell: UICollectionViewCell {
 
 }
 
-//extension UICollectionView: ReactiveCompatible{
-//    
-//}
-
-class RMInspectUploadViewController: RMViewController, UICollectionViewDataSource, UICollectionViewDelegate, TZImagePickerControllerDelegate {
+extension RMInspectUploadViewController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.frame.size.width - 3) / CGFloat(3.0)
+        return CGSize(width: width, height: width)
+    }
+}
+
+extension RMInspectUploadViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "RMInspectUploadCell", for: indexPath) as! RMInspectUploadCell
         
@@ -48,15 +51,13 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
                 strongSelf.collectionView.reloadData()
             }
             
-        }.disposed(by: cell.disposeBag)
+            }.disposed(by: cell.disposeBag)
         
         cell.imageView.image = self.viewModel.elementAt(indexPath: indexPath).image
         
         return cell
     }
     
-    
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let count = self.viewModel.numberOfRowsInSection(section: section)
@@ -70,11 +71,11 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
         let imageItem = self.viewModel.elementAt(indexPath: indexPath)
         
         if imageItem.isPlus {
-   
+            
             let limit = 10 - self.viewModel.section(at: 0).items.count
             
             let imagePicker = TZImagePickerController(maxImagesCount: limit, delegate: self)
-
+            
             self.present(imagePicker!, animated: true, completion: nil)
             
             imagePicker?.didFinishPickingPhotosHandle = { (images,xx,ee ) in
@@ -87,8 +88,16 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
             }
         }
     }
-    
-    
+}
+
+extension RMInspectUploadViewController: RMScanViewControllerDelegate{
+    func scaned(code: String, of scanViewController: RMScanViewController) {
+        self.codeTextField.text = code
+    }
+}
+
+class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate, TZImagePickerControllerDelegate {
+    @IBOutlet weak var codeTextField: UITextField!
     
     @IBOutlet weak var verticalLayoutConstraint: NSLayoutConstraint!
 
@@ -97,10 +106,6 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
     
     var viewModel = RMInspectUploadViewModel()
     
-    @IBAction func locationTapped(_ sender: UITapGestureRecognizer) {
-        self.shouldPerformSegue(withIdentifier: "toLocation", sender: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,6 +116,9 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
     }
     
     
+    @IBAction func locationTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "toLocation", sender: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -118,15 +126,23 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDataSourc
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toLocation" {
+            let locationViewController = segue.destination as! RMLocationViewController
+            locationViewController.viewModel = RMLocationViewModel(action: locationViewController)
+        }else if segue.identifier == "toScan" {
+            let scanViewConntroller = segue.destination as! RMScanViewController
+            scanViewConntroller.delegate = self
+        }
+        
     }
-    */
+    
     
     deinit {
     }

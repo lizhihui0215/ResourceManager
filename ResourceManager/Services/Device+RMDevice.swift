@@ -23,6 +23,10 @@ extension Device{
         return NSBundle.main.infoDictionary!["CFBundleExecutable"] as! String
     }
     
+    public var screenWidth: CGFloat {
+        return UIScreen.main.bounds.size.width
+    }
+    
     public var uuid: String {
 
         if let uuid = keychain["uuid"] {
