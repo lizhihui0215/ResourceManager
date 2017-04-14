@@ -77,7 +77,7 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
         // Pass the selected object to the new view controller.
         let linkDetailViewController = segue.destination as! RMLinkDetailViewController
         
-        linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink)
+        linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink, action: linkDetailViewController)
     }
     
 

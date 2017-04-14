@@ -95,7 +95,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
             
             let link = viewModel.elementAt(indexPath: indexPath!)
             
-            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link, isModify: viewModel.isModify)
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link, action: linkDetailViewController, isModify: viewModel.isModify)
         }
         
     }

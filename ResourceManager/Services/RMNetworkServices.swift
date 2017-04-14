@@ -53,6 +53,7 @@ public enum RMNetworkAPI {
     case login(String, String)
     case linkDetail(String, String)
     case linkList(String, String, String, String, Int, Int)
+    case linkModify(String,[String:Any])
     case cabinetList(String, String, String, String, Int, Int)
     case cabinetDetail(String, String)
     case inspectList(String,Int, Int)
@@ -78,14 +79,21 @@ extension RMNetworkAPI: TargetType {
             return "cabinet/fuzzyquery?access_token=\(accessToken)"
         case let .inspectList(accessToken,_,_):
             return "inspect/query?access_token=\(accessToken)"
-            
+        case let .linkModify(accessToken,_):
+            return "link/modify?access_token=\(accessToken)"
         }
         
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login, .linkDetail, .linkList, .cabinetDetail, .cabinetList, .inspectList:
+        case .login,
+             .linkDetail,
+             .linkList,
+             .cabinetDetail,
+             .cabinetList,
+             .inspectList,
+             .linkModify:
            return .post
         }
     }
@@ -118,6 +126,10 @@ extension RMNetworkAPI: TargetType {
         case let .inspectList(_,pageNO, pageSize):
             return ["pageSize": pageSize,
                     "pageNO": pageNO]
+        case let .linkModify(_, link):
+            var parameter = link
+            parameter["accessDeviceUpTime"] = Date().description
+            return parameter
         }
     }
     

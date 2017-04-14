@@ -9,6 +9,10 @@
 import RxCocoa
 import RxSwift
 
+protocol RMLinkDetailAction: RMViewModelAction {
+    
+}
+
 class RMLinkDetailViewModel: RMViewModel {
     
     var link: RMLink
@@ -25,9 +29,13 @@ class RMLinkDetailViewModel: RMViewModel {
     
     var isModify: Bool
     
-    init(link: RMLink, isModify: Bool = false) {
+    var action: RMLinkDetailAction
+    
+    
+    init(link: RMLink, action: RMLinkDetailAction, isModify: Bool = false) {
         self.link = link
         self.isModify = isModify
+        self.action = action
         account = Variable(link.account ?? "")
         linkRate = Variable(link.linkRate ?? "")
         linkCode = Variable(link.linkCode ?? "")
@@ -75,6 +83,18 @@ class RMLinkDetailViewModel: RMViewModel {
         accessDeviceName.asObservable().bind { accessDeviceName in
             link.accessDeviceName = accessDeviceName
             }.addDisposableTo(disposeBag)
+    }
     
+    func linkModify() -> Driver<Bool> {
+        self.action.animation.value = true
+        return RMLinkDetailDomain.shared.linkModify(link: self.link)
+            .do(onNext: { [weak self] result in
+            
+            if let strongSelf = self {
+                strongSelf.action.animation.value = false
+            }
+            })            .flatMapLatest({ result  in
+                return self.action.alert(result: result)
+            })
     }
 }

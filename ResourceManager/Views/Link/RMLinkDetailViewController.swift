@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension RMLinkDetailViewController: RMLinkDetailAction {
+    
+}
+
 class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var linkRateTextField: UITextField!
@@ -24,7 +28,7 @@ class RMLinkDetailViewController: RMViewController {
     
     @IBOutlet weak var commitButtonHightConstraint: NSLayoutConstraint!
     @IBAction func commitButtonPressed(_ sender: UIButton) {
-    
+        self.viewModel?.linkModify().drive().disposed(by: disposeBag)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
