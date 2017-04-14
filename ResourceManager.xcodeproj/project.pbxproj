@@ -34,6 +34,7 @@
 		2632CAFC1E8B9D0F0064AF1E /* FDTransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAF21E8B9D0F0064AF1E /* FDTransformLayer.m */; };
 		263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */; };
 		26483F3B1EA1316600D6A3EC /* RMLinkDetailDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26483F3A1EA1316600D6A3EC /* RMLinkDetailDomain.swift */; };
+		26483F3D1EA1458B00D6A3EC /* RMInspectUploadDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */; };
 		264BF2AF1E9DDACA00627C55 /* RMContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */; };
 		264C47D01E9DFA86008FE357 /* RMInspectUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C47CF1E9DFA86008FE357 /* RMInspectUploadViewController.swift */; };
 		265653E61E82397600F37064 /* RMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E51E82397600F37064 /* RMViewController.swift */; };
@@ -153,6 +154,7 @@
 		2632CAFE1E8B9D940064AF1E /* ResourceManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ResourceManager-Bridging-Header.h"; path = "ResourceManager/ResourceManager-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewModel.swift; sourceTree = "<group>"; };
 		26483F3A1EA1316600D6A3EC /* RMLinkDetailDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkDetailDomain.swift; sourceTree = "<group>"; };
+		26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadDomain.swift; sourceTree = "<group>"; };
 		264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMContentViewController.swift; sourceTree = "<group>"; };
 		264C47CF1E9DFA86008FE357 /* RMInspectUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadViewController.swift; sourceTree = "<group>"; };
 		265653E51E82397600F37064 /* RMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMViewController.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				260C10A11E8A6F2300011A8E /* RMDomain.swift */,
 				2670EDE41E96522A00D2CA07 /* RMScanDomain.swift */,
 				260C3C411E9CCA5500DE7C46 /* RMInspectListDomain.swift */,
+				26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				267035461E9F5D4D0049F0CC /* RMUploadScanViewModel.swift in Sources */,
 				265653EA1E825BC200F37064 /* RMUser.swift in Sources */,
 				267AD87C1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift in Sources */,
+				26483F3D1EA1458B00D6A3EC /* RMInspectUploadDomain.swift in Sources */,
 				2632CAF71E8B9D0F0064AF1E /* FDStackView.m in Sources */,
 				26D85E451EA079AE0036EBDF /* RMDeviceDetailViewModel.swift in Sources */,
 				262C7E811E8ADDF9004BD333 /* RMStoryboardSegue.swift in Sources */,

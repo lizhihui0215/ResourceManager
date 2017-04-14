@@ -92,6 +92,19 @@ class RMDataRepository {
         }
     }
     
+    func inspectUpload(parameter: [String : Any]) -> Observable<Result<RMLink, Moya.Error>> {
+        let result: Observable<RMResponseObject<RMLink>> = RMNetworkServices.shared.request(.inspectUpload((RMDomain.user?.accessToken)!, parameter, [MultipartFormData]()))
+        
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let link):
+                return Result(value: link)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+    
     func cabinet(linkCode: String) -> Observable<Result<RMCabinet, Moya.Error>> {
         let result: Observable<RMResponseObject<RMCabinet>> = RMNetworkServices.shared.request(.cabinetDetail((RMDomain.user?.accessToken)!, linkCode))
         

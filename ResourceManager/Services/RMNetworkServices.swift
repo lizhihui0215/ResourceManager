@@ -53,7 +53,8 @@ public enum RMNetworkAPI {
     case login(String, String)
     case linkDetail(String, String)
     case linkList(String, String, String, String, Int, Int)
-    case linkModify(String,[String:Any])
+    case linkModify(String,[String : Any])
+    case inspectUpload(String, [String: Any], [MultipartFormData])
     case cabinetList(String, String, String, String, Int, Int)
     case cabinetDetail(String, String)
     case inspectList(String,Int, Int)
@@ -81,6 +82,8 @@ extension RMNetworkAPI: TargetType {
             return "inspect/query?access_token=\(accessToken)"
         case let .linkModify(accessToken,_):
             return "link/modify?access_token=\(accessToken)"
+        case let .inspectUpload(accessToken,_,_):
+            return "inspect/report?access_token=\(accessToken)"
         }
         
     }
@@ -93,7 +96,8 @@ extension RMNetworkAPI: TargetType {
              .cabinetDetail,
              .cabinetList,
              .inspectList,
-             .linkModify:
+             .linkModify,
+             .inspectUpload:
            return .post
         }
     }
@@ -130,6 +134,8 @@ extension RMNetworkAPI: TargetType {
             var parameter = link
             parameter["accessDeviceUpTime"] = Date().description
             return parameter
+        case let .inspectUpload(_, parameters, _): 
+            return parameters
         }
     }
     
@@ -142,7 +148,19 @@ extension RMNetworkAPI: TargetType {
     }
     
     public var task: Task {
-        return .request
+        switch self {
+        case .login,
+             .linkDetail,
+             .linkList,
+             .cabinetDetail,
+             .cabinetList,
+             .inspectList,
+             .linkModify:
+            return .request
+        case let .inspectUpload(_,_, formData):
+            return .upload(.multipart(formData))
+
+        }
     }
 }
 
