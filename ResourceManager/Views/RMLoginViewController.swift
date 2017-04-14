@@ -24,9 +24,49 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
     
     var viewModel: RMLoginViewModel?
     
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSForegroundColorAttributeName: UIColor.white])
+        
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "用户名", attributes: [NSForegroundColorAttributeName: UIColor.white])
+        
+        let usernameImage = UIImage(named: "login.username.icon")
+        
+        let passwordImage = UIImage(named: "login.password.icon")
+        
+        
+        let usernameImageView = UIImageView(image: usernameImage)
+        
+        let passwordImageView = UIImageView(image: passwordImage)
+        
+        
+        usernameImageView.frame = CGRect(x: 0,
+                                         y: 0,
+                                         width: (usernameImage?.size.width)!,
+                                         height: (usernameImage?.size.height)!)
+        
+        passwordImageView.frame = CGRect(x: 0,
+                                         y: 0,
+                                         width: (passwordImage?.size.width)!,
+                                         height: (passwordImage?.size.height)!)
+        
+        
+        usernameTextField.leftView = usernameImageView
+        
+        passwordTextField.leftView = passwordImageView
+        
+        usernameTextField.leftViewMode = .always
+        
+        passwordTextField.leftViewMode = .always
+        
         
         self.viewModel = RMLoginViewModel(loginAction: self)
         

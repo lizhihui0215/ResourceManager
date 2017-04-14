@@ -23,6 +23,9 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.title = self.viewModel?.title
+        
         self.accountTextField.rx.textInput <-> (self.viewModel?.account)!
         
         self.customerTextField.rx.textInput <-> (self.viewModel?.customerName)!

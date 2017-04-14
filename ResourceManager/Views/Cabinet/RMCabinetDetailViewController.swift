@@ -9,7 +9,7 @@
 import UIKit
 
 class RMDeviceTableViewCell: RMTableViewCell {
-   
+    
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,7 +19,7 @@ class RMDeviceTableViewCell: RMTableViewCell {
 }
 
 class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSource {
-
+    
     var viewModel: RMCabinetDetailViewModel?
     
     @IBOutlet weak var cabinetCodeTextField: UITextField!
@@ -46,10 +46,10 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,16 +70,25 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.numberOfRowsInSection(section: section) ?? 0
     }
-
-
-    /*
+    
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let deviceViewController = segue.destination as! RMDeviceViewController
+        
+        let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+        
+        let device = self.viewModel?.elementAt(indexPath: indexPath!)
+        
+        deviceViewController.viewModel = RMDeviceDetailViewModel(device: device!)
+        
     }
-    */
-
+    
+    
 }

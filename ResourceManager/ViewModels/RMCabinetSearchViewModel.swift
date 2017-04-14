@@ -21,7 +21,7 @@ class RMCabinetSearchViewModel: RMSearchViewModel {
     var links = [RMCabinet]()
     
     init(actions: RMSearchListAction) {
-        super.init(actions: actions)
+        super.init(actions: actions, title: "机柜查询")
     }
     
     override func identifier(`for`: RMSearchIdentifier) -> String{

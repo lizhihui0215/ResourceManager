@@ -15,7 +15,6 @@ class RMLinkDetailViewModel: RMViewModel {
     
     var account: Variable<String>
     var linkRate: Variable<String>
-    var customerAddress: Variable<String>
     var linkCode: Variable<String>
     var customerName: Variable<String>
     var customerLevel: Variable<String>
@@ -26,13 +25,11 @@ class RMLinkDetailViewModel: RMViewModel {
     
     var isModify: Bool
     
-    
     init(link: RMLink, isModify: Bool = false) {
         self.link = link
         self.isModify = isModify
         account = Variable(link.account ?? "")
         linkRate = Variable(link.linkRate ?? "")
-        customerAddress = Variable("")
         linkCode = Variable(link.linkCode ?? "")
         customerName = Variable(link.customerName ?? "")
         customerLevel = Variable(link.customerLevel ?? "")
@@ -80,6 +77,4 @@ class RMLinkDetailViewModel: RMViewModel {
             }.addDisposableTo(disposeBag)
     
     }
-    
-    
 }

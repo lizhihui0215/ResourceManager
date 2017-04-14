@@ -25,7 +25,7 @@ class RMLinkSearchViewModel: RMSearchViewModel {
     
     init(actions: RMSearchListAction, isModify: Bool = false) {
         self.isModify = isModify
-        super.init(actions: actions)
+        super.init(actions: actions, title: isModify ? "链路修改" : "链路查询")
     }
     
     override func identifier(`for`: RMSearchIdentifier) -> String{

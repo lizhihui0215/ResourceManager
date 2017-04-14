@@ -8,6 +8,15 @@
 
 import RxSwift
 import RxCocoa
+
+class RMResourceType: RMPickerViewItem {
+    var title: String = ""
+    
+    init(title: String) {
+        self.title = title
+    }
+}
+
 class RMImageItem {
     var isPlus = false
     var image: UIImage?
@@ -27,6 +36,12 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
         super.init()
         self.datasource.append(RMSection())
         self.section(at: 0).append(item: RMImageItem(true, image: nil))
+    }
+    
+    func resourceTypes() -> [RMResourceType] {
+        return [ RMResourceType(title: "链路"),
+        RMResourceType(title: "机柜"),
+        RMResourceType(title: "设备"),]
     }
     
 

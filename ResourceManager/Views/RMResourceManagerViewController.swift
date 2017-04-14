@@ -42,6 +42,8 @@ extension RMResourceManagerViewController: UICollectionViewDataSource {
             return view
         }()
         
+        cell.backgroundView = UIImageView(image: UIImage(named: "resource-manager.cell.background"))
+        
         return cell
     }
 }

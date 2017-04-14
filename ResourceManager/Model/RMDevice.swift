@@ -14,9 +14,9 @@ class RMDevice: RMModel {
     dynamic var deviceCode: String?
     dynamic var deviceName: String?
     dynamic var deviceLocation: String?
-    dynamic var totalTerminals: String?
-    dynamic var terminalOccupied: String?
-    dynamic var terminalFree: String?
+    dynamic var totalTerminals: Int = 0
+    dynamic var terminalOccupied: Int = 0
+    dynamic var terminalFree: Int = 0
     dynamic var deviceDesc: String?
     
     required convenience init?(map: Map) {

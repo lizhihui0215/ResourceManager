@@ -25,7 +25,11 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let isModify = self.viewModel?.isModify, isModify {
+            self.navigationItem.title = isModify ? "链路修改" : "链路查询"
+        }
+        
         // Do any additional setup after loading the view.
         self.tableView.headerRefresh(enable: true, target: self)
         
@@ -91,7 +95,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
             
             let link = viewModel.elementAt(indexPath: indexPath!)
             
-            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link)
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link, isModify: viewModel.isModify)
         }
         
     }

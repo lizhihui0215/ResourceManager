@@ -9,7 +9,6 @@
 import UIKit
 import UIColor_Hex_Swift
 
-@IBDesignable
 extension UIView {
     
     @IBInspectable

@@ -11,25 +11,62 @@ import UIKit
 class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var linkRateTextField: UITextField!
-    @IBOutlet weak var customerAddressTextField: UITextField!
     @IBOutlet weak var linkCodeTextField: UITextField!
     @IBOutlet weak var customerNameTextField: UITextField!
     @IBOutlet weak var customerLevelTextField: UITextField!
     var viewModel: RMLinkDetailViewModel? = nil
     
+    @IBOutlet weak var commitButton: UIButton!
     @IBOutlet weak var farendDevicePortTextField: UITextField!
     @IBOutlet weak var farendDeviceNameTextField: UITextField!
     @IBOutlet weak var accessDevicePortTextField: UITextField!
     @IBOutlet weak var accessDeviceNameTextField: UITextField!
+    
+    @IBOutlet weak var commitButtonHightConstraint: NSLayoutConstraint!
+    @IBAction func commitButtonPressed(_ sender: UIButton) {
+    
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
+        if let isModify = self.viewModel?.isModify, isModify == false {
+            
+            self.accountTextField.isEnabled = false
+            self.accountTextField.backgroundColor = UIColor.white
+            
+            self.linkRateTextField.isEnabled = false
+            self.linkRateTextField.backgroundColor = UIColor.white
+
+            self.linkCodeTextField.isEnabled = false
+            self.linkCodeTextField.backgroundColor = UIColor.white
+
+            self.customerNameTextField.isEnabled = false
+            self.customerNameTextField.backgroundColor = UIColor.white
+
+            self.customerLevelTextField.isEnabled = false
+            self.customerLevelTextField.backgroundColor = UIColor.white
+
+
+            self.farendDeviceNameTextField.borderStyle = .none
+            self.farendDeviceNameTextField.isEnabled = false
+            self.farendDevicePortTextField.isEnabled = false
+            self.farendDevicePortTextField.borderStyle = .none
+            
+            self.accessDeviceNameTextField.borderStyle = .none
+            self.accessDeviceNameTextField.isEnabled = false
+
+            self.accessDevicePortTextField.borderStyle = .none
+            self.accessDevicePortTextField.isEnabled = false
+            
+            self.commitButtonHightConstraint.constant = 0
+
+        }
+        
         if let viewModel = self.viewModel {
             accountTextField.rx.textInput <-> viewModel.account
             linkRateTextField.rx.textInput <-> viewModel.linkRate
-            customerAddressTextField.rx.textInput <-> viewModel.customerAddress
             linkCodeTextField.rx.textInput <-> viewModel.linkCode
             customerNameTextField.rx.textInput <-> viewModel.customerName
             customerLevelTextField.rx.textInput <-> viewModel.customerLevel

@@ -97,6 +97,7 @@ extension RMInspectUploadViewController: RMScanViewControllerDelegate{
 }
 
 class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate, TZImagePickerControllerDelegate {
+    @IBOutlet weak var resourceTypeLabel: UILabel!
     @IBOutlet weak var codeTextField: UITextField!
     
     @IBOutlet weak var verticalLayoutConstraint: NSLayoutConstraint!
@@ -108,6 +109,8 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.textView.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         
         self.collectionView.rx.observe(CGSize.self, "contentSize").subscribe(onNext: { (x) in
             self.verticalLayoutConstraint.constant = (x?.height)!
@@ -125,8 +128,12 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func resourceTapped(_ sender: UITapGestureRecognizer) {
+        self.presentPicker(items: self.viewModel.resourceTypes()) { (resourceType) in
+            self.resourceTypeLabel.text = resourceType.title
+        }
+    }
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

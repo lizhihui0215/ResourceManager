@@ -31,7 +31,11 @@ class RMSearchViewModel: RMViewModel {
     
     var customerName = Variable("")
     
-    init(actions: RMSearchAction) {
+    var title: String
+    
+    
+    init(actions: RMSearchAction, title: String) {
+        self.title = title
         self.actions = actions
     }
     
@@ -42,6 +46,8 @@ class RMSearchViewModel: RMViewModel {
     func identifier(`for`: RMSearchIdentifier ) -> String{
         return ""
     }
+    
+    
     
     
     

@@ -63,7 +63,20 @@ class RMViewController: UIViewController {
         },onDisposed: {
             self.stopAnimating()
         }).disposed(by: disposeBag)
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RMViewController.backgroundTapped))
+        self.view.addGestureRecognizer(tap)
+        
+        tap.cancelsTouchesInView = false
+        
     }
+    
+    func backgroundTapped()  {
+        self.view.endEditing(true)
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

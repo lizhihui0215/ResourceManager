@@ -34,6 +34,10 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.estimatedRowHeight = 40
+        
+        self.viewModel?.cabinetList(refresh: true).drive(onNext: { result in
+            self.tableView.reloadData()
+        }).disposed(by: disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,8 +83,6 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.numberOfRowsInSection(section: section) ?? 0
     }
-    
-    
     
      // MARK: - Navigation
      

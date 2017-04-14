@@ -13,9 +13,14 @@ extension UIViewController {
     
     func presentPicker<T: RMPickerViewItem>(items: [T],  completeHandler: @escaping ((_ item: T) -> Void))  {
         let picker = RMPickerView<T>(items: items)
+        picker.completeHandler = completeHandler
+        
         self.view.addSubview(picker)
         picker.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
+            maker.top.equalToSuperview()
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.bottom.equalTo(bottomLayoutGuide.snp.top)
         }
     }
 }
@@ -23,6 +28,7 @@ extension UIViewController {
 protocol RMPickerViewItem {
     var title: String {get set}
 }
+
 
 class RMPickerView<T :RMPickerViewItem>: UIView, UIPickerViewDelegate, UIPickerViewDataSource  {
 
@@ -54,7 +60,7 @@ class RMPickerView<T :RMPickerViewItem>: UIView, UIPickerViewDelegate, UIPickerV
         self.init(frame: .zero)
         self.height = height
         self.dataSource.append(contentsOf: items)
-    
+        self.pickerView.selectRow(0, inComponent: 0, animated: true)
     }
     
     override init(frame: CGRect) {
@@ -80,8 +86,6 @@ class RMPickerView<T :RMPickerViewItem>: UIView, UIPickerViewDelegate, UIPickerV
         
         backgroundView.alpha = 0.8
         backgroundView.backgroundColor = UIColor.lightGray
-        backgroundView.layer.borderColor = UIColor.red.cgColor
-        backgroundView.layer.borderWidth = 2
         backgroundView.snp.updateConstraints { maker in
             maker.edges.equalToSuperview()
         }
@@ -102,6 +106,17 @@ class RMPickerView<T :RMPickerViewItem>: UIView, UIPickerViewDelegate, UIPickerV
             maker.bottom.equalTo(pickerView.snp.top)
             maker.leading.equalTo(pickerView.snp.leading)
             maker.trailing.equalTo(pickerView.snp.trailing)
+        }
+        
+        let view = UIView()
+        view.backgroundColor = UIColor.lightGray
+        toolBar.addSubview(view)
+        
+        view.snp.updateConstraints { maker in
+            maker.bottom.equalToSuperview()
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.height.equalTo(0.5)
         }
         
         toolBar.isTranslucent = false
