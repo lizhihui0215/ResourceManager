@@ -11,6 +11,7 @@ import Moya
 import Result
 import RxSwift
 import RealmSwift
+import ObjectMapper
 
 
 private func JSONResponseDataFormatter(_ data: Data) -> Data {
@@ -24,14 +25,56 @@ private func JSONResponseDataFormatter(_ data: Data) -> Data {
 }
 
 
-let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+//let commonEndpointClosure = { (target: Target) -> Endpoint<Target> in
+//    var URL = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
+//
+//    let endpoint = Endpoint<Target>(URL: URL,
+//                                    sampleResponseClosure: {.NetworkResponse(200, target.sampleData)},
+//                                    method: target.method,
+//                                    parameters: target.parameters)
+//
+//    // 添加 AccessToken
+//    if let accessToken = currentUser.accessToken {
+//        return endpoint.endpointByAddingHTTPHeaderFields(["access-token": accessToken])
+//    } else {
+//        return endpoint
+//    }
+//}
+
+
+
+
+let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(endpointClosure: {target in
+    let url = target.baseURL.appendingPathComponent(target.path).absoluteString
+    
+    let endpoint = Endpoint<RMNetworkAPI>(
+        url: url,
+        sampleResponseClosure: { .networkResponse(200, target.sampleData) },
+        method: target.method,
+        parameters: target.parameters,
+        parameterEncoding: target.parameterEncoding
+    )
+    
+    switch target {
+    case .inspectUpload:
+        
+        let _ = endpoint.adding(newHTTPHeaderFields: ["accept" : "application/json"])
+        
+    default: break;
+    }
+    
+    
+    return endpoint
+},plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+
+
 
 class RMNetworkServices {
     static let shared = RMNetworkServices()
     static var kMessage : String = ""
     static var kCode : String = ""
     static var kResults : String = ""
-
+    
     func config(messageKey: String? = "message",
                 codeKey: String? = "code",
                 resultsKey: String? = "results")  {
@@ -41,7 +84,9 @@ class RMNetworkServices {
     }
     
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
-       return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
+        
+        
+        return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
     }
     
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseArray<T>> {
@@ -58,8 +103,9 @@ public enum RMNetworkAPI {
     case cabinetList(String, String, String, String, Int, Int)
     case cabinetDetail(String, String)
     case inspectList(String,Int, Int)
-
+    
 }
+
 
 extension RMNetworkAPI: TargetType {
     public var baseURL: URL {
@@ -98,7 +144,7 @@ extension RMNetworkAPI: TargetType {
              .inspectList,
              .linkModify,
              .inspectUpload:
-           return .post
+            return .post
         }
     }
     
@@ -134,13 +180,25 @@ extension RMNetworkAPI: TargetType {
             var parameter = link
             parameter["accessDeviceUpTime"] = Date().description
             return parameter
-        case let .inspectUpload(_, parameters, _): 
-            return parameters
+        case let .inspectUpload(_, parameters, _):
+            let json = parameters.toJSONString()
+            return ["json" : json! ]
         }
     }
     
     public var parameterEncoding: ParameterEncoding {
-        return JSONEncoding.default
+        
+        switch self {
+        case .login,
+             .linkDetail,
+             .linkList,
+             .cabinetDetail,
+             .cabinetList,
+             .inspectList,
+             .inspectUpload,
+             .linkModify:
+            return JSONEncoding.default
+        }
     }
     
     public var sampleData: Data {
@@ -159,8 +217,18 @@ extension RMNetworkAPI: TargetType {
             return .request
         case let .inspectUpload(_,_, formData):
             return .upload(.multipart(formData))
-
+            
         }
+    }
+}
+
+extension Dictionary {
+    func toJSONString() -> String? {
+        
+        if let data = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted) {
+            return String(data: data, encoding: String.Encoding.utf8)
+        }
+        return nil
     }
 }
 

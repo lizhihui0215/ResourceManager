@@ -39,6 +39,12 @@ class RMSection<Element, Item> {
         return contents
     }
     
+    func sectionItems() -> [Element] {
+        return items.map({ sectionItems  in
+            return sectionItems.item
+        })
+    }
+    
     @discardableResult
     func append(contentsOf contents: [Element]) -> [RMSectionItem<Element>] {
         

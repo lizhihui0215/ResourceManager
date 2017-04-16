@@ -12,6 +12,7 @@ import RxSwift
 import TZImagePickerController
 import RxCocoa
 import Photos
+import MapKit
 
 class RMInspectUploadCell: UICollectionViewCell {
     
@@ -40,39 +41,39 @@ extension RMInspectUploadViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "RMInspectUploadCell", for: indexPath) as! RMInspectUploadCell
         
-        cell.deleteButton.isHidden = self.viewModel.elementAt(indexPath: indexPath).isPlus
+        cell.deleteButton.isHidden = (self.viewModel?.elementAt(indexPath: indexPath).isPlus)!
         
         let tap = cell.deleteButton.rx.tap
         
         tap.subscribe {[weak self] x in
             
             if let strongSelf = self {
-                strongSelf.viewModel.removeAt(indexPath: indexPath)
+                strongSelf.viewModel?.removeAt(indexPath: indexPath)
                 strongSelf.collectionView.reloadData()
             }
             
             }.disposed(by: cell.disposeBag)
         
-        cell.imageView.image = self.viewModel.elementAt(indexPath: indexPath).image
+        cell.imageView.image = self.viewModel?.elementAt(indexPath: indexPath).image
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let count = self.viewModel.numberOfRowsInSection(section: section)
+        let count = self.viewModel?.numberOfRowsInSection(section: section)
         
-        return  count > 9 ? 9 : count
+        return  count! > 9 ? 9 : count!
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let imageItem = self.viewModel.elementAt(indexPath: indexPath)
+        let imageItem = self.viewModel?.elementAt(indexPath: indexPath)
         
-        if imageItem.isPlus {
+        if (imageItem?.isPlus)! {
             
-            let limit = 10 - self.viewModel.section(at: 0).items.count
+            let limit = 10 - (self.viewModel?.section(at: 0).items.count)!
             
             let imagePicker = TZImagePickerController(maxImagesCount: limit, delegate: self)
             
@@ -82,7 +83,7 @@ extension RMInspectUploadViewController: UICollectionViewDataSource {
                 for image in images! {
                     let sectionItem = RMSectionItem(item: RMImageItem(image: image))
                     
-                    self.viewModel.section(at: 0).items.insert(sectionItem, at: 0)
+                    self.viewModel?.section(at: 0).items.insert(sectionItem, at: 0)
                 }
                 self.collectionView.reloadData()
             }
@@ -93,6 +94,23 @@ extension RMInspectUploadViewController: UICollectionViewDataSource {
 extension RMInspectUploadViewController: RMScanViewControllerDelegate{
     func scaned(code: String, of scanViewController: RMScanViewController) {
         self.codeTextField.text = code
+        
+        self.viewModel?.resourceId.value = code
+    }
+}
+
+extension RMInspectUploadViewController: RMInspectUploadAction {
+    
+}
+
+extension RMInspectUploadViewController: RMLocationViewControllerDelegate {
+    func didEndSelected(mapItem: MKMapItem, of locationViewController: RMLocationViewController) {
+        if let addrList = mapItem.placemark.addressDictionary?["FormattedAddressLines"] as? [String], let viewModel = viewModel
+        {
+            viewModel.locationName.value =   addrList.joined(separator: " ")
+            viewModel.longitude.value = (mapItem.placemark.location?.coordinate.longitude)!
+            viewModel.latitude.value = (mapItem.placemark.location?.coordinate.latitude)!
+        }
     }
 }
 
@@ -105,10 +123,14 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     @IBOutlet weak var textView: RSKGrowingTextView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var viewModel = RMInspectUploadViewModel()
+    var viewModel: RMInspectUploadViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewModel = RMInspectUploadViewModel(action: self)
+        
+        textView.rx.textInput <-> (self.viewModel?.resportContent)!
         
         self.textView.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         
@@ -129,11 +151,15 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     }
     
     @IBAction func resourceTapped(_ sender: UITapGestureRecognizer) {
-        self.presentPicker(items: self.viewModel.resourceTypes()) { (resourceType) in
+        self.presentPicker(items: (self.viewModel?.resourceTypes())!) { (resourceType) in
             self.resourceTypeLabel.text = resourceType.title
+            self.viewModel?.resourceType.value = resourceType.type.rawValue
         }
     }
 
+    @IBAction func confirmButtonTapped(_ sender: UIButton) {
+        self.viewModel?.upload().drive().disposed(by: disposeBag)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -143,11 +169,11 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
         if segue.identifier == "toLocation" {
             let locationViewController = segue.destination as! RMLocationViewController
             locationViewController.viewModel = RMLocationViewModel(action: locationViewController)
+            locationViewController.delegate = self
         }else if segue.identifier == "toScan" {
             let scanViewConntroller = segue.destination as! RMScanViewController
             scanViewConntroller.delegate = self
         }
-        
     }
     
     

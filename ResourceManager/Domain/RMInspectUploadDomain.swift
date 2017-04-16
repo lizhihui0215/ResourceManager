@@ -14,8 +14,21 @@ import Result
 class RMInspectUploadDomain: RMDomain {
     static let shared = RMInspectUploadDomain()
     
-    func upload() -> Driver<Result<RMLink, MoyaError>> {
-        return RMInspectUploadDomain.repository.inspectUpload(parameter:[ "":"" ] ).asDriver(onErrorRecover: { error in
+    
+    
+    func upload(parameters: [String: Any], images: [UIImage]) -> Driver<Result<RMLink, MoyaError>> {
+        
+        var fromDatas = [MultipartFormData]()
+        
+        for image in images {
+            let imageData = UIImagePNGRepresentation(image)
+
+            let formData = MultipartFormData(provider: .data(imageData!), name: "xx", fileName: "xx", mimeType: "image")
+            
+            fromDatas.append(formData)
+        }
+            
+        return RMInspectUploadDomain.repository.inspectUpload(parameter:parameters, images: fromDatas ).asDriver(onErrorRecover: { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })

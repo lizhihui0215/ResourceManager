@@ -8,6 +8,7 @@
 
 import UIKit
 import AddressBook
+import MapKit
 
 class RMLocationCell: RMTableViewCell {
     
@@ -15,10 +16,26 @@ class RMLocationCell: RMTableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
 }
 
+protocol RMLocationViewControllerDelegate {
+    func didEndSelected(mapItem: MKMapItem, of locationViewController: RMLocationViewController)
+}
+
+extension RMLocationViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let delegate = delegate, let viewModel = viewModel {
+            let mapItem = viewModel.elementAt(indexPath: indexPath)
+            delegate.didEndSelected(mapItem: mapItem, of: self)
+        }
+    }
+}
+
 class RMLocationViewController: RMTableViewController, UITableViewDataSource, RMLocationAction {
     
     
     var viewModel: RMLocationViewModel?
+    
+    var delegate: RMLocationViewControllerDelegate?
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -67,6 +84,8 @@ class RMLocationViewController: RMTableViewController, UITableViewDataSource, RM
         
         return cell
     }
+    
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

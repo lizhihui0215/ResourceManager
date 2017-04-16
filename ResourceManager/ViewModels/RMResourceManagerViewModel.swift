@@ -80,7 +80,4 @@ class RMResourceManagerViewModel: RMViewModel, RMListDataSource {
         section.append(item: .inspect)
         self.datasource.append(section)
     }
-    
-    
-    
 }
