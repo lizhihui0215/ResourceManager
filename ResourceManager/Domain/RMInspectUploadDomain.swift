@@ -16,14 +16,14 @@ class RMInspectUploadDomain: RMDomain {
     
     
     
-    func upload(parameters: [String: Any], images: [UIImage]) -> Driver<Result<RMLink, MoyaError>> {
+    func upload(parameters: [String: Any], images: [UIImage]) -> Driver<Result<String, MoyaError>> {
         
         var fromDatas = [MultipartFormData]()
         
         for image in images {
             let imageData = UIImagePNGRepresentation(image)
-
-            let formData = MultipartFormData(provider: .data(imageData!), name: "xx", fileName: "xx", mimeType: "image")
+            
+            let formData = MultipartFormData(provider: .data(imageData!), name: UUID().uuidString, fileName: "\(UUID().uuidString).png", mimeType: "image/png")
             
             fromDatas.append(formData)
         }

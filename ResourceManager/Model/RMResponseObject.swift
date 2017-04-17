@@ -10,6 +10,20 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
+class RMResponseNil: Mappable {
+    var message: String?
+    
+    var code: Int?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        message <- map[RMNetworkServices.kMessage]
+        
+        code <- map[RMNetworkServices.kCode]
+    }
+}
 
 class RMResponseArray<T: Mappable>: Mappable {
     var message: String?

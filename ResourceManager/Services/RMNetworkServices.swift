@@ -41,33 +41,28 @@ private func JSONResponseDataFormatter(_ data: Data) -> Data {
 //    }
 //}
 
-
-
-
-let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(endpointClosure: {target in
-    let url = target.baseURL.appendingPathComponent(target.path).absoluteString
-    
-    let endpoint = Endpoint<RMNetworkAPI>(
-        url: url,
-        sampleResponseClosure: { .networkResponse(200, target.sampleData) },
-        method: target.method,
-        parameters: target.parameters,
-        parameterEncoding: target.parameterEncoding
-    )
-    
+let endpointClosure = { (target: RMNetworkAPI) -> Endpoint<RMNetworkAPI> in
+    let defaultEndpoint = MoyaProvider.defaultEndpointMapping(for: target)
+    // Sign all non-authenticating requests
     switch target {
     case .inspectUpload:
-        
-        let _ = endpoint.adding(newHTTPHeaderFields: ["accept" : "application/json"])
-        
-    default: break;
+        return defaultEndpoint.adding(newHTTPHeaderFields: ["accept" : "application/json"])
+    default:
+        return defaultEndpoint.adding(newHTTPHeaderFields: ["Content-Type" : "application/json"])
     }
-    
-    
-    return endpoint
-},plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+}
 
+let requestClosure = { (endpoint: Endpoint<RMNetworkAPI>, done: MoyaProvider.RequestResultClosure) in
+    var request = endpoint.urlRequest
+    
+    // Modify the request however you like.
+    
+    request?.allHTTPHeaderFields = [:]
+    
+    done(Result(value: request!))
+}
 
+let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(endpointClosure: endpointClosure,requestClosure: requestClosure,plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
 class RMNetworkServices {
     static let shared = RMNetworkServices()
@@ -89,6 +84,10 @@ class RMNetworkServices {
         return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
     }
     
+    func request(_ token: RMNetworkAPI) -> Observable<RMResponseNil> {
+        return RMNetworkServicesProvider.request(token).mapObject(RMResponseNil.self)
+    }
+    
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseArray<T>> {
         return RMNetworkServicesProvider.request(token).mapObject(RMResponseArray<T>.self)
     }
@@ -103,6 +102,7 @@ public enum RMNetworkAPI {
     case cabinetList(String, String, String, String, Int, Int)
     case cabinetDetail(String, String)
     case inspectList(String,Int, Int)
+    case exchangePassword(String, String, String)
     
 }
 
@@ -130,6 +130,9 @@ extension RMNetworkAPI: TargetType {
             return "link/modify?access_token=\(accessToken)"
         case let .inspectUpload(accessToken,_,_):
             return "inspect/report?access_token=\(accessToken)"
+        case let .exchangePassword(accessToken,_,_):
+            return "user/changepwd?access_token=\(accessToken)"
+
         }
         
     }
@@ -143,6 +146,7 @@ extension RMNetworkAPI: TargetType {
              .cabinetList,
              .inspectList,
              .linkModify,
+             .exchangePassword,
              .inspectUpload:
             return .post
         }
@@ -183,6 +187,9 @@ extension RMNetworkAPI: TargetType {
         case let .inspectUpload(_, parameters, _):
             let json = parameters.toJSONString()
             return ["json" : json! ]
+        case let .exchangePassword(_, oldpwd, newpwd):
+            return ["oldpwd": oldpwd,
+                    "newpwd": newpwd]
         }
     }
     
@@ -196,6 +203,7 @@ extension RMNetworkAPI: TargetType {
              .cabinetList,
              .inspectList,
              .inspectUpload,
+             .exchangePassword,
              .linkModify:
             return JSONEncoding.default
         }
@@ -213,6 +221,7 @@ extension RMNetworkAPI: TargetType {
              .cabinetDetail,
              .cabinetList,
              .inspectList,
+             .exchangePassword,
              .linkModify:
             return .request
         case let .inspectUpload(_,_, formData):
