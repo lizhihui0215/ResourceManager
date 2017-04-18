@@ -14,6 +14,10 @@ import RxCocoa
 import Photos
 import MapKit
 
+protocol RMInspectUploadViewControllerDelegate {
+    func inspectUpload(viewController: RMInspectUploadViewController, didEndCommit success: Bool);
+}
+
 class RMInspectUploadCell: UICollectionViewCell {
     
     var disposeBag = DisposeBag()
@@ -110,6 +114,7 @@ extension RMInspectUploadViewController: RMLocationViewControllerDelegate {
             viewModel.locationName.value =   addrList.joined(separator: " ")
             viewModel.longitude.value = (mapItem.placemark.location?.coordinate.longitude)!
             viewModel.latitude.value = (mapItem.placemark.location?.coordinate.latitude)!
+            self.locationLabel.text = viewModel.locationName.value
         }
     }
 }
@@ -122,6 +127,10 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
 
     @IBOutlet weak var textView: RSKGrowingTextView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    var delegate: RMInspectUploadViewControllerDelegate?
     
     var viewModel: RMInspectUploadViewModel?
     
@@ -158,7 +167,11 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     }
 
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
-        self.viewModel?.upload().drive().disposed(by: disposeBag)
+        self.viewModel?.upload().drive(onNext: { success in
+            if let delegate = self.delegate {
+                delegate.inspectUpload(viewController: self, didEndCommit: success)
+            }            
+        }).disposed(by: disposeBag)
     }
     // MARK: - Navigation
 

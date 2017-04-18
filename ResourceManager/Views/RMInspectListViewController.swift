@@ -27,6 +27,9 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.estimatedRowHeight = 40
+        self.viewModel?.inspectList(refresh: true).drive(onNext: { result in
+            self.tableView.reloadData()
+        }).disposed(by: disposeBag)
 
 
         // Do any additional setup after loading the view.

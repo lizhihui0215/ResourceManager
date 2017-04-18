@@ -26,11 +26,11 @@ class RMLoginViewModel: RMViewModel {
     
     func sigin() -> Driver<Bool> {
         self.loginAction.animation.value = true
-        return RMLoginValidate.shared.validateUsername(self.username.value)
+        return RMLoginValidate.shared.validateNil(self.username.value, message: "用户名不能为空！")
             .flatMapLatest{ result in
                 return self.loginAction.alert(result: result)
             }.flatMapLatest{ result in
-                return RMLoginValidate.shared.validateUsername(self.password.value)
+                return RMLoginValidate.shared.validateNil(self.password.value, message: "密码不能为空！")
             }.flatMapLatest{ result in
                 return self.loginAction.alert(result: result)
             }.flatMapLatest{ _ in

@@ -14,7 +14,7 @@ import Moya
 class RMLinkDetailDomain: RMDomain {
     static let shared = RMLinkDetailDomain()
 
-    func linkModify(link: RMLink) -> Driver<Result<RMLink, Moya.Error>> {
+    func linkModify(link: RMLink) -> Driver<Result<String, Moya.Error>> {
         return RMLinkDetailDomain.repository.linkModify(link: link).asDriver(onErrorRecover: { error in
             print(error)
             let x  = error as! Moya.Error;

@@ -25,6 +25,7 @@ extension RMLocationViewController: UITableViewDelegate {
         if let delegate = delegate, let viewModel = viewModel {
             let mapItem = viewModel.elementAt(indexPath: indexPath)
             delegate.didEndSelected(mapItem: mapItem, of: self)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

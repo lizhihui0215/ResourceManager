@@ -93,8 +93,6 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
             }
         }
         
-        
-        
         let parameters: [String : Any] = ["latitude": latitude.value,
                                           "serial" : UUID().uuidString,
                                           "longitude": longitude.value,
@@ -104,9 +102,15 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
                                           "resourceId": resourceId.value
         ]
         
-        return RMInspectUploadDomain.shared.upload(parameters: parameters, images: images)
-            .do(onNext: { [weak self] result in
-                
+        var validateParameters = parameters
+        
+        validateParameters["images"] = images
+        
+        return RMInspectUploadValidate.shared.validate(validateParameters).flatMapLatest { result  in
+            self.action.alert(result: result)
+            }.flatMapLatest { _ in
+                return RMInspectUploadDomain.shared.upload(parameters: parameters, images: images)
+            } .do(onNext: { [weak self] result in
                 if let strongSelf = self {
                     
                     strongSelf.action.animation.value = false

@@ -6,8 +6,10 @@
 //  Copyright © 2017年 北京海睿兴业. All rights reserved.
 //
 
-import UIKit
-
+import RxSwift
+import Result
+import Moya
+import RxCocoa
 
 enum RMPersonalItem {
     case changePassword
@@ -60,12 +62,20 @@ enum RMPersonalItem {
     }
 }
 
+protocol RMPersonalCenterViewAction: RMViewModelAction {
+    
+}
+
 class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
     var datasource: Array<RMSection<RMPersonalItem, Void>> = []
     
     var user: RMUser?
     
-    override init() {
+    var action: RMViewModelAction
+    
+    
+    init(action: RMViewModelAction) {
+        self.action = action
         let section: RMSection<RMPersonalItem, Void> = RMSection()
         section.append(item: .changePassword)
         section.append(item: .help)
@@ -75,8 +85,17 @@ class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
         self.datasource.append(section)
     }
     
-    func user() -> Driver {
-        <#function body#>
+    func loginUser() -> Driver<Bool> {
+        return RMPersonalCenterDomain.shared.user().do(onNext: { result in
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure:
+                break
+            }
+        }).flatMapLatest({ result in
+            return self.action.alert(result: result)
+        })
     }
     
     
