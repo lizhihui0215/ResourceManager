@@ -6,9 +6,22 @@
 //  Copyright © 2017 北京海睿兴业. All rights reserved.
 //
 
-import Foundation
+import RxCocoa
+import RxSwift
+import Moya
+import Result
 
 class RMValidate {
+    
+    func validateNil(_ value: String, message: String = "") -> Driver<Result<String,Moya.Error>> {
+        if value.characters.count == 0 {
+            return .just(Result(error: error(code: 0, message: message)))
+        }
+        
+        // do some network
+        
+        return Driver.just(Result(value: value))
+    }
 }
 
 class RMDomain {

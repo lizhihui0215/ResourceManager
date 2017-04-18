@@ -129,6 +129,10 @@ class RMPersonalCenterViewController: RMViewController {
            let exchangePasswordViewController = segue.destination as! RMExchangePasswordViewController
             
             exchangePasswordViewController.viewModel = RMExchangePasswordViewModel(action: exchangePasswordViewController, user: (self.viewModel?.user!)!)
+        } else if segue.identifier == "toSuggest" {
+            let suggestViewController = segue.destination as! RMSuggestViewController
+            
+            suggestViewController.viewModel = RMSuggestViewModel(action: suggestViewController)
         }
     }
     

@@ -13,20 +13,6 @@ import Result
 
 class RMLoginValidate: RMValidate {
     static let shared = RMLoginValidate()
-
-    func validateUsername(_ username: String) -> Driver<Result<String,Moya.Error>> {
-        if username.characters.count == 0 {
-            return .just(Result(error: error(code: 0, message: "code must > 0")))
-        }
-        
-        if username.rangeOfCharacter(from: CharacterSet.alphanumerics.inverted) != nil {
-            return .just(Result(error: error(code: 0, message: "Username can only contain numbers or digits")))
-        }
-        
-        // do some network
-        
-        return Driver.just(Result(value: username))
-    }
 }
 
 class RMLoginDomain: RMDomain {

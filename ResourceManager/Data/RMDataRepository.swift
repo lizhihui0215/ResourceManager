@@ -94,6 +94,19 @@ class RMDataRepository {
         }
     }
     
+    func suggest(name: String, phone: String, detail: String) -> Observable<Result<String, Moya.Error>> {
+        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.suggest((RMDomain.user?.accessToken)!, name,phone,detail))
+        
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let link):
+                return Result(value: link)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+    
     func linkModify(link: RMLink) -> Observable<Result<String, Moya.Error>> {
         let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.linkModify((RMDomain.user?.accessToken)!, link.toJSON()))
         

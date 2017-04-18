@@ -7,9 +7,22 @@
 //
 
 import UIKit
+import RSKGrowingTextView
+
+
+extension RMSuggestViewController: RMSuggestViewAction {
+    
+}
 
 class RMSuggestViewController: RMViewController {
+    @IBOutlet weak var nameTextField: UITextField!
 
+    @IBOutlet weak var detailTextView: RSKGrowingTextView!
+    @IBOutlet weak var phoneTextField: UITextField!
+    
+    var viewModel: RMSuggestViewModel?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +34,13 @@ class RMSuggestViewController: RMViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func confirmButtonTapped(_ sender: UIButton) {
+        let name = nameTextField.text ?? ""
+        let detail = detailTextView.text ?? ""
+        let phone = phoneTextField.text ?? ""
+        
+        self.viewModel?.suggest(name: name, phone: phone, detail: detail).drive().disposed(by: disposeBag)
+    }
 
     /*
     // MARK: - Navigation

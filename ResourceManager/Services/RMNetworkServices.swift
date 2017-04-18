@@ -79,8 +79,6 @@ class RMNetworkServices {
     }
     
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
-        
-        
         return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
     }
     
@@ -103,6 +101,7 @@ public enum RMNetworkAPI {
     case cabinetDetail(String, String)
     case inspectList(String,Int, Int)
     case exchangePassword(String, String, String)
+    case suggest(String, String, String, String)
     
 }
 
@@ -132,6 +131,8 @@ extension RMNetworkAPI: TargetType {
             return "inspect/report?access_token=\(accessToken)"
         case let .exchangePassword(accessToken,_,_):
             return "user/changepwd?access_token=\(accessToken)"
+        case let .suggest(accessToken,_,_,_):
+            return "user/feedback?access_token=\(accessToken)"
 
         }
         
@@ -147,6 +148,7 @@ extension RMNetworkAPI: TargetType {
              .inspectList,
              .linkModify,
              .exchangePassword,
+             .suggest,
              .inspectUpload:
             return .post
         }
@@ -190,6 +192,10 @@ extension RMNetworkAPI: TargetType {
         case let .exchangePassword(_, oldpwd, newpwd):
             return ["oldpwd": oldpwd,
                     "newpwd": newpwd]
+        case let .suggest(_, name, phone,detail):
+            return ["name": name,
+                    "phone": phone,
+                    "detail": detail]
         }
     }
     
@@ -204,6 +210,7 @@ extension RMNetworkAPI: TargetType {
              .inspectList,
              .inspectUpload,
              .exchangePassword,
+             .suggest,
              .linkModify:
             return JSONEncoding.default
         }
@@ -222,6 +229,7 @@ extension RMNetworkAPI: TargetType {
              .cabinetList,
              .inspectList,
              .exchangePassword,
+             .suggest,
              .linkModify:
             return .request
         case let .inspectUpload(_,_, formData):

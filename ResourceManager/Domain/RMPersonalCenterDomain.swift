@@ -34,6 +34,14 @@ class RMPersonalCenterValidate: RMValidate {
         
         return Driver.just(Result(value: (originPassword,confirmPassword )))
     }
+    
+    func validate(_ name: String, phone: String, detail: String) -> Driver<Result<(String, String, String),Moya.Error>> {
+        
+        return Driver.just(Result(value: (name,phone, detail)))
+    }
+    
+    
+    
 }
 
 class RMPersonalCenterDomain: RMDomain {
@@ -51,7 +59,14 @@ class RMPersonalCenterDomain: RMDomain {
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })
-
+    }
+    
+    func suggest(name: String, phone: String, detail: String) -> Driver<Result<String, MoyaError>> {
+        return RMPersonalCenterDomain.repository.suggest(name: name, phone: phone, detail: detail).asDriver(onErrorRecover: { error in
+            let x  = error as! Moya.Error;
+            return Driver.just(Result(error: x))
+        })
+        
     }
     
 

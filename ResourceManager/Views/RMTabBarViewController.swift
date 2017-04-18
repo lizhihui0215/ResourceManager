@@ -8,18 +8,29 @@
 
 import UIKit
 
+extension RMTabBarViewController: RMInspectUploadViewControllerDelegate {
+    func inspectUpload(viewController: RMInspectUploadViewController, didEndCommit success: Bool) {
+        self.viewControllers?[1] = (self.storyboard?.instantiateViewController(withIdentifier: "RMInspectUploadNavigationController"))!
+    }
+    
+}
+
 class RMTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         for item in self.tabBar.items! {
             item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .normal)
             item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor(hex6: 0x3497d4, alpha: 1)], for: .highlighted)
         }
         
+        let inspectNavigationController = self.viewControllers?[1] as! UINavigationController
+        
+        let inspectUploadViewController = inspectNavigationController.topViewController as! RMInspectUploadViewController
+        
+        inspectUploadViewController.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
