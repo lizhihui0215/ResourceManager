@@ -95,6 +95,8 @@ class RMLinkDetailViewModel: RMViewModel {
             }
             })            .flatMapLatest({ result  in
                 return self.action.alert(result: result)
+            }).flatMapLatest({ _  in
+                return self.action.message(message: "修改成功！")
             })
     }
 }

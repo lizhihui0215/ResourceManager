@@ -81,6 +81,10 @@ extension RMInspectUploadViewController: UICollectionViewDataSource {
             
             let imagePicker = TZImagePickerController(maxImagesCount: limit, delegate: self)
             
+            imagePicker?.naviBgColor = UIColor(hex6: 0x222960)
+            
+            imagePicker?.naviTitleColor = UIColor.white
+            
             self.present(imagePicker!, animated: true, completion: nil)
             
             imagePicker?.didFinishPickingPhotosHandle = { (images,xx,ee ) in
@@ -140,6 +144,8 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
         self.viewModel = RMInspectUploadViewModel(action: self)
         
         textView.rx.textInput <-> (self.viewModel?.resportContent)!
+        
+        codeTextField.rx.textInput <-> (self.viewModel?.resourceId)!
         
         self.textView.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         

@@ -98,12 +98,4 @@ class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
         })
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
 }

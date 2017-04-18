@@ -15,6 +15,23 @@ fileprivate var animationContext: UInt8 = 0
 
 
 extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
+
+    func showMessage(message: String) -> Driver<Bool> {
+        return Observable.create{
+            [weak self] observer in
+            let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            
+            alertView.addAction(UIAlertAction(title: "OK", style: .cancel) { action in
+                observer.on(.completed)
+            })
+            
+            self?.present(alertView, animated: true, completion: nil)
+            return Disposables.create{
+                alertView.dismiss(animated: true, completion: nil)
+            }
+            }.asDriver(onErrorJustReturn: true)
+    }
+
     
     var animation: Variable<Bool> {
         if let animation = objc_getAssociatedObject(self, &animationContext) as? Variable<Bool> {

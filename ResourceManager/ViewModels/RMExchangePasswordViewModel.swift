@@ -31,9 +31,11 @@ class RMExchangePasswordViewModel: RMViewModel {
                 return self.action.alert(result: result)
             }.flatMapLatest { _  in
                 return RMPersonalCenterDomain.shared.exchangePassword(password: originPassword, newPassword: newPassword)
-        }.flatMapLatest { result  in
+        }.flatMapLatest { result  -> Driver<Bool> in
             self.action.animation.value = false
             return self.action.alert(result: result)
-        }
+        }.flatMapLatest({ _  in
+            return self.action.message(message: "修改成功！")
+        })
     }
 }

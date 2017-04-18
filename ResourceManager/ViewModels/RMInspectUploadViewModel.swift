@@ -62,7 +62,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
     
     var resportContent = Variable("")
     
-    var resourceType = Variable(0)
+    var resourceType = Variable(3)
     
     var resourceId = Variable("")
     
@@ -71,12 +71,10 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
         self.action = action
         super.init()
         self.datasource.append(RMSection())
-        self.section(at: 0).append(item: RMImageItem(true, image: nil))
+        self.section(at: 0).append(item: RMImageItem(true, image: UIImage(named: "inspect-upload.plus")))
     }
     
     func resourceTypes() -> [RMResourceType] {
-        
-        
         return [ RMResourceType(title: "链路", resource: .link),
                  RMResourceType(title: "机柜", resource: .device),
                  RMResourceType(title: "设备", resource: . cabinet)]
@@ -118,6 +116,9 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
             })
             .flatMapLatest({ result  in
                 return self.action.alert(result: result)
+            })
+            .flatMapLatest({ _  in
+                return self.action.message(message: "提交成功！")
             })
     }
     
