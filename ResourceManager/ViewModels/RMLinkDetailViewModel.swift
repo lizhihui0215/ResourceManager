@@ -42,12 +42,12 @@ class RMLinkDetailViewModel: RMViewModel {
         customerName = Variable(link.customerName ?? "")
         customerLevel = Variable(link.customerLevel ?? "")
         farendDeviceName = Variable(link.farendDeviceName ?? "")
-        farendDevicePort = Variable(link.farendDevicePort ?? "")
-        accessDevicePort = Variable(link.accessDevicePort ?? "")
+        farendDevicePort = Variable(String(link.farendDevicePort) )
+        accessDevicePort = Variable(String(link.accessDevicePort) )
         accessDeviceName = Variable(link.accessDeviceName ?? "")
         
         super.init()
-
+        
         account.asObservable().bind { account in
             link.account = account
             }.addDisposableTo(disposeBag)
@@ -73,11 +73,11 @@ class RMLinkDetailViewModel: RMViewModel {
             }.addDisposableTo(disposeBag)
         
         farendDevicePort.asObservable().bind { farendDevicePort in
-            link.farendDevicePort = farendDevicePort
+            link.farendDevicePort = Int(farendDevicePort) ?? 0
             }.addDisposableTo(disposeBag)
         
         accessDevicePort.asObservable().bind { accessDevicePort in
-            link.accessDevicePort = accessDevicePort
+            link.accessDevicePort = Int(accessDevicePort) ?? 0
             }.addDisposableTo(disposeBag)
         
         accessDeviceName.asObservable().bind { accessDeviceName in
@@ -89,10 +89,10 @@ class RMLinkDetailViewModel: RMViewModel {
         self.action.animation.value = true
         return RMLinkDetailDomain.shared.linkModify(link: self.link)
             .do(onNext: { [weak self] result in
-            
-            if let strongSelf = self {
-                strongSelf.action.animation.value = false
-            }
+                
+                if let strongSelf = self {
+                    strongSelf.action.animation.value = false
+                }
             })            .flatMapLatest({ result  in
                 return self.action.alert(result: result)
             }).flatMapLatest({ _  in

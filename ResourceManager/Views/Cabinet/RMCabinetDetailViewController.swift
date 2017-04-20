@@ -26,7 +26,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
     @IBOutlet weak var cabinetNameTextField: UITextField!
     
     @IBOutlet weak var cabinetNameLabel: UILabel!
-    @IBOutlet weak var devicesTextField: UITextField!
+//    @IBOutlet weak var devicesTextField: UITextField!
     @IBOutlet weak var capacityTextField: UITextField!
     @IBOutlet weak var cabinetLocationTextField: UITextField!
     override func viewDidLoad() {
@@ -43,6 +43,12 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
             cabinetLocationTextField.text = viewModel.cabinet.cabinetLocation
             cabinetNameLabel.text = viewModel.cabinet.cabinetName
         }
+        
+        cabinetCodeTextField.backgroundColor = UIColor.white
+        cabinetNameTextField.backgroundColor = UIColor.white
+//        devicesTextField.background = nil
+        capacityTextField.backgroundColor = UIColor.white
+        cabinetLocationTextField.backgroundColor = UIColor.white
         
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         

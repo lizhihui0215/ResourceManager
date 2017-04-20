@@ -46,6 +46,9 @@ class RMLocationViewModel: RMViewModel, RMListDataSource {
         }
     }
     
+    deinit {
+        locationManager.stopUpdatingLocation()
+    }
     
     
 }

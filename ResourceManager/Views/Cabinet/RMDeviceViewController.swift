@@ -79,6 +79,13 @@ class RMDeviceViewController: RMViewController {
             deviceDescTextField.rx.textInput <-> viewModel.deviceDesc
         }
         
+        deviceCodeTextField.backgroundColor = UIColor.white
+        deviceNameTextField.backgroundColor = UIColor.white
+        totalTerminalsTextField.backgroundColor = UIColor.white
+        terminalOccupiedTextField.backgroundColor = UIColor.white
+        terminalFreeTextField.backgroundColor = UIColor.white
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
