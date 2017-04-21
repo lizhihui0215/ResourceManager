@@ -95,6 +95,7 @@ public enum RMNetworkAPI {
     case login(String, String)
     case linkDetail(String, String)
     case linkList(String, String, String, String, Int, Int)
+    case link(String, String)
     case linkModify(String,[String : Any])
     case inspectUpload(String, [String: Any], [MultipartFormData])
     case cabinetList(String, String, String, String, Int, Int)
@@ -133,6 +134,9 @@ extension RMNetworkAPI: TargetType {
             return "user/changepwd?access_token=\(accessToken)"
         case let .suggest(accessToken,_,_,_):
             return "user/feedback?access_token=\(accessToken)"
+        case let .link(accessToken,_):
+            return "device/links?access_token=\(accessToken)"
+            
 
         }
         
@@ -149,6 +153,7 @@ extension RMNetworkAPI: TargetType {
              .linkModify,
              .exchangePassword,
              .suggest,
+             .link,
              .inspectUpload:
             return .post
         }
@@ -196,6 +201,8 @@ extension RMNetworkAPI: TargetType {
             return ["name": name,
                     "phone": phone,
                     "detail": detail]
+        case let .link(_, deviceCode):
+            return ["deviceCode": deviceCode]
         }
     }
     
@@ -211,6 +218,7 @@ extension RMNetworkAPI: TargetType {
              .inspectUpload,
              .exchangePassword,
              .suggest,
+             .link,
              .linkModify:
             return JSONEncoding.default
         }
@@ -230,6 +238,7 @@ extension RMNetworkAPI: TargetType {
              .inspectList,
              .exchangePassword,
              .suggest,
+             .link,
              .linkModify:
             return .request
         case let .inspectUpload(_,_, formData):

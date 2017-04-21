@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -2172,6 +2172,7 @@
                         <outlet property="terminalFreeTextField" destination="4b5-MB-rKO" id="Xup-R5-Pva"/>
                         <outlet property="terminalOccupiedTextField" destination="bWi-9w-bAn" id="pTV-5h-tqa"/>
                         <outlet property="totalTerminalsTextField" destination="i9j-si-uvW" id="bfA-zi-o7t"/>
+                        <segue destination="2Dr-Cj-fSb" kind="show" identifier="toLinkDetail" id="NKf-5K-aWg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTK-gw-kmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2852,8 +2853,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="00Q-e4-sWd"/>
         <segue reference="Y44-29-jCF"/>
-        <segue reference="Arb-ta-ep5"/>
         <segue reference="Pge-bP-lUq"/>
+        <segue reference="NKf-5K-aWg"/>
         <segue reference="y9U-tH-ge9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -99,4 +99,6 @@ class RMLinkDetailViewModel: RMViewModel {
                 return self.action.message(message: "修改成功！")
             })
     }
+    
+    
 }

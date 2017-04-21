@@ -21,4 +21,12 @@ class RMLinkDetailDomain: RMDomain {
             return Driver.just(Result(error: x))
         })
     }
+
+    func link(deviceCode: String) -> Driver<Result<[RMLink], Moya.Error>> {
+        return RMLinkDetailDomain.repository.link(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
+            print(error)
+            let x  = error as! Moya.Error;
+            return Driver.just(Result(error: x))
+        })
+    }
 }

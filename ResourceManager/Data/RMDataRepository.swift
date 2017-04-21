@@ -27,7 +27,18 @@ class RMDataRepository {
         }
     }
     
-    
+    func link(deviceCode: String) -> Observable<Result<[RMLink], Moya.Error>> {
+        let resukt: Observable<RMResponseArray<RMLink>> = RMNetworkServices.shared.request(.link((RMDomain.user?.accessToken)!, deviceCode))
+        
+        return self.handlerError(response: resukt).map({ result in
+            switch result {
+            case .success(let links):
+                return Result(value: links)
+            case .failure(let error):
+                return Result(error: error)
+            }
+        })
+    }
     
     func linkList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMLink], Moya.Error>> {
         let resukt: Observable<RMResponseArray<RMLink>> = RMNetworkServices.shared.request(.linkList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))

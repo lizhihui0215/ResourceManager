@@ -26,6 +26,18 @@ extension RMDeviceViewController: UICollectionViewDataSource {
         return self.viewModel?.numberOfRowsInSection(section: section) ?? 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let devicePort = self.viewModel?.elementAt(indexPath: indexPath) {
+            switch devicePort {
+            case let .occupied(_, link):
+                performSegue(withIdentifier: "toLinkDetail", sender: link)
+            default:
+                break
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMDevicePortCell", for: indexPath) as! RMDevicePortCell
         
@@ -33,12 +45,16 @@ extension RMDeviceViewController: UICollectionViewDataSource {
         
         cell.imageView.image = devicePort?.image()
         
-        cell.titleLabel.text = "\(indexPath.row + 1)"
+        cell.titleLabel.text = devicePort?.port()
         
         cell.titleLabel.textColor = devicePort?.titleColor()
         
         return cell
     }
+    
+}
+
+extension RMDeviceViewController: RMDeviceDetailViewAction {
     
 }
 
@@ -77,6 +93,10 @@ class RMDeviceViewController: RMViewController {
             terminalOccupiedTextField.rx.textInput <-> viewModel.terminalOccupied
             terminalFreeTextField.rx.textInput <-> viewModel.terminalFree
             deviceDescTextField.rx.textInput <-> viewModel.deviceDesc
+            
+            viewModel.link().drive(onNext: { _ in
+                self.collectionView.reloadData()
+            }).disposed(by: disposeBag)
         }
         
         deviceCodeTextField.backgroundColor = UIColor.white
@@ -84,6 +104,8 @@ class RMDeviceViewController: RMViewController {
         totalTerminalsTextField.backgroundColor = UIColor.white
         terminalOccupiedTextField.backgroundColor = UIColor.white
         terminalFreeTextField.backgroundColor = UIColor.white
+        
+        
         
         
     }
@@ -94,14 +116,18 @@ class RMDeviceViewController: RMViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toLinkDetail" {
+            let linkDetailViewController = segue.destination as! RMLinkDetailViewController
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: sender as! RMLink, action: linkDetailViewController)
+        }
     }
-    */
+    
 
 }

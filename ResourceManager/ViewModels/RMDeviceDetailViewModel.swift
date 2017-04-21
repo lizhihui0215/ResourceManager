@@ -10,9 +10,36 @@ import RxSwift
 import RxCocoa
 
 enum RMDevicePort {
-    case free
-    case occupied
-    case other
+    case free(Int)
+    case occupied(Bool, RMLink)
+    case other(RMLink)
+    
+    init(free port: Int) {
+        self = .free(port)
+    }
+    
+    init(occupied link: RMLink, isFarend: Bool) {
+        self = .occupied(isFarend, link)
+    }
+    
+    init(other link: RMLink) {
+        self = .other(link)
+    }
+    
+    func port() -> String {
+        switch self {
+        case let .free(port):
+            return String(port)
+        case let .occupied(isFarend, link):
+            if isFarend {
+                return String( link.farendDevicePort)
+            }else {
+                return String( link.accessDevicePort)
+            }
+        case .other:
+            return "unknow"
+        }
+    }
     
     func image() -> UIImage {
         switch self {
@@ -37,6 +64,10 @@ enum RMDevicePort {
     }
 }
 
+protocol RMDeviceDetailViewAction: RMViewModelAction {
+    
+}
+
 class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
     var datasource: Array<RMSection<RMDevicePort, Void>> = []
     
@@ -49,8 +80,14 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
     var terminalOccupied = Variable("")
     var terminalFree = Variable("")
     var deviceDesc = Variable("")
-
-    init(device: RMDevice) {
+    
+    var links = [RMLink]()
+    
+    
+    var action: RMDeviceDetailViewAction
+    
+    init(device: RMDevice, action: RMDeviceDetailViewAction) {
+        self.action = action
         self.device = device
         self.deviceCode.value = self.device.deviceCode ?? ""
         self.deviceName.value = self.device.deviceName ?? ""
@@ -62,13 +99,40 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
         
         super.init()
         self.datasource.append(RMSection())
-        let section = self.section(at: 0)
-        for _ in 1...device.terminalOccupied {
-            section.append(item: .occupied)
-        }
-        
-        for _ in 1...device.terminalFree {
-            section.append(item: .free)
-        }
+    }
+    
+    func link() -> Driver<Bool> {
+        self.action.animation.value = true
+        return RMLinkDetailDomain.shared.link(deviceCode: self.deviceCode.value)
+            .flatMapLatest({ result  in
+                self.action.animation.value = false
+                switch result {
+                case .success(let links):
+                    let occupiedPorts: [RMDevicePort] = links.map{
+                        if $0.farendDeviceName == self.deviceName.value {
+                            return RMDevicePort(occupied: $0, isFarend: true)
+                        }
+                        
+                        if $0.accessDeviceName == self.deviceName.value {
+                            return RMDevicePort(occupied: $0, isFarend: false)
+                        }
+                        
+                        return RMDevicePort(free: -1)
+                    }.sorted(by: { $0.port() < $1.port()})
+                    
+                    self.section(at: 0).append(contentsOf: occupiedPorts)
+                    
+                    
+                    
+                    for i in 1...self.device.terminalFree {
+                        let port = i + Int((occupiedPorts.last?.port())!)! 
+                        self.section(at: 0).append(item: RMDevicePort(free: port))
+                    }
+                    
+                default:
+                    break
+                }
+                return self.action.alert(result: result)
+            })
     }
 }

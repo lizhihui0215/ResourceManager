@@ -66,6 +66,9 @@ class RMLinkDetailViewController: RMViewController {
             
             self.commitButtonHightConstraint.constant = 0
 
+        }else {
+            self.linkCodeTextField.isEnabled = false
+            self.linkCodeTextField.backgroundColor = UIColor.white
         }
         
         if let viewModel = self.viewModel {

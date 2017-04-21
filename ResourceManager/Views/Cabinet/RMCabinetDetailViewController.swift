@@ -92,7 +92,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         
         let device = self.viewModel?.elementAt(indexPath: indexPath!)
         
-        deviceViewController.viewModel = RMDeviceDetailViewModel(device: device!)
+        deviceViewController.viewModel = RMDeviceDetailViewModel(device: device!, action: deviceViewController)
         
     }
     
