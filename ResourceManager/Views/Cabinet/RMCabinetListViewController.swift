@@ -46,18 +46,18 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
     }
     
     override func headerRefreshingFor(tableView: UITableView ) {
+        tableView.mj_header.endRefreshing()
         self.viewModel?.cabinetList(refresh: true).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
-            tableView.mj_header.endRefreshing()
         }).disposed(by: disposeBag)
     }
     
     override func footerRefreshingFor(tableView: UITableView) {
+        tableView.mj_footer.endRefreshing()
         self.viewModel?.cabinetList(refresh: false).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
-            tableView.mj_footer.endRefreshing()
         }).disposed(by: disposeBag)
     }
     

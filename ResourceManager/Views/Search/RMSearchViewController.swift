@@ -26,6 +26,13 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         
         self.navigationItem.title = self.viewModel?.title
         
+        if let _ = self.viewModel as? RMCabinetSearchViewModel {
+            self.linkCodeTextField.placeholder = "机柜代码"
+        }else if let _ = self.viewModel as? RMLinkSearchViewModel {
+            
+        }
+        
+        
         self.accountTextField.rx.textInput <-> (self.viewModel?.account)!
         
         self.customerTextField.rx.textInput <-> (self.viewModel?.customerName)!

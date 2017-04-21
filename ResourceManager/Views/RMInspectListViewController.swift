@@ -36,18 +36,18 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
     }
     
     override func headerRefreshingFor(tableView: UITableView ) {
+        tableView.mj_header.endRefreshing()
         self.viewModel?.inspectList(refresh: true).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
-            tableView.mj_header.endRefreshing()
         }).disposed(by: disposeBag)
     }
     
     override func footerRefreshingFor(tableView: UITableView) {
+        tableView.mj_footer.endRefreshing()
         self.viewModel?.inspectList(refresh: false).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
-            tableView.mj_footer.endRefreshing()
         }).disposed(by: disposeBag)
     }
     

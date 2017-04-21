@@ -46,18 +46,18 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
     }
     
     override func headerRefreshingFor(tableView: UITableView ) {
+        tableView.mj_header.endRefreshing()
         self.viewModel?.linkList(refresh: true).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
-            tableView.mj_header.endRefreshing()
         }).disposed(by: disposeBag)
     }
     
     override func footerRefreshingFor(tableView: UITableView) {
+        tableView.mj_footer.endRefreshing()
         self.viewModel?.linkList(refresh: false).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
-            tableView.mj_footer.endRefreshing()
         }).disposed(by: disposeBag)
     }
     
@@ -67,9 +67,9 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         if let viewModel = self.viewModel {
             let link = viewModel.elementAt(indexPath: indexPath)
             cell.accessDeviceNameLabel.text = link.accessDeviceName
-            cell.accessDevicePortLabel.text = link.accessDevicePort
+            cell.accessDevicePortLabel.text = String(link.accessDevicePort)
             cell.customerNameLabel.text = link.customerName
-            cell.codeLabel.text = link.barcode
+            cell.codeLabel.text = link.linkCode
         }
         
         return cell

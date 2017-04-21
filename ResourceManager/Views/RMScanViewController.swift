@@ -43,8 +43,10 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
     override func handleCodeResult(arrayResult: [LBXScanResult]){
         self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
             success in
-            if success {
-                self.performSegue(withIdentifier: "toDetail", sender: nil)
+            if let _ = self.viewModel as? RMLinkScanViewModel,success {
+                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
+            }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
+                self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
             }
         }).disposed(by: disposeBag)
         
@@ -75,9 +77,16 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let linkDetailViewController = segue.destination as! RMLinkDetailViewController
-        
-        linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink, action: linkDetailViewController)
+        if segue.identifier == "toLinkDetail" {
+            let linkDetailViewController = segue.destination as! RMLinkDetailViewController
+            
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink, action: linkDetailViewController)
+
+        }else if segue.identifier == "toCabinetDetail" {
+            let cabinetDetailViewController = segue.destination as! RMCabinetDetailViewController
+            
+            cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(cabinet: (self.viewModel?.result) as! RMCabinet)
+        }
     }
     
 

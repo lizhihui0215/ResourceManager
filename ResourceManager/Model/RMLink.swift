@@ -19,13 +19,13 @@ class RMLink: RMModel {
     dynamic var customerLevel: String?
     dynamic var pictures: String?
     dynamic var accessDeviceName: String?
-    dynamic var accessDevicePort: String?
+    dynamic var accessDevicePort: Int = 0
     dynamic var accessDeviceUpTime: String?
     dynamic var localODFName: String?
     dynamic var localODFID: String?
     dynamic var localODFPort: String?
     dynamic var farendDeviceName: String?
-    dynamic var farendDevicePort: String?
+    dynamic var farendDevicePort: Int = 0
     dynamic var farendODFName: String?
     dynamic var farendODFID: String?
     dynamic var farendODFPort: String?
