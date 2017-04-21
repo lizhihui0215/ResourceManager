@@ -18,7 +18,6 @@ class LBXPermissions: NSObject {
     //MARK: ---相机权限
     static func isGetCameraPermission()->Bool
     {
-        
         let authStaus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         
         if authStaus != AVAuthorizationStatus.denied
