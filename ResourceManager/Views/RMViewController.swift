@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import NVActivityIndicatorView
+import Toaster
 
 fileprivate var animationContext: UInt8 = 0
 
@@ -20,6 +21,7 @@ extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
         return Observable.create{
             [weak self] observer in
             let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            observer.on(.next(true))
             
             alertView.addAction(UIAlertAction(title: "OK", style: .cancel) { action in
                 observer.on(.completed)
@@ -61,6 +63,18 @@ extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
             }
             }.asDriver(onErrorJustReturn: false)
     }
+    
+    
+    func toast(message: String) -> Driver<Bool> {
+        return Observable.create{ observer in
+            let toast = Toast(text: message, duration: 0.5)
+            toast.show()
+            return Disposables.create{
+                toast.cancel()
+            }
+            }.asDriver(onErrorJustReturn: false)
+    }
+    
 }
 
 class RMViewController: UIViewController {
@@ -71,14 +85,16 @@ class RMViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.animation.asObservable().subscribe(onNext: { flag in
-            if flag {
-                self.startAnimating()
-            }else{
-                self.stopAnimating()
+        self.animation.asObservable().subscribe(onNext: {[weak self] flag in
+            if let strongSelf = self ,flag {
+                strongSelf.startAnimating()
+            }else if let strongSelf = self{
+                strongSelf.stopAnimating()
             }
-        },onDisposed: {
-            self.stopAnimating()
+        },onDisposed: {[weak self] in
+            if let strongSelf = self {
+                strongSelf.stopAnimating()
+            }
         }).disposed(by: disposeBag)
         
         

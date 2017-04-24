@@ -11,6 +11,8 @@ import UIKit
 class RMInspectListCell: RMTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
 }
 
@@ -27,8 +29,10 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.estimatedRowHeight = 40
-        self.viewModel?.inspectList(refresh: true).drive(onNext: { result in
-            self.tableView.reloadData()
+        self.viewModel?.inspectList(refresh: true).drive(onNext: {[weak self] result in
+            if let strongSelf = self {
+                strongSelf.tableView.reloadData()
+            }
         }).disposed(by: disposeBag)
 
 
@@ -37,16 +41,20 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
     
     override func headerRefreshingFor(tableView: UITableView ) {
         tableView.mj_header.endRefreshing()
-        self.viewModel?.inspectList(refresh: true).drive(onNext: { result in
-            self.tableView.reloadData()
+        self.viewModel?.inspectList(refresh: true).drive(onNext: {[weak self] result in
+            if let strongSelf = self {
+                strongSelf.tableView.reloadData()
+            }
         }, onCompleted: {
         }).disposed(by: disposeBag)
     }
     
     override func footerRefreshingFor(tableView: UITableView) {
         tableView.mj_footer.endRefreshing()
-        self.viewModel?.inspectList(refresh: false).drive(onNext: { result in
-            self.tableView.reloadData()
+        self.viewModel?.inspectList(refresh: false).drive(onNext: {[weak self] result in
+            if let strongSelf = self {
+                strongSelf.tableView.reloadData()
+            }
         }, onCompleted: {
         }).disposed(by: disposeBag)
     }
@@ -58,6 +66,8 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
             let inspect = viewModel.elementAt(indexPath: indexPath)
             cell.titleLabel.text = inspect.locationName
             cell.contentLabel.text = inspect.reportContent
+            cell.dateLabel.text = Date(timeIntervalSince1970: TimeInterval(inspect.createdtime / 1000)).date(template: "yyyy-MM-dd")
+            cell.timeLabel.text = Date(timeIntervalSince1970: TimeInterval(inspect.createdtime / 1000)).date(template: "HH:mm:ss")
         }
         
         return cell
@@ -90,6 +100,10 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
             let viewModel = RMInspectPhotoViewModel(pictures: (inspect.pictures?.toArray())!, caption: inspect.reportContent)
             inspectViewController.viewModel = viewModel
         }
+    }
+    
+    deinit {
+        
     }
 
 }

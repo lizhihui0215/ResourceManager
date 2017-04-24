@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import Moya
 import Result
+import RealmSwift
 
 class RMPersonalCenterValidate: RMValidate {
     static let shared = RMPersonalCenterValidate()
@@ -52,6 +53,14 @@ class RMPersonalCenterDomain: RMDomain {
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })
+    }
+    
+    func logout() ->  Driver<Result<Bool, MoyaError>>{
+        let realm = try? Realm()
+        try? realm?.write {
+            realm?.deleteAll()
+        }
+        return Driver.just(Result(value: true))
     }
     
     func exchangePassword(password: String, newPassword: String) -> Driver<Result<String, MoyaError>> {

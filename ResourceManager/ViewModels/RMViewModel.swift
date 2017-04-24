@@ -15,13 +15,14 @@ class RMViewModel {
     var disposeBag = DisposeBag()    
 }
 
-protocol RMViewModelAction {
+protocol RMViewModelAction: class {
     func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool>
     
     func showMessage(message: String) -> Driver<Bool>
     
     var animation: Variable<Bool> { get }
     
+    func toast(message: String) -> Driver<Bool>
 }
 
 extension RMViewModelAction {
@@ -34,8 +35,18 @@ extension RMViewModelAction {
         }
     }
     
-    func message(message: String = "提交成功") -> Driver<Bool> {
+    func alert(message: String = "提交成功") -> Driver<Bool> {
         return showMessage(message: message)
+    }
+    
+    
+    func toast<T>(message: Result<T, MoyaError>) -> Driver<Bool> {
+        switch message {
+        case .failure(let error):
+            return toast(message: error.errorDescription!)
+        case.success:
+            return Driver.just(true)
+        }
     }
     
 }

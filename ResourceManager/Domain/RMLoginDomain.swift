@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import Moya
 import Result
+import RealmSwift
 
 class RMLoginValidate: RMValidate {
     static let shared = RMLoginValidate()
@@ -17,11 +18,22 @@ class RMLoginValidate: RMValidate {
 
 class RMLoginDomain: RMDomain {
     static let shared = RMLoginDomain()
+    
+    func user() -> Driver<Result<RMUser?, Moya.Error>> {
+        
+        let realm = try? Realm()
+        
+        let user = realm?.objects(RMUser.self).first
+        
+        return Driver.just(Result(value: user))
+    }
+    
     func sigin(username: String, password: String) -> Driver<Result<RMUser, Moya.Error>> {
         return RMLoginDomain.repository.sigin(username: username, password: password).map({ result in
             switch result {
             case .success(let user) :
                 do{
+                    user.password = password
                     try user.save()
                     RMDomain.user = user
                 }catch{

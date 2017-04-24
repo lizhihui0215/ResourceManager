@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxCocoa
+import Result
 
 enum RMDevicePort {
     case free(Int)
@@ -108,24 +109,33 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                 self.action.animation.value = false
                 switch result {
                 case .success(let links):
-                    let occupiedPorts: [RMDevicePort] = links.map{
-                        if $0.farendDeviceName == self.deviceName.value {
-                            return RMDevicePort(occupied: $0, isFarend: true)
+                    let occupiedPorts: [RMDevicePort] = links.filter{
+                        $0.farendDeviceName == self.deviceName.value || $0.accessDeviceName == self.deviceName.value
                         }
-                        
-                        if $0.accessDeviceName == self.deviceName.value {
-                            return RMDevicePort(occupied: $0, isFarend: false)
-                        }
-                        
-                        return RMDevicePort(free: -1)
-                    }.sorted(by: { $0.port() < $1.port()})
+                        .map{
+                            if $0.farendDeviceName == self.deviceName.value {
+                                return RMDevicePort(occupied: $0, isFarend: true)
+                            }
+                            
+                            if $0.accessDeviceName == self.deviceName.value {
+                                return RMDevicePort(occupied: $0, isFarend: false)
+                            }
+                            
+                            return RMDevicePort(free: -1)
+                        }.sorted(by: { $0.port() < $1.port()})
+                    
+                    if occupiedPorts.count != occupiedPorts.count {
+                        return self.action.alert(message: "程序异常，请联系管理员");
+                    }
                     
                     self.section(at: 0).append(contentsOf: occupiedPorts)
                     
-                    
-                    
                     for i in 1...self.device.terminalFree {
-                        let port = i + Int((occupiedPorts.last?.port())!)! 
+                        guard let occupiedPort = occupiedPorts.last?.port() else {
+                            break
+                        }
+                        
+                        let port = i + Int(occupiedPort)!
                         self.section(at: 0).append(item: RMDevicePort(free: port))
                     }
                     

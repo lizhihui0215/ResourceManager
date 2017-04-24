@@ -21,8 +21,6 @@ class RMScanViewModel: RMViewModel {
     
     var action: RMScanAction
     
-    
-    
     init(action: RMScanAction) {
         self.action = action
     }

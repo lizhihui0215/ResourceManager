@@ -118,7 +118,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
                 return self.action.alert(result: result)
             })
             .flatMapLatest({ _  in
-                return self.action.message(message: "提交成功！")
+                return self.action.alert(message: "提交成功！")
             })
     }
     
