@@ -21,6 +21,7 @@ class RMContentViewController: RMViewController {
 
         // Do any additional setup after loading the view.
         if let picture = self.picture {
+            imageView.kf.indicatorType = .activity
             imageView.kf.setImage(with: URL(string: picture.picUrl!))
         }
         self.contentLabel.text = content

@@ -86,7 +86,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
         var images = [UIImage]()
         
         for imageItem in self.section(at: 0).sectionItems() {
-            if let image = imageItem.image {
+            if let image = imageItem.image, !imageItem.isPlus {
                 images.append(image)
             }
         }
