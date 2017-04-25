@@ -30,7 +30,7 @@ class RMInspectUploadCell: UICollectionViewCell {
     override func prepareForReuse() {
         disposeBag = DisposeBag()
     }
-
+    
 }
 
 extension RMInspectUploadViewController: UICollectionViewDelegateFlowLayout {
@@ -112,12 +112,12 @@ extension RMInspectUploadViewController: RMInspectUploadAction {
 }
 
 extension RMInspectUploadViewController: RMLocationViewControllerDelegate {
-    func didEndSelected(mapItem: MKMapItem, of locationViewController: RMLocationViewController) {
-        if let addrList = mapItem.placemark.addressDictionary?["FormattedAddressLines"] as? [String], let viewModel = viewModel
+    func didEndSelected(mapItem: AMapPOI, of locationViewController: RMLocationViewController) {
+        if let viewModel = viewModel
         {
-            viewModel.locationName.value =   addrList.joined(separator: " ")
-            viewModel.longitude.value = (mapItem.placemark.location?.coordinate.longitude)!
-            viewModel.latitude.value = (mapItem.placemark.location?.coordinate.latitude)!
+            viewModel.locationName.value =   mapItem.name
+            viewModel.longitude.value = CLLocationDegrees(mapItem.location.latitude)
+            viewModel.latitude.value = CLLocationDegrees(mapItem.location.longitude)
             self.locationLabel.text = viewModel.locationName.value
         }
     }
@@ -128,7 +128,7 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     @IBOutlet weak var codeTextField: UITextField!
     
     @IBOutlet weak var verticalLayoutConstraint: NSLayoutConstraint!
-
+    
     @IBOutlet weak var textView: RSKGrowingTextView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -143,7 +143,7 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
         
         self.viewModel = RMInspectUploadViewModel(action: self)
         
-        textView.rx.textInput <-> (self.viewModel?.resportContent)!
+        textView.rx.textInput <-> (self.viewModel?.reportContent)!
         
         codeTextField.rx.textInput <-> (self.viewModel?.resourceId)!
         
@@ -159,7 +159,7 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     @IBAction func locationTapped(_ sender: UITapGestureRecognizer) {
         self.performSegue(withIdentifier: "toLocation", sender: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -171,16 +171,15 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
             self.viewModel?.resourceType.value = resourceType.type.rawValue
         }
     }
-
+    
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
         self.viewModel?.upload().drive(onNext: { success in
             if let delegate = self.delegate {
                 delegate.inspectUpload(viewController: self, didEndCommit: success)
-            }            
+            }
         }).disposed(by: disposeBag)
     }
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -198,5 +197,5 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     
     deinit {
     }
-
+    
 }

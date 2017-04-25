@@ -28,7 +28,6 @@ import UIKit
 import CoreLocation
 import MapKit
 
-
 typealias LMReverseGeocodeCompletionHandler = ((_ reverseGecodeInfo:NSDictionary?,_ placemark:CLPlacemark?, _ error:String?)->Void)?
 typealias LMGeocodeCompletionHandler = ((_ gecodeInfo:NSDictionary?,_ placemark:CLPlacemark?, _ error:String?)->Void)?
 typealias LMLocationCompletionHandler = ((_ latitude:Double, _ longitude:Double, _ status:String, _ verboseMessage:String, _ error:String?)->())?
@@ -125,7 +124,11 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         
     }
     
+    
+    
     func search(query: String ,coordinate: CLLocationCoordinate2D, region: Double, completionHandler: @escaping MapKit.MKLocalSearchCompletionHandler)  {
+        
+        
         let region = MKCoordinateRegionMakeWithDistance(coordinate, region, region)
         let request = MKLocalSearchRequest()
         request.region = region

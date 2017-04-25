@@ -22,7 +22,7 @@ class RMInspectUploadValidate {
         let serial = parameters["serial"] as! String
         let longitude = parameters["longitude"] as! CLLocationDegrees
         let locationName = parameters["locationName"] as! String
-        let resportContent = parameters["resportContent"] as! String
+        let reportContent = parameters["reportContent"] as! String
         let resourceType = parameters["resourceType"] as! Int
         let resourceId = parameters["resourceId"] as! String
         

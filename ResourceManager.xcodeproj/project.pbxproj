@@ -34,6 +34,7 @@
 		2632CAFB1E8B9D0F0064AF1E /* FDStackViewLayoutArrangement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAF01E8B9D0F0064AF1E /* FDStackViewLayoutArrangement.m */; };
 		2632CAFC1E8B9D0F0064AF1E /* FDTransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAF21E8B9D0F0064AF1E /* FDTransformLayer.m */; };
 		263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */; };
+		263FD31F1EAEFD7500EB7814 /* BDLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263FD31E1EAEFD7500EB7814 /* BDLocationManager.swift */; };
 		26483F3B1EA1316600D6A3EC /* RMLinkDetailDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26483F3A1EA1316600D6A3EC /* RMLinkDetailDomain.swift */; };
 		26483F3D1EA1458B00D6A3EC /* RMInspectUploadDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */; };
 		264BF2AF1E9DDACA00627C55 /* RMContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */; };
@@ -163,6 +164,7 @@
 		2632CAF21E8B9D0F0064AF1E /* FDTransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTransformLayer.m; sourceTree = "<group>"; };
 		2632CAFE1E8B9D940064AF1E /* ResourceManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ResourceManager-Bridging-Header.h"; path = "ResourceManager/ResourceManager-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewModel.swift; sourceTree = "<group>"; };
+		263FD31E1EAEFD7500EB7814 /* BDLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BDLocationManager.swift; sourceTree = "<group>"; };
 		26483F3A1EA1316600D6A3EC /* RMLinkDetailDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkDetailDomain.swift; sourceTree = "<group>"; };
 		26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadDomain.swift; sourceTree = "<group>"; };
 		264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMContentViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				26B189D01E9E8F9500A67B53 /* LocationManager.swift */,
+				263FD31E1EAEFD7500EB7814 /* BDLocationManager.swift */,
 				26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */,
 				2672C1001E8CE44900AD19EA /* RMError.swift */,
 				2672C1021E8CFABC00AD19EA /* Device+RMDevice.swift */,
@@ -629,6 +632,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 5R5G2D4E69;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					269A48A51E822FD30024FC17 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -875,6 +883,7 @@
 				262AB6991E9B345700986173 /* RMCabinetScanViewModel.swift in Sources */,
 				267641871E9B62F7000EFB23 /* RMCabinetDetailViewModel.swift in Sources */,
 				26C7C7AF1EAE3438006AC792 /* RMRootViewModel.swift in Sources */,
+				263FD31F1EAEFD7500EB7814 /* BDLocationManager.swift in Sources */,
 				26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */,
 				265653F21E827A1300F37064 /* RMAnimal.swift in Sources */,
 				260C3C421E9CCA5500DE7C46 /* RMInspectListDomain.swift in Sources */,
@@ -1078,6 +1087,7 @@
 			baseConfigurationReference = B2E29D2AB504AE9928FD1091 /* Pods-ResourceManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				INFOPLIST_FILE = ResourceManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1085,6 +1095,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -disable-availability-checking";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResourceManager/ResourceManager-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1095,6 +1106,7 @@
 			baseConfigurationReference = 6326FA90DF8232AA91C5506A /* Pods-ResourceManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				INFOPLIST_FILE = ResourceManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1102,6 +1114,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -disable-availability-checking";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResourceManager/ResourceManager-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
