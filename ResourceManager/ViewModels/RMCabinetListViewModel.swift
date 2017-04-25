@@ -49,7 +49,7 @@ class RMCabinetListViewModel:RMViewModel, RMListDataSource {
                 }
             })
             .flatMapLatest({ result  in
-                return self.action.alert(result: result)
+                return self.action.toast(message: result)
             })
     }
     

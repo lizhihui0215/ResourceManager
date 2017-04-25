@@ -7,13 +7,32 @@
 //
 
 import UIKit
+import RealmSwift
 
-class RMRootViewController: UIViewController {
+class RMRootViewController: RMViewController, RMRootViewAction {
+    
+    var viewModel: RMRootViewModel?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
+        self.viewModel = RMRootViewModel(action: self)
+        
+        self.viewModel?.navigationTo().drive(onNext: {[weak self] success in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
+            if success {
+                strongSelf.performSegue(withIdentifier: "toMain", sender: nil)
+            
+            }else {
+                strongSelf.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
+            }
+        }).disposed(by: disposeBag)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,5 +50,9 @@ class RMRootViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    deinit {
+        
+    }
 
 }

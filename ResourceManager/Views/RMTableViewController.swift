@@ -71,17 +71,20 @@ class RMTableViewController: RMViewController, RMTableViewRefresh {
 }
 
 
-protocol RMTableViewRefresh {
+protocol RMTableViewRefresh: class {
     func headerRefreshingFor(tableView: UITableView)
     
     func footerRefreshingFor(tableView: UITableView)
 }
 
 extension UITableView {
-    func headerRefresh(enable: Bool,target: RMTableViewRefresh)  {
+    func headerRefresh(enable: Bool, target: RMTableViewRefresh)  {
         if enable {
-            self.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-                target.headerRefreshingFor(tableView: self)
+            weak var x = target
+            self.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
+                if let strongSelf = self, let strongTarget = x {
+                    strongTarget.headerRefreshingFor(tableView: strongSelf)
+                }
             })
         }else{
             self.mj_header = nil
@@ -90,9 +93,12 @@ extension UITableView {
     
     func footerRefresh(enable: Bool, target: RMTableViewRefresh) {
         if enable {
-            
-            self.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
-                target.footerRefreshingFor(tableView: self)
+            weak var x = target
+
+            self.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {[weak self] in
+                if let strongSelf = self, let strongTarget = x {
+                    strongTarget.footerRefreshingFor(tableView: strongSelf)
+                }
             })
         }else{
             self.mj_footer = nil

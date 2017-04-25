@@ -13,15 +13,15 @@ class RMDeviceTableViewCell: RMTableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10) //if you also want to adjust separatorInset
     }
 }
+
 
 class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSource {
     
     var viewModel: RMCabinetDetailViewModel?
     
+    @IBOutlet weak var deviceHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cabinetCodeTextField: UITextField!
     @IBOutlet weak var cabinetNameTextField: UITextField!
     
@@ -32,9 +32,6 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.tableView.estimatedRowHeight = 40
         
         if let viewModel = self.viewModel {
             cabinetCodeTextField.text = viewModel.cabinet.cabinetCode
@@ -44,13 +41,20 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
             cabinetNameLabel.text = viewModel.cabinet.cabinetName
         }
         
+        self.tableView.rx.observe(CGSize.self, "contentSize").subscribe(onNext: {[weak self] x in
+            
+            if let strongSelf = self {
+                strongSelf.deviceHeightConstraint.constant = (x?.height)!
+            }
+            
+            
+        }).disposed(by: disposeBag)
+                
         cabinetCodeTextField.backgroundColor = UIColor.white
         cabinetNameTextField.backgroundColor = UIColor.white
 //        devicesTextField.background = nil
         capacityTextField.backgroundColor = UIColor.white
         cabinetLocationTextField.backgroundColor = UIColor.white
-        
-        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         
         
         // Do any additional setup after loading the view.
@@ -74,9 +78,11 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+//        self.deviceHeightConstraint.constant = CGFloat((self.viewModel?.numberOfRowsInSection(section: section) ?? 1)  * 41)
+        
         return self.viewModel?.numberOfRowsInSection(section: section) ?? 0
     }
-    
     
     
     // MARK: - Navigation

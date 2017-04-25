@@ -16,7 +16,7 @@ protocol RMInpsectListAction: RMViewModelAction {
 class RMInspectListViewModel: RMViewModel, RMListDataSource {
     var datasource: Array<RMSection<RMInspect, Void>> = []
     
-    var action: RMInpsectListAction
+    weak var action: RMInpsectListAction?
     
     init(action: RMInpsectListAction) {
         self.datasource.append(RMSection())
@@ -24,7 +24,7 @@ class RMInspectListViewModel: RMViewModel, RMListDataSource {
     }
     
     func inspectList(refresh: Bool) -> Driver<Bool> {
-        self.action.animation.value = true
+        self.action?.animation.value = true
         return RMInspectListDomain.shared.inspectList(refresh: refresh)
             .do(onNext: { [weak self] result in
                 
@@ -37,11 +37,18 @@ class RMInspectListViewModel: RMViewModel, RMListDataSource {
                         strongSelf.section(at: 0).append(contentsOf: links)
                     case.failure(_): break
                     }
-                    strongSelf.action.animation.value = false
+                    strongSelf.action?.animation.value = false
                 }
             })
-            .flatMapLatest({ result  in
-                return self.action.alert(result: result)
+            .flatMapLatest({[weak self] result  in
+                if let action = self?.action {
+                    return action.toast(message: result)
+                }
+                return Driver.just(false)
             })
+    }
+    
+    deinit {
+        
     }
 }

@@ -86,7 +86,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
         var images = [UIImage]()
         
         for imageItem in self.section(at: 0).sectionItems() {
-            if let image = imageItem.image {
+            if let image = imageItem.image, !imageItem.isPlus {
                 images.append(image)
             }
         }
@@ -118,7 +118,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
                 return self.action.alert(result: result)
             })
             .flatMapLatest({ _  in
-                return self.action.message(message: "提交成功！")
+                return self.action.alert(message: "提交成功！")
             })
     }
     

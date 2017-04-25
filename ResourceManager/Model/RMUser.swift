@@ -13,6 +13,7 @@ import ObjectMapper_Realm
 
 class RMUser: RMModel {
     dynamic var nickname: String?
+    dynamic var password: String?
     dynamic var loginName: String?
     dynamic var avatar: String?
     dynamic var name: String?
@@ -34,6 +35,7 @@ class RMUser: RMModel {
         loginName <- map["userinfo.loginName"]
         sex <- map["userinfo.sex"]
         accessToken <- map["accessToken"]
+        password <- map["password"]
     }
 
 }

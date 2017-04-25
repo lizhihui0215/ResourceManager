@@ -10,7 +10,14 @@ import UIKit
 
 extension RMTabBarViewController: RMInspectUploadViewControllerDelegate {
     func inspectUpload(viewController: RMInspectUploadViewController, didEndCommit success: Bool) {
-        self.viewControllers?[1] = (self.storyboard?.instantiateViewController(withIdentifier: "RMInspectUploadNavigationController"))!
+        if let navigationController = (self.storyboard?.instantiateViewController(withIdentifier: "RMInspectUploadNavigationController")) as? UINavigationController {
+            
+            let inspectUploadViewController = navigationController.topViewController as! RMInspectUploadViewController
+            
+            inspectUploadViewController.delegate = self
+
+            self.viewControllers?[1] = navigationController
+        }
     }
     
 }

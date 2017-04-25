@@ -80,7 +80,9 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
         if segue.identifier == "toLinkDetail" {
             let linkDetailViewController = segue.destination as! RMLinkDetailViewController
             
-            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink, action: linkDetailViewController)
+            let viewModel = self.viewModel as! RMLinkScanViewModel
+            
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink, action: linkDetailViewController, isModify: viewModel.isModify)
 
         }else if segue.identifier == "toCabinetDetail" {
             let cabinetDetailViewController = segue.destination as! RMCabinetDetailViewController

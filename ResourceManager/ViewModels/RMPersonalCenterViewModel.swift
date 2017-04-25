@@ -10,6 +10,7 @@ import RxSwift
 import Result
 import Moya
 import RxCocoa
+import RealmSwift
 
 enum RMPersonalItem {
     case changePassword
@@ -22,7 +23,7 @@ enum RMPersonalItem {
         case .changePassword:
             return "toExchangePassword"
         case .help:
-            return "toHelo"
+            return "toHelp"
         case .suggest:
             return "toSuggest"
         }
@@ -83,6 +84,13 @@ class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
         
         
         self.datasource.append(section)
+    }
+    
+    func logout() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
     
     func loginUser() -> Driver<Bool> {

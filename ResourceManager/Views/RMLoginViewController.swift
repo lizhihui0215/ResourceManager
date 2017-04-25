@@ -33,7 +33,6 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
         // Do any additional setup after loading the view.
         
         
-        
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSForegroundColorAttributeName: UIColor.white])
         
         usernameTextField.attributedPlaceholder = NSAttributedString(string: "用户名", attributes: [NSForegroundColorAttributeName: UIColor.white])
@@ -74,6 +73,7 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
         
         self.passwordTextField.rx.textInput <-> (self.viewModel?.password)!
         
+        self.viewModel?.user().drive().disposed(by: disposeBag)
     }
     
     

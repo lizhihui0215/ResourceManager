@@ -108,6 +108,7 @@ class RMPersonalCenterViewController: RMViewController {
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
+        self.viewModel?.logout()
         self.performSegue(withIdentifier: "toLogin", sender: self)
     }
 

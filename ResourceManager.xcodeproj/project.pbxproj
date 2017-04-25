@@ -86,6 +86,8 @@
 		26B189D11E9E8F9500A67B53 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B189D01E9E8F9500A67B53 /* LocationManager.swift */; };
 		26BFE8AD1E9E798D00A636AA /* RMLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE8AC1E9E798D00A636AA /* RMLocationViewController.swift */; };
 		26BFE8AF1E9E7CD100A636AA /* RMLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */; };
+		26C7C7AF1EAE3438006AC792 /* RMRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7C7AE1EAE3438006AC792 /* RMRootViewModel.swift */; };
+		26C7C7B11EAE3CD0006AC792 /* NSDate+RM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7C7B01EAE3CD0006AC792 /* NSDate+RM.swift */; };
 		26CB6A711E9761070092E3E9 /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A6A1E9761070092E3E9 /* LBXPermissions.swift */; };
 		26CB6A721E9761070092E3E9 /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A6B1E9761070092E3E9 /* LBXScanLineAnimation.swift */; };
 		26CB6A731E9761070092E3E9 /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A6C1E9761070092E3E9 /* LBXScanNetAnimation.swift */; };
@@ -219,6 +221,8 @@
 		26B189D01E9E8F9500A67B53 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		26BFE8AC1E9E798D00A636AA /* RMLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationViewController.swift; sourceTree = "<group>"; };
 		26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationViewModel.swift; sourceTree = "<group>"; };
+		26C7C7AE1EAE3438006AC792 /* RMRootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMRootViewModel.swift; sourceTree = "<group>"; };
+		26C7C7B01EAE3CD0006AC792 /* NSDate+RM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+RM.swift"; path = "ResourceManager/ViewModels/NSDate+RM.swift"; sourceTree = SOURCE_ROOT; };
 		26CB6A6A1E9761070092E3E9 /* LBXPermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
 		26CB6A6B1E9761070092E3E9 /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
 		26CB6A6C1E9761070092E3E9 /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
@@ -460,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				26D85E441EA079AE0036EBDF /* RMDeviceDetailViewModel.swift */,
+				26C7C7AE1EAE3438006AC792 /* RMRootViewModel.swift */,
 				2672C0FE1E8CCB8700AD19EA /* RMViewModel.swift */,
 				260C10941E8A429900011A8E /* RMLoginViewModel.swift */,
 				264D89FB1EA33FC4002B2A44 /* RMPersonalCenterViewModel.swift */,
@@ -516,6 +521,7 @@
 		5B875C2CC77C2CD5EFE0CDA4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				26C7C7B01EAE3CD0006AC792 /* NSDate+RM.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -868,6 +874,7 @@
 				265653EE1E826A3700F37064 /* RMExchangeRootSegue.swift in Sources */,
 				262AB6991E9B345700986173 /* RMCabinetScanViewModel.swift in Sources */,
 				267641871E9B62F7000EFB23 /* RMCabinetDetailViewModel.swift in Sources */,
+				26C7C7AF1EAE3438006AC792 /* RMRootViewModel.swift in Sources */,
 				26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */,
 				265653F21E827A1300F37064 /* RMAnimal.swift in Sources */,
 				260C3C421E9CCA5500DE7C46 /* RMInspectListDomain.swift in Sources */,
@@ -894,6 +901,7 @@
 				26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */,
 				269631561E9F8BA400EFB0A3 /* RMPickerView.swift in Sources */,
 				267641811E9B5647000EFB23 /* RMCabinet.swift in Sources */,
+				26C7C7B11EAE3CD0006AC792 /* NSDate+RM.swift in Sources */,
 				26CB6A731E9761070092E3E9 /* LBXScanNetAnimation.swift in Sources */,
 				266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */,
 				264C47D01E9DFA86008FE357 /* RMInspectUploadViewController.swift in Sources */,
