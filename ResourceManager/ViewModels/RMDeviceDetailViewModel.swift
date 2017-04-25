@@ -109,7 +109,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                 switch result {
                 case .success(let links):
                     let occupiedPorts: [RMDevicePort] = links.map{
-                        if $0.farendDeviceName == self.deviceName.value {
+                        if $0.farendDeviceId == self.deviceCode.value {
                             return RMDevicePort(occupied: $0, isFarend: true)
                         }
                         
