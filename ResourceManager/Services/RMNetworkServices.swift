@@ -99,6 +99,7 @@ public enum RMNetworkAPI {
     case linkModify(String,[String : Any])
     case inspectUpload(String, [String: Any], [MultipartFormData])
     case cabinetList(String, String, String, String, Int, Int)
+    case deviceList(String, String, String, Int, Int)
     case cabinetDetail(String, String)
     case inspectList(String,Int, Int)
     case exchangePassword(String, String, String)
@@ -136,8 +137,8 @@ extension RMNetworkAPI: TargetType {
             return "user/feedback?access_token=\(accessToken)"
         case let .link(accessToken,_):
             return "device/links?access_token=\(accessToken)"
-            
-
+        case let .deviceList(accessToken,_,_,_,_):
+            return "device/fuzzyquery?access_token=accessToken"
         }
         
     }
@@ -154,6 +155,7 @@ extension RMNetworkAPI: TargetType {
              .exchangePassword,
              .suggest,
              .link,
+             .deviceList,
              .inspectUpload:
             return .post
         }
@@ -203,6 +205,11 @@ extension RMNetworkAPI: TargetType {
                     "detail": detail]
         case let .link(_, deviceCode):
             return ["deviceCode": deviceCode]
+        case let .deviceList(_,deviceCode, deviceName,pageNO, pageSize):
+            return ["deviceCode": deviceCode,
+                    "deviceName": deviceName,
+                    "pageSize": pageSize,
+                    "pageNO": pageNO]
         }
     }
     
@@ -219,6 +226,7 @@ extension RMNetworkAPI: TargetType {
              .exchangePassword,
              .suggest,
              .link,
+             .deviceList,
              .linkModify:
             return JSONEncoding.default
         }
@@ -239,6 +247,7 @@ extension RMNetworkAPI: TargetType {
              .exchangePassword,
              .suggest,
              .link,
+             .deviceList,
              .linkModify:
             return .request
         case let .inspectUpload(_,_, formData):

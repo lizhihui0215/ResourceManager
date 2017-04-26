@@ -14,9 +14,9 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
     
     var viewModel: RMSearchViewModel?
     
-    @IBOutlet weak var linkCodeTextField: UITextField!
-    @IBOutlet weak var customerTextField: UITextField!
-    @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var firstTextField: UITextField!
+    @IBOutlet weak var thirdTextField: UITextField!
+    @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
     @IBOutlet weak var stackView: UIStackView!
@@ -28,19 +28,22 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         self.navigationItem.title = self.viewModel?.title
         
         if let _ = self.viewModel as? RMCabinetSearchViewModel {
-            self.linkCodeTextField.placeholder = "机柜代码"
-            self.accountTextField.placeholder = "机柜名称"
+            self.firstTextField.placeholder = "机柜代码"
+            self.secondTextField.placeholder = "机柜名称"
             self.stackView.removeArrangedSubview(self.stackView.subviews.last!)
         }else if let _ = self.viewModel as? RMLinkSearchViewModel {
             
+        }else if let _ = self.viewModel as? RMDeviceSearchViewModel {
+            self.firstTextField.placeholder = "设备代码"
+            self.secondTextField.placeholder = "设备名称"
+            self.stackView.removeArrangedSubview(self.stackView.subviews.last!)
         }
         
+        self.secondTextField.rx.textInput <-> (self.viewModel?.secondField)!
         
-        self.accountTextField.rx.textInput <-> (self.viewModel?.account)!
+        self.thirdTextField.rx.textInput <-> (self.viewModel?.thirdField)!
         
-        self.customerTextField.rx.textInput <-> (self.viewModel?.customerName)!
-        
-        self.linkCodeTextField.rx.textInput <-> (self.viewModel?.linkCode)!
+        self.firstTextField.rx.textInput <-> (self.viewModel?.firstField)!
         
     }
     
@@ -79,9 +82,9 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
                 let linkListViewModel = RMLinkListViewModel(action: linkListViewController,
                                                             isModify:linkSearchViewModel.isModify)
                 linkListViewModel.section(at: 0).append(contentsOf: (linkSearchViewModel.links))
-                linkListViewModel.account.value = (linkSearchViewModel.account.value)
-                linkListViewModel.customerName.value = (linkSearchViewModel.customerName.value)
-                linkListViewModel.linkCode.value = (linkSearchViewModel.linkCode.value)
+                linkListViewModel.account.value = (linkSearchViewModel.firstField.value)
+                linkListViewModel.customerName.value = (linkSearchViewModel.thirdField.value)
+                linkListViewModel.linkCode.value = (linkSearchViewModel.secondField.value)
                 linkListViewController.viewModel = linkListViewModel
             }
         }else if segue.identifier == "toCabinetList" {
@@ -89,9 +92,9 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
             if let cabinetSearchViewModel = self.viewModel as? RMCabinetSearchViewModel {
                 let cabinetListViewModel = RMCabinetListViewModel(action: cabinetListViewController)
                 cabinetListViewModel.section(at: 0).append(contentsOf: (cabinetSearchViewModel.links))
-                cabinetListViewModel.account.value = (cabinetSearchViewModel.account.value)
-                cabinetListViewModel.customerName.value = (cabinetSearchViewModel.customerName.value)
-                cabinetListViewModel.linkCode.value = (cabinetSearchViewModel.linkCode.value)
+                cabinetListViewModel.account.value = (cabinetSearchViewModel.firstField.value)
+                cabinetListViewModel.customerName.value = (cabinetSearchViewModel.thirdField.value)
+                cabinetListViewModel.linkCode.value = (cabinetSearchViewModel.secondField.value)
                 cabinetListViewController.viewModel = cabinetListViewModel
             }
         }else if segue.identifier == "toLinkScan" {
@@ -103,6 +106,8 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         }else if segue.identifier == "toCabinetScan" {
             let scanViewController = segue.destination as! RMScanViewController
             scanViewController.viewModel = RMCabinetScanViewModel(action: scanViewController)
+        }else if segue.identifier == "toDeviceList" {
+            
         }
     }
 }

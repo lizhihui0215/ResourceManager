@@ -28,22 +28,13 @@ class RMLinkSearchViewModel: RMSearchViewModel {
         super.init(actions: actions, title: isModify ? "链路修改" : "链路查询")
     }
     
-    override func identifier(`for`: RMSearchIdentifier) -> String{
-        switch `for` {
-        case .toScan:
-            return "toLinkScan"
-        case .toSearchList:
-            return "toLinkList"
-        }
-    }
-    
     override func search() -> Driver<Bool> {
         return linkList(refresh: true)
     }
     
     func linkList(refresh: Bool) -> Driver<Bool> {
         self.actions.animation.value = true
-        return RMLinkSearchDomain.shared.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
+        return RMLinkSearchDomain.shared.linkList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {

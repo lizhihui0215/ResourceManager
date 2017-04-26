@@ -51,6 +51,9 @@
 		265653F21E827A1300F37064 /* RMAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653F11E827A1300F37064 /* RMAnimal.swift */; };
 		266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */; };
 		266597841E95D82A0035D344 /* RMLinkSearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266597831E95D82A0035D344 /* RMLinkSearchDomain.swift */; };
+		266F46361EB1026100E79F4D /* RMDeviceSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F46351EB1026100E79F4D /* RMDeviceSearchViewModel.swift */; };
+		266F46381EB102D500E79F4D /* RMDeviceSearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F46371EB102D500E79F4D /* RMDeviceSearchDomain.swift */; };
+		266F463A1EB10B4600E79F4D /* RMDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F46391EB10B4600E79F4D /* RMDeviceListViewController.swift */; };
 		267035461E9F5D4D0049F0CC /* RMUploadScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267035451E9F5D4D0049F0CC /* RMUploadScanViewModel.swift */; };
 		2670EDE31E964FC900D2CA07 /* RMScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670EDE21E964FC900D2CA07 /* RMScanViewModel.swift */; };
 		2670EDE51E96522A00D2CA07 /* RMScanDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670EDE41E96522A00D2CA07 /* RMScanDomain.swift */; };
@@ -181,6 +184,9 @@
 		265653F11E827A1300F37064 /* RMAnimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAnimal.swift; sourceTree = "<group>"; };
 		266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkSearchViewModel.swift; sourceTree = "<group>"; };
 		266597831E95D82A0035D344 /* RMLinkSearchDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkSearchDomain.swift; sourceTree = "<group>"; };
+		266F46351EB1026100E79F4D /* RMDeviceSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceSearchViewModel.swift; sourceTree = "<group>"; };
+		266F46371EB102D500E79F4D /* RMDeviceSearchDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceSearchDomain.swift; sourceTree = "<group>"; };
+		266F46391EB10B4600E79F4D /* RMDeviceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceListViewController.swift; sourceTree = "<group>"; };
 		267035451E9F5D4D0049F0CC /* RMUploadScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMUploadScanViewModel.swift; sourceTree = "<group>"; };
 		2670EDE21E964FC900D2CA07 /* RMScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMScanViewModel.swift; sourceTree = "<group>"; };
 		2670EDE41E96522A00D2CA07 /* RMScanDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMScanDomain.swift; sourceTree = "<group>"; };
@@ -412,6 +418,7 @@
 				264D89F91EA33F78002B2A44 /* RMPersonalCenterViewController.swift */,
 				26909D6F1EA4968F008BE207 /* RMExchangePasswordViewController.swift */,
 				26909D731EA4C9EB008BE207 /* RMSuggestViewController.swift */,
+				266F46391EB10B4600E79F4D /* RMDeviceListViewController.swift */,
 				26CB6A691E9761070092E3E9 /* Scan */,
 				2632CAE21E8B9D0F0064AF1E /* FDStackView */,
 				5B87561556318D27513BB2E8 /* Link */,
@@ -474,6 +481,7 @@
 				268B423B1E8F471200ADAC83 /* RMListViewModel.swift */,
 				266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */,
 				26786E8F1E9B25D600AB42FF /* RMCabinetSearchViewModel.swift */,
+				266F46351EB1026100E79F4D /* RMDeviceSearchViewModel.swift */,
 				26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */,
 				26786E8B1E9B221D00AB42FF /* RMSearchViewModel.swift */,
 				26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */,
@@ -507,6 +515,7 @@
 				260C3C411E9CCA5500DE7C46 /* RMInspectListDomain.swift */,
 				26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */,
 				264D89FD1EA37FD6002B2A44 /* RMPersonalCenterDomain.swift */,
+				266F46371EB102D500E79F4D /* RMDeviceSearchDomain.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -857,11 +866,13 @@
 				2632CAFA1E8B9D0F0064AF1E /* FDStackViewExtensions.m in Sources */,
 				26CB6A721E9761070092E3E9 /* LBXScanLineAnimation.swift in Sources */,
 				26909D701EA4968F008BE207 /* RMExchangePasswordViewController.swift in Sources */,
+				266F46361EB1026100E79F4D /* RMDeviceSearchViewModel.swift in Sources */,
 				2670EDE31E964FC900D2CA07 /* RMScanViewModel.swift in Sources */,
 				266597841E95D82A0035D344 /* RMLinkSearchDomain.swift in Sources */,
 				26909D741EA4C9EB008BE207 /* RMSuggestViewController.swift in Sources */,
 				260C10951E8A429900011A8E /* RMLoginViewModel.swift in Sources */,
 				26909D721EA4BD09008BE207 /* RMExchangePasswordViewModel.swift in Sources */,
+				266F46381EB102D500E79F4D /* RMDeviceSearchDomain.swift in Sources */,
 				267641851E9B628E000EFB23 /* RMCabinetDetailViewController.swift in Sources */,
 				264D89FE1EA37FD6002B2A44 /* RMPersonalCenterDomain.swift in Sources */,
 				2632CAF81E8B9D0F0064AF1E /* FDStackViewAlignmentLayoutArrangement.m in Sources */,
@@ -887,6 +898,7 @@
 				26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */,
 				265653F21E827A1300F37064 /* RMAnimal.swift in Sources */,
 				260C3C421E9CCA5500DE7C46 /* RMInspectListDomain.swift in Sources */,
+				266F463A1EB10B4600E79F4D /* RMDeviceListViewController.swift in Sources */,
 				260C10981E8A502D00011A8E /* Operators.swift in Sources */,
 				26483F3B1EA1316600D6A3EC /* RMLinkDetailDomain.swift in Sources */,
 				2632CAC11E8B80E50064AF1E /* RMResourceManagerViewController.swift in Sources */,

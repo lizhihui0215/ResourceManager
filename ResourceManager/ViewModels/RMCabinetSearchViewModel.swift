@@ -24,22 +24,13 @@ class RMCabinetSearchViewModel: RMSearchViewModel {
         super.init(actions: actions, title: "机柜查询")
     }
     
-    override func identifier(`for`: RMSearchIdentifier) -> String{
-        switch `for` {
-        case .toScan:
-            return "toCabinetScan"
-        case .toSearchList:
-            return "toCabinetList"
-        }
-    }
-    
     override func search() -> Driver<Bool> {
         return cabinetList(refresh: true)
     }
     
     func cabinetList(refresh: Bool) -> Driver<Bool> {
         self.actions.animation.value = true
-        return RMCabinetSearchDomain.shared.cabinetList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
+        return RMCabinetSearchDomain.shared.cabinetList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
