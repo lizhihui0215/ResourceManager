@@ -10,6 +10,10 @@ import UIKit
 import AddressBook
 import MapKit
 
+import UIKit
+import AddressBook
+import MapKit
+
 class RMLocationCell: RMTableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
@@ -17,7 +21,7 @@ class RMLocationCell: RMTableViewCell {
 }
 
 protocol RMLocationViewControllerDelegate {
-    func didEndSelected(mapItem: MKMapItem, of locationViewController: RMLocationViewController)
+    func didEndSelected(mapItem: AMapPOI, of locationViewController: RMLocationViewController)
 }
 
 extension RMLocationViewController: UITableViewDelegate {
@@ -37,6 +41,12 @@ class RMLocationViewController: RMTableViewController, UITableViewDataSource, RM
     
     var delegate: RMLocationViewControllerDelegate?
     
+    var query: String {
+        get {
+            return "路|园|街道|餐厅|店|公司"
+        }
+    }
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -48,14 +58,36 @@ class RMLocationViewController: RMTableViewController, UITableViewDataSource, RM
         
         self.tableView.estimatedRowHeight = 40
         
-        self.viewModel?.start()
+        self.tableView.headerRefresh(enable: true, target: self)
+        
+        self.tableView.footerRefresh(enable: true, target: self)
+        
+        self.tableView.mj_header.beginRefreshing()
         
         self.searchBar.rx.searchButtonClicked.asObservable().subscribe(onNext: {[weak self] _ in
             if let strongSelf = self {
-                strongSelf.viewModel?.start(query: strongSelf.searchBar.text ?? "")
+                strongSelf.tableView.mj_header.beginRefreshing()
                 strongSelf.searchBar.resignFirstResponder()
             }
         }).disposed(by: disposeBag)
+    }
+    
+    override func headerRefreshingFor(tableView: UITableView) {
+        if let viewModel = self.viewModel {
+            viewModel.start(query: self.searchBar.text ?? query, isRefresh: true, completionHandler: {
+                tableView.reloadData()
+                tableView.mj_header.endRefreshing()
+            })
+        }
+    }
+    
+    override func footerRefreshingFor(tableView: UITableView) {
+        if let viewModel = self.viewModel {
+            viewModel.start(query: self.searchBar.text ?? query, isRefresh: false, completionHandler: {
+                tableView.reloadData()
+                tableView.mj_footer.endRefreshing()
+            })
+        }
     }
     
     
@@ -76,11 +108,7 @@ class RMLocationViewController: RMTableViewController, UITableViewDataSource, RM
             let mapItem = viewModel.elementAt(indexPath: indexPath)
             
             cell.nameLabel.text = mapItem.name
-            
-            if let addrList = mapItem.placemark.addressDictionary?["FormattedAddressLines"] as? [String]
-            {
-                cell.addressLabel.text = addrList.joined(separator: " ")
-            }
+            cell.addressLabel.text =  mapItem.address
         }
         
         return cell

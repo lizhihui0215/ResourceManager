@@ -34,6 +34,10 @@ class RMLoginDomain: RMDomain {
             case .success(let user) :
                 do{
                     user.password = password
+                    let realm = try Realm()
+                    try? realm.write {
+                        realm.delete(realm.objects(RMUser.self))
+                    }
                     try user.save()
                     RMDomain.user = user
                 }catch{

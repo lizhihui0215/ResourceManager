@@ -179,7 +179,7 @@ extension RMNetworkAPI: TargetType {
         case let .cabinetDetail(_, linkCode):
             return ["cabinetCode": linkCode]
         case let .cabinetList(_,account, customerName, linkCode, pageNO, pageSize):
-            return ["account": account,
+            return ["cabinetName": account,
                     "customerName": customerName,
                     "cabinetCode": linkCode,
                     "pageSize": pageSize,

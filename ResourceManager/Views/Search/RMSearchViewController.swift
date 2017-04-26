@@ -19,6 +19,7 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
+    @IBOutlet weak var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +29,8 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         
         if let _ = self.viewModel as? RMCabinetSearchViewModel {
             self.linkCodeTextField.placeholder = "机柜代码"
+            self.accountTextField.placeholder = "机柜名称"
+            self.stackView.removeArrangedSubview(self.stackView.subviews.last!)
         }else if let _ = self.viewModel as? RMLinkSearchViewModel {
             
         }

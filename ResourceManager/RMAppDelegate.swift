@@ -10,10 +10,12 @@ import UIKit
 import RealmSwift
 import IQKeyboardManagerSwift
 
+
 @UIApplicationMain
 class RMAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+        
     
     open class var shared: RMAppDelegate {
         get {
@@ -33,7 +35,13 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
         
         UINavigationBar.appearance().tintColor = .white
-                
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor(hex6: 0x3497d4, alpha: 1)], for: .highlighted)
+        
+        AMapServices.sharedServices().apiKey = "5d8a967c0316eb4c9d3295ac71a3de04"
+
+        
         return true
     }
 

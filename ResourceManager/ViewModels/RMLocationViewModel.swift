@@ -15,41 +15,45 @@ protocol RMLocationAction: RMViewModelAction {
 }
 
 class RMLocationViewModel: RMViewModel, RMListDataSource {
-    var datasource: Array<RMSection<MKMapItem, Void>> = []
-    var locationManager = LocationManager.sharedInstance
+    var datasource: Array<RMSection<AMapPOI, Void>> = []
+    var locationManager = AMLocationManager()
     weak var action: RMLocationAction?
     var query = Variable("")
     
-     init(action:  RMLocationAction) {
+    var page: Int = 0
+    
+    
+    init(action:  RMLocationAction) {
         self.datasource.append(RMSection())
         self.action = action
-        locationManager.autoUpdate = true
     }
     
     
-    func start (query: String = "supermarket,village,Community，Shop,Restaurant，School，hospital，Company，Street，Convenience store，Shopping Centre，Place names，Hotel，Grocery store")  {
+    func start (query: String = "路", isRefresh: Bool = true, completionHandler: (() -> Void)?)  {
         
-        locationManager.startUpdatingLocationWithCompletionHandler {[weak self] (latitude, longitude, status, verboseMessage, error) in
+        if isRefresh { self.page = 0; self.section(at: 0).removeAll() }
+        else { self.page += 1 }
+        
+        locationManager.search(query: query, page: self.page, count: 20) {[weak self] result in
             if let strongSelf = self {
-                strongSelf.action?.animation.value = true
-                let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-                strongSelf.locationManager.search(query: query, coordinate: coordinate, region: 1000, completionHandler: { (response, error) in
-                    strongSelf.datasource.removeAll()
-                    strongSelf.action?.animation.value = false
-                    let section = RMSection<MKMapItem, Void>()
-                    if let mapItems = response?.mapItems {
-                        section.append(contentsOf: mapItems)
-                        strongSelf.datasource.append(section)
-                        strongSelf.action?.reload()
-                    }
-                })
+                let section = strongSelf.section(at: 0)
+                if isRefresh {
+                    section.removeAll()
+                }
+                
+                if result.count > 0 {
+                    section.append(contentsOf: result)
+                }
+            }
+            
+            if let completionHandler = completionHandler {
+                completionHandler()
             }
         }
+
     }
     
     deinit {
-        locationManager.stopUpdatingLocation()
+//        locationManager.stopUpdatingLocation()
     }
-    
-    
 }

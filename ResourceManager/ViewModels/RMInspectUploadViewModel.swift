@@ -60,7 +60,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
     
     var locationName = Variable("")
     
-    var resportContent = Variable("")
+    var reportContent = Variable("")
     
     var resourceType = Variable(3)
     
@@ -95,7 +95,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
                                           "serial" : UUID().uuidString,
                                           "longitude": longitude.value,
                                           "locationName": locationName.value,
-                                          "resportContent": resportContent.value,
+                                          "reportContent": reportContent.value,
                                           "resourceType": resourceType.value,
                                           "resourceId": resourceId.value
         ]
