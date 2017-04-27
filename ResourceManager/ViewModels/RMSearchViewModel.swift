@@ -20,16 +20,17 @@ protocol RMSearchAction: RMViewModelAction {
 enum RMSearchIdentifier {
     case toScan
     case toSearchList
+    case toDeviceList
 }
 
 class RMSearchViewModel: RMViewModel {
     var actions: RMSearchAction
 
-    var account = Variable("")
+    var firstField = Variable("")
     
-    var linkCode = Variable("")
+    var secondField = Variable("")
     
-    var customerName = Variable("")
+    var thirdField = Variable("")
     
     var title: String
     
@@ -43,12 +44,14 @@ class RMSearchViewModel: RMViewModel {
         return Driver.just(true)
     }
     
-    func identifier(`for`: RMSearchIdentifier ) -> String{
-        return ""
+    func identifier(`for`: RMSearchIdentifier) -> String{
+        switch `for` {
+        case .toScan:
+            return "toCabinetScan"
+        case .toSearchList:
+            return "toCabinetList"
+        case .toDeviceList:
+            return "toDeviceList"
+        }
     }
-    
-    
-    
-    
-    
 }
