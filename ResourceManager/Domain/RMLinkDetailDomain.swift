@@ -11,6 +11,11 @@ import RxSwift
 import Result
 import Moya
 
+class RMLinkDetailValidate: RMValidate {
+    static let shared = RMLinkDetailValidate()
+
+}
+
 class RMLinkDetailDomain: RMDomain {
     static let shared = RMLinkDetailDomain()
 
@@ -24,6 +29,14 @@ class RMLinkDetailDomain: RMDomain {
 
     func link(deviceCode: String) -> Driver<Result<[RMLink], Moya.Error>> {
         return RMLinkDetailDomain.repository.link(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
+            print(error)
+            let x  = error as! Moya.Error;
+            return Driver.just(Result(error: x))
+        })
+    }
+    
+    func ports(deviceCode: String) -> Driver<Result<[Int], Moya.Error>> {
+        return RMLinkDetailDomain.repository.ports(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
             print(error)
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))

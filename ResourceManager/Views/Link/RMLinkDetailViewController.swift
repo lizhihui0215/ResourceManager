@@ -12,6 +12,20 @@ extension RMLinkDetailViewController: RMLinkDetailAction {
     
 }
 
+extension RMLinkDetailViewController: RMDeviceSearchViewControllerDelegate {
+    func didEndSearch(device: RMDevice, isAccess: Bool){
+        if isAccess {
+            self.viewModel?.accessDevice = device
+            self.viewModel?.accessDeviceId.value = device.deviceCode!
+            self.accessDeviceNameLabel.text = device.deviceName
+        }else {
+            self.viewModel?.farendDevice = device
+            self.viewModel?.farendDeviceId.value = device.deviceCode!
+            self.farendDeviceNameLabel.text = device.deviceName
+        }
+    }
+}
+
 class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var linkRateTextField: UITextField!
@@ -37,9 +51,6 @@ class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var farendDevicePortTapGesture: UITapGestureRecognizer!
     
     
-    @IBAction func accessDevicePortTapped(_ sender: UITapGestureRecognizer) {
-        
-    }
     
     @IBAction func farendDeviceNameTapped(_ sender: UITapGestureRecognizer) {
         self.performSegue(withIdentifier: "toDeviceSearch", sender: sender)
@@ -49,8 +60,45 @@ class RMLinkDetailViewController: RMViewController {
         self.performSegue(withIdentifier: "toDeviceSearch", sender: sender)
     }
     
+    @IBAction func accessDevicePortTapped(_ sender: UITapGestureRecognizer) {
+        if let viewModel = self.viewModel {
+            viewModel.freePort(isAccess: true).map({ (ints) -> [RMPortItem] in
+                var xx = [RMPortItem]()
+                for port in ints {
+                    xx.append(RMPortItem(port: port))
+                }
+                return xx
+            }).drive(onNext: {[weak self] ports in
+                if let strongSelf = self {
+                    strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
+                        if let strongSelf = self {
+                            strongSelf.accessDevicePortLabel.text = port.title
+                        }
+                    })
+                }
+            }).disposed(by: disposeBag)
+        }
+    }
+
+    
     @IBAction func farendDevicePortTappped(_ sender: UITapGestureRecognizer) {
-        
+        if let viewModel = self.viewModel {
+            viewModel.freePort(isAccess: true).map({ (ints) -> [RMPortItem] in
+                var xx = [RMPortItem]()
+                for port in ints {
+                    xx.append(RMPortItem(port: port))
+                }
+                return xx
+            }).drive(onNext: {[weak self] ports in
+                if let strongSelf = self {
+                    strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
+                        if let strongSelf = self {
+                            strongSelf.farendDevicePortLabel.text = port.title
+                        }
+                    })
+                }
+            }).disposed(by: disposeBag)
+        }
     }
     
     @IBAction func commitButtonPressed(_ sender: UIButton) {
@@ -119,7 +167,7 @@ class RMLinkDetailViewController: RMViewController {
     
     
     @IBAction func unwindForDeviceSearch(segue:UIStoryboardSegue) {
-        let deviceList = segue.destination as! RMDeviceListViewController
+//        let deviceList = segue.destination as! RMDeviceListViewController
         
     }
 
@@ -134,7 +182,7 @@ class RMLinkDetailViewController: RMViewController {
             
             let searchViewController = segue.destination as! RMSearchViewController
             
-            let isAccess = sender as! UITapGestureRecognizer == farendDeviceNameTapGesture
+            let isAccess = sender as! UITapGestureRecognizer == accessDeviceTapGesture
             searchViewController.viewModel = RMDeviceSearchViewModel(actions: searchViewController, isAccess: isAccess)
             
         }

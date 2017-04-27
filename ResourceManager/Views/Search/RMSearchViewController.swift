@@ -110,10 +110,16 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         }else if segue.identifier == "toDeviceList" {
             if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
                 let deviceListViewController = segue.destination as! RMDeviceListViewController
-                deviceListViewController.viewModel = RMDeviceListViewModel(action: deviceListViewController)
+                deviceListViewController.viewModel = RMDeviceListViewModel(action: deviceListViewController, isAccess: deviceSearchViewModel.isAccess)
                 deviceListViewController.viewModel?.section(at: 0).append(contentsOf: (deviceSearchViewModel.devices))
                 deviceListViewController.viewModel?.deviceCode.value = deviceSearchViewModel.firstField.value
                 deviceListViewController.viewModel?.deviceName.value = deviceSearchViewModel.secondField.value
+
+            }
+        }else if segue.identifier == "toDeviceScan" {
+            if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
+                let scanViewController = segue.destination as! RMScanViewController
+                scanViewController.viewModel = RMDeviceScanViewModel(action: scanViewController, isAccess: deviceSearchViewModel.isAccess)
 
             }
         }

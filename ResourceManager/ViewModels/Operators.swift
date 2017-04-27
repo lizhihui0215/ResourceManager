@@ -39,7 +39,7 @@ func <-> <Base: UILabel>(label: Base, variable: Variable<String>) -> Disposable 
     let bindToUIDisposable = variable.asObservable().bind(to: label.rx.text)
     
     let bindToVariable = label.rx.observe(String.self, "text").subscribe(onNext: { text in
-        if let text = text {
+        if let text = text, variable.value != text {
             variable.value = text
         }
         }, onCompleted: {

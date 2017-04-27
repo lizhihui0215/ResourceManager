@@ -13,6 +13,20 @@ protocol RMLinkDetailAction: RMViewModelAction {
     
 }
 
+class RMPortItem: RMPickerViewItem {
+    var title: String = ""
+    
+    
+    init(port: Int) {
+        self.title = String(port)
+    }
+    
+    func port() -> Int {
+        return Int(self.title)!
+    }
+
+}
+
 class RMLinkDetailViewModel: RMViewModel {
     
     var link: RMLink
@@ -26,6 +40,17 @@ class RMLinkDetailViewModel: RMViewModel {
     var farendDeviceName: Variable<String>
     var accessDevicePort: Variable<String>
     var accessDeviceName: Variable<String>
+    var farendDeviceId: Variable<String>
+    var accessDeviceId: Variable<String>
+    
+    
+    var accessDevice: RMDevice?
+    
+    var farendDevice: RMDevice?
+    
+    var accessPort: Int = 0
+    
+    var farendPort: Int = 0
     
     var isModify: Bool
     
@@ -45,8 +70,18 @@ class RMLinkDetailViewModel: RMViewModel {
         farendDevicePort = Variable(String(link.farendDevicePort) )
         accessDevicePort = Variable(String(link.accessDevicePort) )
         accessDeviceName = Variable(link.accessDeviceName ?? "")
+        farendDeviceId = Variable( link.farendDeviceId ?? "")
+        accessDeviceId = Variable(link.accessDeviceId ?? "")
         
         super.init()
+        
+        farendDeviceId.asObservable().bind {
+            link.farendDeviceId = $0
+        }.addDisposableTo(disposeBag)
+        
+        accessDeviceId.asObservable().bind {
+            link.accessDeviceId = $0
+            }.addDisposableTo(disposeBag)
         
         account.asObservable().bind { account in
             link.account = account
@@ -83,6 +118,32 @@ class RMLinkDetailViewModel: RMViewModel {
         accessDeviceName.asObservable().bind { accessDeviceName in
             link.accessDeviceName = accessDeviceName
             }.addDisposableTo(disposeBag)
+    }
+    
+    func freePort(isAccess: Bool) -> Driver<[Int]> {
+        self.action.animation.value = true
+        
+        let deviceCode = isAccess ? accessDeviceId.value : farendDeviceId.value
+        
+        
+        let message = isAccess ? "请选择本端设备" : "请选择对端设备"
+       return RMLinkDetailValidate.shared.validateNil(deviceCode, message: message).flatMapLatest{
+            return RMLinkDetailDomain.shared.ports(deviceCode: $0.value!)
+            }.do(onNext: { result in
+                self.action.animation.value = false
+            }).flatMapLatest { result  in
+                return  self.action.alert(result: result).flatMapLatest{ _ in
+                    
+                    switch result {
+                    case .success(let ports):
+                        return Driver.just(ports)
+                    default:
+                        return Driver.just([Int]())
+                    }
+                }
+        }
+        
+        
     }
     
     func linkModify() -> Driver<Bool> {

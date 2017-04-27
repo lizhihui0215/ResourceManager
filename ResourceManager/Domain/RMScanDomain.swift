@@ -28,4 +28,11 @@ class RMScanDomain: RMDomain {
             return Driver.just(Result(error: x))
         })
     }
+    
+    func deviceDetail(deviceCode: String) -> Driver<Result<RMDevice, Moya.Error>> {
+        return RMScanDomain.repository.device(deviceCode: deviceCode).asDriver(onErrorRecover:  { error in
+            let x  = error as! Moya.Error;
+            return Driver.just(Result(error: x))
+        })
+    }
 }

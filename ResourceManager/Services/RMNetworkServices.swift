@@ -62,6 +62,7 @@ let requestClosure = { (endpoint: Endpoint<RMNetworkAPI>, done: MoyaProvider.Req
     done(Result(value: request!))
 }
 
+
 let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(endpointClosure: endpointClosure,requestClosure: requestClosure,plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
 class RMNetworkServices {
@@ -89,6 +90,12 @@ class RMNetworkServices {
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseArray<T>> {
         return RMNetworkServicesProvider.request(token).mapObject(RMResponseArray<T>.self)
     }
+    
+    func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseBaseArray<T>> {
+        return RMNetworkServicesProvider.request(token).mapObject(RMResponseBaseArray<T>.self)
+    }
+    
+
 }
 
 public enum RMNetworkAPI {
@@ -101,6 +108,8 @@ public enum RMNetworkAPI {
     case cabinetList(String, String, String, String, Int, Int)
     case deviceList(String, String, String, Int, Int)
     case cabinetDetail(String, String)
+    case deviceDetail(String, String)
+    case ports(String, String)
     case inspectList(String,Int, Int)
     case exchangePassword(String, String, String)
     case suggest(String, String, String, String)
@@ -139,6 +148,10 @@ extension RMNetworkAPI: TargetType {
             return "device/links?access_token=\(accessToken)"
         case let .deviceList(accessToken,_,_,_,_):
             return "device/fuzzyquery?access_token=\(accessToken)"
+        case let .deviceDetail(accessToken,_):
+            return "device/query?access_token=\(accessToken)"
+        case let .ports(accessToken, _):
+            return "device/ports?access_token=\(accessToken)"
         }
         
     }
@@ -156,6 +169,8 @@ extension RMNetworkAPI: TargetType {
              .suggest,
              .link,
              .deviceList,
+             .deviceDetail,
+             .ports,
              .inspectUpload:
             return .post
         }
@@ -210,6 +225,11 @@ extension RMNetworkAPI: TargetType {
                     "deviceName": deviceName,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
+        case let .deviceDetail(_,deviceCode):
+            return ["deviceCode": deviceCode]
+        case let .ports(_, deviceCode):
+            return ["deviceCode": deviceCode]
+            
         }
     }
     
@@ -227,6 +247,8 @@ extension RMNetworkAPI: TargetType {
              .suggest,
              .link,
              .deviceList,
+             .deviceDetail,
+             .ports,
              .linkModify:
             return JSONEncoding.default
         }
@@ -248,6 +270,8 @@ extension RMNetworkAPI: TargetType {
              .suggest,
              .link,
              .deviceList,
+             .deviceDetail,
+             .ports,
              .linkModify:
             return .request
         case let .inspectUpload(_,_, formData):

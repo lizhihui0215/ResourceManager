@@ -92,8 +92,18 @@ class RMDataRepository {
             }
         })
     }
-    
-    
+
+    func ports(deviceCode: String) -> Observable<Result<[Int], Moya.Error>> {
+        let result: Observable<RMResponseBaseArray<Int>> = RMNetworkServices.shared.request(.ports((RMDomain.user?.accessToken)!, deviceCode))
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let device):
+                return Result(value: device)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
     
     func link(linkCode: String) -> Observable<Result<RMLink, Moya.Error>> {
         let result: Observable<RMResponseObject<RMLink>> = RMNetworkServices.shared.request(.linkDetail((RMDomain.user?.accessToken)!, linkCode))
@@ -164,6 +174,19 @@ class RMDataRepository {
         }
     }
     
+    func device(deviceCode: String) -> Observable<Result<RMDevice, Moya.Error>> {
+        let result: Observable<RMResponseObject<RMDevice>> = RMNetworkServices.shared.request(.deviceDetail((RMDomain.user?.accessToken)!, deviceCode))
+        
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let device):
+                return Result(value: device)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+    
     func cabinet(linkCode: String) -> Observable<Result<RMCabinet, Moya.Error>> {
         let result: Observable<RMResponseObject<RMCabinet>> = RMNetworkServices.shared.request(.cabinetDetail((RMDomain.user?.accessToken)!, linkCode))
         
@@ -196,6 +219,17 @@ class RMDataRepository {
             }
         }
     }
+    
+    func handlerError<T>(response: Observable<RMResponseBaseArray<T>>, message: String = "") -> Observable<Result<[T], Moya.Error>> {
+        return response.map { response  in
+            if response.code == 0 {
+                return Result(value: response.results ?? [T]())
+            }else {
+                return Result(error: error(code: response.code, message: response.message) )
+            }
+        }
+    }
+
     
     func handlerError<T>(response: Observable<RMResponseArray<T>>) -> Observable<Result<[T], Moya.Error>> {
         return response.map { response  in

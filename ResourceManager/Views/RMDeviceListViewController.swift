@@ -13,16 +13,22 @@ import RxSwift
 class RMDeviceListCell: RMTableViewCell {
     @IBOutlet weak var deviceCodeLabel: UILabel!
     @IBOutlet weak var deviceNameLabel: UILabel!
+    @IBOutlet weak var totalPortLabel: UILabel!
+    @IBOutlet weak var freePortLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 }
 
+protocol RMDeviceSearchViewControllerDelegate {
+    func didEndSearch(device: RMDevice, isAccess: Bool)
+}
+
 extension RMDeviceListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        let device = viewModel.elementAt(indexPath: indexPath)
-        self.viewModel
+        self.performSegue(withIdentifier: "endSearch", sender: indexPath)
     }
+    
 }
 extension RMDeviceListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,6 +38,8 @@ extension RMDeviceListViewController: UITableViewDataSource {
             let device = viewModel.elementAt(indexPath: indexPath)
             cell.deviceNameLabel.text = device.deviceName
             cell.deviceCodeLabel.text = device.deviceCode
+            cell.totalPortLabel.text = String(device.totalTerminals)
+            cell.freePortLabel.text = String(device.terminalFree)
         }
         
         return cell
@@ -83,14 +91,17 @@ class RMDeviceListViewController: RMTableViewController, RMDeviceListViewAction 
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "endSearch" {
+            let delegate = segue.destination as! RMDeviceSearchViewControllerDelegate
+            let device = viewModel?.elementAt(indexPath: sender as! IndexPath)
+            delegate.didEndSearch(device: device!, isAccess: (self.viewModel?.isAccess)!)
+        }
     }
-    */
-
 }

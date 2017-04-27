@@ -81,7 +81,7 @@ extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
 class RMViewController: UIViewController {
     
     var disposeBag = DisposeBag()
-        
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

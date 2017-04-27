@@ -14,7 +14,7 @@ protocol RMScanViewControllerDelegate: NSObjectProtocol {
       func scaned(code: String, of scanViewController: RMScanViewController) -> Void
 }
 
-class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction,RMUploadScanAction {
+class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction,RMUploadScanAction, RMDeviceScanAction {
     
 
     var disposeBag = DisposeBag()
@@ -47,12 +47,15 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
                 self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
             }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
                 self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
+            }else if let _ = self.viewModel as? RMDeviceScanViewModel, success {
+                self.performSegue(withIdentifier: "endScan", sender: nil)
             }
         }).disposed(by: disposeBag)
         
         if let delegate = self.delegate {
             delegate.scaned(code:(arrayResult.first?.strScanned)! , of: self)
             self.navigationController?.popViewController(animated: true)
+            
         }
     }
     
@@ -88,6 +91,12 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
             let cabinetDetailViewController = segue.destination as! RMCabinetDetailViewController
             
             cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(cabinet: (self.viewModel?.result) as! RMCabinet)
+        }else if segue.identifier == "endScan" {
+            if let viewModel = self.viewModel as? RMDeviceScanViewModel {
+                let delegate = segue.destination as! RMDeviceSearchViewControllerDelegate
+                let device = viewModel.result as! RMDevice
+                delegate.didEndSearch(device: device, isAccess: viewModel.isAccess)
+            }
         }
     }
     

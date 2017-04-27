@@ -25,6 +25,25 @@ class RMResponseNil: Mappable {
     }
 }
 
+class RMResponseBaseArray <T>: Mappable {
+    var message: String?
+    
+    var code: Int?
+    
+    var results: [T]?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        message <- map[RMNetworkServices.kMessage]
+        
+        code <- map[RMNetworkServices.kCode]
+        
+        results <- map[RMNetworkServices.kResults]
+    }
+}
+
 class RMResponseArray<T: Mappable>: Mappable {
     var message: String?
     
