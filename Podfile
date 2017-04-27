@@ -59,9 +59,9 @@ target 'ResourceManager' do
   #  https://github.com/banchichen/TZImagePickerController
   pod 'TZImagePickerController'
   
-  #  https://github.com/ruslanskorb/RSKGrowingTextView
-  pod 'RSKGrowingTextView'
-  
+#  #  https://github.com/ruslanskorb/RSKGrowingTextView
+#  pod 'RSKGrowingTextView'
+
   # https://github.com/devxoul/Toaster
   pod 'Toaster'
   

@@ -28,6 +28,15 @@ class RMCabinetSearchViewModel: RMSearchViewModel {
         return cabinetList(refresh: true)
     }
     
+    override func identifier(`for`: RMSearchIdentifier) -> String{
+        switch `for` {
+        case .toScan:
+            return "toCabinetScan"
+        case .toSearchList:
+            return "toCabinetList"
+        }
+    }
+    
     func cabinetList(refresh: Bool) -> Driver<Bool> {
         self.actions.animation.value = true
         return RMCabinetSearchDomain.shared.cabinetList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)

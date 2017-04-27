@@ -21,20 +21,48 @@ class RMLinkDetailViewController: RMViewController {
     var viewModel: RMLinkDetailViewModel? = nil
     
     @IBOutlet weak var commitButton: UIButton!
-    @IBOutlet weak var farendDevicePortTextField: UITextField!
-    @IBOutlet weak var farendDeviceNameTextField: UITextField!
-    @IBOutlet weak var accessDevicePortTextField: UITextField!
-    @IBOutlet weak var accessDeviceNameTextField: UITextField!
     
+    
+    @IBOutlet weak var accessDeviceNameLabel: UILabel!
+    @IBOutlet weak var accessDevicePortLabel: UILabel!
+    
+    @IBOutlet weak var farendDeviceNameLabel: UILabel!
+    @IBOutlet weak var farendDevicePortLabel: UILabel!
+    
+    @IBOutlet var accessDevicePortTapGesture: UITapGestureRecognizer!
+    @IBOutlet var accessDeviceTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var commitButtonHightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var farendDeviceNameTapGesture: UITapGestureRecognizer!
+    @IBOutlet weak var farendDevicePortTapGesture: UITapGestureRecognizer!
+    
+    
+    @IBAction func accessDevicePortTapped(_ sender: UITapGestureRecognizer) {
+        
+    }
+    
+    @IBAction func farendDeviceNameTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "toDeviceSearch", sender: sender)
+    }
+    
+    @IBAction func accessDeviceTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "toDeviceSearch", sender: sender)
+    }
+    
+    @IBAction func farendDevicePortTappped(_ sender: UITapGestureRecognizer) {
+        
+    }
+    
     @IBAction func commitButtonPressed(_ sender: UIButton) {
         self.viewModel?.linkModify().drive().disposed(by: disposeBag)
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+
         if let isModify = self.viewModel?.isModify, isModify == false {
             
             self.accountTextField.isEnabled = false
@@ -52,23 +80,20 @@ class RMLinkDetailViewController: RMViewController {
             self.customerLevelTextField.isEnabled = false
             self.customerLevelTextField.backgroundColor = UIColor.white
 
-
-            self.farendDeviceNameTextField.borderStyle = .none
-            self.farendDeviceNameTextField.isEnabled = false
-            self.farendDevicePortTextField.isEnabled = false
-            self.farendDevicePortTextField.borderStyle = .none
+            self.accessDeviceNameLabel.layer.borderWidth = 0
+            self.accessDevicePortLabel.layer.borderWidth = 0
             
-            self.accessDeviceNameTextField.borderStyle = .none
-            self.accessDeviceNameTextField.isEnabled = false
-
-            self.accessDevicePortTextField.borderStyle = .none
-            self.accessDevicePortTextField.isEnabled = false
+            self.farendDeviceNameLabel.layer.borderWidth = 0
+            self.farendDevicePortLabel.layer.borderWidth = 0
             
             self.commitButtonHightConstraint.constant = 0
+            
+            self.accessDeviceTapGesture.isEnabled = false
 
         }else {
             self.linkCodeTextField.isEnabled = false
             self.linkCodeTextField.backgroundColor = UIColor.white
+            self.accessDeviceTapGesture.isEnabled = true
         }
         
         if let viewModel = self.viewModel {
@@ -77,10 +102,10 @@ class RMLinkDetailViewController: RMViewController {
             linkCodeTextField.rx.textInput <-> viewModel.linkCode
             customerNameTextField.rx.textInput <-> viewModel.customerName
             customerLevelTextField.rx.textInput <-> viewModel.customerLevel
-            farendDeviceNameTextField.rx.textInput <-> viewModel.farendDeviceName
-            farendDevicePortTextField.rx.textInput <-> viewModel.farendDevicePort
-            accessDeviceNameTextField.rx.textInput <-> viewModel.accessDeviceName
-            accessDevicePortTextField.rx.textInput <-> viewModel.accessDevicePort
+            farendDeviceNameLabel <-> viewModel.farendDeviceName
+            farendDevicePortLabel <-> viewModel.farendDevicePort
+            accessDeviceNameLabel <-> viewModel.accessDeviceName
+            accessDevicePortLabel <-> viewModel.accessDevicePort
         }
     }
     @IBAction func test(_ sender: UIBarButtonItem) {
@@ -93,16 +118,28 @@ class RMLinkDetailViewController: RMViewController {
     }
     
     
+    @IBAction func unwindForDeviceSearch(segue:UIStoryboardSegue) {
+        let deviceList = segue.destination as! RMDeviceListViewController
+        
+    }
+
     
-    
-    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "toDeviceSearch" {
+            
+            let searchViewController = segue.destination as! RMSearchViewController
+            
+            let isAccess = sender as! UITapGestureRecognizer == farendDeviceNameTapGesture
+            searchViewController.viewModel = RMDeviceSearchViewModel(actions: searchViewController, isAccess: isAccess)
+            
+        }
+        
      }
-     */
+    
     
 }

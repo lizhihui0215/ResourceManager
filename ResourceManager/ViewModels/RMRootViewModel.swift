@@ -25,17 +25,15 @@ class RMRootViewModel: RMViewModel {
     
     func navigationTo() -> Driver<Bool> {
        return RMLoginDomain.shared.user().flatMapLatest { result  in
-        
-        
-        
             switch result{
             case .success(let user):
                 if let user = user {
                     return RMLoginDomain.shared.sigin(username: user.loginName!, password: user.password!).flatMapLatest({[weak self] result  in
-                        if let action = self?.action {
-                            return action.alert(result: result)
-                        }else {
-                            return Driver.just(false)
+                        switch result {
+                        case .success:
+                            return Driver.just(true)
+                        case .failure(let error):
+                            return (self?.action?.alert(message: error.errorDescription!))!
                         }
                     })                    
                 }

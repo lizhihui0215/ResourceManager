@@ -38,9 +38,6 @@ PODS:
   - RealmSwift (2.6.2):
     - Realm (= 2.6.2)
   - Result (3.2.1)
-  - RSKGrowingTextView (2.0.0):
-    - RSKPlaceholderTextView (= 2.0.0)
-  - RSKPlaceholderTextView (2.0.0)
   - RxCocoa (3.4.0):
     - RxSwift (~> 3.4)
   - RxRealm (0.6.0):
@@ -65,7 +62,6 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - ObjectMapper+Realm
   - RealmSwift
-  - RSKGrowingTextView
   - RxCocoa
   - RxRealm
   - RxSwift
@@ -88,13 +84,11 @@ SPEC CHECKSUMS:
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
   Moya-ObjectMapper: 952be2b261d38cf8d973b7e429708eb03d256e23
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
-  ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
+  ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
   Realm: 29222766425b9f831228f81b63f0e38a97a4d700
   RealmSwift: d161a80f96cb91ae88391a7d5a9cf08024a7bc8e
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
-  RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
-  RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
   RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
   RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
@@ -103,6 +97,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: a8c9502d4b7ac7f53c67f41348c23b34f39ec6ef
+PODFILE CHECKSUM: e3cbcb45c05571b821a8bf5a7bb9092418c8e937
 
 COCOAPODS: 1.2.0

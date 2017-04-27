@@ -20,7 +20,6 @@ protocol RMSearchAction: RMViewModelAction {
 enum RMSearchIdentifier {
     case toScan
     case toSearchList
-    case toDeviceList
 }
 
 class RMSearchViewModel: RMViewModel {
@@ -45,13 +44,6 @@ class RMSearchViewModel: RMViewModel {
     }
     
     func identifier(`for`: RMSearchIdentifier) -> String{
-        switch `for` {
-        case .toScan:
-            return "toCabinetScan"
-        case .toSearchList:
-            return "toCabinetList"
-        case .toDeviceList:
-            return "toDeviceList"
-        }
+        return ""
     }
 }

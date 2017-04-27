@@ -28,6 +28,15 @@ class RMLinkSearchViewModel: RMSearchViewModel {
         super.init(actions: actions, title: isModify ? "链路修改" : "链路查询")
     }
     
+    override func identifier(for: RMSearchIdentifier) -> String {
+        switch `for` {
+        case .toScan:
+            return "toLinkScan"
+        case .toSearchList:
+            return "toLinkList"
+        }
+    }
+    
     override func search() -> Driver<Bool> {
         return linkList(refresh: true)
     }

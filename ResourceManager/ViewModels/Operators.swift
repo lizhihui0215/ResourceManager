@@ -34,6 +34,21 @@ func nonMarkedText(_ textInput: UITextInput) -> String? {
 }
 
 @discardableResult
+func <-> <Base: UILabel>(label: Base, variable: Variable<String>) -> Disposable {
+    
+    let bindToUIDisposable = variable.asObservable().bind(to: label.rx.text)
+    
+    let bindToVariable = label.rx.observe(String.self, "text").subscribe(onNext: { text in
+        if let text = text {
+            variable.value = text
+        }
+        }, onCompleted: {
+            bindToUIDisposable.dispose()
+    })
+    return Disposables.create(bindToUIDisposable, bindToVariable)
+}
+
+@discardableResult
 func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<String>) -> Disposable {
     
     let bindToUIDisposable = variable.asObservable().bindTo(textInput.text)

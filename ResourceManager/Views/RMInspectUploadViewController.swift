@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RSKGrowingTextView
 import RxSwift
 import TZImagePickerController
 import RxCocoa

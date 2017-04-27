@@ -16,6 +16,7 @@ fileprivate var animationContext: UInt8 = 0
 
 
 extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
+    
 
     func showMessage(message: String) -> Driver<Bool> {
         return Observable.create{

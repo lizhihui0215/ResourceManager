@@ -12,20 +12,34 @@ import RealmSwift
 import Result
 import Moya
 
-protocol RMDeviceSearchAction: RMSearchAction {
+protocol RMDeviceSearchAction: RMSearchListAction {
     
 }
 
 class RMDeviceSearchViewModel: RMSearchViewModel {
     var devices = [RMDevice]()
     
-    init(actions: RMDeviceSearchAction) {
+    var isAccess: Bool
+    
+    
+    init(actions: RMSearchListAction, isAccess: Bool) {
+        self.isAccess = isAccess
         super.init(actions: actions, title: "设备查询")
     }
         
     override func search() -> Driver<Bool> {
         return deviceList(refresh: true)
     }
+    
+    override func identifier(`for`: RMSearchIdentifier) -> String{
+        switch `for` {
+        case .toScan:
+            return "toDeviceScan"
+        case .toSearchList:
+            return "toDeviceList"
+        }
+    }
+    
     
     func deviceList(refresh: Bool) -> Driver<Bool> {
         self.actions.animation.value = true

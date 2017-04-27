@@ -138,7 +138,7 @@ extension RMNetworkAPI: TargetType {
         case let .link(accessToken,_):
             return "device/links?access_token=\(accessToken)"
         case let .deviceList(accessToken,_,_,_,_):
-            return "device/fuzzyquery?access_token=accessToken"
+            return "device/fuzzyquery?access_token=\(accessToken)"
         }
         
     }
