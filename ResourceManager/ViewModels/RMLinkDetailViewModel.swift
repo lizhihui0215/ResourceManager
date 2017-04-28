@@ -24,7 +24,7 @@ class RMPortItem: RMPickerViewItem {
     func port() -> Int {
         return Int(self.title)!
     }
-
+    
 }
 
 class RMLinkDetailViewModel: RMViewModel {
@@ -77,7 +77,7 @@ class RMLinkDetailViewModel: RMViewModel {
         
         farendDeviceId.asObservable().bind {
             link.farendDeviceId = $0
-        }.addDisposableTo(disposeBag)
+            }.addDisposableTo(disposeBag)
         
         accessDeviceId.asObservable().bind {
             link.accessDeviceId = $0
@@ -125,9 +125,8 @@ class RMLinkDetailViewModel: RMViewModel {
         
         let deviceCode = isAccess ? accessDeviceId.value : farendDeviceId.value
         
-        
         let message = isAccess ? "请选择本端设备" : "请选择对端设备"
-       return RMLinkDetailValidate.shared.validateNil(deviceCode, message: message).flatMapLatest{
+        return RMLinkDetailValidate.shared.validateNil(deviceCode, message: message).flatMapLatest{
             return RMLinkDetailDomain.shared.ports(deviceCode: $0.value!)
             }.do(onNext: { result in
                 self.action.animation.value = false
@@ -142,11 +141,17 @@ class RMLinkDetailViewModel: RMViewModel {
                     }
                 }
         }
-        
-        
     }
     
     func linkModify() -> Driver<Bool> {
+        if link.farendDevicePort == 0 {
+            return self.action.alert(message: "请选择对端端口")
+        }
+        
+        if link.accessDevicePort == 0 {
+            return self.action.alert(message: "请选择本端端口")
+        }
+        
         self.action.animation.value = true
         return RMLinkDetailDomain.shared.linkModify(link: self.link)
             .do(onNext: { [weak self] result in

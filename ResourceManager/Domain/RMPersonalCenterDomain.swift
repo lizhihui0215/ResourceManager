@@ -56,10 +56,6 @@ class RMPersonalCenterDomain: RMDomain {
     }
     
     func logout() ->  Driver<Result<Bool, MoyaError>>{
-        let realm = try? Realm()
-        try? realm?.write {
-            realm?.deleteAll()
-        }
         return Driver.just(Result(value: true))
     }
     

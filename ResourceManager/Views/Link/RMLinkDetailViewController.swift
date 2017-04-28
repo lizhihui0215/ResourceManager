@@ -18,10 +18,12 @@ extension RMLinkDetailViewController: RMDeviceSearchViewControllerDelegate {
             self.viewModel?.accessDevice = device
             self.viewModel?.accessDeviceId.value = device.deviceCode!
             self.accessDeviceNameLabel.text = device.deviceName
+            self.accessDevicePortLabel.text = ""
         }else {
             self.viewModel?.farendDevice = device
             self.viewModel?.farendDeviceId.value = device.deviceCode!
             self.farendDeviceNameLabel.text = device.deviceName
+            self.farendDevicePortLabel.text = ""
         }
     }
 }
@@ -137,11 +139,18 @@ class RMLinkDetailViewController: RMViewController {
             self.commitButtonHightConstraint.constant = 0
             
             self.accessDeviceTapGesture.isEnabled = false
+            self.accessDevicePortTapGesture.isEnabled = false
+            self.farendDeviceNameTapGesture.isEnabled = false
+            self.farendDevicePortTapGesture.isEnabled = false
 
         }else {
             self.linkCodeTextField.isEnabled = false
             self.linkCodeTextField.backgroundColor = UIColor.white
             self.accessDeviceTapGesture.isEnabled = true
+            self.accessDevicePortTapGesture.isEnabled = true
+            self.farendDeviceNameTapGesture.isEnabled = true
+            self.farendDevicePortTapGesture.isEnabled = true
+
         }
         
         if let viewModel = self.viewModel {

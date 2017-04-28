@@ -30,7 +30,7 @@ class RMLoginViewModel: RMViewModel {
             case .success(let user):
                 if let user = user, let strongSelf = self {
                     strongSelf.username.value = user.loginName!
-                    strongSelf.password.value = user.password!
+//                    strongSelf.password.value = user.password!
                 }
                 return Driver.just(true)
             case .failure( _):

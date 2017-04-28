@@ -113,7 +113,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                         $0.farendDeviceId == self.deviceCode.value || $0.accessDeviceId == self.deviceCode.value
                         }
                         .map{
-                            if $0.farendDeviceName == self.deviceCode.value {
+                            if $0.farendDeviceId == self.deviceCode.value {
                                 return RMDevicePort(occupied: $0, isFarend: true)
                             }
                             
@@ -127,16 +127,14 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                     if occupiedPorts.count != occupiedPorts.count {
                         return self.action.alert(message: "程序异常，请联系管理员");
                     }
-                    
-                    self.section(at: 0).append(contentsOf: occupiedPorts)
-                    
-                    for i in 1...self.device.terminalFree {
-                        guard let occupiedPort = occupiedPorts.last?.port() else {
-                            break
-                        }
-                        
-                        let port = i + Int(occupiedPort)!
-                        self.section(at: 0).append(item: RMDevicePort(free: port))
+                                        
+                    for i in 1...self.device.totalTerminals {
+                        let occupiedPort = occupiedPorts.filter{ return Int($0.port()) == i }.last
+                        if let occupiedPort = occupiedPort {
+                            self.section(at: 0).append(item: occupiedPort)
+                        }else {
+                            self.section(at: 0).append(item: RMDevicePort(free: i))
+                        }                        
                     }
                     
                 default:

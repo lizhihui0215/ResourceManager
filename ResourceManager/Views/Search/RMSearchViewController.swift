@@ -37,7 +37,6 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
             self.firstTextField.placeholder = "设备代码"
             self.secondTextField.placeholder = "设备名称"
             self.stackView.removeArrangedSubview(self.stackView.subviews.last!)
-            self.navigationItem.rightBarButtonItem = nil
         }
         
         self.secondTextField.rx.textInput <-> (self.viewModel?.secondField)!

@@ -8,6 +8,7 @@
 
 import UIKit
 class RMLinkTableViewCell: RMTableViewCell {
+    @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var accessDevicePortLabel: UILabel!
     @IBOutlet weak var accessDeviceNameLabel: UILabel!
     @IBOutlet weak var codeLabel: UILabel!
@@ -70,6 +71,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
             cell.accessDevicePortLabel.text = String(link.accessDevicePort)
             cell.customerNameLabel.text = link.customerName
             cell.codeLabel.text = link.linkCode
+            cell.accountLabel.text = link.account
         }
         
         return cell

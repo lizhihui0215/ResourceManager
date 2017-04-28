@@ -87,10 +87,10 @@ class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
     }
     
     func logout() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
     }
     
     func loginUser() -> Driver<Bool> {
