@@ -35,9 +35,9 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
         
         self.tableView.estimatedRowHeight = 40
         
-        self.viewModel?.cabinetList(refresh: true).drive(onNext: { result in
-            self.tableView.reloadData()
-        }).disposed(by: disposeBag)
+//        self.viewModel?.cabinetList(refresh: true).drive(onNext: { result in
+//            self.tableView.reloadData()
+//        }).disposed(by: disposeBag)
     }
     
     override func didReceiveMemoryWarning() {

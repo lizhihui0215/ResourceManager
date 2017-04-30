@@ -536,7 +536,7 @@
             </objects>
             <point key="canvasLocation" x="3123" y="259"/>
         </scene>
-        <!--Personal Center View Controller-->
+        <!--个人中心-->
         <scene sceneID="JjG-ju-kh6">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="HV8-D7-GgX" customClass="RMPersonalCenterViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -660,7 +660,7 @@
                             <constraint firstAttribute="trailing" secondItem="DpC-9Q-WaT" secondAttribute="trailing" constant="20" id="yIr-T0-8T3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zzy-sl-Nmm"/>
+                    <navigationItem key="navigationItem" title="个人中心" id="Uan-Qf-iOj"/>
                     <connections>
                         <outlet property="accountLabel" destination="BTd-LI-Tmi" id="fHr-4W-ffw"/>
                         <outlet property="avatarImageView" destination="Kir-hq-YMQ" id="Zwu-zo-qSz"/>
@@ -676,10 +676,10 @@
             </objects>
             <point key="canvasLocation" x="3124" y="1675"/>
         </scene>
-        <!--Exchange Password View Controller-->
+        <!--修改密码-->
         <scene sceneID="MIi-yX-4wC">
             <objects>
-                <viewController id="nIm-OY-rWg" customClass="RMExchangePasswordViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="nIm-OY-rWg" customClass="RMExchangePasswordViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GnJ-c9-p1F"/>
                         <viewControllerLayoutGuide type="bottom" id="eW2-zf-iu0"/>
@@ -803,6 +803,7 @@
                             <constraint firstItem="jdj-lF-PPp" firstAttribute="leading" secondItem="rkB-7w-rEC" secondAttribute="leading" constant="40" id="xLn-F6-t7H"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="修改密码" id="VfM-zu-P5V"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="hnH-BH-K0i" id="VdS-7x-1dA"/>
                         <outlet property="newPasswordTextField" destination="nYP-L0-4KA" id="DJT-Qs-DKT"/>
@@ -813,10 +814,10 @@
             </objects>
             <point key="canvasLocation" x="4155" y="1675"/>
         </scene>
-        <!--Suggest View Controller-->
+        <!--意见反馈-->
         <scene sceneID="v4n-JF-LwA">
             <objects>
-                <viewController id="fte-uz-zzw" customClass="RMSuggestViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="fte-uz-zzw" customClass="RMSuggestViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XCd-6C-ah8"/>
                         <viewControllerLayoutGuide type="bottom" id="HrA-ik-Ua6"/>
@@ -958,6 +959,7 @@
                             <constraint firstItem="G8N-7r-ZJH" firstAttribute="leading" secondItem="5RX-n4-4Gd" secondAttribute="leading" constant="10" id="YO4-LG-9TR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="意见反馈" id="4ga-em-nhf"/>
                     <connections>
                         <outlet property="detailTextView" destination="pms-y3-G41" id="GWI-CS-R3H"/>
                         <outlet property="nameTextField" destination="UXX-eS-lbB" id="0qt-lZ-UcC"/>
@@ -968,10 +970,10 @@
             </objects>
             <point key="canvasLocation" x="4155" y="2423"/>
         </scene>
-        <!--View Controller-->
+        <!--帮助中心-->
         <scene sceneID="sDi-vs-pgY">
             <objects>
-                <viewController id="Sf4-qF-ab8" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Sf4-qF-ab8" customClass="RMHelpViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GVS-dB-tTK"/>
                         <viewControllerLayoutGuide type="bottom" id="s6M-xy-OK0"/>
@@ -979,8 +981,24 @@
                     <view key="view" contentMode="scaleToFill" id="YGL-GL-KbF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cft-Ga-WA7">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Cft-Ga-WA7" secondAttribute="trailing" id="72K-PK-zGu"/>
+                            <constraint firstItem="Cft-Ga-WA7" firstAttribute="top" secondItem="GVS-dB-tTK" secondAttribute="bottom" id="Ii9-1r-luU"/>
+                            <constraint firstItem="s6M-xy-OK0" firstAttribute="top" secondItem="Cft-Ga-WA7" secondAttribute="bottom" id="Upc-5x-4pd"/>
+                            <constraint firstItem="Cft-Ga-WA7" firstAttribute="leading" secondItem="YGL-GL-KbF" secondAttribute="leading" id="kAg-sb-hnR"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="帮助中心" id="P3b-M0-CUp"/>
+                    <connections>
+                        <outlet property="webView" destination="Cft-Ga-WA7" id="9nP-DE-mGh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0q-1S-lvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1340,7 +1358,7 @@
                                                     <color key="textColor" red="0.43132263422012329" green="0.43140128254890442" blue="0.43131768703460693" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="客户名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK3-xN-Vxb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="客户账户：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK3-xN-Vxb">
                                                     <rect key="frame" x="15" y="73" width="87" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1269158125" green="0.15818423030000001" blue="0.37443542480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3114,10 +3132,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qHA-JF-vpj"/>
-        <segue reference="qEl-UP-PFG"/>
-        <segue reference="1Xe-EI-HU0"/>
+        <segue reference="00Q-e4-sWd"/>
         <segue reference="R1I-fH-j2R"/>
         <segue reference="GjW-M3-fJb"/>
+        <segue reference="1Xe-EI-HU0"/>
         <segue reference="Pge-bP-lUq"/>
     </inferredMetricsTieBreakers>
 </document>

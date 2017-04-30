@@ -41,21 +41,20 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
     }
     
     override func handleCodeResult(arrayResult: [LBXScanResult]){
-        self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
-            success in
-            if let _ = self.viewModel as? RMLinkScanViewModel,success {
-                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
-            }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
-                self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
-            }else if let _ = self.viewModel as? RMDeviceScanViewModel, success {
-                self.performSegue(withIdentifier: "endScan", sender: nil)
-            }
-        }).disposed(by: disposeBag)
+//        self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
+//            success in
+//            if let _ = self.viewModel as? RMLinkScanViewModel,success {
+//                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
+//            }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
+//                self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
+//            }else if let _ = self.viewModel as? RMDeviceScanViewModel, success {
+//                self.performSegue(withIdentifier: "endScan", sender: nil)
+//            }
+//        }).disposed(by: disposeBag)
         
         if let delegate = self.delegate {
             delegate.scaned(code:(arrayResult.first?.strScanned)! , of: self)
             self.navigationController?.popViewController(animated: true)
-            
         }
     }
     

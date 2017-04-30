@@ -8,7 +8,12 @@
 
 import UIKit
 
-
+extension RMSearchViewController: RMScanViewControllerDelegate{
+    func scaned(code: String, of scanViewController: RMScanViewController) {
+//        self.firstTextField.text = code
+        self.viewModel?.firstField.value = code
+    }
+}
 
 class RMSearchViewController: RMViewController, RMSearchListAction {
     
@@ -82,9 +87,9 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
                 let linkListViewModel = RMLinkListViewModel(action: linkListViewController,
                                                             isModify:linkSearchViewModel.isModify)
                 linkListViewModel.section(at: 0).append(contentsOf: (linkSearchViewModel.links))
-                linkListViewModel.account.value = (linkSearchViewModel.firstField.value)
+                linkListViewModel.linkCode.value = (linkSearchViewModel.firstField.value)
+                linkListViewModel.account.value = (linkSearchViewModel.secondField.value)
                 linkListViewModel.customerName.value = (linkSearchViewModel.thirdField.value)
-                linkListViewModel.linkCode.value = (linkSearchViewModel.secondField.value)
                 linkListViewController.viewModel = linkListViewModel
             }
         }else if segue.identifier == "toCabinetList" {
@@ -92,9 +97,9 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
             if let cabinetSearchViewModel = self.viewModel as? RMCabinetSearchViewModel {
                 let cabinetListViewModel = RMCabinetListViewModel(action: cabinetListViewController)
                 cabinetListViewModel.section(at: 0).append(contentsOf: (cabinetSearchViewModel.links))
-                cabinetListViewModel.account.value = (cabinetSearchViewModel.firstField.value)
+                cabinetListViewModel.linkCode.value = (cabinetSearchViewModel.firstField.value)
+                cabinetListViewModel.account.value = (cabinetSearchViewModel.secondField.value)
                 cabinetListViewModel.customerName.value = (cabinetSearchViewModel.thirdField.value)
-                cabinetListViewModel.linkCode.value = (cabinetSearchViewModel.secondField.value)
                 cabinetListViewController.viewModel = cabinetListViewModel
             }
         }else if segue.identifier == "toLinkScan" {
@@ -102,10 +107,12 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
             if let linkSearchViewModel = self.viewModel as? RMLinkSearchViewModel {
                 scanViewController.viewModel = RMLinkScanViewModel(action: scanViewController,
                                                                    isModify: linkSearchViewModel.isModify)
+                scanViewController.delegate = self
             }
         }else if segue.identifier == "toCabinetScan" {
             let scanViewController = segue.destination as! RMScanViewController
             scanViewController.viewModel = RMCabinetScanViewModel(action: scanViewController)
+            scanViewController.delegate = self
         }else if segue.identifier == "toDeviceList" {
             if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
                 let deviceListViewController = segue.destination as! RMDeviceListViewController
@@ -113,13 +120,12 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
                 deviceListViewController.viewModel?.section(at: 0).append(contentsOf: (deviceSearchViewModel.devices))
                 deviceListViewController.viewModel?.deviceCode.value = deviceSearchViewModel.firstField.value
                 deviceListViewController.viewModel?.deviceName.value = deviceSearchViewModel.secondField.value
-
             }
         }else if segue.identifier == "toDeviceScan" {
             if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
                 let scanViewController = segue.destination as! RMScanViewController
                 scanViewController.viewModel = RMDeviceScanViewModel(action: scanViewController, isAccess: deviceSearchViewModel.isAccess)
-
+                scanViewController.delegate = self
             }
         }
     }

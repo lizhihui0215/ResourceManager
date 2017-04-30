@@ -95,7 +95,9 @@ class RMNetworkServices {
         return RMNetworkServicesProvider.request(token).mapObject(RMResponseBaseArray<T>.self)
     }
     
-
+    func baseURL() -> String {
+        return "http://115.28.157.117:9080/"
+    }
 }
 
 public enum RMNetworkAPI {

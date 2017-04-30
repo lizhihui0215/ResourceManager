@@ -83,7 +83,23 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
         // Dispose of any resources that can be recreated.
     }
     
+    
 
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let viewModel = self.viewModel {
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            
+            let inspect = viewModel.elementAt(indexPath: indexPath!)
+            
+            guard let pictures = inspect.pictures  else {
+                return false
+            }
+            
+            return !pictures.isEmpty
+        }
+        
+        return false
+    }
     
     // MARK: - Navigation
 
