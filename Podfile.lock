@@ -38,12 +38,12 @@ PODS:
   - RealmSwift (2.6.2):
     - Realm (= 2.6.2)
   - Result (3.2.1)
-  - RxCocoa (3.4.0):
+  - RxCocoa (3.4.1):
     - RxSwift (~> 3.4)
   - RxRealm (0.6.0):
     - RealmSwift (~> 2.5)
     - RxSwift (~> 3.2)
-  - RxSwift (3.4.0)
+  - RxSwift (3.4.1)
   - SnapKit (3.2.0)
   - Toaster (2.0.3)
   - TZImagePickerController (1.7.9)
@@ -84,14 +84,14 @@ SPEC CHECKSUMS:
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
   Moya-ObjectMapper: 952be2b261d38cf8d973b7e429708eb03d256e23
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
-  ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
+  ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
   Realm: 29222766425b9f831228f81b63f0e38a97a4d700
   RealmSwift: d161a80f96cb91ae88391a7d5a9cf08024a7bc8e
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
-  RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
+  RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
   RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
-  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
+  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
   TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
