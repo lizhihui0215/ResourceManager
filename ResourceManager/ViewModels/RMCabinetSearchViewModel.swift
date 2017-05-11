@@ -19,9 +19,12 @@ protocol RMCabinetSearchAction: RMSearchAction {
 
 class RMCabinetSearchViewModel: RMSearchViewModel {
     var links = [RMCabinet]()
+
+    var isModify = false
     
-    init(actions: RMSearchListAction) {
-        super.init(actions: actions, title: "机柜查询")
+    init(actions: RMSearchListAction, isModify: Bool = false) {
+        super.init(actions: actions, title: isModify ? "机柜查询" : "机柜修改")
+        self.isModify = isModify
     }
     
     override func search() -> Driver<Bool> {

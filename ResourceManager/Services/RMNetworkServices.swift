@@ -70,6 +70,19 @@ class RMNetworkServices {
     static var kMessage : String = ""
     static var kCode : String = ""
     static var kResults : String = ""
+    static var kBaseURL: String {
+        get {
+            if let baseURL = UserDefaults.standard.string(forKey: "BaseURL") {
+                return baseURL
+            }else {
+                return "http://115.28.157.117:9080"
+            }
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "BaseURL")
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     func config(messageKey: String? = "message",
                 codeKey: String? = "code",
@@ -94,10 +107,7 @@ class RMNetworkServices {
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseBaseArray<T>> {
         return RMNetworkServicesProvider.request(token).mapObject(RMResponseBaseArray<T>.self)
     }
-    
-    func baseURL() -> String {
-        return "http://115.28.157.117:9080/"
-    }
+
 }
 
 public enum RMNetworkAPI {
@@ -106,6 +116,7 @@ public enum RMNetworkAPI {
     case linkList(String, String, String, String, Int, Int)
     case link(String, String)
     case linkModify(String,[String : Any])
+    case cabinetModify(String, [String : Any])
     case inspectUpload(String, [String: Any], [MultipartFormData])
     case cabinetList(String, String, String, String, Int, Int)
     case deviceList(String, String, String, Int, Int)
@@ -121,7 +132,8 @@ public enum RMNetworkAPI {
 
 extension RMNetworkAPI: TargetType {
     public var baseURL: URL {
-        return URL(string: "http://115.28.157.117:9080/resourcemanage/iosapi")!
+        let urlString = RMNetworkServices.kBaseURL.appending("/resourcemanage/iosapi")
+        return URL(string: urlString)!
     }
     
     public var path: String {
@@ -154,6 +166,8 @@ extension RMNetworkAPI: TargetType {
             return "device/query?access_token=\(accessToken)"
         case let .ports(accessToken, _):
             return "device/ports?access_token=\(accessToken)"
+        case let .cabinetModify(accessToken, _):
+            return "cabinet/modify?access_token=\(accessToken)"
         }
         
     }
@@ -173,6 +187,7 @@ extension RMNetworkAPI: TargetType {
              .deviceList,
              .deviceDetail,
              .ports,
+             .cabinetModify,
              .inspectUpload:
             return .post
         }
@@ -231,7 +246,9 @@ extension RMNetworkAPI: TargetType {
             return ["deviceCode": deviceCode]
         case let .ports(_, deviceCode):
             return ["deviceCode": deviceCode]
-            
+        case let .cabinetModify(_, cabinet):
+            let xxxx = cabinet.filter{ $0.key != "devices"}
+            return ["":""]
         }
     }
     
@@ -251,6 +268,7 @@ extension RMNetworkAPI: TargetType {
              .deviceList,
              .deviceDetail,
              .ports,
+             .cabinetModify,
              .linkModify:
             return JSONEncoding.default
         }
@@ -274,6 +292,7 @@ extension RMNetworkAPI: TargetType {
              .deviceList,
              .deviceDetail,
              .ports,
+             .cabinetModify,
              .linkModify:
             return .request
         case let .inspectUpload(_,_, formData):

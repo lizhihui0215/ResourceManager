@@ -156,6 +156,19 @@ class RMDataRepository {
             }
         }
     }
+
+    func modifyCabinet(cabinet: RMCabinet) -> Observable<Result<String, Moya.Error>> {
+        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.cabinetModify((RMDomain.user?.accessToken)!, cabinet.toJSON()))
+
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let link):
+                return Result(value: link)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
     
     func user() -> Observable<Result<RMUser, Moya.Error>> {
         return Observable.just(Result(value: RMDomain.user!))
@@ -240,6 +253,8 @@ class RMDataRepository {
             }
         }
     }
+
+
 
 }
 

@@ -15,7 +15,11 @@ protocol RMCabinetScanAction: RMScanAction {
 
 class RMCabinetScanViewModel: RMScanViewModel {
     
-    init(action: RMCabinetScanAction) {
+    var isModify: Bool
+    
+    
+    init(action: RMCabinetScanAction, isModify: Bool = false) {
+        self.isModify = isModify
         super.init(action: action)
     }
     

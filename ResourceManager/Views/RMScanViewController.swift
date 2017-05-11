@@ -87,9 +87,12 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
             linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink, action: linkDetailViewController, isModify: viewModel.isModify)
 
         }else if segue.identifier == "toCabinetDetail" {
-            let cabinetDetailViewController = segue.destination as! RMCabinetDetailViewController
-            
-            cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(cabinet: (self.viewModel?.result) as! RMCabinet)
+            if let viewModel = self.viewModel as? RMCabinetScanViewModel {
+                let cabinetDetailViewController = segue.destination as! RMCabinetDetailViewController
+                
+                cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(action: cabinetDetailViewController,
+                                                                                 cabinet: (self.viewModel?.result) as! RMCabinet, isModify: viewModel.isModify)
+            }
         }else if segue.identifier == "endScan" {
             if let viewModel = self.viewModel as? RMDeviceScanViewModel {
                 let delegate = segue.destination as! RMDeviceSearchViewControllerDelegate

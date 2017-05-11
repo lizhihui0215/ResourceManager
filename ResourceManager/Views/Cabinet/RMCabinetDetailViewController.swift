@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 class RMDeviceTableViewCell: RMTableViewCell {
     
@@ -16,14 +17,20 @@ class RMDeviceTableViewCell: RMTableViewCell {
     }
 }
 
+extension RMCabinetDetailViewController: RMCabinetDetailAction {
+    
+}
+
 
 class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSource {
     
     var viewModel: RMCabinetDetailViewModel?
     
+    @IBOutlet weak var commitButtonHightConstraint: NSLayoutConstraint!
     @IBOutlet weak var deviceHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cabinetCodeTextField: UITextField!
     @IBOutlet weak var cabinetNameTextField: UITextField!
+    @IBOutlet weak var deviceListView: UIView!
     
     @IBOutlet weak var cabinetNameLabel: UILabel!
 //    @IBOutlet weak var devicesTextField: UITextField!
@@ -31,14 +38,22 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
     @IBOutlet weak var cabinetLocationTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         if let viewModel = self.viewModel {
-            cabinetCodeTextField.text = viewModel.cabinet.cabinetCode
-            cabinetNameTextField.text = viewModel.cabinet.cabinetName
-            capacityTextField.text = viewModel.cabinet.capacity
-            cabinetLocationTextField.text = viewModel.cabinet.cabinetLocation
+            cabinetCodeTextField.rx.textInput <-> viewModel.cabinetCode
+            cabinetNameTextField.rx.textInput <-> viewModel.cabinetName
+            capacityTextField.rx.textInput <-> viewModel.capacity
+            cabinetLocationTextField.rx.textInput <-> viewModel.cabinetLocation
             cabinetNameLabel.text = viewModel.cabinet.cabinetName
+            commitButtonHightConstraint.constant = viewModel.isModify ? 30 : 0;
+            cabinetCodeTextField.isEnabled = viewModel.isModify
+            cabinetNameTextField.isEnabled = viewModel.isModify
+            capacityTextField.isEnabled = viewModel.isModify
+            cabinetLocationTextField.isEnabled = viewModel.isModify
+            
+            if viewModel.isModify {
+                deviceListView.removeFromSuperview()
+            }
         }
         
         self.tableView.rx.observe(CGSize.self, "contentSize").subscribe(onNext: {[weak self] x in
@@ -49,6 +64,8 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
             
             
         }).disposed(by: disposeBag)
+        
+        
                 
         cabinetCodeTextField.backgroundColor = UIColor.white
         cabinetNameTextField.backgroundColor = UIColor.white
@@ -58,6 +75,10 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func commitButtonPressed(_ sender: UIButton) {
+         self.viewModel?.commit().drive().disposed(by: disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
