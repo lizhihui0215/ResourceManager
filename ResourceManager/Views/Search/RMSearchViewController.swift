@@ -95,7 +95,8 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         }else if segue.identifier == "toCabinetList" {
             let cabinetListViewController = segue.destination as! RMCabinetListViewController
             if let cabinetSearchViewModel = self.viewModel as? RMCabinetSearchViewModel {
-                let cabinetListViewModel = RMCabinetListViewModel(action: cabinetListViewController)
+                let cabinetListViewModel = RMCabinetListViewModel(action: cabinetListViewController,
+                        isModify: cabinetSearchViewModel.isModify)
                 cabinetListViewModel.section(at: 0).append(contentsOf: (cabinetSearchViewModel.links))
                 cabinetListViewModel.linkCode.value = (cabinetSearchViewModel.firstField.value)
                 cabinetListViewModel.account.value = (cabinetSearchViewModel.secondField.value)

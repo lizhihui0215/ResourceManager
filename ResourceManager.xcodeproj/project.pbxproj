@@ -110,6 +110,7 @@
 		26DB115B1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB115A1E9E0B9000EA4A19 /* UIScrollView+ContentSize.swift */; };
 		26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */; };
 		26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */; };
+		5B87576EAFD28E9B9AE79B1B /* RMCabinetDetailDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8759E9E01310C11B4B00E8 /* RMCabinetDetailDomain.swift */; };
 		5B8757791E4552E3EC89752B /* RMLinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8751C125D8CC3F4D812FFD /* RMLinkListViewController.swift */; };
 		5B875B803E7DBBD96EAE7FCE /* RMSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8756E544645420D1007748 /* RMSearchViewController.swift */; };
 		5B875BFB13AB1B17129DCA80 /* RMDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875E3D888B2DECD8565299 /* RMDeviceViewController.swift */; };
@@ -256,6 +257,7 @@
 		26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResponseObject.swift; sourceTree = "<group>"; };
 		5B8751C125D8CC3F4D812FFD /* RMLinkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkListViewController.swift; sourceTree = "<group>"; };
 		5B8756E544645420D1007748 /* RMSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSearchViewController.swift; sourceTree = "<group>"; };
+		5B8759E9E01310C11B4B00E8 /* RMCabinetDetailDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetDetailDomain.swift; sourceTree = "<group>"; };
 		5B875B844F2D6BEB4F2FA984 /* RMLinkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkDetailViewController.swift; sourceTree = "<group>"; };
 		5B875E3D888B2DECD8565299 /* RMDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceViewController.swift; sourceTree = "<group>"; };
 		60BC1AF07CFC7DE8E82A800D /* Pods_ResourceManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResourceManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -529,6 +531,7 @@
 				26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */,
 				264D89FD1EA37FD6002B2A44 /* RMPersonalCenterDomain.swift */,
 				266F46371EB102D500E79F4D /* RMDeviceSearchDomain.swift */,
+				5B8759E9E01310C11B4B00E8 /* RMCabinetDetailDomain.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				5B8757791E4552E3EC89752B /* RMLinkListViewController.swift in Sources */,
 				5B875BFB13AB1B17129DCA80 /* RMDeviceViewController.swift in Sources */,
 				5B875B803E7DBBD96EAE7FCE /* RMSearchViewController.swift in Sources */,
+				5B87576EAFD28E9B9AE79B1B /* RMCabinetDetailDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -97,7 +97,9 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
             
             let cabinet = viewModel.elementAt(indexPath: indexPath!)
             
-            cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(cabinet: cabinet)
+            cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(action: cabinetDetailViewController,
+                                                                             cabinet: cabinet,
+                                                                             isModify: viewModel.isModify)
             
         }
         

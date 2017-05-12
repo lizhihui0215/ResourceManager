@@ -16,8 +16,7 @@ class RMHelpViewController: RMViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let  urlString = RMNetworkServices.shared.baseURL().appending("resourcemanage/help/index.html")
-
+        let  urlString = RMNetworkServices.kBaseURL.appending("/resourcemanage/help/index.html")
 
         webView.loadRequest(URLRequest(url: URL(string: urlString)!))
         

@@ -25,11 +25,14 @@ class RMCabinetListViewModel:RMViewModel, RMListDataSource {
     var linkCode = Variable("")
     
     var customerName = Variable("")
+
+    var isModify = false
     
     
-    init(action: RMCabinetListAction) {
+    init(action: RMCabinetListAction, isModify: Bool) {
         self.datasource.append(RMSection())
         self.action = action
+        self.isModify = isModify
     }
     
     func cabinetList(refresh: Bool) -> Driver<Bool> {

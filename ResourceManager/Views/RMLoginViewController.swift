@@ -21,11 +21,17 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
     @IBOutlet weak var usernameTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var serverURLTextFieldHightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var serverURLTextField: UITextField!
     var viewModel: RMLoginViewModel?
     
     override var prefersStatusBarHidden: Bool{
         return true
+    }
+    
+    @IBAction func logoTapped(_ sender: UITapGestureRecognizer) {
+        serverURLTextFieldHightConstraint.constant = 40
     }
     
     override func viewDidLoad() {
@@ -37,10 +43,30 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
         
         usernameTextField.attributedPlaceholder = NSAttributedString(string: "用户名", attributes: [NSForegroundColorAttributeName: UIColor.white])
         
+        serverURLTextField.attributedPlaceholder = NSAttributedString(string: "服务器地址", attributes: [NSForegroundColorAttributeName: UIColor.white])
+        
+        
         let usernameImage = UIImage(named: "login.username.icon")
         
         let passwordImage = UIImage(named: "login.password.icon")
         
+        serverURLTextField.rx.textInput.text.subscribe(onNext: {[weak self] n in
+            
+            if let strongSelf = self {
+                let nonMarkedTextValue = nonMarkedText(strongSelf.serverURLTextField)
+                
+                
+                
+                if let nonMarkedTextValue = nonMarkedTextValue, nonMarkedTextValue != RMNetworkServices.kBaseURL {
+                    if nonMarkedTextValue.isEmpty {
+                        RMNetworkServices.kBaseURL = "http://115.28.157.117:9080"
+                    }else {
+                        RMNetworkServices.kBaseURL = nonMarkedTextValue
+                    }
+                }
+            }
+            
+        }).disposed(by: disposeBag)
         
         let usernameImageView = UIImageView(image: usernameImage)
         

@@ -13,7 +13,8 @@ enum RMResourceItem {
     case cabinetSearch
     case linkModify
     case inspect
-    
+    case cabinetModify
+    case deviceModify
     
     func idenfitier() -> String {
         switch self {
@@ -25,6 +26,10 @@ enum RMResourceItem {
             return "toLinkModify"
         case .inspect:
             return "toInspect"
+        case .cabinetModify:
+            return "toCabinetModify"
+        case .deviceModify:
+            return "toDeviceModify"
         }
     }
     
@@ -38,6 +43,10 @@ enum RMResourceItem {
             return "链路修改"
         case .inspect:
             return "巡检记录"
+        case .cabinetModify:
+            return "机柜修改"
+        case .deviceModify:
+            return "设备修改"
         }
     }
     
@@ -51,6 +60,10 @@ enum RMResourceItem {
             return UIImage(named: "resource-manager.link-modify.menu.normal")!
         case .inspect:
             return UIImage(named: "resource-manager.inspect.menu.normal")!
+        case .cabinetModify:
+            return UIImage(named: "resource-manager.cabinet-search.menu.normal")!
+        case .deviceModify:
+            return UIImage(named: "resource-manager.inspect.menu.normal")!
         }
     }
     
@@ -63,6 +76,10 @@ enum RMResourceItem {
         case .linkModify:
             return UIImage(named: "resource-manager.link-modify.menu.selected")!
         case .inspect:
+            return UIImage(named: "resource-manager.inspect.menu.selected")!
+        case .cabinetModify:
+            return UIImage(named: "resource-manager.cabinet-search.menu.selected")!
+        case .deviceModify:
             return UIImage(named: "resource-manager.inspect.menu.selected")!
         }
     }
@@ -78,6 +95,8 @@ class RMResourceManagerViewModel: RMViewModel, RMListDataSource {
         section.append(item: .cabinetSearch)
         section.append(item: .linkModify)
         section.append(item: .inspect)
+        section.append(item: .cabinetModify)
+        section.append(item: .deviceModify)
         self.datasource.append(section)
     }
 }

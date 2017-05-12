@@ -113,13 +113,17 @@ class RMResourceManagerViewController: RMViewController {
         case .linkModify:
             let searchViewController = segue.destination as! RMSearchViewController
             searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController, isModify: true)
-
         case .inspect:
             let inspectListViewController = segue.destination as! RMInspectListViewController
             
             inspectListViewController.viewModel = RMInspectListViewModel(action: inspectListViewController)
-
+        case .cabinetModify:
+            let searchViewController = segue.destination as! RMSearchViewController
+            searchViewController.viewModel = RMCabinetSearchViewModel(actions: searchViewController, isModify: true)
+        case .deviceModify:
+            print("")
             break
+        
         }
     }
 }
