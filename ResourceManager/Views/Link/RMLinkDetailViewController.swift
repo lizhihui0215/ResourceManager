@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RMLinkDetailViewControllerDelegate: class {
+    func didEndModify()
+}
+
 extension RMLinkDetailViewController: RMLinkDetailAction {
     
 }
@@ -35,6 +39,7 @@ class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var customerNameTextField: UITextField!
     @IBOutlet weak var customerLevelTextField: UITextField!
     var viewModel: RMLinkDetailViewModel? = nil
+    weak var delegate: RMLinkDetailViewControllerDelegate?
     
     @IBOutlet weak var commitButton: UIButton!
     
@@ -49,10 +54,13 @@ class RMLinkDetailViewController: RMViewController {
     @IBOutlet var accessDeviceTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var commitButtonHightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var serviceLevelTextField: UITextField!
     @IBOutlet weak var farendDeviceNameTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var farendDevicePortTapGesture: UITapGestureRecognizer!
     
     
+    @IBOutlet var customerLevelTapGesture: UITapGestureRecognizer!
+    @IBOutlet var serviceLevelTapGesture: UITapGestureRecognizer!
     
     @IBAction func farendDeviceNameTapped(_ sender: UITapGestureRecognizer) {
         self.performSegue(withIdentifier: "toDeviceSearch", sender: sender)
@@ -104,7 +112,11 @@ class RMLinkDetailViewController: RMViewController {
     }
     
     @IBAction func commitButtonPressed(_ sender: UIButton) {
-        self.viewModel?.linkModify().drive().disposed(by: disposeBag)
+        self.viewModel?.linkModify().drive(onNext: {[weak self] success in
+            if success {
+                self?.delegate?.didEndModify()
+            }
+        }).disposed(by: disposeBag)
     }
     
     
@@ -142,6 +154,8 @@ class RMLinkDetailViewController: RMViewController {
             self.accessDevicePortTapGesture.isEnabled = false
             self.farendDeviceNameTapGesture.isEnabled = false
             self.farendDevicePortTapGesture.isEnabled = false
+            self.customerLevelTapGesture.isEnabled = false
+            self.serviceLevelTapGesture.isEnabled = false
 
         }else {
             self.linkCodeTextField.isEnabled = false
@@ -150,8 +164,15 @@ class RMLinkDetailViewController: RMViewController {
             self.accessDevicePortTapGesture.isEnabled = true
             self.farendDeviceNameTapGesture.isEnabled = true
             self.farendDevicePortTapGesture.isEnabled = true
-
         }
+        
+        self.customerLevelTextField.isEnabled = false
+        self.customerLevelTextField.backgroundColor = UIColor.white
+
+        
+        self.serviceLevelTextField.isEnabled = false
+        self.serviceLevelTextField.backgroundColor = UIColor.white
+
         
         if let viewModel = self.viewModel {
             accountTextField.rx.textInput <-> viewModel.account
@@ -163,8 +184,35 @@ class RMLinkDetailViewController: RMViewController {
             farendDevicePortLabel <-> viewModel.farendDevicePort
             accessDeviceNameLabel <-> viewModel.accessDeviceName
             accessDevicePortLabel <-> viewModel.accessDevicePort
+            serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
+            customerNameTextField.rx.textInput <-> viewModel.customerLevel
+
         }
     }
+    
+    @IBAction func customerLevelTapped(_ sender: UITapGestureRecognizer) {
+        let level1 = RMLevel(title: "金")
+        let level2 = RMLevel(title: "银")
+        let level3 = RMLevel(title: "铜")
+        let level4 = RMLevel(title: "标准")
+
+
+        self.presentPicker(items: [level1,level2,level3,level4]) {[weak self] (level: RMLevel) in
+            self?.viewModel?.customerLevel.value = level.title
+         }
+    }
+    @IBAction func serviceLevelTapped(_ sender: UITapGestureRecognizer) {
+        let level1 = RMLevel(title: "AAA")
+        let level2 = RMLevel(title: "AA")
+        let level3 = RMLevel(title: "A")
+        let level4 = RMLevel(title: "普通")
+        
+        
+        self.presentPicker(items: [level1,level2,level3,level4]) {[weak self] (level: RMLevel) in
+            self?.viewModel?.serviceLevel.value = level.title
+        }
+    }
+    
     @IBAction func test(_ sender: UIBarButtonItem) {
         print(viewModel?.link ?? "")
     }
@@ -199,4 +247,12 @@ class RMLinkDetailViewController: RMViewController {
      }
     
     
+}
+
+class RMLevel: RMPickerViewItem {
+    var title: String = ""
+
+    init(title: String){
+        self.title = title
+    }
 }

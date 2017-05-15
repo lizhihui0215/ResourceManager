@@ -14,6 +14,10 @@ extension RMDeviceDetailViewController: RMDeviceModifyAction{
     
 }
 
+protocol RMDeviceDetailViewControllerDelegate: class {
+    func didEndModify()
+}
+
 class RMDeviceDetailViewController: RMViewController {
     @IBOutlet weak var deviceNameTextField: UITextField!
 
@@ -21,7 +25,7 @@ class RMDeviceDetailViewController: RMViewController {
     @IBOutlet weak var termailCountTextField: UITextField!
     @IBOutlet weak var deviceLocationTextField: UITextField!
     @IBOutlet weak var deviceCodeTextField: UITextField!
-    
+    weak var delegate: RMDeviceDetailViewControllerDelegate?
     var viewModel: RMDeviceModifyViewModel?
     
     override func viewDidLoad() {
@@ -44,7 +48,11 @@ class RMDeviceDetailViewController: RMViewController {
     
 
     @IBAction func commitButtonPressed(_ sender: UIButton) {
-        self.viewModel?.commit().drive().disposed(by: disposeBag)
+        self.viewModel?.commit().drive(onNext: {[weak self] success in
+            if success {
+                self?.delegate?.didEndModify()
+            }
+        }).disposed(by: disposeBag)
     }
     /*
     // MARK: - Navigation

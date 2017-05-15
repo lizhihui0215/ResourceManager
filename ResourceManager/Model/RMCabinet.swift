@@ -15,6 +15,8 @@ class RMCabinet: RMModel {
     dynamic var cabinetName: String?
     dynamic var cabinetLocation: String?
     dynamic var capacity: String?
+    dynamic var cabinetRoom: String?
+    
     var devices: List<RMDevice>?
     
     required convenience init?(map: Map) {
@@ -27,6 +29,7 @@ class RMCabinet: RMModel {
         cabinetName <- map["cabinetName"]
         cabinetLocation <- map["cabinetLocation"]
         capacity <- map["capacity"]
+        cabinetRoom <- map["cabinetRoom"]
         devices <- (map["devices"], ListTransform<RMDevice>())
     }
     

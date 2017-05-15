@@ -112,7 +112,14 @@ class RMDeviceListViewController: RMTableViewController, RMDeviceListViewAction 
             let device = viewModel?.elementAt(indexPath: sender as! IndexPath)
             
             deviceDetailViewController.viewModel = RMDeviceModifyViewModel(action: deviceDetailViewController, device: device!)
-
+            
+            deviceDetailViewController.delegate = self
         }
+    }
+}
+
+extension RMDeviceListViewController: RMDeviceDetailViewControllerDelegate {
+    func didEndModify() {
+        self.tableView.mj_header.beginRefreshing()
     }
 }

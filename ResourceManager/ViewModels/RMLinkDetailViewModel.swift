@@ -42,6 +42,7 @@ class RMLinkDetailViewModel: RMViewModel {
     var accessDeviceName: Variable<String>
     var farendDeviceId: Variable<String>
     var accessDeviceId: Variable<String>
+    var serviceLevel: Variable<String>
     
     
     var accessDevice: RMDevice?
@@ -72,8 +73,12 @@ class RMLinkDetailViewModel: RMViewModel {
         accessDeviceName = Variable(link.accessDeviceName ?? "")
         farendDeviceId = Variable( link.farendDeviceId ?? "")
         accessDeviceId = Variable(link.accessDeviceId ?? "")
-        
+        serviceLevel = Variable(link.serviceLevel ?? "")
         super.init()
+        
+        serviceLevel.asObservable().bind {
+            link.serviceLevel = $0
+            }.addDisposableTo(disposeBag)
         
         farendDeviceId.asObservable().bind {
             link.farendDeviceId = $0

@@ -21,6 +21,10 @@ extension RMCabinetDetailViewController: RMCabinetDetailAction {
     
 }
 
+protocol RMCabinetDetailViewControllerDelegate: class {
+    func didEndModify()
+}
+
 
 class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSource {
     
@@ -31,7 +35,9 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
     @IBOutlet weak var cabinetCodeTextField: UITextField!
     @IBOutlet weak var cabinetNameTextField: UITextField!
     @IBOutlet weak var deviceListView: UIView!
+    weak var delegate: RMCabinetDetailViewControllerDelegate?
     
+    @IBOutlet weak var cabinetRoomTextField: UITextField!
     @IBOutlet weak var cabinetNameLabel: UILabel!
 //    @IBOutlet weak var devicesTextField: UITextField!
     @IBOutlet weak var capacityTextField: UITextField!
@@ -45,11 +51,13 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
             capacityTextField.rx.textInput <-> viewModel.capacity
             cabinetLocationTextField.rx.textInput <-> viewModel.cabinetLocation
             cabinetNameLabel.text = viewModel.cabinet.cabinetName
+            cabinetRoomTextField.rx.textInput <-> viewModel.cabinetRoom
             commitButtonHightConstraint.constant = viewModel.isModify ? 30 : 0;
 //            cabinetCodeTextField.isEnabled = viewModel.isModify
             cabinetNameTextField.isEnabled = viewModel.isModify
             capacityTextField.isEnabled = viewModel.isModify
             cabinetLocationTextField.isEnabled = viewModel.isModify
+            cabinetRoomTextField.isEnabled = viewModel.isModify
             
             if viewModel.isModify {
                 deviceListView.removeFromSuperview()
@@ -72,13 +80,17 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
 //        devicesTextField.background = nil
         capacityTextField.backgroundColor = UIColor.white
         cabinetLocationTextField.backgroundColor = UIColor.white
-        
+        cabinetRoomTextField.backgroundColor = UIColor.white
         
         // Do any additional setup after loading the view.
     }
     
     @IBAction func commitButtonPressed(_ sender: UIButton) {
-         self.viewModel?.commit().drive().disposed(by: disposeBag)
+         self.viewModel?.commit().drive(onNext: {[weak self] success in
+            if success {
+                self?.delegate?.didEndModify()
+            }
+         }).disposed(by: disposeBag)
     }
     
     override func didReceiveMemoryWarning() {

@@ -17,6 +17,8 @@ class RMLink: RMModel {
     dynamic var barcode: String?
     dynamic var linkRate: String?
     dynamic var customerLevel: String?
+    dynamic var serviceLevel: String?
+
     dynamic var pictures: String?
     dynamic var accessDeviceName: String?
     dynamic var accessDevicePort: Int = 0
@@ -57,6 +59,7 @@ class RMLink: RMModel {
         farendDeviceId <- map["farendDeviceId"]
         accessDeviceId <- map["accessDeviceId"]
         farendDevicePort <- map["farendDevicePort"]
+        serviceLevel <- map["serviceLevel"]
     }
 
 

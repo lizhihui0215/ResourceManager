@@ -20,6 +20,12 @@ class RMLinkTableViewCell: RMTableViewCell {
     }
 }
 
+extension RMLinkListViewController: RMLinkDetailViewControllerDelegate {
+    func didEndModify() {
+        self.tableView.mj_header.beginRefreshing()
+    }
+}
+
 class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITableViewDataSource {
 
     var viewModel: RMLinkListViewModel?
@@ -40,7 +46,8 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         
         self.tableView.estimatedRowHeight = 40
     }
-
+    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -98,6 +105,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
             let link = viewModel.elementAt(indexPath: indexPath!)
             
             linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link, action: linkDetailViewController, isModify: viewModel.isModify)
+            linkDetailViewController.delegate = self
         }
         
     }

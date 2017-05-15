@@ -100,6 +100,7 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
             cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(action: cabinetDetailViewController,
                                                                              cabinet: cabinet,
                                                                              isModify: viewModel.isModify)
+            cabinetDetailViewController.delegate = self
             
         }
         
@@ -107,4 +108,10 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
      }
     
     
+}
+
+extension RMCabinetListViewController: RMCabinetDetailViewControllerDelegate {
+    func didEndModify() {
+        self.tableView.mj_header.beginRefreshing()
+    }
 }
