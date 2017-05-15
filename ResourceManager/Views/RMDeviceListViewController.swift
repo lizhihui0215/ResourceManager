@@ -26,7 +26,12 @@ protocol RMDeviceSearchViewControllerDelegate {
 
 extension RMDeviceListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        self.performSegue(withIdentifier: "endSearch", sender: indexPath)
+        
+        if let viewModel = self.viewModel, viewModel.isModify {
+            self.performSegue(withIdentifier: "toModifyDevice", sender: indexPath)
+        }else {
+            self.performSegue(withIdentifier: "endSearch", sender: indexPath)
+        }
     }
     
 }
@@ -102,6 +107,12 @@ class RMDeviceListViewController: RMTableViewController, RMDeviceListViewAction 
             let delegate = segue.destination as! RMDeviceSearchViewControllerDelegate
             let device = viewModel?.elementAt(indexPath: sender as! IndexPath)
             delegate.didEndSearch(device: device!, isAccess: (self.viewModel?.isAccess)!)
+        }else if segue.identifier == "toModifyDevice" {
+            let deviceDetailViewController = segue.destination as! RMDeviceDetailViewController
+            let device = viewModel?.elementAt(indexPath: sender as! IndexPath)
+            
+            deviceDetailViewController.viewModel = RMDeviceModifyViewModel(action: deviceDetailViewController, device: device!)
+
         }
     }
 }

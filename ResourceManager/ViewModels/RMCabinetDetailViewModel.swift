@@ -46,9 +46,16 @@ class RMCabinetDetailViewModel: RMViewModel, RMListDataSource {
 
     func commit() -> Driver<Bool> {
         self.action.animation.value = true
-
-        RMCabinetDetailDomain.shared.modifyCabinet(cabinet:cabinet)
-        return Driver.just(false)
+        return RMCabinetDetailDomain.shared.modifyCabinet(cabinet:cabinet).do(onNext: { [weak self] result in
+            
+            if let strongSelf = self {
+                strongSelf.action.animation.value = false
+            }
+        }).flatMapLatest({ result  in
+            return self.action.alert(result: result)
+        }).flatMapLatest({ _  in
+            return self.action.alert(message: "修改成功！")
+        })
     }
 
 

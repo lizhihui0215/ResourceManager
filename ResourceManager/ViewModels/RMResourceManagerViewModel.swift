@@ -61,9 +61,9 @@ enum RMResourceItem {
         case .inspect:
             return UIImage(named: "resource-manager.inspect.menu.normal")!
         case .cabinetModify:
-            return UIImage(named: "resource-manager.cabinet-search.menu.normal")!
+            return UIImage(named: "resource-manager.link-modify.menu.normal")!
         case .deviceModify:
-            return UIImage(named: "resource-manager.inspect.menu.normal")!
+            return UIImage(named: "resource-manager.link-modify.menu.normal")!
         }
     }
     
@@ -78,9 +78,9 @@ enum RMResourceItem {
         case .inspect:
             return UIImage(named: "resource-manager.inspect.menu.selected")!
         case .cabinetModify:
-            return UIImage(named: "resource-manager.cabinet-search.menu.selected")!
+            return UIImage(named: "resource-manager.link-modify.menu.selected")!
         case .deviceModify:
-            return UIImage(named: "resource-manager.inspect.menu.selected")!
+            return UIImage(named: "resource-manager.link-modify.menu.selected")!
         }
     }
 }
@@ -94,9 +94,9 @@ class RMResourceManagerViewModel: RMViewModel, RMListDataSource {
         section.append(item: .linkSearch)
         section.append(item: .cabinetSearch)
         section.append(item: .linkModify)
-        section.append(item: .inspect)
         section.append(item: .cabinetModify)
         section.append(item: .deviceModify)
+        section.append(item: .inspect)
         self.datasource.append(section)
     }
 }

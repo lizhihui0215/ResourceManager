@@ -61,7 +61,7 @@ class RMLinkDetailViewModel: RMViewModel {
         self.link = link
         self.isModify = isModify
         self.action = action
-        account = Variable(link.account ?? "")
+        account = Variable(link.linkName ?? "")
         linkRate = Variable(link.linkRate ?? "")
         linkCode = Variable(link.linkCode ?? "")
         customerName = Variable(link.customerName ?? "")
@@ -84,7 +84,7 @@ class RMLinkDetailViewModel: RMViewModel {
             }.addDisposableTo(disposeBag)
         
         account.asObservable().bind { account in
-            link.account = account
+            link.linkName = account
             }.addDisposableTo(disposeBag)
         
         linkRate.asObservable().bind { linkRate in

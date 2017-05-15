@@ -32,6 +32,7 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         
         self.navigationItem.title = self.viewModel?.title
         
+        
         if let _ = self.viewModel as? RMCabinetSearchViewModel {
             self.firstTextField.placeholder = "机柜代码"
             self.secondTextField.placeholder = "机柜名称"
@@ -117,7 +118,7 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         }else if segue.identifier == "toDeviceList" {
             if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
                 let deviceListViewController = segue.destination as! RMDeviceListViewController
-                deviceListViewController.viewModel = RMDeviceListViewModel(action: deviceListViewController, isAccess: deviceSearchViewModel.isAccess)
+                deviceListViewController.viewModel = RMDeviceListViewModel(action: deviceListViewController, isAccess: deviceSearchViewModel.isAccess, isModify: deviceSearchViewModel.isModify)
                 deviceListViewController.viewModel?.section(at: 0).append(contentsOf: (deviceSearchViewModel.devices))
                 deviceListViewController.viewModel?.deviceCode.value = deviceSearchViewModel.firstField.value
                 deviceListViewController.viewModel?.deviceName.value = deviceSearchViewModel.secondField.value

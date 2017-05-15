@@ -12,7 +12,7 @@ import ObjectMapper_Realm
 
 class RMLink: RMModel {
     dynamic var linkCode: String?
-    dynamic var account: String?
+    dynamic var linkName: String?
     dynamic var customerName: String?
     dynamic var barcode: String?
     dynamic var linkRate: String?
@@ -39,7 +39,7 @@ class RMLink: RMModel {
     override func mapping(map: Map) {
         super.mapping(map: map)
         linkCode <- map["linkCode"]
-        account <- map["account"]
+        linkName <- map["linkName"]
         customerName <- map["customerName"]
         barcode <- map["barcode"]
         linkRate <- map["linkRate"]

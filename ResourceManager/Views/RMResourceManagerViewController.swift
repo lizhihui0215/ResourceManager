@@ -121,7 +121,9 @@ class RMResourceManagerViewController: RMViewController {
             let searchViewController = segue.destination as! RMSearchViewController
             searchViewController.viewModel = RMCabinetSearchViewModel(actions: searchViewController, isModify: true)
         case .deviceModify:
-            print("")
+            let searchViewController = segue.destination as! RMSearchViewController
+            searchViewController.viewModel = RMDeviceSearchViewModel(actions: searchViewController, isAccess: true, isModify: true)
+            
             break
         
         }

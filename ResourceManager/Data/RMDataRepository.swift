@@ -170,6 +170,21 @@ class RMDataRepository {
         }
     }
     
+    func modifyDevice(device: RMDevice) -> Observable<Result<String, Moya.Error>> {
+        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.deviceModify((RMDomain.user?.accessToken)!, device.toJSON()))
+        
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let link):
+                return Result(value: link)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+    
+    
+    
     func user() -> Observable<Result<RMUser, Moya.Error>> {
         return Observable.just(Result(value: RMDomain.user!))
     }

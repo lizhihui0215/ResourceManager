@@ -23,7 +23,7 @@ class RMCabinetSearchViewModel: RMSearchViewModel {
     var isModify = false
     
     init(actions: RMSearchListAction, isModify: Bool = false) {
-        super.init(actions: actions, title: isModify ? "机柜查询" : "机柜修改")
+        super.init(actions: actions, title: isModify ? "机柜修改" : "机柜查询")
         self.isModify = isModify
     }
     

@@ -46,7 +46,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
             cabinetLocationTextField.rx.textInput <-> viewModel.cabinetLocation
             cabinetNameLabel.text = viewModel.cabinet.cabinetName
             commitButtonHightConstraint.constant = viewModel.isModify ? 30 : 0;
-            cabinetCodeTextField.isEnabled = viewModel.isModify
+//            cabinetCodeTextField.isEnabled = viewModel.isModify
             cabinetNameTextField.isEnabled = viewModel.isModify
             capacityTextField.isEnabled = viewModel.isModify
             cabinetLocationTextField.isEnabled = viewModel.isModify

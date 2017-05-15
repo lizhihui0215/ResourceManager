@@ -20,10 +20,12 @@ class RMDeviceSearchViewModel: RMSearchViewModel {
     var devices = [RMDevice]()
     
     var isAccess: Bool
+
+    var isModify: Bool
     
-    
-    init(actions: RMSearchListAction, isAccess: Bool) {
+    init(actions: RMSearchListAction, isAccess: Bool, isModify: Bool = false) {
         self.isAccess = isAccess
+        self.isModify = isModify
         super.init(actions: actions, title: "设备查询")
     }
         

@@ -71,7 +71,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
             cell.accessDevicePortLabel.text = String(link.accessDevicePort)
             cell.customerNameLabel.text = link.customerName
             cell.codeLabel.text = link.linkCode
-            cell.accountLabel.text = link.account
+            cell.accountLabel.text = link.linkName
         }
         
         return cell

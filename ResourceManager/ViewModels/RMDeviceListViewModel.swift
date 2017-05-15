@@ -25,9 +25,13 @@ class RMDeviceListViewModel: RMViewModel, RMListDataSource {
     
     var action: RMDeviceListViewAction
     
-    init(action: RMDeviceListViewAction, isAccess: Bool) {
+    var isModify: Bool
+    
+    
+    init(action: RMDeviceListViewAction, isAccess: Bool, isModify: Bool = false) {
         self.datasource.append(RMSection())
         self.isAccess = isAccess
+        self.isModify = isModify
         self.action = action
     }
     

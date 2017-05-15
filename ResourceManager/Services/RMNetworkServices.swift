@@ -117,6 +117,7 @@ public enum RMNetworkAPI {
     case link(String, String)
     case linkModify(String,[String : Any])
     case cabinetModify(String, [String : Any])
+    case deviceModify(String, [String : Any])
     case inspectUpload(String, [String: Any], [MultipartFormData])
     case cabinetList(String, String, String, String, Int, Int)
     case deviceList(String, String, String, Int, Int)
@@ -168,6 +169,8 @@ extension RMNetworkAPI: TargetType {
             return "device/ports?access_token=\(accessToken)"
         case let .cabinetModify(accessToken, _):
             return "cabinet/modify?access_token=\(accessToken)"
+        case let .deviceModify(accessToken, _):
+            return "device/modify?access_token=\(accessToken)"
         }
         
     }
@@ -188,6 +191,7 @@ extension RMNetworkAPI: TargetType {
              .deviceDetail,
              .ports,
              .cabinetModify,
+             .deviceModify,
              .inspectUpload:
             return .post
         }
@@ -205,7 +209,7 @@ extension RMNetworkAPI: TargetType {
         case let .linkDetail(_, linkCode):
             return ["linkCode": linkCode]
         case let .linkList(_,account, customerName, linkCode, pageNO, pageSize):
-            return ["account": account,
+            return ["linkName": account,
                     "customerName": customerName,
                     "linkCode": linkCode,
                     "pageSize": pageSize,
@@ -247,8 +251,15 @@ extension RMNetworkAPI: TargetType {
         case let .ports(_, deviceCode):
             return ["deviceCode": deviceCode]
         case let .cabinetModify(_, cabinet):
-            let xxxx = cabinet.filter{ $0.key != "devices"}
-            return ["":""]
+            let xxxx = cabinet.filter{ $0.key != "devices" }
+            var dic = [String : Any]()
+            xxxx.forEach({
+                dic[$0.key] = $0.value
+            })
+            
+            return dic
+        case let .deviceModify(_, device):
+            return device
         }
     }
     
@@ -269,6 +280,7 @@ extension RMNetworkAPI: TargetType {
              .deviceDetail,
              .ports,
              .cabinetModify,
+             .deviceModify,
              .linkModify:
             return JSONEncoding.default
         }
@@ -293,6 +305,7 @@ extension RMNetworkAPI: TargetType {
              .deviceDetail,
              .ports,
              .cabinetModify,
+             .deviceModify,
              .linkModify:
             return .request
         case let .inspectUpload(_,_, formData):
