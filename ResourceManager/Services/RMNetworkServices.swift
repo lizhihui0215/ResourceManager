@@ -107,7 +107,10 @@ class RMNetworkServices {
     func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseBaseArray<T>> {
         return RMNetworkServicesProvider.request(token).mapObject(RMResponseBaseArray<T>.self)
     }
-
+    
+    func baseURL() -> String {
+        return "http://221.180.160.160:8080/"
+    }
 }
 
 public enum RMNetworkAPI {
