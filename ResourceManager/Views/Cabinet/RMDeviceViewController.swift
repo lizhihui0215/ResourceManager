@@ -69,7 +69,6 @@ class RMDeviceViewController: RMViewController {
     var viewModel: RMDeviceDetailViewModel?
     
     @IBOutlet weak var deviceCodeTextField: UITextField!
-    @IBOutlet weak var deviceLocationTextField: RSKGrowingTextView!
     @IBOutlet weak var deviceNameTextField: UITextField!
     @IBOutlet weak var totalTerminalsTextField: UITextField!
     @IBOutlet weak var terminalOccupiedTextField: UITextField!
@@ -81,12 +80,10 @@ class RMDeviceViewController: RMViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.deviceLocationTextField.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         self.deviceDescTextField.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
         if let viewModel = self.viewModel {
             deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
-            deviceLocationTextField.rx.textInput <-> viewModel.deviceLocation
             deviceNameTextField.rx.textInput <-> viewModel.deviceName
             totalTerminalsTextField.rx.textInput <-> viewModel.totalTerminals
             terminalOccupiedTextField.rx.textInput <-> viewModel.terminalOccupied
@@ -103,10 +100,6 @@ class RMDeviceViewController: RMViewController {
         totalTerminalsTextField.backgroundColor = UIColor.white
         terminalOccupiedTextField.backgroundColor = UIColor.white
         terminalFreeTextField.backgroundColor = UIColor.white
-        
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

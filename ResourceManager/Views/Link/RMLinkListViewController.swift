@@ -34,7 +34,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         super.viewDidLoad()
         
         if let isModify = self.viewModel?.isModify, isModify {
-            self.navigationItem.title = isModify ? "链路修改" : "链路查询"
+            self.navigationItem.title = isModify ? "电路修改" : "电路查询"
         }
         
         // Do any additional setup after loading the view.

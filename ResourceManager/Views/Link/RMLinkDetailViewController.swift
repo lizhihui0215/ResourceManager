@@ -185,7 +185,6 @@ class RMLinkDetailViewController: RMViewController {
             accessDeviceNameLabel <-> viewModel.accessDeviceName
             accessDevicePortLabel <-> viewModel.accessDevicePort
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
-            customerNameTextField.rx.textInput <-> viewModel.customerLevel
 
         }
     }

@@ -75,7 +75,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
     }
     
     func resourceTypes() -> [RMResourceType] {
-        return [ RMResourceType(title: "链路", resource: .link),
+        return [ RMResourceType(title: "电路", resource: .link),
                  RMResourceType(title: "机柜", resource: .device),
                  RMResourceType(title: "设备", resource: . cabinet)]
     }

@@ -36,11 +36,11 @@ enum RMResourceItem {
     func title() -> String {
         switch self {
         case .linkSearch:
-            return "链路查询"
+            return "电路查询"
         case .cabinetSearch:
             return "机柜查询"
         case .linkModify:
-            return "链路修改"
+            return "电路修改"
         case .inspect:
             return "巡检记录"
         case .cabinetModify:

@@ -23,7 +23,6 @@ class RMDeviceDetailViewController: RMViewController {
 
     @IBOutlet weak var deviceDescriptionTextField: UITextField!
     @IBOutlet weak var termailCountTextField: UITextField!
-    @IBOutlet weak var deviceLocationTextField: UITextField!
     @IBOutlet weak var deviceCodeTextField: UITextField!
     weak var delegate: RMDeviceDetailViewControllerDelegate?
     var viewModel: RMDeviceModifyViewModel?
@@ -33,7 +32,6 @@ class RMDeviceDetailViewController: RMViewController {
         if let viewModel = self.viewModel {
             deviceNameTextField.rx.textInput <-> viewModel.deviceName
             termailCountTextField.rx.textInput <-> viewModel.totalTerminals
-            deviceLocationTextField.rx.textInput <-> viewModel.deviceLocation
             deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
             deviceDescriptionTextField.rx.textInput <-> viewModel.deviceDesc
             deviceCodeTextField.backgroundColor = UIColor.white
