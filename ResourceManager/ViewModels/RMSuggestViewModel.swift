@@ -29,11 +29,16 @@ class RMSuggestViewModel: RMViewModel {
                 return self.action.alert(result: result)
             }.flatMapLatest { _  in
                 return RMPersonalCenterDomain.shared.suggest(name: name, phone: phone, detail: detail)
-            }.flatMapLatest { result  in
-                self.action.animation.value = false
+            }.do(onNext: { [weak self] result in
+                if let strongSelf = self {
+                    
+                    strongSelf.action.animation.value = false
+                }
+            }).flatMapLatest({ result  in
                 return self.action.alert(result: result)
+            })
+            .flatMapLatest({ _  in
+                return self.action.alert(message: "提交成功！")
+            })
         }
-    }
-    
-    
 }

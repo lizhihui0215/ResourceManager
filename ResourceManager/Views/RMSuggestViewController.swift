@@ -37,7 +37,15 @@ class RMSuggestViewController: RMViewController {
         let detail = detailTextView.text ?? ""
         let phone = phoneTextField.text ?? ""
         
-        self.viewModel?.suggest(name: name, phone: phone, detail: detail).drive().disposed(by: disposeBag)
+        self.viewModel?.suggest(name: name, phone: phone, detail: detail).drive(onNext: { [weak self] _ in
+            
+            if let strongSelf = self {
+                strongSelf.nameTextField.text = ""
+                strongSelf.detailTextView.text = ""
+                strongSelf.phoneTextField.text = ""
+            }
+            
+        }).disposed(by: disposeBag)
     }
 
     /*

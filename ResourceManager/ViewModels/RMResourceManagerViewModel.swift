@@ -93,9 +93,9 @@ class RMResourceManagerViewModel: RMViewModel, RMListDataSource {
         let section: RMSection<RMResourceItem, Void> = RMSection()
         section.append(item: .linkSearch)
         section.append(item: .cabinetSearch)
-        section.append(item: .linkModify)
         section.append(item: .cabinetModify)
         section.append(item: .deviceModify)
+        section.append(item: .linkModify)
         section.append(item: .inspect)
         self.datasource.append(section)
     }

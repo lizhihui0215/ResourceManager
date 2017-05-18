@@ -48,7 +48,15 @@ class RMDeviceModifyViewModel: RMViewModel {
         deviceDesc.asObservable().bind { device.deviceDesc = $0  }.addDisposableTo(disposeBag)
     }
     
-    func commit() -> Driver<Bool> {
+    func commit() -> Driver<Bool> {        
+        guard let totalTerminals = Int(totalTerminals.value) else {
+            return self.action.alert(message: "请输入正确的数字！")
+        }
+        
+        if totalTerminals > 128 {
+            return self.action.alert(message: "端口总数不能大于128！")
+        }
+        
         return RMDeviceModifyDomain.shared.modifyDevice(device: device).do(onNext: { [weak self] result in
             if let strongSelf = self {
                 strongSelf.action.animation.value = false

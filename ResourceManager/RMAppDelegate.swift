@@ -37,7 +37,7 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .white
         
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor(hex6: 0x3497d4, alpha: 1)], for: .highlighted)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor(hex6: 0x3497d4, alpha: 1)], for: .selected)
         
         AMapServices.sharedServices().apiKey = "5d8a967c0316eb4c9d3295ac71a3de04"
 

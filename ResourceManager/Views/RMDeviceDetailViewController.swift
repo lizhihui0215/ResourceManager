@@ -35,6 +35,7 @@ class RMDeviceDetailViewController: RMViewController {
             deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
             deviceDescriptionTextField.rx.textInput <-> viewModel.deviceDesc
             deviceCodeTextField.backgroundColor = UIColor.white
+            termailCountTextField.keyboardType = .asciiCapableNumberPad
         }
         // Do any additional setup after loading the view.
     }
