@@ -11,4 +11,9 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import <UIKit/UIKit.h>
+#import "Reachability.h"
+#import "Print.h"
+#import "ZXingObjc.h"
+
 
