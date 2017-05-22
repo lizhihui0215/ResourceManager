@@ -65,6 +65,14 @@ target 'ResourceManager' do
   # https://github.com/devxoul/Toaster
   pod 'Toaster'
   
+  pod 'ZXingObjC'
+  
+  pod 'MBProgressHUD'
+  
+  pod 'KissXML'
+  
+  pod 'GPUImage'
+  
   
   pod 'AMap3DMap'  #3D地图SDK
 
