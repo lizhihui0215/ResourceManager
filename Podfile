@@ -65,6 +65,9 @@ target 'ResourceManager' do
   # https://github.com/devxoul/Toaster
   pod 'Toaster'
   
+  pod 'DLAlertView'
+  
+  
   pod 'ZXingObjC'
   
   pod 'MBProgressHUD'

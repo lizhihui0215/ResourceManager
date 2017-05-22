@@ -74,6 +74,16 @@
 		26909D701EA4968F008BE207 /* RMExchangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26909D6F1EA4968F008BE207 /* RMExchangePasswordViewController.swift */; };
 		26909D721EA4BD09008BE207 /* RMExchangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26909D711EA4BD09008BE207 /* RMExchangePasswordViewModel.swift */; };
 		26909D741EA4C9EB008BE207 /* RMSuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26909D731EA4C9EB008BE207 /* RMSuggestViewController.swift */; };
+		269512241ED331E90052D08A /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 26950F631ED331E80052D08A /* Data.m */; };
+		2695122B1ED331E90052D08A /* ModelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 26950F721ED331E80052D08A /* ModelUtil.m */; };
+		2695122C1ED331E90052D08A /* Print.m in Sources */ = {isa = PBXBuildFile; fileRef = 26950F741ED331E80052D08A /* Print.m */; };
+		2695122D1ED331E90052D08A /* XmlPrintData.m in Sources */ = {isa = PBXBuildFile; fileRef = 26950F761ED331E80052D08A /* XmlPrintData.m */; };
+		2695122E1ED331E90052D08A /* XmlUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 26950F781ED331E80052D08A /* XmlUtil.m */; };
+		2695122F1ED331E90052D08A /* libwewinprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26950F7A1ED331E80052D08A /* libwewinprint.a */; };
+		269512301ED331E90052D08A /* LICENCE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26950F831ED331E80052D08A /* LICENCE.txt */; };
+		269512311ED331E90052D08A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 26950F851ED331E80052D08A /* Reachability.m */; };
+		269512321ED331E90052D08A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 26950F861ED331E80052D08A /* README.md */; };
+		269513101ED3346F0052D08A /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2695130F1ED3346F0052D08A /* libxml2.2.tbd */; };
 		269631561E9F8BA400EFB0A3 /* RMPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269631551E9F8BA400EFB0A3 /* RMPickerView.swift */; };
 		269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A48951E822FD30024FC17 /* RMAppDelegate.swift */; };
 		269A489B1E822FD30024FC17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269A48991E822FD30024FC17 /* Main.storyboard */; };
@@ -88,21 +98,6 @@
 		26A543171EB1C5BE001B296A /* RSKGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A543161EB1C5BE001B296A /* RSKGrowingTextView.swift */; };
 		26B189D11E9E8F9500A67B53 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B189D01E9E8F9500A67B53 /* LocationManager.swift */; };
 		26B9E6361EB63692001BE88C /* RMHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B9E6351EB63692001BE88C /* RMHelpViewController.swift */; };
-		26BA5F4E1ED2F18800235464 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F2A1ED2F18700235464 /* Data.m */; };
-		26BA5F4F1ED2F18800235464 /* DLAVAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F2D1ED2F18700235464 /* DLAVAlertView.m */; };
-		26BA5F501ED2F18800235464 /* DLAVAlertViewButtonTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F2F1ED2F18700235464 /* DLAVAlertViewButtonTheme.m */; };
-		26BA5F511ED2F18800235464 /* DLAVAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F311ED2F18700235464 /* DLAVAlertViewController.m */; };
-		26BA5F521ED2F18800235464 /* DLAVAlertViewTextControlTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F331ED2F18700235464 /* DLAVAlertViewTextControlTheme.m */; };
-		26BA5F531ED2F18800235464 /* DLAVAlertViewTextFieldTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F351ED2F18700235464 /* DLAVAlertViewTextFieldTheme.m */; };
-		26BA5F541ED2F18800235464 /* DLAVAlertViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F371ED2F18700235464 /* DLAVAlertViewTheme.m */; };
-		26BA5F551ED2F18800235464 /* ModelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F391ED2F18700235464 /* ModelUtil.m */; };
-		26BA5F561ED2F18800235464 /* Print.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F3B1ED2F18700235464 /* Print.m */; };
-		26BA5F571ED2F18800235464 /* XmlPrintData.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F3D1ED2F18700235464 /* XmlPrintData.m */; };
-		26BA5F581ED2F18800235464 /* XmlUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F3F1ED2F18700235464 /* XmlUtil.m */; };
-		26BA5F591ED2F18800235464 /* libwewinprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BA5F411ED2F18700235464 /* libwewinprint.a */; };
-		26BA5F5A1ED2F18800235464 /* LICENCE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26BA5F4A1ED2F18800235464 /* LICENCE.txt */; };
-		26BA5F5B1ED2F18800235464 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F4C1ED2F18800235464 /* Reachability.m */; };
-		26BA5F5C1ED2F18800235464 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 26BA5F4D1ED2F18800235464 /* README.md */; };
 		26BFE8AD1E9E798D00A636AA /* RMLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE8AC1E9E798D00A636AA /* RMLocationViewController.swift */; };
 		26BFE8AF1E9E7CD100A636AA /* RMLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */; };
 		26C7C7AF1EAE3438006AC792 /* RMRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7C7AE1EAE3438006AC792 /* RMRootViewModel.swift */; };
@@ -223,6 +218,29 @@
 		26909D6F1EA4968F008BE207 /* RMExchangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMExchangePasswordViewController.swift; sourceTree = "<group>"; };
 		26909D711EA4BD09008BE207 /* RMExchangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMExchangePasswordViewModel.swift; sourceTree = "<group>"; };
 		26909D731EA4C9EB008BE207 /* RMSuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSuggestViewController.swift; sourceTree = "<group>"; };
+		26950F621ED331E80052D08A /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		26950F631ED331E80052D08A /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
+		26950F711ED331E80052D08A /* ModelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelUtil.h; sourceTree = "<group>"; };
+		26950F721ED331E80052D08A /* ModelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelUtil.m; sourceTree = "<group>"; };
+		26950F731ED331E80052D08A /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
+		26950F741ED331E80052D08A /* Print.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print.m; sourceTree = "<group>"; };
+		26950F751ED331E80052D08A /* XmlPrintData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlPrintData.h; sourceTree = "<group>"; };
+		26950F761ED331E80052D08A /* XmlPrintData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlPrintData.m; sourceTree = "<group>"; };
+		26950F771ED331E80052D08A /* XmlUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlUtil.h; sourceTree = "<group>"; };
+		26950F781ED331E80052D08A /* XmlUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlUtil.m; sourceTree = "<group>"; };
+		26950F7A1ED331E80052D08A /* libwewinprint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwewinprint.a; sourceTree = "<group>"; };
+		26950F7B1ED331E80052D08A /* PrintBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintBlock.h; sourceTree = "<group>"; };
+		26950F7C1ED331E80052D08A /* printData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printData.h; sourceTree = "<group>"; };
+		26950F7D1ED331E80052D08A /* PrintHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintHelper.h; sourceTree = "<group>"; };
+		26950F7E1ED331E80052D08A /* PrintUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintUtil.h; sourceTree = "<group>"; };
+		26950F7F1ED331E80052D08A /* SocketConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketConnect.h; sourceTree = "<group>"; };
+		26950F801ED331E80052D08A /* wewinprint_a.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wewinprint_a.h; sourceTree = "<group>"; };
+		26950F811ED331E80052D08A /* XImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XImageUtil.h; sourceTree = "<group>"; };
+		26950F831ED331E80052D08A /* LICENCE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.txt; sourceTree = "<group>"; };
+		26950F841ED331E80052D08A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		26950F851ED331E80052D08A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		26950F861ED331E80052D08A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2695130F1ED3346F0052D08A /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		269631551E9F8BA400EFB0A3 /* RMPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPickerView.swift; sourceTree = "<group>"; };
 		269A48921E822FD30024FC17 /* ResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269A48951E822FD30024FC17 /* RMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAppDelegate.swift; sourceTree = "<group>"; };
@@ -243,40 +261,6 @@
 		26A543161EB1C5BE001B296A /* RSKGrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSKGrowingTextView.swift; sourceTree = "<group>"; };
 		26B189D01E9E8F9500A67B53 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		26B9E6351EB63692001BE88C /* RMHelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMHelpViewController.swift; sourceTree = "<group>"; };
-		26BA5F291ED2F18700235464 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
-		26BA5F2A1ED2F18700235464 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
-		26BA5F2C1ED2F18700235464 /* DLAVAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertView.h; sourceTree = "<group>"; };
-		26BA5F2D1ED2F18700235464 /* DLAVAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertView.m; sourceTree = "<group>"; };
-		26BA5F2E1ED2F18700235464 /* DLAVAlertViewButtonTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewButtonTheme.h; sourceTree = "<group>"; };
-		26BA5F2F1ED2F18700235464 /* DLAVAlertViewButtonTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewButtonTheme.m; sourceTree = "<group>"; };
-		26BA5F301ED2F18700235464 /* DLAVAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewController.h; sourceTree = "<group>"; };
-		26BA5F311ED2F18700235464 /* DLAVAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewController.m; sourceTree = "<group>"; };
-		26BA5F321ED2F18700235464 /* DLAVAlertViewTextControlTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTextControlTheme.h; sourceTree = "<group>"; };
-		26BA5F331ED2F18700235464 /* DLAVAlertViewTextControlTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTextControlTheme.m; sourceTree = "<group>"; };
-		26BA5F341ED2F18700235464 /* DLAVAlertViewTextFieldTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTextFieldTheme.h; sourceTree = "<group>"; };
-		26BA5F351ED2F18700235464 /* DLAVAlertViewTextFieldTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTextFieldTheme.m; sourceTree = "<group>"; };
-		26BA5F361ED2F18700235464 /* DLAVAlertViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTheme.h; sourceTree = "<group>"; };
-		26BA5F371ED2F18700235464 /* DLAVAlertViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTheme.m; sourceTree = "<group>"; };
-		26BA5F381ED2F18700235464 /* ModelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelUtil.h; sourceTree = "<group>"; };
-		26BA5F391ED2F18700235464 /* ModelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelUtil.m; sourceTree = "<group>"; };
-		26BA5F3A1ED2F18700235464 /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
-		26BA5F3B1ED2F18700235464 /* Print.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print.m; sourceTree = "<group>"; };
-		26BA5F3C1ED2F18700235464 /* XmlPrintData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlPrintData.h; sourceTree = "<group>"; };
-		26BA5F3D1ED2F18700235464 /* XmlPrintData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlPrintData.m; sourceTree = "<group>"; };
-		26BA5F3E1ED2F18700235464 /* XmlUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlUtil.h; sourceTree = "<group>"; };
-		26BA5F3F1ED2F18700235464 /* XmlUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlUtil.m; sourceTree = "<group>"; };
-		26BA5F411ED2F18700235464 /* libwewinprint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwewinprint.a; sourceTree = "<group>"; };
-		26BA5F421ED2F18700235464 /* PrintBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintBlock.h; sourceTree = "<group>"; };
-		26BA5F431ED2F18700235464 /* printData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printData.h; sourceTree = "<group>"; };
-		26BA5F441ED2F18700235464 /* PrintHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintHelper.h; sourceTree = "<group>"; };
-		26BA5F451ED2F18700235464 /* PrintUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintUtil.h; sourceTree = "<group>"; };
-		26BA5F461ED2F18700235464 /* SocketConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketConnect.h; sourceTree = "<group>"; };
-		26BA5F471ED2F18700235464 /* wewinprint_a.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wewinprint_a.h; sourceTree = "<group>"; };
-		26BA5F481ED2F18800235464 /* XImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XImageUtil.h; sourceTree = "<group>"; };
-		26BA5F4A1ED2F18800235464 /* LICENCE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.txt; sourceTree = "<group>"; };
-		26BA5F4B1ED2F18800235464 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		26BA5F4C1ED2F18800235464 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		26BA5F4D1ED2F18800235464 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		26BFE8AC1E9E798D00A636AA /* RMLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationViewController.swift; sourceTree = "<group>"; };
 		26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationViewModel.swift; sourceTree = "<group>"; };
 		26C7C7AE1EAE3438006AC792 /* RMRootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMRootViewModel.swift; sourceTree = "<group>"; };
@@ -330,7 +314,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26BA5F591ED2F18800235464 /* libwewinprint.a in Frameworks */,
+				269513101ED3346F0052D08A /* libxml2.2.tbd in Frameworks */,
+				2695122F1ED331E90052D08A /* libwewinprint.a in Frameworks */,
 				D097AD6149BDF471AEB37461 /* Pods_ResourceManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +339,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26950F611ED331E80052D08A /* printExtra */ = {
+			isa = PBXGroup;
+			children = (
+				26950F621ED331E80052D08A /* Data.h */,
+				26950F631ED331E80052D08A /* Data.m */,
+				26950F711ED331E80052D08A /* ModelUtil.h */,
+				26950F721ED331E80052D08A /* ModelUtil.m */,
+				26950F731ED331E80052D08A /* Print.h */,
+				26950F741ED331E80052D08A /* Print.m */,
+				26950F751ED331E80052D08A /* XmlPrintData.h */,
+				26950F761ED331E80052D08A /* XmlPrintData.m */,
+				26950F771ED331E80052D08A /* XmlUtil.h */,
+				26950F781ED331E80052D08A /* XmlUtil.m */,
+			);
+			path = printExtra;
+			sourceTree = "<group>";
+		};
+		26950F791ED331E80052D08A /* printLib */ = {
+			isa = PBXGroup;
+			children = (
+				26950F7A1ED331E80052D08A /* libwewinprint.a */,
+				26950F7B1ED331E80052D08A /* PrintBlock.h */,
+				26950F7C1ED331E80052D08A /* printData.h */,
+				26950F7D1ED331E80052D08A /* PrintHelper.h */,
+				26950F7E1ED331E80052D08A /* PrintUtil.h */,
+				26950F7F1ED331E80052D08A /* SocketConnect.h */,
+				26950F801ED331E80052D08A /* wewinprint_a.h */,
+				26950F811ED331E80052D08A /* XImageUtil.h */,
+			);
+			path = printLib;
+			sourceTree = "<group>";
+		};
+		26950F821ED331E80052D08A /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				26950F831ED331E80052D08A /* LICENCE.txt */,
+				26950F841ED331E80052D08A /* Reachability.h */,
+				26950F851ED331E80052D08A /* Reachability.m */,
+				26950F861ED331E80052D08A /* README.md */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		269A48891E822FD30024FC17 = {
 			isa = PBXGroup;
 			children = (
@@ -413,69 +441,6 @@
 				269A48B71E822FD30024FC17 /* Info.plist */,
 			);
 			path = ResourceManagerUITests;
-			sourceTree = "<group>";
-		};
-		26BA5F281ED2F18700235464 /* printExtra */ = {
-			isa = PBXGroup;
-			children = (
-				26BA5F291ED2F18700235464 /* Data.h */,
-				26BA5F2A1ED2F18700235464 /* Data.m */,
-				26BA5F2B1ED2F18700235464 /* DLAVAlertView */,
-				26BA5F381ED2F18700235464 /* ModelUtil.h */,
-				26BA5F391ED2F18700235464 /* ModelUtil.m */,
-				26BA5F3A1ED2F18700235464 /* Print.h */,
-				26BA5F3B1ED2F18700235464 /* Print.m */,
-				26BA5F3C1ED2F18700235464 /* XmlPrintData.h */,
-				26BA5F3D1ED2F18700235464 /* XmlPrintData.m */,
-				26BA5F3E1ED2F18700235464 /* XmlUtil.h */,
-				26BA5F3F1ED2F18700235464 /* XmlUtil.m */,
-			);
-			path = printExtra;
-			sourceTree = "<group>";
-		};
-		26BA5F2B1ED2F18700235464 /* DLAVAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				26BA5F2C1ED2F18700235464 /* DLAVAlertView.h */,
-				26BA5F2D1ED2F18700235464 /* DLAVAlertView.m */,
-				26BA5F2E1ED2F18700235464 /* DLAVAlertViewButtonTheme.h */,
-				26BA5F2F1ED2F18700235464 /* DLAVAlertViewButtonTheme.m */,
-				26BA5F301ED2F18700235464 /* DLAVAlertViewController.h */,
-				26BA5F311ED2F18700235464 /* DLAVAlertViewController.m */,
-				26BA5F321ED2F18700235464 /* DLAVAlertViewTextControlTheme.h */,
-				26BA5F331ED2F18700235464 /* DLAVAlertViewTextControlTheme.m */,
-				26BA5F341ED2F18700235464 /* DLAVAlertViewTextFieldTheme.h */,
-				26BA5F351ED2F18700235464 /* DLAVAlertViewTextFieldTheme.m */,
-				26BA5F361ED2F18700235464 /* DLAVAlertViewTheme.h */,
-				26BA5F371ED2F18700235464 /* DLAVAlertViewTheme.m */,
-			);
-			path = DLAVAlertView;
-			sourceTree = "<group>";
-		};
-		26BA5F401ED2F18700235464 /* printLib */ = {
-			isa = PBXGroup;
-			children = (
-				26BA5F411ED2F18700235464 /* libwewinprint.a */,
-				26BA5F421ED2F18700235464 /* PrintBlock.h */,
-				26BA5F431ED2F18700235464 /* printData.h */,
-				26BA5F441ED2F18700235464 /* PrintHelper.h */,
-				26BA5F451ED2F18700235464 /* PrintUtil.h */,
-				26BA5F461ED2F18700235464 /* SocketConnect.h */,
-				26BA5F471ED2F18700235464 /* wewinprint_a.h */,
-				26BA5F481ED2F18800235464 /* XImageUtil.h */,
-			);
-			path = printLib;
-			sourceTree = "<group>";
-		};
-		26BA5F491ED2F18800235464 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				26BA5F4A1ED2F18800235464 /* LICENCE.txt */,
-				26BA5F4B1ED2F18800235464 /* Reachability.h */,
-				26BA5F4C1ED2F18800235464 /* Reachability.m */,
-				26BA5F4D1ED2F18800235464 /* README.md */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		26CB6A691E9761070092E3E9 /* Scan */ = {
@@ -606,9 +571,9 @@
 		5B875A17F03BC72127A7EA6B /* SKDs */ = {
 			isa = PBXGroup;
 			children = (
-				26BA5F281ED2F18700235464 /* printExtra */,
-				26BA5F401ED2F18700235464 /* printLib */,
-				26BA5F491ED2F18800235464 /* Reachability */,
+				26950F611ED331E80052D08A /* printExtra */,
+				26950F791ED331E80052D08A /* printLib */,
+				26950F821ED331E80052D08A /* Reachability */,
 				5B8754FA3BDBFFCB829423BF /* FDStackView */,
 			);
 			path = SKDs;
@@ -692,6 +657,7 @@
 		7715C9C96F5F2330EF24B99A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2695130F1ED3346F0052D08A /* libxml2.2.tbd */,
 				D7A5250EB005BD868F340F58 /* Pods_ResourceManager.framework */,
 				7B2D54B3294D414F3F399907 /* Pods_ResourceManagerTests.framework */,
 				60BC1AF07CFC7DE8E82A800D /* Pods_ResourceManagerUITests.framework */,
@@ -837,7 +803,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26BA5F5A1ED2F18800235464 /* LICENCE.txt in Resources */,
+				269512301ED331E90052D08A /* LICENCE.txt in Resources */,
 				269A48A01E822FD30024FC17 /* LaunchScreen.storyboard in Resources */,
 				269A489D1E822FD30024FC17 /* Assets.xcassets in Resources */,
 				269A489B1E822FD30024FC17 /* Main.storyboard in Resources */,
@@ -874,7 +840,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		87199D74587C2827BC08E6E6 /* [CP] Embed Pods Frameworks */ = {
@@ -979,7 +945,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FDFFE514AFD959A7187CEF23 /* [CP] Check Pods Manifest.lock */ = {
@@ -994,7 +960,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1018,7 +984,6 @@
 				26CB6A721E9761070092E3E9 /* LBXScanLineAnimation.swift in Sources */,
 				267316E71EB18C4500A848B3 /* RMDeviceListViewModel.swift in Sources */,
 				26909D701EA4968F008BE207 /* RMExchangePasswordViewController.swift in Sources */,
-				26BA5F531ED2F18800235464 /* DLAVAlertViewTextFieldTheme.m in Sources */,
 				266F46361EB1026100E79F4D /* RMDeviceSearchViewModel.swift in Sources */,
 				2670EDE31E964FC900D2CA07 /* RMScanViewModel.swift in Sources */,
 				266597841E95D82A0035D344 /* RMLinkSearchDomain.swift in Sources */,
@@ -1031,9 +996,10 @@
 				262AB6971E9B344C00986173 /* RMLinkScanViewModel.swift in Sources */,
 				26786E941E9B276700AB42FF /* RMCabinetListViewModel.swift in Sources */,
 				269A48961E822FD30024FC17 /* RMAppDelegate.swift in Sources */,
-				26BA5F561ED2F18800235464 /* Print.m in Sources */,
+				2695122E1ED331E90052D08A /* XmlUtil.m in Sources */,
 				26786E921E9B263800AB42FF /* RMCabinetSearchDomain.swift in Sources */,
 				2672C1011E8CE44900AD19EA /* RMError.swift in Sources */,
+				2695122B1ED331E90052D08A /* ModelUtil.m in Sources */,
 				266F463C1EB225F100E79F4D /* RMDeviceScanViewModel.swift in Sources */,
 				26CB6A761E9761070092E3E9 /* LBXScanViewStyle.swift in Sources */,
 				263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */,
@@ -1041,7 +1007,7 @@
 				2670EDE71E96536D00D2CA07 /* RMLinkDetailViewModel.swift in Sources */,
 				2632CABF1E8B7F4B0064AF1E /* RMTabBarViewController.swift in Sources */,
 				264D89FA1EA33F78002B2A44 /* RMPersonalCenterViewController.swift in Sources */,
-				26BA5F501ED2F18800235464 /* DLAVAlertViewButtonTheme.m in Sources */,
+				2695122D1ED331E90052D08A /* XmlPrintData.m in Sources */,
 				260C3C3E1E9CC97A00DE7C46 /* RMInspectListViewController.swift in Sources */,
 				265653EE1E826A3700F37064 /* RMExchangeRootSegue.swift in Sources */,
 				262AB6991E9B345700986173 /* RMCabinetScanViewModel.swift in Sources */,
@@ -1049,7 +1015,6 @@
 				26C7C7AF1EAE3438006AC792 /* RMRootViewModel.swift in Sources */,
 				263FD31F1EAEFD7500EB7814 /* BDLocationManager.swift in Sources */,
 				26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */,
-				26BA5F541ED2F18800235464 /* DLAVAlertViewTheme.m in Sources */,
 				265653F21E827A1300F37064 /* RMAnimal.swift in Sources */,
 				260C3C421E9CCA5500DE7C46 /* RMInspectListDomain.swift in Sources */,
 				26A543151EB1C5B1001B296A /* RSKPlaceholderTextView.swift in Sources */,
@@ -1058,23 +1023,21 @@
 				26483F3B1EA1316600D6A3EC /* RMLinkDetailDomain.swift in Sources */,
 				2632CAC11E8B80E50064AF1E /* RMResourceManagerViewController.swift in Sources */,
 				268DEB3E1E9E182400056FC9 /* RMInspectUploadViewModel.swift in Sources */,
-				26BA5F551ED2F18800235464 /* ModelUtil.m in Sources */,
 				2672C1031E8CFABC00AD19EA /* Device+RMDevice.swift in Sources */,
-				26BA5F521ED2F18800235464 /* DLAVAlertViewTextControlTheme.m in Sources */,
 				26A543171EB1C5BE001B296A /* RSKGrowingTextView.swift in Sources */,
 				269C8CB01E8FB33B0049970E /* RMLink.swift in Sources */,
 				260C109C1E8A593300011A8E /* RMLoginDomain.swift in Sources */,
 				260E96FC1EC60EF60040DBF8 /* RMDeviceDetailViewController.swift in Sources */,
+				269512241ED331E90052D08A /* Data.m in Sources */,
 				260C3C461E9CDA4300DE7C46 /* RMInspect.swift in Sources */,
 				26CB6A7E1E978B840092E3E9 /* RMResourceManagerViewModel.swift in Sources */,
-				26BA5F511ED2F18800235464 /* DLAVAlertViewController.m in Sources */,
 				265653F01E8279C600F37064 /* RMDog.swift in Sources */,
 				265653EC1E8261E000F37064 /* RMLoginViewController.swift in Sources */,
 				26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */,
 				26CB6A711E9761070092E3E9 /* LBXPermissions.swift in Sources */,
 				267641831E9B5696000EFB23 /* RMDevice.swift in Sources */,
-				26BA5F5C1ED2F18800235464 /* README.md in Sources */,
 				26CB6A751E9761070092E3E9 /* LBXScanViewController.swift in Sources */,
+				2695122C1ED331E90052D08A /* Print.m in Sources */,
 				26786E8E1E9B258100AB42FF /* RMCabinetListViewController.swift in Sources */,
 				26BFE8AD1E9E798D00A636AA /* RMLocationViewController.swift in Sources */,
 				260C3C401E9CC9F500DE7C46 /* RMInspectListViewModel.swift in Sources */,
@@ -1087,7 +1050,6 @@
 				266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */,
 				260E96FE1EC60FF90040DBF8 /* RMDeviceModifyViewModel.swift in Sources */,
 				264C47D01E9DFA86008FE357 /* RMInspectUploadViewController.swift in Sources */,
-				26BA5F5B1ED2F18800235464 /* Reachability.m in Sources */,
 				2672C0FF1E8CCB8700AD19EA /* RMViewModel.swift in Sources */,
 				26317AEF1E981A4000125BCD /* UIView+Inspectable.swift in Sources */,
 				264D89FC1EA33FC4002B2A44 /* RMPersonalCenterViewModel.swift in Sources */,
@@ -1099,7 +1061,6 @@
 				26483F3D1EA1458B00D6A3EC /* RMInspectUploadDomain.swift in Sources */,
 				26D85E451EA079AE0036EBDF /* RMDeviceDetailViewModel.swift in Sources */,
 				260E97001EC611A80040DBF8 /* RMDeviceModifyDomain.swift in Sources */,
-				26BA5F571ED2F18800235464 /* XmlPrintData.m in Sources */,
 				261BB2761EA5F852006AA306 /* RMSuggestViewModel.swift in Sources */,
 				262C7E811E8ADDF9004BD333 /* RMStoryboardSegue.swift in Sources */,
 				265653E61E82397600F37064 /* RMViewController.swift in Sources */,
@@ -1108,10 +1069,10 @@
 				5B875C7B3B1F73FFE85A13BF /* RMLinkDetailViewController.swift in Sources */,
 				5B8757791E4552E3EC89752B /* RMLinkListViewController.swift in Sources */,
 				5B875BFB13AB1B17129DCA80 /* RMDeviceViewController.swift in Sources */,
+				269512321ED331E90052D08A /* README.md in Sources */,
+				269512311ED331E90052D08A /* Reachability.m in Sources */,
 				5B875B803E7DBBD96EAE7FCE /* RMSearchViewController.swift in Sources */,
-				26BA5F4E1ED2F18800235464 /* Data.m in Sources */,
 				5B87576EAFD28E9B9AE79B1B /* RMCabinetDetailDomain.swift in Sources */,
-				26BA5F581ED2F18800235464 /* XmlUtil.m in Sources */,
 				5B8756AEDDE638BF9B344B24 /* FDGapLayoutGuide.m in Sources */,
 				5B875F147455045FE0130298 /* FDLayoutSpacer.m in Sources */,
 				5B875A26E39F434FA36AD8CB /* FDStackView.m in Sources */,
@@ -1119,7 +1080,6 @@
 				5B8759326C671E515C94E06F /* FDStackViewDistributionLayoutArrangement.m in Sources */,
 				5B8755017EE79319955D5DE8 /* FDStackViewExtensions.m in Sources */,
 				5B875D5B714FE8713D6C8248 /* FDStackViewLayoutArrangement.m in Sources */,
-				26BA5F4F1ED2F18800235464 /* DLAVAlertView.m in Sources */,
 				5B875D1CD274F17606E83277 /* FDTransformLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1272,9 +1232,48 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B2E29D2AB504AE9928FD1091 /* Pods-ResourceManager.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DeviceKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManagerSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/KeychainAccess\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Kingfisher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Moya\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Moya-ObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/NVActivityIndicatorView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper+Realm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Realm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RealmSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Result\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RxCocoa\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RxRealm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RxSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SnapKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TZImagePickerController\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Toaster\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/UIColor_Hex_Swift\"",
+					"\"${PODS_ROOT}/AMap3DMap\"",
+					"\"${PODS_ROOT}/AMapFoundation\"",
+					"\"${PODS_ROOT}/AMapLocation\"",
+				);
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AMap3DMap\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapLocation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapSearch\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = ResourceManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1295,10 +1294,51 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6326FA90DF8232AA91C5506A /* Pods-ResourceManager.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DeviceKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManagerSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/KeychainAccess\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Kingfisher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Moya\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Moya-ObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/NVActivityIndicatorView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper+Realm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Realm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RealmSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Result\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RxCocoa\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RxRealm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RxSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SnapKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TZImagePickerController\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Toaster\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/UIColor_Hex_Swift\"",
+					"\"${PODS_ROOT}/AMap3DMap\"",
+					"\"${PODS_ROOT}/AMapFoundation\"",
+					"\"${PODS_ROOT}/AMapLocation\"",
+					"\"${PODS_ROOT}/AMapSearch\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AMap3DMap\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapLocation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapSearch\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = ResourceManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

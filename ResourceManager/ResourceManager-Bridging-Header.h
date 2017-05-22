@@ -12,8 +12,11 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 #import <UIKit/UIKit.h>
-#import "Reachability.h"
+#import "wewinprint_a.h"
 #import "Print.h"
-#import "ZXingObjc.h"
+#import "Print.h"
+#import "Print.h"
+#import "Print.h"
+#import "Print.h"
 
 

@@ -8,9 +8,13 @@ PODS:
   - AMapSearch (5.0.0):
     - AMapFoundation (~> 1.2)
   - DeviceKit (1.0.1)
+  - DLAlertView (1.2.5)
+  - GPUImage (0.1.7)
   - IQKeyboardManagerSwift (4.0.9)
   - KeychainAccess (3.0.2)
   - Kingfisher (3.9.0)
+  - KissXML (5.2.0)
+  - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - Moya (8.0.4):
     - Moya/Core (= 8.0.4)
@@ -48,15 +52,22 @@ PODS:
   - Toaster (2.0.3)
   - TZImagePickerController (1.7.9)
   - UIColor_Hex_Swift (3.0.2)
+  - ZXingObjC (3.2.1):
+    - ZXingObjC/All (= 3.2.1)
+  - ZXingObjC/All (3.2.1)
 
 DEPENDENCIES:
   - AMap3DMap
   - AMapLocation
   - AMapSearch
   - DeviceKit
+  - DLAlertView
+  - GPUImage
   - IQKeyboardManagerSwift
   - KeychainAccess
   - Kingfisher
+  - KissXML
+  - MBProgressHUD
   - MJRefresh
   - Moya-ObjectMapper/RxSwift
   - NVActivityIndicatorView
@@ -69,6 +80,7 @@ DEPENDENCIES:
   - Toaster
   - TZImagePickerController
   - UIColor_Hex_Swift
+  - ZXingObjC
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -77,14 +89,18 @@ SPEC CHECKSUMS:
   AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
   AMapSearch: cf7fd100d533995822d92c22586abfaf7cdf6eef
   DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
+  DLAlertView: 774c1242cc854177fdc07634ed3f8c250a38864d
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Kingfisher: 752686a0fbb300df3240ba86431168ab9244bef2
+  KissXML: 1c1eeeb6b94e4522cd2f2373e5d0d03c9227738f
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Moya: a08bc060c7a44eee27447b239ed33a189b641e2b
   Moya-ObjectMapper: 952be2b261d38cf8d973b7e429708eb03d256e23
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
-  ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
+  ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
@@ -96,7 +112,8 @@ SPEC CHECKSUMS:
   Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
   TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
+  ZXingObjC: bbf7b8f0cf8933fdd33eb4f9f46e22308552869b
 
-PODFILE CHECKSUM: 13042cf9cd597a5dd0343458bafd3862a575a3fb
+PODFILE CHECKSUM: 012ffcaac4325929efcaf54a8f51c0c02bfe272a
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

@@ -12,6 +12,8 @@
 #import "XmlUtil.h"
 #import "XmlPrintData.h"
 #import "printData.h"
+#import "PrintUtil.h"
+#import "PrintHelper.h"
 
 @interface Print()<PrintUtilDelegate,PrintHelperDelegate>{
     PrintUtil *printUtil;//蓝牙打印
