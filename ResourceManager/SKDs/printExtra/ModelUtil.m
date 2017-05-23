@@ -7,7 +7,8 @@
 //
 #import "ModelUtil.h"
 #import "XmlUtil.h"
-#import "ZxingObjc.h"
+#import "ZXingObjC.h"
+#import "printData.h"
 
 @implementation ModelUtil
 
