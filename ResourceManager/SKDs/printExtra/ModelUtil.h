@@ -8,6 +8,8 @@
 #import "Data.h"
 #import "XmlPrintData.h"
 #import <UIKit/UIKit.h>
+#import "printData.h"
+
 @interface ModelUtil : NSObject
 
 +(NSMutableArray *)createBitmap_2002_ModelArray4Ble:(Data *)data;

@@ -8,7 +8,6 @@
 #import "ModelUtil.h"
 #import "XmlUtil.h"
 #import "ZXingObjC.h"
-#import "printData.h"
 
 @implementation ModelUtil
 
@@ -129,7 +128,7 @@
         [view addSubview:lable];
         
         if (data.Code) {
-            UIImageView *v=[[UIImageView alloc] initWithFrame:CGRectMake(102, 0, 100.f, 100.f)];
+            UIImageView *v=[[UIImageView alloc] initWithFrame:CGRectMake(102, 100, 100.f, 100.f)];
             
             ZXEncodeHints *hints = [[ZXEncodeHints alloc] init];
             hints.margin = 0;

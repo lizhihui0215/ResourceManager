@@ -47,13 +47,14 @@
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     
     if ([elementName isEqualToString:@"CodeType"]){
-        self.xmlPrintData.PrintType = self.currentString;
+        NSLog(@"--%@",_currentString);
+        self.xmlPrintData.PrintType = [self.currentString copy];
         [self.currentString setString:@""];
     }else if ([elementName isEqualToString:@"Code"]) {
-        self.xmlPrintData.Code = _currentString;
+        self.xmlPrintData.Code = [_currentString copy];
         [self.currentString setString:@""];
     }else if ([elementName isEqualToString:@"Text"]) {
-        [self.xmlPrintData.textArray addObject:self.currentString];
+        [self.xmlPrintData.textArray addObject:[self.currentString copy]];
         [self.currentString setString:@""];
     }else if([elementName isEqualToString:@"Print"]){
         [_printDatas addObject:_xmlPrintData];
