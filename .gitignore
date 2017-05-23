@@ -66,5 +66,4 @@ fastlane/test_output
 # AppCode
 .idea/
 .svn/
-
- .DS_Store
+.DS_Store
