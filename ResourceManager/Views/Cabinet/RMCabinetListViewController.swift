@@ -21,6 +21,18 @@ class RMCabinetTableViewCell: RMTableViewCell {
 
 class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, UITableViewDataSource {
     
+    @IBAction func printButtonPressed(_ sender: UIButton) {
+        let point = sender.superview?.convert(sender.center, to: self.tableView)
+        
+        let indexPath = self.tableView.indexPathForRow(at: point!)
+        
+        let cabinet = self.viewModel?.elementAt(indexPath: indexPath!)
+        
+        let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>60-40</CodeType><Code>3121-00000600</Code><Text>站点名称:\(cabinet?.cabinetRoom ?? ""), 机柜名称:\(cabinet?.cabinetName ?? "")</Text><Text>服务热线：10086-8</Text></Print></Data>";
+        PrintServices.shared.printInView(view: self.view, template: template)
+
+    }
+    
     var viewModel: RMCabinetListViewModel?
     
     override func viewDidLoad() {

@@ -77,14 +77,7 @@ class RMDeviceViewController: RMViewController {
     @IBOutlet weak var deviceDescTextField: RSKGrowingTextView!
 
     @IBOutlet weak var imageView: UIImageView!
-    var print = Print()
-    
-    @IBAction func printTapped(_ sender: UIBarButtonItem) {
-        let data = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>60-40</CodeType><Code>3121-00000600</Code><Text>站点名称+机柜名称</Text><Text>服务热线：10086-8</Text></Print></Data>";
-        
-        print.printContent(data, printName: "", lableW: 320, lableH: 480)
-    }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -109,8 +102,6 @@ class RMDeviceViewController: RMViewController {
         totalTerminalsTextField.backgroundColor = UIColor.white
         terminalOccupiedTextField.backgroundColor = UIColor.white
         terminalFreeTextField.backgroundColor = UIColor.white
-        print.view = self.view
-        print.showImgView = imageView
     }
 
     override func didReceiveMemoryWarning() {

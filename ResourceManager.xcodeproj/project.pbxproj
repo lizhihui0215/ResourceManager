@@ -69,6 +69,7 @@
 		26786E941E9B276700AB42FF /* RMCabinetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */; };
 		267AD87C1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */; };
 		26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26807FDC1E8E097F005624E5 /* RMTableViewController.swift */; };
+		2681BC051ED53F8B00361033 /* PrintServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2681BC041ED53F8B00361033 /* PrintServices.swift */; };
 		268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B423B1E8F471200ADAC83 /* RMListViewModel.swift */; };
 		268DEB3E1E9E182400056FC9 /* RMInspectUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */; };
 		26909D701EA4968F008BE207 /* RMExchangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26909D6F1EA4968F008BE207 /* RMExchangePasswordViewController.swift */; };
@@ -213,6 +214,7 @@
 		26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetListViewModel.swift; sourceTree = "<group>"; };
 		267AD87B1E9CE8E900AF2FA9 /* RMInspectPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewController.swift; sourceTree = "<group>"; };
 		26807FDC1E8E097F005624E5 /* RMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
+		2681BC041ED53F8B00361033 /* PrintServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintServices.swift; sourceTree = "<group>"; };
 		268B423B1E8F471200ADAC83 /* RMListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMListViewModel.swift; sourceTree = "<group>"; };
 		268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadViewModel.swift; sourceTree = "<group>"; };
 		26909D6F1EA4968F008BE207 /* RMExchangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMExchangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */,
 				2672C1001E8CE44900AD19EA /* RMError.swift */,
 				2672C1021E8CFABC00AD19EA /* Device+RMDevice.swift */,
+				2681BC041ED53F8B00361033 /* PrintServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				26CB6A7E1E978B840092E3E9 /* RMResourceManagerViewModel.swift in Sources */,
 				265653F01E8279C600F37064 /* RMDog.swift in Sources */,
 				265653EC1E8261E000F37064 /* RMLoginViewController.swift in Sources */,
+				2681BC051ED53F8B00361033 /* PrintServices.swift in Sources */,
 				26807FDD1E8E097F005624E5 /* RMTableViewController.swift in Sources */,
 				26CB6A711E9761070092E3E9 /* LBXPermissions.swift in Sources */,
 				267641831E9B5696000EFB23 /* RMDevice.swift in Sources */,
