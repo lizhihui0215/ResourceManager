@@ -39,6 +39,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         let link = self.viewModel?.elementAt(indexPath: indexPath!)
 
         let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>02F</CodeType><Code>\( link?.linkCode ?? "")</Code><Text>专线名称:\(link?.linkName ?? "")</Text></Print></Data>";
+        print(template)
         PrintServices.shared.printInView(view: self.view, template: template)
         
     }

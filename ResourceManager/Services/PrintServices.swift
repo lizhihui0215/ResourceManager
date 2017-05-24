@@ -22,7 +22,7 @@ class PrintServices {
     }
     
     deinit {
-        print.closePrint()
+       _ = print.closePrint()
     }
     
 }
