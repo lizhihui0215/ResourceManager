@@ -16,7 +16,7 @@ class RMHelpViewController: RMViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let  urlString = RMNetworkServices.kBaseURL.appending("/resourcemanage/help/index.html")
+        let  urlString = RMNetworkServices.kBaseURL.appending("/helpDocs/")
 
         webView.loadRequest(URLRequest(url: URL(string: urlString)!))
         
@@ -40,7 +40,11 @@ class RMHelpViewController: RMViewController {
             
         }).disposed(by: disposeBag)
 
+        self.navigationItem.backBarButtonItem?.action = #selector(RMHelpViewController.backButtonPressed(_:))
         
+    }
+    
+    func backButtonPressed(_ sender: UIBarButtonItem)  {
         
     }
 
