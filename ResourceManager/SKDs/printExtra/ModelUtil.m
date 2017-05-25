@@ -7,7 +7,7 @@
 //
 #import "ModelUtil.h"
 #import "XmlUtil.h"
-#import "ZXingObjC.h"
+#import "ZxingObjc.h"
 
 @implementation ModelUtil
 
@@ -32,7 +32,7 @@
     //[image setImage:[UIImage imageNamed:@"logo.bmp"]];
     //[view addSubview:image];
     if (data.Code) {
-        UIImageView *v=[[UIImageView alloc] initWithFrame:CGRectMake(308, 78.f, 164.f, 164.f)];
+        UIImageView *v=[[UIImageView alloc] initWithFrame:CGRectMake(258, 78.f, 214.f, 214.f)];
         
         ZXEncodeHints *hints = [[ZXEncodeHints alloc] init];
         hints.margin = 0;
@@ -42,8 +42,8 @@
         ZXMultiFormatWriter *writer = [ZXMultiFormatWriter writer];
         ZXBitMatrix* result = [writer encode:data.Code
                                       format:kBarcodeFormatQRCode
-                                       width:164.f
-                                      height:164.f
+                                       width:214.f
+                                      height:214.f
                                        hints:hints
                                        error:&error];
         CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
@@ -51,27 +51,27 @@
         [view addSubview:v];
     }
     if (data.textArray&&data.textArray[0]) {
-        UILabel *lable=[[UILabel alloc] initWithFrame:CGRectMake(8, 78, 300, 164)];
+        UILabel *lable=[[UILabel alloc] initWithFrame:CGRectMake(8, 78, 250, 214)];
         CGFloat fount=22;
         [lable setLineBreakMode:NSLineBreakByCharWrapping];
         [lable setNumberOfLines:0];
         [lable setFont:[UIFont systemFontOfSize:fount]];
         [lable setText:data.textArray[0]];
         [lable sizeToFit];
-        if (lable.frame.size.width>300) {
-            while (lable.frame.size.width>300) {
+        if (lable.frame.size.width>250) {
+            while (lable.frame.size.width>250) {
                 fount--;
                 [lable setFont:[UIFont systemFontOfSize:fount]];
                 [lable sizeToFit];
             }
-        }else if(lable.frame.size.height<300-fount){
-            while (lable.frame.size.height<84-fount) {
+        }else if(lable.frame.size.height<214-fount){
+            while (lable.frame.size.height<214-fount) {
                 fount++;
                 [lable setFont:[UIFont systemFontOfSize:fount]];
                 [lable sizeToFit];
             }
         }
-        lable.frame=CGRectMake(8, (320-lable.frame.size.height)/2.0f, 300, lable.frame.size.height);
+        lable.frame=CGRectMake(8, 78.f, 250, lable.frame.size.height);
         [view addSubview:lable];
         if(data.textArray.count>1){
             UILabel *tel=[[UILabel alloc] initWithFrame:CGRectMake(180, 0, 300, 80)];
@@ -82,6 +82,7 @@
             }else{
                 [tel setFont:[UIFont systemFontOfSize:fount]];
             }
+            [tel setText:data.textArray[1]];
             [view addSubview:tel];
             
         }
