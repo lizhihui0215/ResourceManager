@@ -7,7 +7,7 @@
 //
 #import "ModelUtil.h"
 #import "XmlUtil.h"
-#import "ZxingObjc.h"
+#import "ZXingObjC.h"
 
 @implementation ModelUtil
 
