@@ -57,20 +57,22 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
         // Dispose of any resources that can be recreated.
     }
     
-    override func headerRefreshingFor(tableView: UITableView ) {
-        tableView.mj_header.endRefreshing()
-        self.viewModel?.cabinetList(refresh: true).drive(onNext: { result in
+    func reloadData(refresh: Bool) {
+        self.viewModel?.cabinetList(refresh: refresh).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
         }).disposed(by: disposeBag)
     }
+
+    
+    override func headerRefreshingFor(tableView: UITableView ) {
+        tableView.mj_header.endRefreshing()
+        self.reloadData(refresh: true)
+    }
     
     override func footerRefreshingFor(tableView: UITableView) {
         tableView.mj_footer.endRefreshing()
-        self.viewModel?.cabinetList(refresh: false).drive(onNext: { result in
-            self.tableView.reloadData()
-        }, onCompleted: {
-        }).disposed(by: disposeBag)
+        self.reloadData(refresh: false)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,6 +126,6 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
 
 extension RMCabinetListViewController: RMCabinetDetailViewControllerDelegate {
     func didEndModify() {
-        self.tableView.mj_header.beginRefreshing()
+        self.reloadData(refresh: true)
     }
 }

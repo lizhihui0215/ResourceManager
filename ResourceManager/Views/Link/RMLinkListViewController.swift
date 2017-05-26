@@ -22,7 +22,7 @@ class RMLinkTableViewCell: RMTableViewCell {
 
 extension RMLinkListViewController: RMLinkDetailViewControllerDelegate {
     func didEndModify() {
-        self.tableView.mj_header.beginRefreshing()
+        self.reloadData(refresh: true)
     }
 }
 
@@ -43,6 +43,14 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         PrintServices.shared.printInView(view: self.view, template: template)
         
     }
+    
+    func reloadData(refresh: Bool) {
+        self.viewModel?.linkList(refresh: refresh).drive(onNext: { result in
+            self.tableView.reloadData()
+        }, onCompleted: {
+        }).disposed(by: disposeBag)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,18 +76,12 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
     
     override func headerRefreshingFor(tableView: UITableView ) {
         tableView.mj_header.endRefreshing()
-        self.viewModel?.linkList(refresh: true).drive(onNext: { result in
-            self.tableView.reloadData()
-        }, onCompleted: {
-        }).disposed(by: disposeBag)
+        self.reloadData(refresh: true)
     }
     
     override func footerRefreshingFor(tableView: UITableView) {
         tableView.mj_footer.endRefreshing()
-        self.viewModel?.linkList(refresh: false).drive(onNext: { result in
-            self.tableView.reloadData()
-        }, onCompleted: {
-        }).disposed(by: disposeBag)
+        self.reloadData(refresh: false)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

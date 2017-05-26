@@ -16,7 +16,7 @@ class RMHelpViewController: RMViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let  urlString = RMNetworkServices.kBaseURL.appending("/helpDocs/")
+        let  urlString = RMNetworkServices.kBaseURL.appending("/helpDocsIOS/")
 
         webView.loadRequest(URLRequest(url: URL(string: urlString)!))
         

@@ -5,11 +5,39 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 59,
+          "top" : 47,
+          "right" : 139,
+          "left" : 139
+        }
+      },
       "idiom" : "universal",
       "filename" : "机柜背景@2x.png",
       "scale" : "2x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 83,
+          "top" : 65,
+          "right" : 208,
+          "left" : 208
+        }
+      },
       "idiom" : "universal",
       "filename" : "机柜背景@3x.png",
       "scale" : "3x"

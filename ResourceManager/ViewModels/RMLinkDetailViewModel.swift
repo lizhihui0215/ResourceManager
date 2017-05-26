@@ -43,6 +43,8 @@ class RMLinkDetailViewModel: RMViewModel {
     var farendDeviceId: Variable<String>
     var accessDeviceId: Variable<String>
     var serviceLevel: Variable<String>
+    var orderNo: Variable<String>
+    var billingNo: Variable<String>
     
     
     var accessDevice: RMDevice?
@@ -74,6 +76,8 @@ class RMLinkDetailViewModel: RMViewModel {
         farendDeviceId = Variable( link.farendDeviceId ?? "")
         accessDeviceId = Variable(link.accessDeviceId ?? "")
         serviceLevel = Variable(link.serviceLevel ?? "")
+        orderNo = Variable(link.orderNo ?? "")
+        billingNo = Variable(link.billingNo ?? "")
         super.init()
         
         serviceLevel.asObservable().bind {
@@ -123,6 +127,15 @@ class RMLinkDetailViewModel: RMViewModel {
         accessDeviceName.asObservable().bind { accessDeviceName in
             link.accessDeviceName = accessDeviceName
             }.addDisposableTo(disposeBag)
+        
+        orderNo.asObservable().bind { orderNo in
+            link.orderNo = orderNo
+            }.addDisposableTo(disposeBag)
+        
+        billingNo.asObservable().bind { billingNo in
+            link.billingNo = billingNo
+            }.addDisposableTo(disposeBag)
+        
     }
     
     func freePort(isAccess: Bool) -> Driver<[Int]> {

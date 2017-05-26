@@ -33,6 +33,9 @@ class RMLink: RMModel {
     dynamic var farendODFPort: String?
     dynamic var farendDeviceId: String?
     dynamic var accessDeviceId: String?
+    
+   dynamic var orderNo: String?
+   dynamic var billingNo: String?
 
     required convenience init?(map: Map) {
         self.init()
@@ -60,6 +63,8 @@ class RMLink: RMModel {
         accessDeviceId <- map["accessDeviceId"]
         farendDevicePort <- map["farendDevicePort"]
         serviceLevel <- map["serviceLevel"]
+        orderNo <- map["orderNo"]
+        billingNo <- map["billingNo"]
     }
 
 

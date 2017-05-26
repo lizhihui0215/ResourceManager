@@ -73,21 +73,21 @@ class RMDeviceListViewController: RMTableViewController, RMDeviceListViewAction 
         // Do any additional setup after loading the view.
     }
 
-    
-    override func headerRefreshingFor(tableView: UITableView ) {
-        tableView.mj_header.endRefreshing()
-        self.viewModel?.deviceList(refresh: true).drive(onNext: { result in
+    func reloadData(refresh: Bool)  {
+        self.viewModel?.deviceList(refresh: refresh).drive(onNext: { result in
             self.tableView.reloadData()
         }, onCompleted: {
         }).disposed(by: disposeBag)
     }
     
+    override func headerRefreshingFor(tableView: UITableView ) {
+        tableView.mj_header.endRefreshing()
+        self.reloadData(refresh: true)
+    }
+    
     override func footerRefreshingFor(tableView: UITableView) {
         tableView.mj_footer.endRefreshing()
-        self.viewModel?.deviceList(refresh: false).drive(onNext: { result in
-            self.tableView.reloadData()
-        }, onCompleted: {
-        }).disposed(by: disposeBag)
+        self.reloadData(refresh: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,6 +120,6 @@ class RMDeviceListViewController: RMTableViewController, RMDeviceListViewAction 
 
 extension RMDeviceListViewController: RMDeviceDetailViewControllerDelegate {
     func didEndModify() {
-        self.tableView.mj_header.beginRefreshing()
+        self.reloadData(refresh: true)
     }
 }

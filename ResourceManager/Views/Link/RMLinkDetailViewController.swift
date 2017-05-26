@@ -42,7 +42,9 @@ class RMLinkDetailViewController: RMViewController {
     weak var delegate: RMLinkDetailViewControllerDelegate?
     
     @IBOutlet weak var commitButton: UIButton!
+    @IBOutlet weak var billingNoTextField: UITextField!
     
+    @IBOutlet weak var orderNoTextField: UITextField!
     
     @IBOutlet weak var accessDeviceNameLabel: UILabel!
     @IBOutlet weak var accessDevicePortLabel: UILabel!
@@ -185,6 +187,8 @@ class RMLinkDetailViewController: RMViewController {
             accessDeviceNameLabel <-> viewModel.accessDeviceName
             accessDevicePortLabel <-> viewModel.accessDevicePort
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
+            orderNoTextField.rx.textInput <-> viewModel.orderNo
+            billingNoTextField.rx.textInput <-> viewModel.billingNo
 
         }
     }

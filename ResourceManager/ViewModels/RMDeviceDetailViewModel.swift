@@ -81,13 +81,14 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
     var terminalOccupied = Variable("")
     var terminalFree = Variable("")
     var deviceDesc = Variable("")
+    var deviceRoom = Variable("")
     
     var links = [RMLink]()
     
     
     var action: RMDeviceDetailViewAction
     
-    init(device: RMDevice, action: RMDeviceDetailViewAction) {
+    init(device: RMDevice, deviceRoom: String, action: RMDeviceDetailViewAction) {
         self.action = action
         self.device = device
         self.deviceCode.value = self.device.deviceCode ?? ""
@@ -97,7 +98,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
         self.terminalOccupied.value = String(self.device.terminalOccupied)
         self.terminalFree.value = String(self.device.terminalFree)
         self.deviceDesc.value = self.device.deviceDesc ?? ""
-        
+        self.deviceRoom.value = deviceRoom
         super.init()
         self.datasource.append(RMSection())
     }

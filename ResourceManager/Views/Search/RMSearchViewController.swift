@@ -42,6 +42,7 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         }else if let _ = self.viewModel as? RMDeviceSearchViewModel {
             self.firstTextField.placeholder = "设备代码"
             self.secondTextField.placeholder = "设备名称"
+            self.navigationItem.rightBarButtonItem = nil
             self.stackView.removeArrangedSubview(self.stackView.subviews.last!)
         }
         
@@ -113,8 +114,10 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
             }
         }else if segue.identifier == "toCabinetScan" {
             let scanViewController = segue.destination as! RMScanViewController
-            scanViewController.viewModel = RMCabinetScanViewModel(action: scanViewController)
-            scanViewController.delegate = self
+            if let cabinetSearchViewModel = self.viewModel as? RMCabinetSearchViewModel {
+                scanViewController.viewModel = RMCabinetScanViewModel(action: scanViewController, isModify: cabinetSearchViewModel.isModify)
+                scanViewController.delegate = self
+            }
         }else if segue.identifier == "toDeviceList" {
             if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
                 let deviceListViewController = segue.destination as! RMDeviceListViewController

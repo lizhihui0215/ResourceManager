@@ -217,8 +217,8 @@ extension RMNetworkAPI: TargetType {
                     "linkCode": linkCode,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
-        case let .cabinetDetail(_, linkCode):
-            return ["cabinetCode": linkCode]
+        case let .cabinetDetail(_, cabinetId):
+            return ["cabinetId": cabinetId]
         case let .cabinetList(_,account, customerName, linkCode, pageNO, pageSize):
             return ["cabinetName": account,
                     "customerName": customerName,

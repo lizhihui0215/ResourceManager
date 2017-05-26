@@ -29,7 +29,7 @@ class RMCabinetScanViewModel: RMScanViewModel {
     
     func cabinetDetail(of code: String ) -> Driver<Bool> {
         self.action.animation.value = true
-        return  RMScanDomain.shared.cabinet(linkCode: code).do(onNext: { result in
+        return  RMScanDomain.shared.cabinet(cabinetId: code).do(onNext: { result in
             switch result {
             case .success(let link):
                 self.result = link

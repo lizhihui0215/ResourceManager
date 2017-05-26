@@ -76,6 +76,7 @@ class RMDeviceViewController: RMViewController {
     @IBOutlet weak var terminalFreeTextField: UITextField!
     @IBOutlet weak var deviceDescTextField: RSKGrowingTextView!
 
+    @IBOutlet weak var deviceRoomTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
    
     override func viewDidLoad() {
@@ -91,7 +92,7 @@ class RMDeviceViewController: RMViewController {
             terminalOccupiedTextField.rx.textInput <-> viewModel.terminalOccupied
             terminalFreeTextField.rx.textInput <-> viewModel.terminalFree
             deviceDescTextField.rx.textInput <-> viewModel.deviceDesc
-            
+            deviceRoomTextField.rx.textInput <-> viewModel.deviceRoom
             viewModel.link().drive(onNext: { _ in
                 self.collectionView.reloadData()
             }).disposed(by: disposeBag)
@@ -102,6 +103,7 @@ class RMDeviceViewController: RMViewController {
         totalTerminalsTextField.backgroundColor = UIColor.white
         terminalOccupiedTextField.backgroundColor = UIColor.white
         terminalFreeTextField.backgroundColor = UIColor.white
+        deviceRoomTextField.backgroundColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {

@@ -131,7 +131,9 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         
         let device = self.viewModel?.elementAt(indexPath: indexPath!)
         
-        deviceViewController.viewModel = RMDeviceDetailViewModel(device: device!, action: deviceViewController)
+        let deviceRoom = self.viewModel?.cabinetRoom.value;
+        
+        deviceViewController.viewModel = RMDeviceDetailViewModel(device: device!, deviceRoom: deviceRoom ?? "", action: deviceViewController)
         
     }
     
