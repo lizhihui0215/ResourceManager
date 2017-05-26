@@ -82,4 +82,37 @@ func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<Stri
     return Disposables.create(bindToUIDisposable, bindToVariable)
 }
 
+@discardableResult
+func <-> (text: ControlProperty<String?>, variable: Variable<String>) -> Disposable {
+    
+    let bindToUIDisposable = variable.asObservable().bindTo(text)
+    
+    let bindToVariable = text
+        .subscribe(onNext: { text in
+            /**
+             In some cases `textInput.textRangeFromPosition(start, toPosition: end)` will return nil even though the underlying
+             value is not nil. This appears to be an Apple bug. If it's not, and we are doing something wrong, please let us know.
+             The can be reproed easily if replace bottom code with
+             
+             if nonMarkedTextValue != variable.value {
+             variable.value = nonMarkedTextValue ?? ""
+             }
+             
+             and you hit "Done" button on keyboard.
+             */
+            
+            let c = text
+            
+            
+            if   c != variable.value {
+                variable.value = text!
+            }
+            }, onCompleted: {
+                bindToUIDisposable.dispose()
+        })
+    
+    return Disposables.create(bindToUIDisposable, bindToVariable)
+}
+
+
 

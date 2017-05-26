@@ -158,6 +158,14 @@ class RMLinkDetailViewController: RMViewController {
             self.farendDevicePortTapGesture.isEnabled = false
             self.customerLevelTapGesture.isEnabled = false
             self.serviceLevelTapGesture.isEnabled = false
+            
+            
+            self.orderNoTextField.isEnabled = false
+            self.orderNoTextField.backgroundColor = UIColor.white
+
+            self.billingNoTextField.isEnabled = false
+            self.billingNoTextField.backgroundColor = UIColor.white
+
 
         }else {
             self.linkCodeTextField.isEnabled = false
@@ -166,6 +174,8 @@ class RMLinkDetailViewController: RMViewController {
             self.accessDevicePortTapGesture.isEnabled = true
             self.farendDeviceNameTapGesture.isEnabled = true
             self.farendDevicePortTapGesture.isEnabled = true
+            self.billingNoTextField.isEnabled = true
+            self.orderNoTextField.isEnabled = true
         }
         
         self.customerLevelTextField.isEnabled = false
@@ -188,7 +198,16 @@ class RMLinkDetailViewController: RMViewController {
             accessDevicePortLabel <-> viewModel.accessDevicePort
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
             orderNoTextField.rx.textInput <-> viewModel.orderNo
-            billingNoTextField.rx.textInput <-> viewModel.billingNo
+            billingNoTextField.rx.text <-> viewModel.billingNo
+            billingNoTextField.keyboardType = .asciiCapableNumberPad
+            billingNoTextField.rx.controlEvent(UIControlEvents.editingChanged).subscribe(onNext: { [weak billingNoTextField] xx in
+                if let textField = billingNoTextField {
+                    if let text = textField.text, text.characters.count > 10 {
+                        let index = text.index(text.startIndex, offsetBy: 10)
+                        textField.text = text.substring(to: index)
+                    }
+                }
+            }).disposed(by: disposeBag);
 
         }
     }
