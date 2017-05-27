@@ -38,7 +38,7 @@ class RMSuggestViewModel: RMViewModel {
                 return self.action.alert(result: result)
             })
             .flatMapLatest({ _  in
-                return self.action.alert(message: "提交成功！")
+                return self.action.alert(message: "提交成功！", success: true)
             })
         }
 }

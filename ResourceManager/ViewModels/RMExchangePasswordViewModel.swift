@@ -35,7 +35,7 @@ class RMExchangePasswordViewModel: RMViewModel {
             self.action.animation.value = false
             return self.action.alert(result: result)
         }.flatMapLatest({ _  in
-            return self.action.alert(message: "修改成功！")
+            return self.action.alert(message: "修改成功！", success: true)
         })
     }
 }

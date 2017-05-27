@@ -18,6 +18,10 @@ class RMDevice: RMModel {
     dynamic var terminalOccupied: Int = 0
     dynamic var terminalFree: Int = 0
     dynamic var deviceDesc: String?
+    dynamic var deviceType: String?
+    dynamic var deviceProducer: String?
+    dynamic var deviceModel: String?
+
     
     required convenience init?(map: Map) {
         self.init()
@@ -32,5 +36,9 @@ class RMDevice: RMModel {
         terminalOccupied <- map["terminalOccupied"]
         terminalFree <- map["terminalFree"]
         deviceDesc <- map["deviceDesc"]
+        deviceType <- map["deviceType"]
+        deviceProducer <- map["deviceProducer"]
+        deviceModel <- map["deviceModel"]
+
     }
 }

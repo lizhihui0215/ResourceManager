@@ -58,7 +58,7 @@ class RMCabinetDetailViewModel: RMViewModel, RMListDataSource {
         }).flatMapLatest({ result  in
             return self.action.alert(result: result)
         }).flatMapLatest({ _  in
-            return self.action.alert(message: "修改成功！")
+            return self.action.alert(message: "修改成功！", success: true)
         })
     }
 

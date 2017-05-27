@@ -163,15 +163,15 @@ class RMLinkDetailViewModel: RMViewModel {
     
     func linkModify() -> Driver<Bool> {
         if link.farendDevicePort == 0 {
-            return self.action.alert(message: "请选择对端端口")
+            return self.action.alert(message: "请选择对端端口", success: false)
         }
         
         if link.accessDevicePort == 0 {
-            return self.action.alert(message: "请选择本端端口")
+            return self.action.alert(message: "请选择本端端口", success: false)
         }
         
         if link.billingNo?.characters.count != 10 {
-            return self.action.alert(message: "专线计费号必须是10位数字！")
+            return self.action.alert(message: "专线计费号必须是10位数字！", success: false)
         }
         
         self.action.animation.value = true
@@ -184,7 +184,7 @@ class RMLinkDetailViewModel: RMViewModel {
             })            .flatMapLatest({ result  in
                 return self.action.alert(result: result)
             }).flatMapLatest({ _  in
-                return self.action.alert(message: "修改成功！")
+                return self.action.alert(message: "修改成功！", success: true)
             })
     }
     

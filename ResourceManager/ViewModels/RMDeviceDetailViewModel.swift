@@ -126,7 +126,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                         }.sorted(by: { $0.port() < $1.port()})
                     
                     if occupiedPorts.count != occupiedPorts.count {
-                        return self.action.alert(message: "程序异常，请联系管理员");
+                        return self.action.alert(message: "程序异常，请联系管理员", success: false);
                     }
                                         
                     for i in 1...self.device.totalTerminals {

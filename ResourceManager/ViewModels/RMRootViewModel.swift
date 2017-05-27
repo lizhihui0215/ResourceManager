@@ -33,7 +33,7 @@ class RMRootViewModel: RMViewModel {
                         case .success:
                             return Driver.just(true)
                         case .failure(let error):
-                            return (self?.action?.alert(message: error.errorDescription!))!
+                            return (self?.action?.alert(message: error.errorDescription!, success: false))!
                         }
                     })                    
                 }

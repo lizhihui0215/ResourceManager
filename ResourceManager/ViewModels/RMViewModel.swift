@@ -18,7 +18,7 @@ class RMViewModel {
 protocol RMViewModelAction: class {
     func showErrorAlert(_ message: String, cancelAction: String?) -> Driver<Bool>
     
-    func showMessage(message: String) -> Driver<Bool>
+    func showMessage(message: String, success: Bool) -> Driver<Bool>
     
     var animation: Variable<Bool> { get }
     
@@ -35,8 +35,8 @@ extension RMViewModelAction {
         }
     }
     
-    func alert(message: String = "提交成功") -> Driver<Bool> {
-        return showMessage(message: message)
+    func alert(message: String = "提交成功", success: Bool) -> Driver<Bool> {
+        return showMessage(message: message, success: success)
     }
     
     

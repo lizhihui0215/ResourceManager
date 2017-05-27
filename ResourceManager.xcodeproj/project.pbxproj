@@ -30,6 +30,7 @@
 		2632CAC11E8B80E50064AF1E /* RMResourceManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2632CAC01E8B80E50064AF1E /* RMResourceManagerViewController.swift */; };
 		263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */; };
 		263FD31F1EAEFD7500EB7814 /* BDLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263FD31E1EAEFD7500EB7814 /* BDLocationManager.swift */; };
+		26451C6B1ED9458C00DB7A60 /* UITextField+RM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26451C6A1ED9458C00DB7A60 /* UITextField+RM.swift */; };
 		26483F3B1EA1316600D6A3EC /* RMLinkDetailDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26483F3A1EA1316600D6A3EC /* RMLinkDetailDomain.swift */; };
 		26483F3D1EA1458B00D6A3EC /* RMInspectUploadDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */; };
 		264BF2AF1E9DDACA00627C55 /* RMContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */; };
@@ -175,6 +176,7 @@
 		2632CAFE1E8B9D940064AF1E /* ResourceManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ResourceManager-Bridging-Header.h"; path = "ResourceManager/ResourceManager-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewModel.swift; sourceTree = "<group>"; };
 		263FD31E1EAEFD7500EB7814 /* BDLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BDLocationManager.swift; sourceTree = "<group>"; };
+		26451C6A1ED9458C00DB7A60 /* UITextField+RM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+RM.swift"; sourceTree = "<group>"; };
 		26483F3A1EA1316600D6A3EC /* RMLinkDetailDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkDetailDomain.swift; sourceTree = "<group>"; };
 		26483F3C1EA1458B00D6A3EC /* RMInspectUploadDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadDomain.swift; sourceTree = "<group>"; };
 		264BF2AE1E9DDACA00627C55 /* RMContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMContentViewController.swift; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 				26A543161EB1C5BE001B296A /* RSKGrowingTextView.swift */,
 				26A543141EB1C5B1001B296A /* RSKPlaceholderTextView.swift */,
 				26C7C7B01EAE3CD0006AC792 /* NSDate+RM.swift */,
+				26451C6A1ED9458C00DB7A60 /* UITextField+RM.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -843,7 +846,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		87199D74587C2827BC08E6E6 /* [CP] Embed Pods Frameworks */ = {
@@ -948,7 +951,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FDFFE514AFD959A7187CEF23 /* [CP] Check Pods Manifest.lock */ = {
@@ -963,7 +966,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1068,6 +1071,7 @@
 				261BB2761EA5F852006AA306 /* RMSuggestViewModel.swift in Sources */,
 				262C7E811E8ADDF9004BD333 /* RMStoryboardSegue.swift in Sources */,
 				265653E61E82397600F37064 /* RMViewController.swift in Sources */,
+				26451C6B1ED9458C00DB7A60 /* UITextField+RM.swift in Sources */,
 				2670EDE51E96522A00D2CA07 /* RMScanDomain.swift in Sources */,
 				265653E81E825A7700F37064 /* RMModel.swift in Sources */,
 				5B875C7B3B1F73FFE85A13BF /* RMLinkDetailViewController.swift in Sources */,
