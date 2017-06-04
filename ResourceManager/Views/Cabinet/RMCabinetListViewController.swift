@@ -8,7 +8,7 @@
 
 import UIKit
 class RMCabinetTableViewCell: RMTableViewCell {
-    @IBOutlet weak var cabinetCodeLabel: UILabel!
+//    @IBOutlet weak var cabinetCodeLabel: UILabel!
     
     @IBOutlet weak var cabinetLocationLabel: UILabel!
     @IBOutlet weak var cabinetNameLabel: UILabel!
@@ -82,7 +82,7 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
             
             let cabinet = viewModel.elementAt(indexPath: indexPath)
             
-            cell.cabinetCodeLabel.text = cabinet.cabinetCode
+//            cell.cabinetCodeLabel.text = cabinet.cabinetCode
             
             cell.cabinetNameLabel.text = cabinet.cabinetName
             

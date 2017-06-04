@@ -20,12 +20,12 @@ extension RMLinkDetailViewController: RMDeviceSearchViewControllerDelegate {
     func didEndSearch(device: RMDevice, isAccess: Bool){
         if isAccess {
             self.viewModel?.accessDevice = device
-            self.viewModel?.accessDeviceId.value = device.deviceCode!
+//            self.viewModel?.accessDeviceId.value = device.deviceCode!
             self.accessDeviceNameLabel.text = device.deviceName
             self.accessDevicePortLabel.text = ""
         }else {
             self.viewModel?.farendDevice = device
-            self.viewModel?.farendDeviceId.value = device.deviceCode!
+//            self.viewModel?.farendDeviceId.value = device.deviceCode!
             self.farendDeviceNameLabel.text = device.deviceName
             self.farendDevicePortLabel.text = ""
         }
@@ -48,7 +48,9 @@ class RMLinkDetailViewController: RMViewController {
     
     @IBOutlet weak var accessDeviceNameLabel: UILabel!
     @IBOutlet weak var accessDevicePortLabel: UILabel!
+    @IBOutlet weak var accessDeviceTypeLabel: UITextField!
     
+    @IBOutlet weak var farendDeviceTypeLabel: UITextField!
     @IBOutlet weak var farendDeviceNameLabel: UILabel!
     @IBOutlet weak var farendDevicePortLabel: UILabel!
     
@@ -60,6 +62,7 @@ class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var farendDeviceNameTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var farendDevicePortTapGesture: UITapGestureRecognizer!
     
+    @IBOutlet weak var businessTypeTextField: UITextField!
     
     @IBOutlet var customerLevelTapGesture: UITapGestureRecognizer!
     @IBOutlet var serviceLevelTapGesture: UITapGestureRecognizer!
@@ -140,15 +143,22 @@ class RMLinkDetailViewController: RMViewController {
 
             self.customerNameTextField.isEnabled = false
             self.customerNameTextField.backgroundColor = UIColor.white
+            self.businessTypeTextField.isEnabled = false
+            self.businessTypeTextField.backgroundColor = UIColor.white
+
 
             self.customerLevelTextField.isEnabled = false
             self.customerLevelTextField.backgroundColor = UIColor.white
 
             self.accessDeviceNameLabel.layer.borderWidth = 0
             self.accessDevicePortLabel.layer.borderWidth = 0
+            self.accessDeviceTypeLabel.layer.borderWidth = 0
+
             
             self.farendDeviceNameLabel.layer.borderWidth = 0
             self.farendDevicePortLabel.layer.borderWidth = 0
+            self.farendDeviceTypeLabel.layer.borderWidth = 0
+
             
             self.commitButtonHightConstraint.constant = 0
             
@@ -176,6 +186,9 @@ class RMLinkDetailViewController: RMViewController {
             self.farendDevicePortTapGesture.isEnabled = true
             self.billingNoTextField.isEnabled = true
             self.orderNoTextField.isEnabled = true
+            self.accessDeviceTypeLabel.isEnabled = true
+            self.farendDeviceTypeLabel.isEnabled = true
+            self.businessTypeTextField.isEnabled = true
         }
         
         self.customerLevelTextField.isEnabled = false
@@ -197,9 +210,14 @@ class RMLinkDetailViewController: RMViewController {
             accessDeviceNameLabel <-> viewModel.accessDeviceName
             accessDevicePortLabel <-> viewModel.accessDevicePort
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
+            farendDeviceTypeLabel.rx.textInput <-> viewModel.farendDevicePortType
+            accessDeviceTypeLabel.rx.textInput <-> viewModel.accessDevicePortType
+
             orderNoTextField.rx.textInput <-> viewModel.orderNo
             billingNoTextField.rx.text <-> viewModel.billingNo
             billingNoTextField.keyboardType = .asciiCapableNumberPad
+            businessTypeTextField.rx.textInput <-> viewModel.businessType
+            
             billingNoTextField.rx.controlEvent(UIControlEvents.editingChanged).subscribe(onNext: { [weak billingNoTextField] xx in
                 if let textField = billingNoTextField {
                     if let text = textField.text, text.characters.count > 10 {

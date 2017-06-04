@@ -32,7 +32,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
     
     @IBOutlet weak var commitButtonHightConstraint: NSLayoutConstraint!
     @IBOutlet weak var deviceHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cabinetCodeTextField: UITextField!
+//    @IBOutlet weak var cabinetCodeTextField: UITextField!
     @IBOutlet weak var cabinetNameTextField: UITextField!
     @IBOutlet weak var deviceListView: UIView!
     weak var delegate: RMCabinetDetailViewControllerDelegate?
@@ -46,7 +46,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         super.viewDidLoad()
 
         if let viewModel = self.viewModel {
-            cabinetCodeTextField.rx.textInput <-> viewModel.cabinetCode
+//            cabinetCodeTextField.rx.textInput <-> viewModel.cabinetCode
             cabinetNameTextField.rx.textInput <-> viewModel.cabinetName
             capacityTextField.rx.textInput <-> viewModel.capacity
             cabinetLocationTextField.rx.textInput <-> viewModel.cabinetLocation
@@ -75,7 +75,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         
         
                 
-        cabinetCodeTextField.backgroundColor = UIColor.white
+//        cabinetCodeTextField.backgroundColor = UIColor.white
         cabinetNameTextField.backgroundColor = UIColor.white
 //        devicesTextField.background = nil
         capacityTextField.backgroundColor = UIColor.white

@@ -34,6 +34,14 @@ class RMLink: RMModel {
     dynamic var farendDeviceId: String?
     dynamic var accessDeviceId: String?
     
+    dynamic var farendDevicePortType: String?
+    dynamic var accessDevicePortType: String?
+    dynamic var businessType: String?
+
+    
+    
+
+    
    dynamic var orderNo: String?
    dynamic var billingNo: String?
 
@@ -65,6 +73,9 @@ class RMLink: RMModel {
         serviceLevel <- map["serviceLevel"]
         orderNo <- map["orderNo"]
         billingNo <- map["billingNo"]
+        farendDevicePortType <- map["farendDevicePortType"]
+        accessDevicePortType <- map["accessDevicePortType"]
+        businessType <- map["businessType"]
     }
 
 

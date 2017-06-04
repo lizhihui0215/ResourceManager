@@ -44,6 +44,12 @@ class RMLinkDetailViewModel: RMViewModel {
     var accessDeviceId: Variable<String>
     var serviceLevel: Variable<String>
     var orderNo: Variable<String>
+    var accessDevicePortType: Variable<String>
+    var farendDevicePortType: Variable<String>
+    var businessType: Variable<String>
+    
+    
+    
     var billingNo: Variable<String>
     
     
@@ -76,9 +82,27 @@ class RMLinkDetailViewModel: RMViewModel {
         farendDeviceId = Variable( link.farendDeviceId ?? "")
         accessDeviceId = Variable(link.accessDeviceId ?? "")
         serviceLevel = Variable(link.serviceLevel ?? "")
+        accessDevicePortType = Variable(link.accessDevicePortType ?? "")
+        farendDevicePortType = Variable(link.farendDevicePortType   ?? "")
+
+        
         orderNo = Variable(link.orderNo ?? "")
         billingNo = Variable(link.billingNo ?? "")
+        businessType = Variable(link.businessType ?? "")
         super.init()
+        
+        accessDevicePortType.asObservable().bind {
+            link.accessDevicePortType = $0
+            }.addDisposableTo(disposeBag)
+        
+        farendDevicePortType.asObservable().bind {
+            link.farendDevicePortType = $0
+            }.addDisposableTo(disposeBag)
+        
+        businessType.asObservable().bind {
+            link.businessType = $0
+            }.addDisposableTo(disposeBag)
+
         
         serviceLevel.asObservable().bind {
             link.serviceLevel = $0

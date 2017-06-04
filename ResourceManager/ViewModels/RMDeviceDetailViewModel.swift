@@ -91,7 +91,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
     init(device: RMDevice, deviceRoom: String, action: RMDeviceDetailViewAction) {
         self.action = action
         self.device = device
-        self.deviceCode.value = self.device.deviceCode ?? ""
+//        self.deviceCode.value = self.device.deviceCode ?? ""
         self.deviceName.value = self.device.deviceName ?? ""
         self.deviceLocation.value = self.device.deviceLocation ?? ""
         self.totalTerminals.value = String(self.device.totalTerminals)

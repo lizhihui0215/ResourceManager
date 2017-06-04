@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 
 class RMDeviceListCell: RMTableViewCell {
-    @IBOutlet weak var deviceCodeLabel: UILabel!
     @IBOutlet weak var deviceNameLabel: UILabel!
     @IBOutlet weak var totalPortLabel: UILabel!
     @IBOutlet weak var freePortLabel: UILabel!
@@ -42,7 +41,7 @@ extension RMDeviceListViewController: UITableViewDataSource {
         if let viewModel = self.viewModel {
             let device = viewModel.elementAt(indexPath: indexPath)
             cell.deviceNameLabel.text = device.deviceName
-            cell.deviceCodeLabel.text = device.deviceCode
+//            cell.deviceCodeLabel.text = device.deviceCode
             cell.totalPortLabel.text = String(device.totalTerminals)
             cell.freePortLabel.text = String(device.terminalFree)
         }

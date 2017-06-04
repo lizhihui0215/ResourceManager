@@ -23,7 +23,7 @@ class RMDeviceDetailViewController: RMViewController {
 
     @IBOutlet weak var deviceDescriptionTextField: UITextField!
     @IBOutlet weak var termailCountTextField: UITextField!
-    @IBOutlet weak var deviceCodeTextField: UITextField!
+//    @IBOutlet weak var deviceCodeTextField: UITextField!
     weak var delegate: RMDeviceDetailViewControllerDelegate?
     var viewModel: RMDeviceModifyViewModel?
     @IBOutlet weak var deviceProducerTextField: UITextField!
@@ -35,7 +35,7 @@ class RMDeviceDetailViewController: RMViewController {
         if let viewModel = self.viewModel {
             deviceNameTextField.rx.textInput <-> viewModel.deviceName
             termailCountTextField.rx.textInput <-> viewModel.totalTerminals
-            deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
+//            deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
             deviceDescriptionTextField.rx.textInput <-> viewModel.deviceDesc
             
             deviceTypeTextField.rx.textInput <-> viewModel.deviceType
@@ -47,7 +47,7 @@ class RMDeviceDetailViewController: RMViewController {
             maxLength(of: deviceModelTextField, maxLength: 124)
 
 
-            deviceCodeTextField.backgroundColor = UIColor.white
+//            deviceCodeTextField.backgroundColor = UIColor.white
             termailCountTextField.keyboardType = .asciiCapableNumberPad
         }
         // Do any additional setup after loading the view.
