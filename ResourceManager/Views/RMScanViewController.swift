@@ -44,7 +44,9 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
         self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
             success in
             if let _ = self.viewModel as? RMLinkScanViewModel,success {
-                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
+//                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
+                self.performSegue(withIdentifier: "toLinkList", sender: nil)
+                
             }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
                 self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
             }else if let _ = self.viewModel as? RMDeviceScanViewModel, success {
@@ -99,6 +101,14 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
                 let delegate = segue.destination as! RMDeviceSearchViewControllerDelegate
                 let device = viewModel.result as! RMDevice
                 delegate.didEndSearch(device: device, isAccess: viewModel.isAccess)
+            }
+        }else if segue.identifier == "toLinkList" {
+            if let viewModel = self.viewModel as? RMLinkScanViewModel {
+                let linkListViewController = segue.destination as! RMLinkListViewController
+                linkListViewController.viewModel = RMLinkListViewModel(action: linkListViewController, isModify: viewModel.isModify, linkCode: viewModel.scanedCode.value)
+                linkListViewController.viewModel?.section(at: 0).append(contentsOf: (viewModel.links))
+
+                
             }
         }
     }

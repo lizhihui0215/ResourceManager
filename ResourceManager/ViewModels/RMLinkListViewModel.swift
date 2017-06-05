@@ -29,10 +29,11 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
     var isModify: Bool
     
     
-    init(action: RMLinkListAction, isModify: Bool = false) {
+    init(action: RMLinkListAction, isModify: Bool = false, linkCode: String = "") {
         self.datasource.append(RMSection())
         self.isModify = isModify
         self.action = action
+        self.linkCode.value = linkCode
     }
     
     func linkList(refresh: Bool) -> Driver<Bool> {
