@@ -40,7 +40,7 @@ extension RMDeviceListViewController: UITableViewDataSource {
         
         if let viewModel = self.viewModel {
             let device = viewModel.elementAt(indexPath: indexPath)
-            cell.deviceNameLabel.text = device.deviceName
+            cell.deviceNameLabel.text = device.deviceCode
 //            cell.deviceCodeLabel.text = device.deviceCode
             cell.totalPortLabel.text = String(device.totalTerminals)
             cell.freePortLabel.text = String(device.terminalFree)

@@ -34,7 +34,7 @@ class RMSearchViewController: RMViewController, RMSearchListAction {
         
         
         if let _ = self.viewModel as? RMCabinetSearchViewModel {
-            self.firstTextField.placeholder = "机柜代码"
+//            self.firstTextField.placeholder = "机柜代码"
             self.stackView.removeArrangedSubview(self.stackView.subviews.first!)
             self.secondTextField.placeholder = "机柜名称"
             self.stackView.removeArrangedSubview(self.stackView.subviews.last!)

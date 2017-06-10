@@ -21,7 +21,7 @@ class RMDeviceModifyViewModel: RMViewModel {
     var device: RMDevice
     
     var deviceCode = Variable("")
-    var deviceName = Variable("")
+//    var deviceName = Variable("")
     var deviceLocation = Variable("")
     var totalTerminals = Variable("0")
     var terminalOccupied = Variable("0")
@@ -36,8 +36,8 @@ class RMDeviceModifyViewModel: RMViewModel {
     init(action: RMDeviceModifyAction, device: RMDevice) {
         self.action = action
         self.device = device
-//        self.deviceCode.value = self.device.deviceCode ?? ""
-        self.deviceName.value = self.device.deviceName ?? ""
+        self.deviceCode.value = self.device.deviceCode ?? ""
+//        self.deviceName.value = self.device.deviceName ?? ""
         self.deviceLocation.value = self.device.deviceLocation ?? ""
         self.totalTerminals.value = String(self.device.totalTerminals)
         self.terminalOccupied.value = String(self.device.terminalOccupied)
@@ -48,8 +48,8 @@ class RMDeviceModifyViewModel: RMViewModel {
         self.deviceModel.value = self.device.deviceModel ?? ""
 
         super.init()
-//        deviceCode.asObservable().bind { device.deviceCode = $0  }.addDisposableTo(disposeBag)
-        deviceName.asObservable().bind { device.deviceName = $0  }.addDisposableTo(disposeBag)
+        deviceCode.asObservable().bind { device.deviceCode = $0  }.addDisposableTo(disposeBag)
+//        deviceName.asObservable().bind { device.deviceName = $0  }.addDisposableTo(disposeBag)
         deviceLocation.asObservable().bind { device.deviceLocation = $0  }.addDisposableTo(disposeBag)
         totalTerminals.asObservable().bind { device.totalTerminals = Int($0) ?? 0  }.addDisposableTo(disposeBag)
         terminalOccupied.asObservable().bind { device.terminalOccupied = Int($0) ?? 0  }.addDisposableTo(disposeBag)

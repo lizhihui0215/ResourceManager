@@ -10,6 +10,8 @@ import UIKit
 class RMCabinetTableViewCell: RMTableViewCell {
 //    @IBOutlet weak var cabinetCodeLabel: UILabel!
     
+    @IBOutlet weak var capacityLabel: UILabel!
+    @IBOutlet weak var cabintRoomLabel: UILabel!
     @IBOutlet weak var cabinetLocationLabel: UILabel!
     @IBOutlet weak var cabinetNameLabel: UILabel!
     override func awakeFromNib() {
@@ -28,7 +30,7 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
         
         let cabinet = self.viewModel?.elementAt(indexPath: indexPath!)
         
-        let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>60-40</CodeType><Code>3121-00000600</Code><Text>站点名称:\(cabinet?.cabinetRoom ?? ""), 机柜名称:\(cabinet?.cabinetName ?? "")</Text><Text>服务热线：10086-8</Text></Print></Data>";
+        let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>60-40</CodeType><Code>3121-00000600</Code><Text>站点名称:\(cabinet?.cabinetRoom ?? ""), 机柜名称:\(cabinet?.cabinetCode ?? "")</Text><Text>服务热线：10086-8</Text></Print></Data>";
         PrintServices.shared.printInView(view: self.view, template: template)
 
     }
@@ -84,9 +86,11 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
             
 //            cell.cabinetCodeLabel.text = cabinet.cabinetCode
             
-            cell.cabinetNameLabel.text = cabinet.cabinetName
+            cell.cabinetNameLabel.text = cabinet.cabinetCode
             
             cell.cabinetLocationLabel.text = cabinet.cabinetLocation
+            cell.cabintRoomLabel.text = cabinet.cabinetRoom
+            cell.capacityLabel.text = cabinet.capacity
             
         }
         

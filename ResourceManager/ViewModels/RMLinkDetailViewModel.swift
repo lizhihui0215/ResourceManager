@@ -76,8 +76,8 @@ class RMLinkDetailViewModel: RMViewModel {
         customerName = Variable(link.customerName ?? "")
         customerLevel = Variable(link.customerLevel ?? "")
         farendDeviceName = Variable(link.farendDeviceName ?? "")
-        farendDevicePort = Variable(String(link.farendDevicePort) )
-        accessDevicePort = Variable(String(link.accessDevicePort) )
+        farendDevicePort = Variable(link.farendDevicePort ?? "")
+        accessDevicePort = Variable(link.accessDevicePort ?? "")
         accessDeviceName = Variable(link.accessDeviceName ?? "")
         farendDeviceId = Variable( link.farendDeviceId ?? "")
         accessDeviceId = Variable(link.accessDeviceId ?? "")
@@ -141,11 +141,11 @@ class RMLinkDetailViewModel: RMViewModel {
             }.addDisposableTo(disposeBag)
         
         farendDevicePort.asObservable().bind { farendDevicePort in
-            link.farendDevicePort = Int(farendDevicePort) ?? 0
+            link.farendDevicePort = farendDevicePort 
             }.addDisposableTo(disposeBag)
         
         accessDevicePort.asObservable().bind { accessDevicePort in
-            link.accessDevicePort = Int(accessDevicePort) ?? 0
+            link.accessDevicePort = accessDevicePort
             }.addDisposableTo(disposeBag)
         
         accessDeviceName.asObservable().bind { accessDeviceName in
@@ -186,11 +186,11 @@ class RMLinkDetailViewModel: RMViewModel {
     }
     
     func linkModify() -> Driver<Bool> {
-        if link.farendDevicePort == 0 {
+        if link.farendDevicePort == "" {
             return self.action.alert(message: "请选择对端端口", success: false)
         }
         
-        if link.accessDevicePort == 0 {
+        if link.accessDevicePort == "" {
             return self.action.alert(message: "请选择本端端口", success: false)
         }
         

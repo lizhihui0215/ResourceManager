@@ -69,7 +69,7 @@ class RMDeviceViewController: RMViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var viewModel: RMDeviceDetailViewModel?
     
-    @IBOutlet weak var deviceCodeTextField: UITextField!
+//    @IBOutlet weak var deviceCodeTextField: UITextField!
     @IBOutlet weak var deviceNameTextField: UITextField!
     @IBOutlet weak var totalTerminalsTextField: UITextField!
     @IBOutlet weak var terminalOccupiedTextField: UITextField!
@@ -77,7 +77,7 @@ class RMDeviceViewController: RMViewController {
     @IBOutlet weak var deviceDescTextField: RSKGrowingTextView!
 
     @IBOutlet weak var deviceRoomTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
+//    @IBOutlet weak var imageView: UIImageView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,8 +86,8 @@ class RMDeviceViewController: RMViewController {
         self.deviceDescTextField.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
         if let viewModel = self.viewModel {
-            deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
-            deviceNameTextField.rx.textInput <-> viewModel.deviceName
+//            deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
+            deviceNameTextField.rx.textInput <-> viewModel.deviceCode
             totalTerminalsTextField.rx.textInput <-> viewModel.totalTerminals
             terminalOccupiedTextField.rx.textInput <-> viewModel.terminalOccupied
             terminalFreeTextField.rx.textInput <-> viewModel.terminalFree
@@ -98,7 +98,7 @@ class RMDeviceViewController: RMViewController {
             }).disposed(by: disposeBag)
         }
         
-        deviceCodeTextField.backgroundColor = UIColor.white
+//        deviceCodeTextField.backgroundColor = UIColor.white
         deviceNameTextField.backgroundColor = UIColor.white
         totalTerminalsTextField.backgroundColor = UIColor.white
         terminalOccupiedTextField.backgroundColor = UIColor.white

@@ -11,8 +11,8 @@ import RealmSwift
 import ObjectMapper_Realm
 
 class RMCabinet: RMModel {
-//    dynamic var cabinetCode: String?
-    dynamic var cabinetName: String?
+    dynamic var cabinetCode: String?
+//    dynamic var cabinetName: String?
     dynamic var cabinetLocation: String?
     dynamic var capacity: String?
     dynamic var cabinetRoom: String?
@@ -26,8 +26,8 @@ class RMCabinet: RMModel {
     
     override func mapping(map: Map) {
         super.mapping(map: map)
-//        cabinetCode <- map["cabinetCode"]
-        cabinetName <- map["cabinetName"]
+        cabinetCode <- map["cabinetCode"]
+//        cabinetName <- map["cabinetName"]
         cabinetLocation <- map["cabinetLocation"]
         capacity <- map["capacity"]
         cabinetRoom <- map["cabinetRoom"]

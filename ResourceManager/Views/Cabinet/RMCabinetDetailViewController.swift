@@ -47,10 +47,10 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
 
         if let viewModel = self.viewModel {
 //            cabinetCodeTextField.rx.textInput <-> viewModel.cabinetCode
-            cabinetNameTextField.rx.textInput <-> viewModel.cabinetName
+            cabinetNameTextField.rx.textInput <-> viewModel.cabinetCode
             capacityTextField.rx.textInput <-> viewModel.capacity
             cabinetLocationTextField.rx.textInput <-> viewModel.cabinetLocation
-            cabinetNameLabel.text = viewModel.cabinet.cabinetName
+            cabinetNameLabel.text = viewModel.cabinet.cabinetCode
             cabinetRoomTextField.rx.textInput <-> viewModel.cabinetRoom
             commitButtonHightConstraint.constant = viewModel.isModify ? 30 : 0;
 //            cabinetCodeTextField.isEnabled = viewModel.isModify
@@ -103,7 +103,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         
         if let viewModel = self.viewModel {
             let device = viewModel.elementAt(indexPath: indexPath)
-            cell.nameLabel.text = device.deviceName
+            cell.nameLabel.text = device.deviceCode
         }
         
         return cell

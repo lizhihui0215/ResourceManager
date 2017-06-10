@@ -17,7 +17,7 @@ protocol RMCabinetDetailAction: RMViewModelAction {
 class RMCabinetDetailViewModel: RMViewModel, RMListDataSource {
     
     var datasource: Array<RMSection<RMDevice, Void>> = []
-    var cabinetName = Variable<String>("")
+//    var cabinetName = Variable<String>("")
     var cabinetCode = Variable<String>("")
     var cabinetLocation = Variable<String>("")
     var capacity = Variable<String>("")
@@ -32,15 +32,15 @@ class RMCabinetDetailViewModel: RMViewModel, RMListDataSource {
         self.cabinet = cabinet
         self.isModify = isModify
         super.init()
-        self.cabinetName.value = self.cabinet.cabinetName ?? ""
-//        self.cabinetCode.value = self.cabinet.cabinetCode ?? ""
+//        self.cabinetName.value = self.cabinet.cabinetName ?? ""
+        self.cabinetCode.value = self.cabinet.cabinetCode ?? ""
         self.cabinetLocation.value = self.cabinet.cabinetLocation ?? ""
         self.capacity.value = self.cabinet.capacity ?? ""
         self.cabinetRoom.value = self.cabinet.cabinetRoom ?? ""
         
         cabinetRoom.asObservable().bind { cabinet.cabinetRoom = $0 }.addDisposableTo(disposeBag)
-        cabinetName.asObservable().bind { cabinet.cabinetName = $0 }.addDisposableTo(disposeBag)
-//        cabinetCode.asObservable().bind { cabinet.cabinetCode = $0  }.addDisposableTo(disposeBag)
+//        cabinetName.asObservable().bind { cabinet.cabinetName = $0 }.addDisposableTo(disposeBag)
+        cabinetCode.asObservable().bind { cabinet.cabinetCode = $0  }.addDisposableTo(disposeBag)
         cabinetLocation.asObservable().bind { cabinet.cabinetLocation = $0  }.addDisposableTo(disposeBag)
         capacity.asObservable().bind { cabinet.capacity = $0  }.addDisposableTo(disposeBag)
         let section = RMSection<RMDevice, Void>()

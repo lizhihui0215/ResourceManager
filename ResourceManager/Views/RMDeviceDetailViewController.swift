@@ -33,7 +33,7 @@ class RMDeviceDetailViewController: RMViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let viewModel = self.viewModel {
-            deviceNameTextField.rx.textInput <-> viewModel.deviceName
+            deviceNameTextField.rx.textInput <-> viewModel.deviceCode
             termailCountTextField.rx.textInput <-> viewModel.totalTerminals
 //            deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
             deviceDescriptionTextField.rx.textInput <-> viewModel.deviceDesc

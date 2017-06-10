@@ -33,9 +33,9 @@ enum RMDevicePort {
             return String(port)
         case let .occupied(isFarend, link):
             if isFarend {
-                return String( link.farendDevicePort)
+                return link.farendDevicePort ?? ""
             }else {
-                return String( link.accessDevicePort)
+                return link.accessDevicePort ?? ""
             }
         case .other:
             return "unknow"
@@ -75,7 +75,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
     var device: RMDevice
     
     var deviceCode = Variable("")
-    var deviceName = Variable("")
+//    var deviceName = Variable("")
     var deviceLocation = Variable("")
     var totalTerminals = Variable("")
     var terminalOccupied = Variable("")
@@ -91,8 +91,8 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
     init(device: RMDevice, deviceRoom: String, action: RMDeviceDetailViewAction) {
         self.action = action
         self.device = device
-//        self.deviceCode.value = self.device.deviceCode ?? ""
-        self.deviceName.value = self.device.deviceName ?? ""
+        self.deviceCode.value = self.device.deviceCode ?? ""
+//        self.deviceName.value = self.device.deviceName ?? ""
         self.deviceLocation.value = self.device.deviceLocation ?? ""
         self.totalTerminals.value = String(self.device.totalTerminals)
         self.terminalOccupied.value = String(self.device.terminalOccupied)

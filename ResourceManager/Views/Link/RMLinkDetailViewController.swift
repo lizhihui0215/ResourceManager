@@ -21,12 +21,12 @@ extension RMLinkDetailViewController: RMDeviceSearchViewControllerDelegate {
         if isAccess {
             self.viewModel?.accessDevice = device
 //            self.viewModel?.accessDeviceId.value = device.deviceCode!
-            self.accessDeviceNameLabel.text = device.deviceName
+            self.accessDeviceNameLabel.text = device.deviceCode!
             self.accessDevicePortLabel.text = ""
         }else {
             self.viewModel?.farendDevice = device
 //            self.viewModel?.farendDeviceId.value = device.deviceCode!
-            self.farendDeviceNameLabel.text = device.deviceName
+            self.farendDeviceNameLabel.text = device.deviceCode!
             self.farendDevicePortLabel.text = ""
         }
     }
@@ -178,8 +178,7 @@ class RMLinkDetailViewController: RMViewController {
 
 
         }else {
-            self.linkCodeTextField.isEnabled = false
-            self.linkCodeTextField.backgroundColor = UIColor.white
+            self.linkCodeTextField.isEnabled = true
             self.accessDeviceTapGesture.isEnabled = true
             self.accessDevicePortTapGesture.isEnabled = true
             self.farendDeviceNameTapGesture.isEnabled = true

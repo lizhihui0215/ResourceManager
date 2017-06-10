@@ -90,7 +90,7 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         if let viewModel = self.viewModel {
             let link = viewModel.elementAt(indexPath: indexPath)
             cell.accessDeviceNameLabel.text = link.accessDeviceName
-            cell.accessDevicePortLabel.text = String(link.accessDevicePort)
+            cell.accessDevicePortLabel.text = link.accessDevicePort
             cell.customerNameLabel.text = link.customerName
             cell.codeLabel.text = link.linkCode
             cell.accountLabel.text = link.linkName

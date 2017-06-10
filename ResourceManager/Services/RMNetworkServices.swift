@@ -219,10 +219,10 @@ extension RMNetworkAPI: TargetType {
                     "pageNO": pageNO]
         case let .cabinetDetail(_, cabinetId):
             return ["cabinetId": cabinetId]
-        case let .cabinetList(_,account, customerName, _, pageNO, pageSize):
+        case let .cabinetList(_,account, cabinetCode, _, pageNO, pageSize):
             return ["cabinetName": account,
-                    "customerName": customerName,
-//                    "cabinetCode": linkCode,
+//                    "customerName": customerName,
+                    "cabinetCode": cabinetCode,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
         case let .inspectList(_,pageNO, pageSize):
@@ -244,10 +244,10 @@ extension RMNetworkAPI: TargetType {
                     "detail": detail]
         case let .link(_, deviceCode):
             return ["deviceCode": deviceCode]
-        case let .deviceList(_,_, deviceName,pageNO, pageSize):
+        case let .deviceList(_,_, deviceCode,pageNO, pageSize):
             return [
-//                "deviceCode": deviceCode,
-                    "deviceName": deviceName,
+                "deviceCode": deviceCode,
+//                    "deviceName": deviceName,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
         case let .deviceDetail(_,deviceCode):
