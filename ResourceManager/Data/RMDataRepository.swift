@@ -93,8 +93,8 @@ class RMDataRepository {
         })
     }
 
-    func ports(deviceCode: String) -> Observable<Result<[Int], Moya.Error>> {
-        let result: Observable<RMResponseBaseArray<Int>> = RMNetworkServices.shared.request(.ports((RMDomain.user?.accessToken)!, deviceCode))
+    func ports(deviceCode: String) -> Observable<Result<[String], Moya.Error>> {
+        let result: Observable<RMResponseBaseArray<String>> = RMNetworkServices.shared.request(.ports((RMDomain.user?.accessToken)!, deviceCode))
         return self.handlerError(response: result).map{ result in
             switch result {
             case.success(let device):

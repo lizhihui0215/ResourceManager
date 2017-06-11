@@ -35,7 +35,7 @@ class RMLinkDetailDomain: RMDomain {
         })
     }
     
-    func ports(deviceCode: String) -> Driver<Result<[Int], Moya.Error>> {
+    func ports(deviceCode: String) -> Driver<Result<[String], Moya.Error>> {
         return RMLinkDetailDomain.repository.ports(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
             print(error)
             let x  = error as! Moya.Error;

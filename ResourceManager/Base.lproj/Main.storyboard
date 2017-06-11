@@ -1748,6 +1748,9 @@
                                                             <constraint firstItem="6yI-wg-uN6" firstAttribute="centerY" secondItem="rAR-Y3-jBG" secondAttribute="centerY" id="Zbq-OK-xhT"/>
                                                             <constraint firstItem="DUw-LZ-dql" firstAttribute="centerY" secondItem="rAR-Y3-jBG" secondAttribute="centerY" id="tR7-5e-PsP"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="NA3-sE-Niu" appends="YES" id="Yob-ub-w22"/>
+                                                        </connections>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt3-IK-gTn">
                                                         <rect key="frame" x="0.0" y="280" width="300" height="30"/>
@@ -2172,6 +2175,7 @@
                         <outlet property="accessDeviceTypeLabel" destination="GSA-hF-bcD" id="YuE-Ac-BB7"/>
                         <outlet property="accountTextField" destination="N6l-dJ-rSr" id="fMW-7O-PAV"/>
                         <outlet property="billingNoTextField" destination="Ah6-PW-Q0s" id="iDB-gR-YCr"/>
+                        <outlet property="businessTypeTapGesture" destination="NA3-sE-Niu" id="Te6-SU-lCd"/>
                         <outlet property="businessTypeTextField" destination="DUw-LZ-dql" id="fqu-fa-Hw6"/>
                         <outlet property="commitButton" destination="Opt-0C-61I" id="ES7-GL-cMe"/>
                         <outlet property="commitButtonHightConstraint" destination="Hso-v3-i5H" id="fWO-KW-gND"/>
@@ -2220,6 +2224,11 @@
                 <tapGestureRecognizer id="o8K-bR-V9T">
                     <connections>
                         <action selector="serviceLevelTapped:" destination="2Dr-Cj-fSb" id="KhX-oU-BKm"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="NA3-sE-Niu">
+                    <connections>
+                        <action selector="businessTypeTapped:" destination="2Dr-Cj-fSb" id="Wqv-XU-yk9"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

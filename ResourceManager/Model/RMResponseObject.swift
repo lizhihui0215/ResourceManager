@@ -41,6 +41,8 @@ class RMResponseBaseArray <T>: Mappable {
         code <- map[RMNetworkServices.kCode]
         
         results <- map[RMNetworkServices.kResults]
+        
+        print(results)
     }
 }
 

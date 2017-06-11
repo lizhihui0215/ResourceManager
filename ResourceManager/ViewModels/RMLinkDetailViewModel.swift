@@ -17,12 +17,12 @@ class RMPortItem: RMPickerViewItem {
     var title: String = ""
     
     
-    init(port: Int) {
-        self.title = String(port)
+    init(port: String) {
+        self.title = port
     }
     
-    func port() -> Int {
-        return Int(self.title)!
+    func port() -> String {
+        return self.title
     }
     
 }
@@ -162,7 +162,7 @@ class RMLinkDetailViewModel: RMViewModel {
         
     }
     
-    func freePort(isAccess: Bool) -> Driver<[Int]> {
+    func freePort(isAccess: Bool) -> Driver<[String]> {
         self.action.animation.value = true
         
         let deviceCode = isAccess ? accessDeviceId.value : farendDeviceId.value
@@ -179,7 +179,7 @@ class RMLinkDetailViewModel: RMViewModel {
                     case .success(let ports):
                         return Driver.just(ports)
                     default:
-                        return Driver.just([Int]())
+                        return Driver.just([String]())
                     }
                 }
         }

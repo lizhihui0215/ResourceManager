@@ -62,6 +62,7 @@ class RMLinkDetailViewController: RMViewController {
     @IBOutlet weak var farendDeviceNameTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var farendDevicePortTapGesture: UITapGestureRecognizer!
     
+    @IBOutlet var businessTypeTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var businessTypeTextField: UITextField!
     
     @IBOutlet var customerLevelTapGesture: UITapGestureRecognizer!
@@ -92,6 +93,17 @@ class RMLinkDetailViewController: RMViewController {
                     })
                 }
             }).disposed(by: disposeBag)
+        }
+    }
+    @IBAction func businessTypeTapped(_ sender: UITapGestureRecognizer) {
+        let level1 = RMLevel(title: "互联网")
+        let level2 = RMLevel(title: "数据专线")
+        let level3 = RMLevel(title: "APN")
+        let level4 = RMLevel(title: "VOIP")
+        
+        
+        self.presentPicker(items: [level1,level2,level3,level4]) {[weak self] (level: RMLevel) in
+            self?.viewModel?.businessType.value = level.title
         }
     }
 
@@ -168,6 +180,7 @@ class RMLinkDetailViewController: RMViewController {
             self.farendDevicePortTapGesture.isEnabled = false
             self.customerLevelTapGesture.isEnabled = false
             self.serviceLevelTapGesture.isEnabled = false
+            self.businessTypeTapGesture.isEnabled = false
             
             
             self.orderNoTextField.isEnabled = false
@@ -183,6 +196,7 @@ class RMLinkDetailViewController: RMViewController {
             self.accessDevicePortTapGesture.isEnabled = true
             self.farendDeviceNameTapGesture.isEnabled = true
             self.farendDevicePortTapGesture.isEnabled = true
+            self.businessTypeTapGesture.isEnabled = true
             self.billingNoTextField.isEnabled = true
             self.orderNoTextField.isEnabled = true
             self.accessDeviceTypeLabel.isEnabled = true
@@ -196,6 +210,8 @@ class RMLinkDetailViewController: RMViewController {
         
         self.serviceLevelTextField.isEnabled = false
         self.serviceLevelTextField.backgroundColor = UIColor.white
+        self.businessTypeTextField.isEnabled = false
+        self.businessTypeTextField.backgroundColor = UIColor.white
 
         
         if let viewModel = self.viewModel {
