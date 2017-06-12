@@ -128,14 +128,13 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                     if occupiedPorts.count != occupiedPorts.count {
                         return self.action.alert(message: "程序异常，请联系管理员", success: false);
                     }
-                                        
-                    for i in 1...self.device.totalTerminals {
-                        let occupiedPort = occupiedPorts.filter{ return Int($0.port()) == i }.last
-                        if let occupiedPort = occupiedPort {
-                            self.section(at: 0).append(item: occupiedPort)
-                        }else {
-                            self.section(at: 0).append(item: RMDevicePort(free: i))
-                        }                        
+                    
+                    for occupiedPort in occupiedPorts {
+                        self.section(at: 0).append(item: occupiedPort)
+                    }
+                    
+                    for i in occupiedPorts.count..<self.device.totalTerminals {
+                        self.section(at: 0).append(item: RMDevicePort(free: i))
                     }
                     
                 default:

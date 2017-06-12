@@ -85,7 +85,7 @@ class RMLinkDetailViewController: RMViewController {
                 }
                 return xx
             }).drive(onNext: {[weak self] ports in
-                if let strongSelf = self {
+                if let strongSelf = self, ports.isEmpty == false {
                     strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
                         if let strongSelf = self {
                             strongSelf.accessDevicePortLabel.text = port.title
@@ -117,7 +117,7 @@ class RMLinkDetailViewController: RMViewController {
                 }
                 return xx
             }).drive(onNext: {[weak self] ports in
-                if let strongSelf = self {
+                if let strongSelf = self, ports.isEmpty == false {
                     strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
                         if let strongSelf = self {
                             strongSelf.farendDevicePortLabel.text = port.title
@@ -220,9 +220,9 @@ class RMLinkDetailViewController: RMViewController {
             linkCodeTextField.rx.textInput <-> viewModel.linkCode
             customerNameTextField.rx.textInput <-> viewModel.customerName
             customerLevelTextField.rx.textInput <-> viewModel.customerLevel
-            farendDeviceNameLabel <-> viewModel.farendDeviceName
+            farendDeviceNameLabel <-> viewModel.farendDeviceId
             farendDevicePortLabel <-> viewModel.farendDevicePort
-            accessDeviceNameLabel <-> viewModel.accessDeviceName
+            accessDeviceNameLabel <-> viewModel.accessDeviceId
             accessDevicePortLabel <-> viewModel.accessDevicePort
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
             farendDeviceTypeLabel.rx.textInput <-> viewModel.farendDevicePortType
@@ -233,14 +233,14 @@ class RMLinkDetailViewController: RMViewController {
             billingNoTextField.keyboardType = .asciiCapableNumberPad
             businessTypeTextField.rx.textInput <-> viewModel.businessType
             
-            billingNoTextField.rx.controlEvent(UIControlEvents.editingChanged).subscribe(onNext: { [weak billingNoTextField] xx in
-                if let textField = billingNoTextField {
-                    if let text = textField.text, text.characters.count > 10 {
-                        let index = text.index(text.startIndex, offsetBy: 10)
-                        textField.text = text.substring(to: index)
-                    }
-                }
-            }).disposed(by: disposeBag);
+//            billingNoTextField.rx.controlEvent(UIControlEvents.editingChanged).subscribe(onNext: { [weak billingNoTextField] xx in
+//                if let textField = billingNoTextField {
+//                    if let text = textField.text, text.characters.count > 10 {
+//                        let index = text.index(text.startIndex, offsetBy: 10)
+//                        textField.text = text.substring(to: index)
+//                    }
+//                }
+//            }).disposed(by: disposeBag);
 
         }
     }

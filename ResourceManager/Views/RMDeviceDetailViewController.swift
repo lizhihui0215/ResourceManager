@@ -33,7 +33,10 @@ class RMDeviceDetailViewController: RMViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let viewModel = self.viewModel {
+            
             deviceNameTextField.rx.textInput <-> viewModel.deviceCode
+            deviceNameTextField.isEnabled = false
+            deviceNameTextField.backgroundColor = UIColor.white
             termailCountTextField.rx.textInput <-> viewModel.totalTerminals
 //            deviceCodeTextField.rx.textInput <-> viewModel.deviceCode
             deviceDescriptionTextField.rx.textInput <-> viewModel.deviceDesc

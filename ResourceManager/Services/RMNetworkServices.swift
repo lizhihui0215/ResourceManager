@@ -219,10 +219,10 @@ extension RMNetworkAPI: TargetType {
                     "pageNO": pageNO]
         case let .cabinetDetail(_, cabinetId):
             return ["cabinetId": cabinetId]
-        case let .cabinetList(_,account, cabinetCode, _, pageNO, pageSize):
-            return ["cabinetName": account,
+        case let .cabinetList(_,cabinetCode, _, _, pageNO, pageSize):
+            return ["cabinetCode": cabinetCode,
 //                    "customerName": customerName,
-                    "cabinetCode": cabinetCode,
+//                    "cabinetCode": cabinetCode,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
         case let .inspectList(_,pageNO, pageSize):
