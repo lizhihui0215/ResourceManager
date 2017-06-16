@@ -33,20 +33,29 @@ func nonMarkedText(_ textInput: UITextInput) -> String? {
     return (textInput.text(in: startRange) ?? "") + (textInput.text(in: endRange) ?? "")
 }
 
-@discardableResult
-func <-> <Base: UILabel>(label: Base, variable: Variable<String>) -> Disposable {
+func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
+    if T.self == String.self {
+        #if DEBUG
+            fatalError("It is ok to delete this message, but this is here to warn that you are maybe trying to bind to some `rx.text` property directly to variable.\n" +
+                "That will usually work ok, but for some languages that use IME, that simplistic method could cause unexpected issues because it will return intermediate results while text is being inputed.\n" +
+                "REMEDY: Just use `textField <-> variable` instead of `textField.rx.text <-> variable`.\n" +
+                "Find out more here: https://github.com/ReactiveX/RxSwift/issues/649\n"
+            )
+        #endif
+    }
     
-    let bindToUIDisposable = variable.asObservable().observeOn(MainScheduler.instance).bind(to: label.rx.text)
-    
-    let bindToVariable = label.rx.observe(String.self, "text").observeOn(MainScheduler.instance).subscribe(onNext: { text in
-        if let text = text, variable.value != text {
-            variable.value = text
-        }
-        }, onCompleted: {
+    let bindToUIDisposable = variable.asObservable()
+        .bind(to: property)
+    let bindToVariable = property
+        .subscribe(onNext: { n in
+            variable.value = n
+        }, onCompleted:  {
             bindToUIDisposable.dispose()
-    })
+        })
+    
     return Disposables.create(bindToUIDisposable, bindToVariable)
 }
+
 
 @discardableResult
 func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<String>) -> Disposable {

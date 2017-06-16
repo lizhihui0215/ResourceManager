@@ -7,7 +7,7 @@
 //
 #import "ModelUtil.h"
 #import "XmlUtil.h"
-#import "ZXingObjC.h"
+#import "ZxingObjc.h"
 
 @implementation ModelUtil
 
@@ -56,7 +56,11 @@
         [lable setLineBreakMode:NSLineBreakByCharWrapping];
         [lable setNumberOfLines:0];
         [lable setFont:[UIFont systemFontOfSize:fount]];
-        [lable setText:data.textArray[0]];
+        NSString *str=data.textArray[0];
+        if (data.textArray.count>=3) {
+            str=[[str stringByAppendingString:@"\n"] stringByAppendingString:data.textArray[2]];
+        }
+        [lable setText:str];
         [lable sizeToFit];
         if (lable.frame.size.width>250) {
             while (lable.frame.size.width>250) {

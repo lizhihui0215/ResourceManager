@@ -44,8 +44,8 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
         self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
             success in
             if let _ = self.viewModel as? RMLinkScanViewModel,success {
-//                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
-                self.performSegue(withIdentifier: "toLinkList", sender: nil)
+                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
+//                self.performSegue(withIdentifier: "toLinkList", sender: nil)
                 
             }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
                 self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
@@ -87,7 +87,7 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
             
             let viewModel = self.viewModel as! RMLinkScanViewModel
             
-            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result)! as! RMLink, action: linkDetailViewController, isModify: viewModel.isModify)
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: (self.viewModel?.result) as! RMLink, action: linkDetailViewController, isModify: viewModel.isModify)
 
         }else if segue.identifier == "toCabinetDetail" {
             if let viewModel = self.viewModel as? RMCabinetScanViewModel {

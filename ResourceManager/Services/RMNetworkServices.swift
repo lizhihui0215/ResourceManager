@@ -210,7 +210,7 @@ extension RMNetworkAPI: TargetType {
                     "appVersion" : device.appVersion,
                     "devicetoken": device.uuid]
         case let .linkDetail(_, linkCode):
-            return ["linkCode": linkCode]
+            return ["linkId": linkCode]
         case let .linkList(_,account, customerName, linkCode, pageNO, pageSize):
             return ["linkName": account,
                     "customerName": customerName,

@@ -24,8 +24,8 @@ class RMLinkScanViewModel: RMScanViewModel {
     }
     
     override func scaned(of code: String ) -> Driver<Bool> {
-//        return linkDetail(of: code)
-        return linkList(refresh: true, code: code)
+        return linkDetail(of: code)
+//        return linkList(refresh: true, code: code)
     }
     
     func linkList(refresh: Bool, code: String) -> Driver<Bool> {
@@ -68,4 +68,6 @@ class RMLinkScanViewModel: RMScanViewModel {
             return self.action.alert(result: result)
         }
     }
+    
+    
 }

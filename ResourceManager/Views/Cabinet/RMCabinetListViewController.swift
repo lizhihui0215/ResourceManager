@@ -30,7 +30,7 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
         
         let cabinet = self.viewModel?.elementAt(indexPath: indexPath!)
         
-        let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>60-40</CodeType><Code>3121-00000600</Code><Text>站点名称:\(cabinet?.cabinetRoom ?? ""), 机柜名称:\(cabinet?.cabinetCode ?? "")</Text><Text>服务热线：10086-8</Text></Print></Data>";
+        let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>60-40</CodeType><Code>3121-00000600</Code><Text>站点名称:\(cabinet?.cabinetRoom ?? "")</Text><Text>服务热线:10086-8</Text><Text>机柜名称:\(cabinet?.cabinetId ?? "")</Text></Print></Data>";
         PrintServices.shared.printInView(view: self.view, template: template)
 
     }

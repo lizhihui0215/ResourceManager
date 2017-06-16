@@ -21,13 +21,17 @@ extension RMLinkDetailViewController: RMDeviceSearchViewControllerDelegate {
         if isAccess {
             self.viewModel?.accessDevice = device
 //            self.viewModel?.accessDeviceId.value = device.deviceCode!
-            self.accessDeviceNameLabel.text = device.deviceCode!
-            self.accessDevicePortLabel.text = ""
+//            self.accessDeviceNameTextField.text = device.deviceCode!
+            self.viewModel?.accessDeviceName.value = device.deviceCode!
+            self.viewModel?.accessDevicePort.value = ""
+
+//            self.accessDevicePortTapped.text = ""
         }else {
             self.viewModel?.farendDevice = device
 //            self.viewModel?.farendDeviceId.value = device.deviceCode!
-            self.farendDeviceNameLabel.text = device.deviceCode!
-            self.farendDevicePortLabel.text = ""
+            self.viewModel?.farendDeviceName.value = device.deviceCode!
+            self.viewModel?.farendDevicePort.value = ""
+//            self.farendDevicePortTappped.text = ""
         }
     }
 }
@@ -46,13 +50,13 @@ class RMLinkDetailViewController: RMViewController {
     
     @IBOutlet weak var orderNoTextField: UITextField!
     
-    @IBOutlet weak var accessDeviceNameLabel: UILabel!
-    @IBOutlet weak var accessDevicePortLabel: UILabel!
-    @IBOutlet weak var accessDeviceTypeLabel: UITextField!
+    @IBOutlet weak var accessDeviceNameTextField: UITextField!
+    @IBOutlet weak var accessDevicePortTextField: UITextField!
+    @IBOutlet weak var accessDeviceTypeTextField: UITextField!
     
-    @IBOutlet weak var farendDeviceTypeLabel: UITextField!
-    @IBOutlet weak var farendDeviceNameLabel: UILabel!
-    @IBOutlet weak var farendDevicePortLabel: UILabel!
+    @IBOutlet weak var farendDeviceTypeTextField: UITextField!
+    @IBOutlet weak var farendDeviceNameTextField: UITextField!
+    @IBOutlet weak var farendDevicePortTextField: UITextField!
     
     @IBOutlet var accessDevicePortTapGesture: UITapGestureRecognizer!
     @IBOutlet var accessDeviceTapGesture: UITapGestureRecognizer!
@@ -88,7 +92,7 @@ class RMLinkDetailViewController: RMViewController {
                 if let strongSelf = self {
                     strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
                         if let strongSelf = self {
-                            strongSelf.accessDevicePortLabel.text = port.title
+                            strongSelf.viewModel?.accessDevicePort.value = port.title;
                         }
                     })
                 }
@@ -120,7 +124,7 @@ class RMLinkDetailViewController: RMViewController {
                 if let strongSelf = self {
                     strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
                         if let strongSelf = self {
-                            strongSelf.farendDevicePortLabel.text = port.title
+                            strongSelf.viewModel?.farendDevicePort.value = port.title
                         }
                     })
                 }
@@ -162,14 +166,14 @@ class RMLinkDetailViewController: RMViewController {
             self.customerLevelTextField.isEnabled = false
             self.customerLevelTextField.backgroundColor = UIColor.white
 
-            self.accessDeviceNameLabel.layer.borderWidth = 0
-            self.accessDevicePortLabel.layer.borderWidth = 0
-            self.accessDeviceTypeLabel.layer.borderWidth = 0
+            self.accessDeviceNameTextField.layer.borderWidth = 0
+            self.accessDevicePortTextField.layer.borderWidth = 0
+            self.accessDeviceTypeTextField.layer.borderWidth = 0
 
             
-            self.farendDeviceNameLabel.layer.borderWidth = 0
-            self.farendDevicePortLabel.layer.borderWidth = 0
-            self.farendDeviceTypeLabel.layer.borderWidth = 0
+            self.farendDeviceNameTextField.layer.borderWidth = 0
+            self.farendDevicePortTextField.layer.borderWidth = 0
+            self.farendDeviceTypeTextField.layer.borderWidth = 0
 
             
             self.commitButtonHightConstraint.constant = 0
@@ -199,8 +203,8 @@ class RMLinkDetailViewController: RMViewController {
             self.businessTypeTapGesture.isEnabled = true
             self.billingNoTextField.isEnabled = true
             self.orderNoTextField.isEnabled = true
-            self.accessDeviceTypeLabel.isEnabled = true
-            self.farendDeviceTypeLabel.isEnabled = true
+            self.accessDeviceTypeTextField.isEnabled = true
+            self.farendDeviceTypeTextField.isEnabled = true
             self.businessTypeTextField.isEnabled = true
         }
         
@@ -220,13 +224,13 @@ class RMLinkDetailViewController: RMViewController {
             linkCodeTextField.rx.textInput <-> viewModel.linkCode
             customerNameTextField.rx.textInput <-> viewModel.customerName
             customerLevelTextField.rx.textInput <-> viewModel.customerLevel
-            farendDeviceNameLabel <-> viewModel.farendDeviceName
-            farendDevicePortLabel <-> viewModel.farendDevicePort
-            accessDeviceNameLabel <-> viewModel.accessDeviceName
-            accessDevicePortLabel <-> viewModel.accessDevicePort
+            farendDeviceNameTextField.rx.textInput <-> viewModel.farendDeviceName
+            farendDevicePortTextField.rx.textInput <-> viewModel.farendDevicePort
+            accessDeviceNameTextField.rx.textInput <-> viewModel.accessDeviceName
+            accessDevicePortTextField.rx.textInput <-> viewModel.accessDevicePort
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
-            farendDeviceTypeLabel.rx.textInput <-> viewModel.farendDevicePortType
-            accessDeviceTypeLabel.rx.textInput <-> viewModel.accessDevicePortType
+            farendDeviceTypeTextField.rx.textInput <-> viewModel.farendDevicePortType
+            accessDeviceTypeTextField.rx.textInput <-> viewModel.accessDevicePortType
 
             orderNoTextField.rx.textInput <-> viewModel.orderNo
             billingNoTextField.rx.text <-> viewModel.billingNo
