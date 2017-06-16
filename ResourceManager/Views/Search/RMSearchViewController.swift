@@ -9,9 +9,8 @@
 import UIKit
 
 extension RMSearchViewController: RMScanViewControllerDelegate{
-    func scaned(code: String, of scanViewController: RMScanViewController) {
-//        self.firstTextField.text = code
-        self.viewModel?.firstField.value = code
+    func scaned(result: Any, of scanViewController: RMScanViewController) {
+        self.viewModel?.firstField.value = result as! String
     }
 }
 

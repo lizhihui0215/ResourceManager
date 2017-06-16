@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol RMScanViewControllerDelegate: NSObjectProtocol {
-      func scaned(code: String, of scanViewController: RMScanViewController) -> Void
+      func scaned(result: Any, of scanViewController: RMScanViewController) -> Void
 }
 
 class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction,RMUploadScanAction, RMDeviceScanAction {
@@ -51,14 +51,21 @@ class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetSc
                 self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
             }else if let _ = self.viewModel as? RMDeviceScanViewModel, success {
                 self.performSegue(withIdentifier: "endScan", sender: nil)
+            }else if let viewModel = self.viewModel as? RMUploadScanViewModel, success {
+                
+                let result = viewModel.result
+                
+                self.delegate?.scaned(result: result ?? RMCabinet(), of: self)
+                self.navigationController?.popViewController(animated: true)
+
             }
         }).disposed(by: disposeBag)
         
-        if let delegate = self.delegate , let _ = self.viewModel as? RMUploadScanViewModel {
-//            delegate.scaned(of: self , of:(arrayResult.first?.strScanned)!)
-            delegate.scaned(code: (arrayResult.first?.strScanned)!, of: self)
-            self.navigationController?.popViewController(animated: true)
-        }
+//        if let delegate = self.delegate , let _ = self.viewModel as? RMUploadScanViewModel {
+////            delegate.scaned(of: self , of:(arrayResult.first?.strScanned)!)
+//            delegate.scaned(code: (arrayResult.first?.strScanned)!, of: self)
+//            self.navigationController?.popViewController(animated: true)
+//        }
     }
     
     func navigationTo()  {

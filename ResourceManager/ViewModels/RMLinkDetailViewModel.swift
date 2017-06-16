@@ -193,9 +193,9 @@ class RMLinkDetailViewModel: RMViewModel {
             return self.action.alert(message: "请选择本端端口", success: false)
         }
         
-        if link.billingNo?.characters.count != 10 {
-            return self.action.alert(message: "专线计费号必须是10位数字！", success: false)
-        }
+//        if link.billingNo?.characters.count != 10 {
+//            return self.action.alert(message: "专线计费号必须是10位数字！", success: false)
+//        }
         
         self.action.animation.value = true
         return RMLinkDetailDomain.shared.linkModify(link: self.link)

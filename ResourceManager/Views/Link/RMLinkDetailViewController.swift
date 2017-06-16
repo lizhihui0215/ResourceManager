@@ -224,17 +224,10 @@ class RMLinkDetailViewController: RMViewController {
             linkCodeTextField.rx.textInput <-> viewModel.linkCode
             customerNameTextField.rx.textInput <-> viewModel.customerName
             customerLevelTextField.rx.textInput <-> viewModel.customerLevel
-<<<<<<< HEAD
             farendDeviceNameTextField.rx.textInput <-> viewModel.farendDeviceName
             farendDevicePortTextField.rx.textInput <-> viewModel.farendDevicePort
             accessDeviceNameTextField.rx.textInput <-> viewModel.accessDeviceName
             accessDevicePortTextField.rx.textInput <-> viewModel.accessDevicePort
-=======
-            farendDeviceNameLabel <-> viewModel.farendDeviceId
-            farendDevicePortLabel <-> viewModel.farendDevicePort
-            accessDeviceNameLabel <-> viewModel.accessDeviceId
-            accessDevicePortLabel <-> viewModel.accessDevicePort
->>>>>>> 20da4eac58706ae91f7b759c03797c99c54b27dc
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
             farendDeviceTypeTextField.rx.textInput <-> viewModel.farendDevicePortType
             accessDeviceTypeTextField.rx.textInput <-> viewModel.accessDevicePortType

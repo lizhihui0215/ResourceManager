@@ -20,10 +20,29 @@ class RMUploadScanViewModel: RMScanViewModel {
     }
     
     override func scaned(of code: String ) -> Driver<Bool> {
-        if let action = self.action as? RMUploadScanAction{
-            action.navigationTo()
-        }
-        return Driver.just(true)
+        return cabinetDetail(of: code)
     }
+    
+    func cabinetDetail(of code: String ) -> Driver<Bool> {
+        self.action.animation.value = true
+        return  RMScanDomain.shared.cabinet(cabinetId: code).do(onNext: { result in
+            switch result {
+            case .success(let link):
+                self.result = link
+            case .failure(_): break;
+            }
+            self.action.animation.value = false
+        }).flatMapLatest { result  in
+            switch result {
+            case.failure(_):
+                self.action.restartScan()
+            default:
+                break
+            }
+            
+            return self.action.alert(result: result)
+        }
+    }
+
 
 }

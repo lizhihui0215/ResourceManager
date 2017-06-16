@@ -62,7 +62,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
     
     var reportContent = Variable("")
     
-    var resourceType = Variable(3)
+    var cabinetRoom = Variable("")
     
     var resourceId = Variable("")
     
@@ -96,7 +96,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
                                           "longitude": longitude.value,
                                           "locationName": locationName.value,
                                           "reportContent": reportContent.value,
-                                          "resourceType": resourceType.value,
+                                          "cabinetRoom": cabinetRoom.value,
                                           "resourceId": resourceId.value
         ]
         

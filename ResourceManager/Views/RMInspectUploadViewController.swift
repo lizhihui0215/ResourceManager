@@ -99,11 +99,16 @@ extension RMInspectUploadViewController: UICollectionViewDataSource {
 }
 
 extension RMInspectUploadViewController: RMScanViewControllerDelegate{
-    func scaned(code: String, of scanViewController: RMScanViewController) {
-        self.codeTextField.text = code
+    func scaned(result: Any, of scanViewController: RMScanViewController) {
+        let cabinet = result as! RMCabinet
         
-        self.viewModel?.resourceId.value = code
+        self.viewModel?.cabinetRoom.value = cabinet.cabinetRoom!
+        
+        self.viewModel?.resourceId.value = cabinet.cabinetCode!
+        
     }
+
+   
 }
 
 extension RMInspectUploadViewController: RMInspectUploadAction {
@@ -123,8 +128,10 @@ extension RMInspectUploadViewController: RMLocationViewControllerDelegate {
 }
 
 class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate, TZImagePickerControllerDelegate {
-    @IBOutlet weak var resourceTypeLabel: UILabel!
-    @IBOutlet weak var codeTextField: UITextField!
+    // 站点名称
+    @IBOutlet weak var cabinetRoomTextField: UITextField!
+    // 机柜名称
+    @IBOutlet weak var resourceIdTextField : UITextField!
     
     @IBOutlet weak var verticalLayoutConstraint: NSLayoutConstraint!
     
@@ -144,7 +151,9 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
         
         textView.rx.textInput <-> (self.viewModel?.reportContent)!
         
-        codeTextField.rx.textInput <-> (self.viewModel?.resourceId)!
+        
+        cabinetRoomTextField.rx.textInput <-> (self.viewModel?.cabinetRoom)!
+        resourceIdTextField.rx.textInput <-> (self.viewModel?.resourceId )!
         
         self.textView.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         
@@ -166,8 +175,8 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
     
     @IBAction func resourceTapped(_ sender: UITapGestureRecognizer) {
         self.presentPicker(items: (self.viewModel?.resourceTypes())!) { (resourceType) in
-            self.resourceTypeLabel.text = resourceType.title
-            self.viewModel?.resourceType.value = resourceType.type.rawValue
+//            self.resourceTypeLabel.text = resourceType.title
+//            self.viewModel?.resourceType.value = resourceType.type.rawValue
         }
     }
     
@@ -189,6 +198,7 @@ class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate,
             locationViewController.delegate = self
         }else if segue.identifier == "toScan" {
             let scanViewConntroller = segue.destination as! RMScanViewController
+            scanViewConntroller.viewModel = RMUploadScanViewModel(action: scanViewConntroller)
             scanViewConntroller.delegate = self
         }
     }
