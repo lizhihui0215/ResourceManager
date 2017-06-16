@@ -89,7 +89,7 @@ class RMLinkDetailViewController: RMViewController {
                 }
                 return xx
             }).drive(onNext: {[weak self] ports in
-                if let strongSelf = self {
+                if let strongSelf = self, ports.isEmpty == false {
                     strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
                         if let strongSelf = self {
                             strongSelf.viewModel?.accessDevicePort.value = port.title;
@@ -121,7 +121,7 @@ class RMLinkDetailViewController: RMViewController {
                 }
                 return xx
             }).drive(onNext: {[weak self] ports in
-                if let strongSelf = self {
+                if let strongSelf = self, ports.isEmpty == false {
                     strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
                         if let strongSelf = self {
                             strongSelf.viewModel?.farendDevicePort.value = port.title
@@ -224,10 +224,17 @@ class RMLinkDetailViewController: RMViewController {
             linkCodeTextField.rx.textInput <-> viewModel.linkCode
             customerNameTextField.rx.textInput <-> viewModel.customerName
             customerLevelTextField.rx.textInput <-> viewModel.customerLevel
+<<<<<<< HEAD
             farendDeviceNameTextField.rx.textInput <-> viewModel.farendDeviceName
             farendDevicePortTextField.rx.textInput <-> viewModel.farendDevicePort
             accessDeviceNameTextField.rx.textInput <-> viewModel.accessDeviceName
             accessDevicePortTextField.rx.textInput <-> viewModel.accessDevicePort
+=======
+            farendDeviceNameLabel <-> viewModel.farendDeviceId
+            farendDevicePortLabel <-> viewModel.farendDevicePort
+            accessDeviceNameLabel <-> viewModel.accessDeviceId
+            accessDevicePortLabel <-> viewModel.accessDevicePort
+>>>>>>> 20da4eac58706ae91f7b759c03797c99c54b27dc
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
             farendDeviceTypeTextField.rx.textInput <-> viewModel.farendDevicePortType
             accessDeviceTypeTextField.rx.textInput <-> viewModel.accessDevicePortType
@@ -237,14 +244,14 @@ class RMLinkDetailViewController: RMViewController {
             billingNoTextField.keyboardType = .asciiCapableNumberPad
             businessTypeTextField.rx.textInput <-> viewModel.businessType
             
-            billingNoTextField.rx.controlEvent(UIControlEvents.editingChanged).subscribe(onNext: { [weak billingNoTextField] xx in
-                if let textField = billingNoTextField {
-                    if let text = textField.text, text.characters.count > 10 {
-                        let index = text.index(text.startIndex, offsetBy: 10)
-                        textField.text = text.substring(to: index)
-                    }
-                }
-            }).disposed(by: disposeBag);
+//            billingNoTextField.rx.controlEvent(UIControlEvents.editingChanged).subscribe(onNext: { [weak billingNoTextField] xx in
+//                if let textField = billingNoTextField {
+//                    if let text = textField.text, text.characters.count > 10 {
+//                        let index = text.index(text.startIndex, offsetBy: 10)
+//                        textField.text = text.substring(to: index)
+//                    }
+//                }
+//            }).disposed(by: disposeBag);
 
         }
     }

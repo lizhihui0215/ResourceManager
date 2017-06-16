@@ -174,7 +174,6 @@ class RMLinkDetailViewModel: RMViewModel {
                 self.action.animation.value = false
             }).flatMapLatest { result  in
                 return  self.action.alert(result: result).flatMapLatest{ _ in
-                    
                     switch result {
                     case .success(let ports):
                         return Driver.just(ports)
