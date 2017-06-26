@@ -80,6 +80,14 @@ class RMLinkDetailViewController: RMViewController {
         self.performSegue(withIdentifier: "toDeviceSearch", sender: sender)
     }
     
+    @IBAction func printButtonPressed(_ sender: UIBarButtonItem) {
+        let link = self.viewModel?.link
+        
+        let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>02F</CodeType><Code>\( link?.linkId ?? "")</Code><Text>专线名称:\(link?.linkName ?? "")</Text><Text>服务热线：10086-8</Text></Print></Data>";
+        print(template)
+        PrintServices.shared.printInView(view: self.view, template: template)
+    }
+    
     @IBAction func accessDevicePortTapped(_ sender: UITapGestureRecognizer) {
         if let viewModel = self.viewModel {
             viewModel.freePort(isAccess: true).map({ (ints) -> [RMPortItem] in
