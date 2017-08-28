@@ -20,28 +20,31 @@ class RMRootViewModel: RMViewModel {
     
 
     init(action : RMRootViewAction) {
+        
+        
         self.action = action
     }
     
     func navigationTo() -> Driver<Bool> {
-       return RMLoginDomain.shared.user().flatMapLatest { result  in
-            switch result{
-            case .success(let user):
-                if let user = user {
-                    return RMLoginDomain.shared.sigin(username: user.loginName!, password: user.password!).flatMapLatest({[weak self] result  in
-                        switch result {
-                        case .success:
-                            return Driver.just(true)
-                        case .failure(let error):
-                            return (self?.action?.alert(message: error.errorDescription!, success: false))!
-                        }
-                    })                    
-                }
-                return Driver.just(false)
-            default:
-                return Driver.just(false)
-            }
-        }
-    
+//       return RMLoginDomain.shared.user().flatMapLatest { result  in
+//            switch result{
+//            case .success(let user):
+//                if let user = user {
+//                    return RMLoginDomain.shared.sigin(username: user.loginName!, password: user.password!).flatMapLatest({[weak self] result  in
+//                        switch result {
+//                        case .success:
+//                            return Driver.just(true)
+//                        case .failure(let error):
+//                            return (self?.action?.alert(message: error.errorDescription!, success: false))!
+//                        }
+//                    })                    
+//                }
+//                return Driver.just(false)
+//            default:
+//                return Driver.just(false)
+//            }
+//        }
+        return RMLoginDomain.shared.sigin(username: "admin", password: "1234").flatMapLatest({[weak self] result  in Driver.just(true) })
+
     }
 }

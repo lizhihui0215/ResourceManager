@@ -78,7 +78,7 @@ target 'ResourceManager' do
   
   
   pod 'AMap3DMap'  #3D地图SDK
-
+  
   pod 'AMapSearch' #搜索功能
   
   pod 'AMapLocation'

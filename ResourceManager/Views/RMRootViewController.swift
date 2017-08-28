@@ -18,23 +18,25 @@ class RMRootViewController: RMViewController, RMRootViewAction {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
+//        self.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
 
-//        self.viewModel = RMRootViewModel(action: self)
-//        
-//        self.viewModel?.navigationTo().drive(onNext: {[weak self] success in
-//            
+        self.viewModel = RMRootViewModel(action: self)
+        
+        self.viewModel?.navigationTo().drive(onNext: {[weak self] success in
+            
 //            guard let strongSelf = self else {
 //                return
 //            }
 //            
 //            if success {
-//                strongSelf.performSegue(withIdentifier: "toMain", sender: nil)
-//            
+                self?.performSegue(withIdentifier: "toMain", sender: nil)
+//
 //            }else {
-//                strongSelf.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
+//                self?.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
 //            }
-//        }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+        
+        
         
     }
 
