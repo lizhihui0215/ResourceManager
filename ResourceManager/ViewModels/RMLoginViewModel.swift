@@ -11,21 +11,17 @@ import RxSwift
 import RxCocoa
 import Result
 import Moya
+import PCCWFoundationSwift
 
-protocol RMLoginViewModelAction: RMViewModelAction {
+protocol RMLoginViewModelAction: PFSViewAction {
 }
 
-class RMLoginViewModel: RMViewModel {
+class RMLoginViewModel: PFSViewModel<RMLoginViewController, RMLoginDomain> {
     var username = Variable("")
     var password = Variable("")
-    var loginAction: RMLoginViewModelAction
-    
-    init(loginAction: RMLoginViewModelAction) {
-        self.loginAction = loginAction
-    }
     
     func user() -> Driver<Bool> {
-        return RMLoginDomain.shared.user().flatMapLatest({[weak self] result in
+        return self.domain.user().flatMapLatest({[weak self] result in
             switch result {
             case .success(let user):
                 if let user = user, let strongSelf = self {
@@ -41,19 +37,18 @@ class RMLoginViewModel: RMViewModel {
     }
     
     func sigin() -> Driver<Bool> {
-        self.loginAction.animation.value = true
-        return RMLoginValidate.shared.validateNil(self.username.value, message: "用户名不能为空！")
-            .flatMapLatest{ result in
-                return self.loginAction.alert(result: result)
-            }.flatMapLatest{ result in
-                return RMLoginValidate.shared.validateNil(self.password.value, message: "密码不能为空！")
-            }.flatMapLatest{ result in
-                return self.loginAction.alert(result: result)
+        let validateAccount = username.value.notNull(message: "用户名不能为空！")
+        
+        let validatePassword = password.value.notNull(message: "密码不能为空！")
+        
+        let validateResult = PFSValidate.of(validateAccount, validatePassword)
+
+        return validateResult.flatMapLatest{ result in
+                return self.action!.alert(result: result)
             }.flatMapLatest{ _ in
-                return RMLoginDomain.shared.sigin(username: self.username.value, password: self.password.value)
+                return self.domain.sigin(username: self.username.value, password: self.password.value)
             }.flatMapLatest{ result in
-                self.loginAction.animation.value = false
-                return self.loginAction.alert(result: result)
+                return self.action!.alert(result: result)
         }
     }
 }

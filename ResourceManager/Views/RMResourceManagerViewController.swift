@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
 class RMResourceManagerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
@@ -26,15 +27,15 @@ extension RMResourceManagerViewController: UICollectionViewDelegateFlowLayout {
 
 extension RMResourceManagerViewController: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.numberOfRowsInSection(section: section)
+        return self.viewModel!.numberOfRowsInSection(section: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMResourceManagerCell", for: indexPath) as! RMResourceManagerCell
         
-        cell.titleLabel.text = self.viewModel.elementAt(indexPath: indexPath).title()
-        cell.imageView.image = self.viewModel.elementAt(indexPath: indexPath).image()
+        cell.titleLabel.text = self.viewModel?.elementAt(indexPath: indexPath).title()
+        cell.imageView.image = self.viewModel?.elementAt(indexPath: indexPath).image()
         
         cell.selectedBackgroundView = {
             let view = UIView()
@@ -52,14 +53,14 @@ extension RMResourceManagerViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let cell = collectionView.cellForItem(at: indexPath) as! RMResourceManagerCell
         
-        cell.imageView.image = self.viewModel.elementAt(indexPath: indexPath).selectedImage()
+        cell.imageView.image = self.viewModel?.elementAt(indexPath: indexPath).selectedImage()
         
         cell.titleLabel.textColor = UIColor(hex6: 0x2D97D4, alpha: 1)
 
         
-        let identifier = self.viewModel.elementAt(indexPath: indexPath).idenfitier()
+        let identifier = self.viewModel?.elementAt(indexPath: indexPath).idenfitier()
         
-        self.performSegue(withIdentifier: identifier, sender: indexPath)
+        self.performSegue(withIdentifier: identifier!, sender: indexPath)
         
     }
     
@@ -68,22 +69,23 @@ extension RMResourceManagerViewController: UICollectionViewDelegate{
         
         let cell = collectionView.cellForItem(at: indexPath) as! RMResourceManagerCell
         
-        cell.imageView.image = self.viewModel.elementAt(indexPath: indexPath).image()
+        cell.imageView.image = self.viewModel?.elementAt(indexPath: indexPath).image()
         
         cell.titleLabel.textColor = UIColor(hex6: 0x1E2960, alpha: 1)
     }
     
 }
 
-class RMResourceManagerViewController: RMViewController {
+class RMResourceManagerViewController: PFSViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var viewModel = RMResourceManagerViewModel()
+    var viewModel: RMResourceManagerViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.viewModel = RMResourceManagerViewModel(action: self, domain: RMResourceManagerDomain())
         
     }
 
@@ -100,7 +102,7 @@ class RMResourceManagerViewController: RMViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     
-        let item = self.viewModel.elementAt(indexPath: sender as! IndexPath)
+        let item = self.viewModel!.elementAt(indexPath: sender as! IndexPath)
         
         switch item {
         case .linkSearch:

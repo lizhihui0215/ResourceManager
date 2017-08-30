@@ -11,10 +11,10 @@ import RealmSwift
 import Moya_ObjectMapper
 import RxSwift
 import RxCocoa
+import PCCWFoundationSwift
 
 
-
-class RMLoginViewController: RMViewController, RMLoginViewModelAction {
+class RMLoginViewController: PFSViewController, RMLoginViewModelAction {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -55,8 +55,6 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
             if let strongSelf = self {
                 let nonMarkedTextValue = nonMarkedText(strongSelf.serverURLTextField)
                 
-                
-                
                 if let nonMarkedTextValue = nonMarkedTextValue, nonMarkedTextValue != RMNetworkServices.kBaseURL {
                     if nonMarkedTextValue.isEmpty {
                         RMNetworkServices.kBaseURL = "http://115.28.157.117:9080"
@@ -93,7 +91,7 @@ class RMLoginViewController: RMViewController, RMLoginViewModelAction {
         passwordTextField.leftViewMode = .always
         
         
-        self.viewModel = RMLoginViewModel(loginAction: self)
+        self.viewModel = RMLoginViewModel(action: self, domain: RMLoginDomain())
         
         self.usernameTextField.rx.textInput <-> (self.viewModel?.username)!
         

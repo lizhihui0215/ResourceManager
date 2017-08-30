@@ -11,9 +11,11 @@ import RxCocoa
 import Result
 import Moya
 import RealmSwift
+import PCCWFoundationSwift
 
-class RMDataRepository {
-    
+class RMDataRepository:  PFSDataRepository{
+    static let shared = RMDataRepository()
+
     func sigin(username: String, password: String) -> Observable<Result<RMUser, Moya.Error>> {
         let result: Observable<RMResponseObject<RMUser>> = RMNetworkServices.shared.request(.login(username, password))
         

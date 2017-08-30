@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import PCCWFoundationSwift
 
-class RMRootViewController: RMViewController, RMRootViewAction {
+class RMRootViewController: PFSViewController, RMRootViewAction {
     
     var viewModel: RMRootViewModel?
     
@@ -20,7 +21,7 @@ class RMRootViewController: RMViewController, RMRootViewAction {
         
 //        self.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
 
-        self.viewModel = RMRootViewModel(action: self)
+        self.viewModel = RMRootViewModel(action: self, domain: RMLoginDomain())
         
         self.viewModel?.navigationTo().drive(onNext: {[weak self] success in
             

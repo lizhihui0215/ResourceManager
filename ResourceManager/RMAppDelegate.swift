@@ -10,13 +10,19 @@ import UIKit
 import RealmSwift
 import IQKeyboardManagerSwift
 //import wewinprint_a
+import PCCWFoundationSwift
 
 
 @UIApplicationMain
 class RMAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-        
+
+    override init() {
+        super.init()
+        PCCWFoundationSwift.setup()
+    }
+
     
     open class var shared: RMAppDelegate {
         get {

@@ -12,6 +12,7 @@ import TZImagePickerController
 import RxCocoa
 import Photos
 import MapKit
+import RSKGrowingTextView
 
 protocol RMInspectUploadViewControllerDelegate {
     func inspectUpload(viewController: RMInspectUploadViewController, didEndCommit success: Bool);

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RSKGrowingTextView
 
 extension RMSuggestViewController: RMSuggestViewAction {
     

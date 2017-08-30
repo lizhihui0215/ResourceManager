@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
 enum RMResourceItem {
     case linkSearch
@@ -85,11 +86,12 @@ enum RMResourceItem {
     }
 }
 
-class RMResourceManagerViewModel: RMViewModel, RMListDataSource {
+class RMResourceManagerViewModel: PFSViewModel<RMResourceManagerViewController, RMResourceManagerDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMResourceItem, Void>> = []
     
     
-    override init() {
+    override init(action: RMResourceManagerViewController, domain: RMResourceManagerDomain) {
+        super.init(action: action, domain: domain)
         let section: RMSection<RMResourceItem, Void> = RMSection()
         section.append(item: .linkSearch)
         section.append(item: .cabinetSearch)

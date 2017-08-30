@@ -11,14 +11,13 @@ import RxSwift
 import Moya
 import Result
 import RealmSwift
+import PCCWFoundationSwift
 
 class RMLoginValidate: RMValidate {
     static let shared = RMLoginValidate()
 }
 
-class RMLoginDomain: RMDomain {
-    static let shared = RMLoginDomain()
-    
+class RMLoginDomain: PFSDomain {
     func user() -> Driver<Result<RMUser?, Moya.Error>> {
         
         let realm = try? Realm()
@@ -29,7 +28,7 @@ class RMLoginDomain: RMDomain {
     }
     
     func sigin(username: String, password: String) -> Driver<Result<RMUser, Moya.Error>> {
-        return RMLoginDomain.repository.sigin(username: username, password: password).map({ result in
+        return RMDataRepository.shared.sigin(username: username, password: password).map({ result in
             switch result {
             case .success(let user) :
                 do{

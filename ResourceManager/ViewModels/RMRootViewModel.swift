@@ -9,21 +9,13 @@
 import RxSwift
 import RealmSwift
 import RxCocoa
+import PCCWFoundationSwift
 
-protocol RMRootViewAction: RMViewModelAction {
+protocol RMRootViewAction: PFSViewAction {
     
 }
 
-class RMRootViewModel: RMViewModel {
-    
-    weak var action: RMRootViewAction?
-    
-
-    init(action : RMRootViewAction) {
-        
-        
-        self.action = action
-    }
+class RMRootViewModel: PFSViewModel<RMRootViewController, RMLoginDomain> {
     
     func navigationTo() -> Driver<Bool> {
 //       return RMLoginDomain.shared.user().flatMapLatest { result  in
@@ -44,7 +36,7 @@ class RMRootViewModel: RMViewModel {
 //                return Driver.just(false)
 //            }
 //        }
-        return RMLoginDomain.shared.sigin(username: "admin", password: "1234").flatMapLatest({[weak self] result  in Driver.just(true) })
+        return self.domain.sigin(username: "admin", password: "1234").flatMapLatest{ result  in Driver.just(true) }
 
     }
 }

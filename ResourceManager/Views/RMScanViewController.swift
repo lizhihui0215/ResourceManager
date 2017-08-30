@@ -17,7 +17,7 @@ protocol RMScanViewControllerDelegate: NSObjectProtocol {
 class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction,RMUploadScanAction, RMDeviceScanAction {
     
 
-    var disposeBag = DisposeBag()
+//    var disposeBag = DisposeBag()
     
     var delegate: RMScanViewControllerDelegate?
 

@@ -15,7 +15,7 @@ import Toaster
 fileprivate var animationContext: UInt8 = 0
 
 
-extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
+extension UIViewController: RMViewModelAction {
     
 
     func showMessage(message: String, success: Bool) -> Driver<Bool> {
@@ -80,41 +80,41 @@ extension UIViewController: RMViewModelAction, NVActivityIndicatorViewable {
 
 class RMViewController: UIViewController {
     
-    var disposeBag = DisposeBag()
+//    var disposeBag = DisposeBag()
    
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.animation.asObservable().subscribe(onNext: {[weak self] flag in
-            if let strongSelf = self ,flag {
-                strongSelf.startAnimating()
-            }else if let strongSelf = self{
-                strongSelf.stopAnimating()
-            }
-        },onDisposed: {[weak self] in
-            if let strongSelf = self {
-                strongSelf.stopAnimating()
-            }
-        }).disposed(by: disposeBag)
+//        self.animation.asObservable().subscribe(onNext: {[weak self] flag in
+//            if let strongSelf = self ,flag {
+//                strongSelf.startAnimating()
+//            }else if let strongSelf = self{
+//                strongSelf.stopAnimating()
+//            }
+//        },onDisposed: {[weak self] in
+//            if let strongSelf = self {
+//                strongSelf.stopAnimating()
+//            }
+//        }).disposed(by: disposeBag)
         
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(RMViewController.backgroundTapped))
-        self.view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(RMViewController.backgroundTapped))
+//        self.view.addGestureRecognizer(tap)
+//        
+//        tap.cancelsTouchesInView = false
         
-        tap.cancelsTouchesInView = false
-        
-    }
+//    }
     
-    func backgroundTapped()  {
-        self.view.endEditing(true)
-    }
+//    func backgroundTapped()  {
+//        self.view.endEditing(true)
+//    }
     
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
 }
 

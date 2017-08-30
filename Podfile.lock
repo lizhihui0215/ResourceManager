@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.0)
   - AMap3DMap (5.0.0):
     - AMapFoundation (~> 1.3)
   - AMapFoundation (1.4.0)
@@ -7,51 +7,78 @@ PODS:
     - AMapFoundation (~> 1.4)
   - AMapSearch (5.0.0):
     - AMapFoundation (~> 1.2)
-  - DeviceKit (1.0.1)
+  - CryptoSwift (0.6.9)
+  - DeviceKit (1.2.3)
   - DLAlertView (1.2.5)
   - GPUImage (0.1.7)
-  - IQKeyboardManagerSwift (4.0.9)
+  - IQKeyboardManagerSwift (4.0.10)
   - KeychainAccess (3.0.2)
-  - Kingfisher (3.9.0)
+  - Kingfisher (3.10.3)
   - KissXML (5.2.0)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
-  - Moya (8.0.4):
-    - Moya/Core (= 8.0.4)
-  - Moya-ObjectMapper/Core (2.3.1):
+  - Moya (8.0.5):
+    - Moya/Core (= 8.0.5)
+  - Moya-ObjectMapper/Core (2.3.2):
     - Moya (~> 8.0)
     - ObjectMapper (~> 2.2)
-  - Moya-ObjectMapper/RxSwift (2.3.1):
+  - Moya-ObjectMapper/RxSwift (2.3.2):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
     - RxSwift (~> 3.1)
-  - Moya/Core (8.0.4):
+  - Moya/Core (8.0.5):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - Moya/RxSwift (8.0.4):
+  - Moya/RxSwift (8.0.5):
     - Moya/Core
     - RxSwift (~> 3.0)
-  - NVActivityIndicatorView (3.6.1)
-  - ObjectMapper (2.2.6)
+  - NVActivityIndicatorView (3.7.0):
+    - NVActivityIndicatorView/Presenter (= 3.7.0)
+  - NVActivityIndicatorView/Presenter (3.7.0)
+  - ObjectMapper (2.2.8)
   - ObjectMapper+Realm (0.3):
     - ObjectMapper
     - RealmSwift
-  - Realm (2.7.0):
-    - Realm/Headers (= 2.7.0)
-  - Realm/Headers (2.7.0)
-  - RealmSwift (2.7.0):
-    - Realm (= 2.7.0)
-  - Result (3.2.1)
-  - RxCocoa (3.4.1):
-    - RxSwift (~> 3.4)
+  - PCCWFoundationSwift (0.0.1):
+    - CryptoSwift
+    - DeviceKit
+    - IQKeyboardManagerSwift
+    - KeychainAccess
+    - Kingfisher
+    - KissXML
+    - MJRefresh
+    - Moya-ObjectMapper/RxSwift
+    - NVActivityIndicatorView
+    - ObjectMapper+Realm
+    - RealmSwift
+    - RSKGrowingTextView
+    - RxCocoa
+    - RxRealm
+    - SnapKit
+    - Toaster
+    - TZImagePickerController
+    - UIColor_Hex_Swift
+    - WebViewJavascriptBridge
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+  - RealmSwift (2.8.3):
+    - Realm (= 2.8.3)
+  - Result (3.2.3)
+  - RSKGrowingTextView (2.0.0):
+    - RSKPlaceholderTextView (= 2.0.0)
+  - RSKPlaceholderTextView (2.0.0)
+  - RxCocoa (3.6.1):
+    - RxSwift (~> 3.6)
   - RxRealm (0.6.0):
     - RealmSwift (~> 2.5)
     - RxSwift (~> 3.2)
-  - RxSwift (3.4.1)
+  - RxSwift (3.6.1)
   - SnapKit (3.2.0)
-  - Toaster (2.0.3)
-  - TZImagePickerController (1.7.9)
+  - Toaster (2.0.4)
+  - TZImagePickerController (1.8.3)
   - UIColor_Hex_Swift (3.0.2)
+  - WebViewJavascriptBridge (6.0.2)
   - ZXingObjC (3.2.1):
     - ZXingObjC/All (= 3.2.1)
   - ZXingObjC/All (3.2.1)
@@ -60,60 +87,50 @@ DEPENDENCIES:
   - AMap3DMap
   - AMapLocation
   - AMapSearch
-  - DeviceKit
   - DLAlertView
   - GPUImage
-  - IQKeyboardManagerSwift
-  - KeychainAccess
-  - Kingfisher
   - KissXML
   - MBProgressHUD
-  - MJRefresh
-  - Moya-ObjectMapper/RxSwift
-  - NVActivityIndicatorView
-  - ObjectMapper+Realm
-  - RealmSwift
-  - RxCocoa
-  - RxRealm
-  - RxSwift
-  - SnapKit
-  - Toaster
-  - TZImagePickerController
-  - UIColor_Hex_Swift
+  - PCCWFoundationSwift
   - ZXingObjC
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AMap3DMap: 4d0a53d0e57c7c758560225dfdaf593b306bd468
   AMapFoundation: 458974f46a39df8407fd818ab83d2630d494c726
   AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
   AMapSearch: cf7fd100d533995822d92c22586abfaf7cdf6eef
-  DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
+  CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
+  DeviceKit: f33cbc6e67d9bb416e42dedc647557c7c2f6d3d7
   DLAlertView: 774c1242cc854177fdc07634ed3f8c250a38864d
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
-  Kingfisher: 752686a0fbb300df3240ba86431168ab9244bef2
+  Kingfisher: a0ac82dc5bcf0388dd74b294cf2cc13730c63436
   KissXML: 1c1eeeb6b94e4522cd2f2373e5d0d03c9227738f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  Moya: a08bc060c7a44eee27447b239ed33a189b641e2b
-  Moya-ObjectMapper: 952be2b261d38cf8d973b7e429708eb03d256e23
-  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
-  ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
+  Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
+  Moya-ObjectMapper: 1b05f10bb69fb6c8750d497d2974c1c63c08c3a9
+  NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
+  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
-  Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
-  RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
-  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
-  RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
+  PCCWFoundationSwift: 22d9860f5dc5e637e7ef1d3257b75c6b7affa3e0
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
+  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
+  RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
+  RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
+  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
-  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
+  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
-  TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
+  Toaster: f13031c636ef065281bc11857be9a16c7659e04f
+  TZImagePickerController: 8c02d10822404b26c4330cdb79f2e46fb6a61473
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
+  WebViewJavascriptBridge: 791ee0e26d1bf15efe5fb7fb9666a71a19b89d77
   ZXingObjC: bbf7b8f0cf8933fdd33eb4f9f46e22308552869b
 
-PODFILE CHECKSUM: 957c12c88362045aaa5c635f0f22b40ad98ad7e0
+PODFILE CHECKSUM: 16ff7ec87d9e158818d7ebf2e29c0826452c7f0e
 
 COCOAPODS: 1.2.1
