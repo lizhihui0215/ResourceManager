@@ -9,16 +9,13 @@
 import RxSwift
 import RxCocoa
 
-protocol RMLinkScanAction: RMScanAction {
-
-}
 
 class RMLinkScanViewModel: RMScanViewModel {
     var isModify: Bool
     
     var links = [RMLink]()
 
-    init(action: RMLinkScanAction, isModify: Bool = false) {
+    init(action: RMScanViewController, isModify: Bool = false) {
         self.isModify = isModify
         super.init(action: action)
     }
@@ -29,8 +26,7 @@ class RMLinkScanViewModel: RMScanViewModel {
     }
     
     func linkList(refresh: Bool, code: String) -> Driver<Bool> {
-        self.action.animation.value = true
-        return RMLinkSearchDomain.shared.linkList(account: "", customerName: "", linkCode: code, refresh: refresh)
+        return self.domain.linkList(account: "", customerName: "", linkCode: code, refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
@@ -39,33 +35,30 @@ class RMLinkScanViewModel: RMScanViewModel {
                         strongSelf.links = links
                     case.failure(_): break
                     }
-                    strongSelf.action.animation.value = false
                 }
             })
             .flatMapLatest({ result  in
-                return self.action.alert(result: result)
+                return self.action!.alert(result: result)
             })
     }
     
     func linkDetail(of code: String ) -> Driver<Bool> {
-        self.action.animation.value = true
         self.scanedCode.value = code
-        return  RMScanDomain.shared.link(linkCode: code).do(onNext: { result in
+        return  self.domain.link(linkCode: code).do(onNext: { result in
             switch result {
             case .success(let link):
                 self.result = link
             case .failure(_): break;
             }
-            self.action.animation.value = false
         }).flatMapLatest { result  in
             switch result {
             case.failure(_):
-                self.action.restartScan()
+                self.action?.restartScan()
             default:
                 break
             }
             
-            return self.action.alert(result: result)
+            return self.action!.alert(result: result)
         }
     }
     

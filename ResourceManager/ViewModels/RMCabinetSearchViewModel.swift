@@ -22,8 +22,8 @@ class RMCabinetSearchViewModel: RMSearchViewModel {
 
     var isModify = false
     
-    init(actions: RMSearchListAction, isModify: Bool = false) {
-        super.init(actions: actions, title: isModify ? "机柜修改" : "机柜查询")
+    init(action: RMSearchViewController, isModify: Bool = false) {
+        super.init(action: action, title: isModify ? "机柜修改" : "机柜查询")
         self.isModify = isModify
     }
     
@@ -41,21 +41,18 @@ class RMCabinetSearchViewModel: RMSearchViewModel {
     }
     
     func cabinetList(refresh: Bool) -> Driver<Bool> {
-        self.actions.animation.value = true
-        return RMCabinetSearchDomain.shared.cabinetList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)
+        return self.domain.cabinetList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)
             .do(onNext: { [weak self] result in
-                
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):
                         strongSelf.links = links
                     case.failure(_): break
                     }
-                    strongSelf.actions.animation.value = false
                 }
             })
             .flatMapLatest({ result  in
-                return self.actions.alert(result: result)
+                return self.action!.alert(result: result)
             })
     }
 }

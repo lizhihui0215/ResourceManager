@@ -11,8 +11,9 @@ import RxCocoa
 import RealmSwift
 import Result
 import Moya
+import PCCWFoundationSwift
 
-class RMCabinetSearchDomain: RMDomain {
+class RMCabinetSearchDomain: PFSDomain {
     static let shared = RMCabinetSearchDomain()
     
     var page = 0
@@ -21,7 +22,7 @@ class RMCabinetSearchDomain: RMDomain {
     
     func cabinetList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMCabinet], Moya.Error>> {
         if refresh { page = 0 } else { page += 1 }
-        return RMCabinetSearchDomain.repository.cabinetList(account: account, customerName: customerName, linkCode: linkCode , page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
+        return RMDataRepository.shared.cabinetList(account: account, customerName: customerName, linkCode: linkCode , page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
             let x  = error as! Moya.Error;

@@ -8,21 +8,22 @@
 
 import RxSwift
 import RxCocoa
+import PCCWFoundationSwift
 
-protocol RMScanAction: RMViewModelAction {
+protocol RMScanAction: PFSViewAction {
     func restartScan()
+    func navigationTo()
 }
 
-class RMScanViewModel: RMViewModel {
+class RMScanViewModel: PFSViewModel<RMScanViewController, RMScanDomain> {
     
     var result: Any?
     
     var scanedCode = Variable("")
     
-    var action: RMScanAction
     
-    init(action: RMScanAction) {
-        self.action = action
+    init(action: RMScanViewController) {
+        super.init(action: action, domain: RMScanDomain())
     }
     
     func scaned(of code: String ) -> Driver<Bool> {

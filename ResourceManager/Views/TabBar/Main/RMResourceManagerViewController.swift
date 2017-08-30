@@ -107,21 +107,21 @@ class RMResourceManagerViewController: PFSViewController {
         switch item {
         case .linkSearch:
             let searchViewController = segue.destination as! RMSearchViewController
-            searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController)
+            searchViewController.viewModel = RMLinkSearchViewModel(action: searchViewController)
             
         case .cabinetSearch:
             let searchViewController = segue.destination as! RMSearchViewController
-            searchViewController.viewModel = RMCabinetSearchViewModel(actions: searchViewController)
+            searchViewController.viewModel = RMCabinetSearchViewModel(action: searchViewController)
         case .linkModify:
             let searchViewController = segue.destination as! RMSearchViewController
-            searchViewController.viewModel = RMLinkSearchViewModel(actions: searchViewController, isModify: true)
+            searchViewController.viewModel = RMLinkSearchViewModel(action: searchViewController, isModify: true)
         case .inspect:
             let inspectListViewController = segue.destination as! RMInspectListViewController
             
             inspectListViewController.viewModel = RMInspectListViewModel(action: inspectListViewController)
         case .cabinetModify:
             let searchViewController = segue.destination as! RMSearchViewController
-            searchViewController.viewModel = RMCabinetSearchViewModel(actions: searchViewController, isModify: true)
+            searchViewController.viewModel = RMCabinetSearchViewModel(action: searchViewController, isModify: true)
         case .deviceModify:
             let searchViewController = segue.destination as! RMSearchViewController
             searchViewController.viewModel = RMDeviceSearchViewModel(actions: searchViewController, isAccess: true, isModify: true)

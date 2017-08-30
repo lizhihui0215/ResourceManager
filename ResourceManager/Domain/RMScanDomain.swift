@@ -11,28 +11,39 @@ import RxCocoa
 import RxSwift
 import Moya
 import Result
+import PCCWFoundationSwift
 
-class RMScanDomain: RMDomain {
-    static let shared = RMScanDomain()
+class RMScanDomain: PFSDomain {
+    
+    var linkDomain = RMLinkSearchDomain()
+    
+    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], Moya.Error>> {
+        return linkDomain.linkList(account: account,
+                                   customerName: customerName,
+                                   linkCode: linkCode,
+                                   refresh: refresh)
+    }
     
     func link(linkCode: String) -> Driver<Result<RMLink, Moya.Error>> {
-        return RMScanDomain.repository.link(linkCode: linkCode).asDriver(onErrorRecover:  { error in
+        return RMDataRepository.shared.link(linkCode: linkCode).asDriver(onErrorRecover:  { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })
     }
     
     func cabinet(cabinetId: String) -> Driver<Result<RMCabinet, Moya.Error>> {
-        return RMScanDomain.repository.cabinet(cabinetId: cabinetId).asDriver(onErrorRecover:  { error in
+        return RMDataRepository.shared.cabinet(cabinetId: cabinetId).asDriver(onErrorRecover:  { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })
     }
     
     func deviceDetail(deviceCode: String) -> Driver<Result<RMDevice, Moya.Error>> {
-        return RMScanDomain.repository.device(deviceCode: deviceCode).asDriver(onErrorRecover:  { error in
+        return RMDataRepository.shared.device(deviceCode: deviceCode).asDriver(onErrorRecover:  { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })
     }
+    
+    
 }

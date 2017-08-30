@@ -12,6 +12,7 @@ import RxCocoa
 import RealmSwift
 import Result
 import Moya
+import PCCWFoundationSwift
 
 protocol RMSearchListAction: RMSearchAction {
     
@@ -23,9 +24,9 @@ class RMLinkSearchViewModel: RMSearchViewModel {
     var isModify: Bool
     
     
-    init(actions: RMSearchListAction, isModify: Bool = false) {
+    init(action: RMSearchViewController, isModify: Bool = false) {
         self.isModify = isModify
-        super.init(actions: actions, title: isModify ? "电路修改" : "电路查询")
+        super.init(action: action, title: isModify ? "电路修改" : "电路查询")
     }
     
     override func identifier(for: RMSearchIdentifier) -> String {
@@ -42,8 +43,7 @@ class RMLinkSearchViewModel: RMSearchViewModel {
     }
     
     func linkList(refresh: Bool) -> Driver<Bool> {
-        self.actions.animation.value = true
-        return RMLinkSearchDomain.shared.linkList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)
+        return self.domain.linkList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
@@ -52,11 +52,10 @@ class RMLinkSearchViewModel: RMSearchViewModel {
                         strongSelf.links = links
                     case.failure(_): break
                     }
-                    strongSelf.actions.animation.value = false
                 }
             })
             .flatMapLatest({ result  in
-                return self.actions.alert(result: result)
+                return self.action!.alert(result: result)
             })
     }
 }

@@ -9,16 +9,12 @@
 import RxSwift
 import RxCocoa
 
-protocol RMCabinetScanAction: RMScanAction {
-    
-}
-
 class RMCabinetScanViewModel: RMScanViewModel {
     
     var isModify: Bool
     
     
-    init(action: RMCabinetScanAction, isModify: Bool = false) {
+    init(action: RMScanViewController, isModify: Bool = false) {
         self.isModify = isModify
         super.init(action: action)
     }
@@ -28,23 +24,21 @@ class RMCabinetScanViewModel: RMScanViewModel {
     }
     
     func cabinetDetail(of code: String ) -> Driver<Bool> {
-        self.action.animation.value = true
-        return  RMScanDomain.shared.cabinet(cabinetId: code).do(onNext: { result in
+        return  self.domain.cabinet(cabinetId: code).do(onNext: { result in
             switch result {
             case .success(let link):
                 self.result = link
             case .failure(_): break;
             }
-            self.action.animation.value = false
         }).flatMapLatest { result  in
             switch result {
             case.failure(_):
-                self.action.restartScan()
+                self.action?.restartScan()
             default:
                 break
             }
             
-            return self.action.alert(result: result)
+            return self.action!.alert(result: result)
         }
     }
 }

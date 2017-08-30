@@ -14,7 +14,7 @@ protocol RMScanViewControllerDelegate: NSObjectProtocol {
       func scaned(result: Any, of scanViewController: RMScanViewController) -> Void
 }
 
-class RMScanViewController: LBXScanViewController, RMLinkScanAction, RMCabinetScanAction,RMUploadScanAction, RMDeviceScanAction {
+class RMScanViewController: LBXScanViewController, RMScanAction {
     
 
 //    var disposeBag = DisposeBag()

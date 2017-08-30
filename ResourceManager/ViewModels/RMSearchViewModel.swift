@@ -12,8 +12,8 @@ import RxCocoa
 import RealmSwift
 import Result
 import Moya
-
-protocol RMSearchAction: RMViewModelAction {
+import PCCWFoundationSwift
+protocol RMSearchAction: PFSViewAction {
     
 }
 
@@ -22,8 +22,7 @@ enum RMSearchIdentifier {
     case toSearchList
 }
 
-class RMSearchViewModel: RMViewModel {
-    var actions: RMSearchAction
+class RMSearchViewModel: PFSViewModel<RMSearchViewController, RMSearchDomain> {
 
     var firstField = Variable("")
     
@@ -33,10 +32,9 @@ class RMSearchViewModel: RMViewModel {
     
     var title: String
     
-    
-    init(actions: RMSearchAction, title: String) {
+    init(action: RMSearchViewController, title: String) {
         self.title = title
-        self.actions = actions
+        super.init(action: action, domain: RMSearchDomain())
     }
     
     func search() -> Driver<Bool> {

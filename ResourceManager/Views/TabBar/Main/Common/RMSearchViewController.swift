@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
 extension RMSearchViewController: RMScanViewControllerDelegate{
     func scaned(result: Any, of scanViewController: RMScanViewController) {
@@ -14,7 +15,7 @@ extension RMSearchViewController: RMScanViewControllerDelegate{
     }
 }
 
-class RMSearchViewController: RMViewController, RMSearchListAction {
+class RMSearchViewController: PFSViewController, RMSearchListAction {
     
     var viewModel: RMSearchViewModel?
     

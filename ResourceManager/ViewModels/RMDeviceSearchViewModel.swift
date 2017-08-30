@@ -23,10 +23,10 @@ class RMDeviceSearchViewModel: RMSearchViewModel {
 
     var isModify: Bool
     
-    init(actions: RMSearchListAction, isAccess: Bool, isModify: Bool = false) {
+    init(actions: RMSearchViewController, isAccess: Bool, isModify: Bool = false) {
         self.isAccess = isAccess
         self.isModify = isModify
-        super.init(actions: actions, title: "设备查询")
+        super.init(action: actions, title: "设备查询")
     }
         
     override func search() -> Driver<Bool> {
@@ -44,8 +44,7 @@ class RMDeviceSearchViewModel: RMSearchViewModel {
     
     
     func deviceList(refresh: Bool) -> Driver<Bool> {
-        self.actions.animation.value = true
-        return RMDeviceSearchDomain.shared.deviceList(deviceCode: self.firstField.value, deviceName: self.secondField.value, refresh: refresh)
+        return self.domain.deviceList(deviceCode: self.firstField.value, deviceName: self.secondField.value, refresh: refresh)
                 .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
@@ -54,10 +53,9 @@ class RMDeviceSearchViewModel: RMSearchViewModel {
                         strongSelf.devices = devices
                     case.failure(_): break
                     }
-                    strongSelf.actions.animation.value = false
                 }
             }).flatMapLatest({ result  in
-                return self.actions.alert(result: result)
+                return self.action!.alert(result: result)
             })
     }
 }

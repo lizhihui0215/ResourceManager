@@ -11,9 +11,9 @@ import RxCocoa
 import RealmSwift
 import Result
 import Moya
+import PCCWFoundationSwift
 
-class RMLinkSearchDomain: RMDomain {
-    static let shared = RMLinkSearchDomain()
+class RMLinkSearchDomain: PFSDomain {
     
     var page = 0
     
@@ -21,7 +21,7 @@ class RMLinkSearchDomain: RMDomain {
     
     func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], Moya.Error>> {
         if refresh { page = 0 } else { page += 1 }
-        return RMLinkSearchDomain.repository.linkList(account: account, customerName: customerName, linkCode: linkCode , page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
+        return RMDataRepository.shared.linkList(account: account, customerName: customerName, linkCode: linkCode , page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
             let x  = error as! Moya.Error;

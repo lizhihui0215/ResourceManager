@@ -11,8 +11,9 @@ import RxCocoa
 import RealmSwift
 import Result
 import Moya
+import PCCWFoundationSwift
 
-class RMDeviceSearchDomain: RMDomain {
+class RMDeviceSearchDomain: PFSDomain {
     static let shared = RMDeviceSearchDomain()
     
     var page = 0
@@ -21,7 +22,7 @@ class RMDeviceSearchDomain: RMDomain {
     
     func deviceList(deviceCode: String, deviceName: String, refresh: Bool) -> Driver<Result<[RMDevice], Moya.Error>> {
         if refresh { page = 0 } else { page += 1 }
-        return RMDeviceSearchDomain.repository.deviceList(deviceCode: deviceCode, deviceName: deviceName, page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
+        return RMDataRepository.shared.deviceList(deviceCode: deviceCode, deviceName: deviceName, page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
             let x  = error as! Moya.Error;

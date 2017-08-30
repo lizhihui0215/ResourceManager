@@ -8,17 +8,16 @@
 
 import RxCocoa
 import RxSwift
+import PCCWFoundationSwift
 
 
-protocol RMLinkListAction: RMViewModelAction  {
+protocol RMLinkListAction: PFSViewAction  {
     
 }
 
-class RMLinkListViewModel:RMViewModel, RMListDataSource {
+class RMLinkListViewModel: PFSViewModel<RMLinkListViewController, RMLinkSearchDomain>, RMListDataSource {
     
     var datasource: Array<RMSection<RMLink, Void>> = []
-    
-    var action: RMLinkListAction
     
     var account = Variable("")
     
@@ -28,17 +27,15 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
     
     var isModify: Bool
     
-    
-    init(action: RMLinkListAction, isModify: Bool = false, linkCode: String = "") {
+    init(action: RMLinkListViewController, isModify: Bool = false, linkCode: String = "") {
         self.datasource.append(RMSection())
         self.isModify = isModify
-        self.action = action
         self.linkCode.value = linkCode
+        super.init(action: action, domain: RMLinkSearchDomain())
     }
     
     func linkList(refresh: Bool) -> Driver<Bool> {
-        self.action.animation.value = true
-        return RMLinkSearchDomain.shared.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
+        return self.domain.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {
@@ -50,11 +47,10 @@ class RMLinkListViewModel:RMViewModel, RMListDataSource {
                         strongSelf.section(at: 0).append(contentsOf: links)
                     case.failure(_): break
                     }
-                    strongSelf.action.animation.value = false
                 }
             })
             .flatMapLatest({ result  in
-                return self.action.toast(message: result)
+                return self.action!.toast(message: result)
             })
     }
 
