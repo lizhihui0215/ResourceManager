@@ -14,7 +14,6 @@ import Moya
 import PCCWFoundationSwift
 
 class RMCabinetSearchDomain: PFSDomain {
-    static let shared = RMCabinetSearchDomain()
     
     var page = 0
     

@@ -9,15 +9,14 @@
 import RxSwift
 import RxCocoa
 import Result
+import PCCWFoundationSwift
 
-protocol RMDeviceModifyAction: RMViewModelAction {
+protocol RMDeviceModifyAction: PFSViewAction {
     
 }
 
-class RMDeviceModifyViewModel: RMViewModel {
-    
-    var action: RMDeviceModifyAction
-    
+class RMDeviceModifyViewModel: PFSViewModel<RMDeviceDetailViewController, RMDeviceModifyDomain> {
+        
     var device: RMDevice
     
     var deviceCode = Variable("")
@@ -33,8 +32,7 @@ class RMDeviceModifyViewModel: RMViewModel {
     var deviceModel = Variable("")
     
     
-    init(action: RMDeviceModifyAction, device: RMDevice) {
-        self.action = action
+    init(action: RMDeviceDetailViewController, device: RMDevice) {
         self.device = device
         self.deviceCode.value = self.device.deviceCode ?? ""
 //        self.deviceName.value = self.device.deviceName ?? ""
@@ -47,7 +45,7 @@ class RMDeviceModifyViewModel: RMViewModel {
         self.deviceProducer.value = self.device.deviceProducer ?? ""
         self.deviceModel.value = self.device.deviceModel ?? ""
 
-        super.init()
+        super.init(action: action, domain: RMDeviceModifyDomain())
         deviceCode.asObservable().bind { device.deviceCode = $0  }.addDisposableTo(disposeBag)
 //        deviceName.asObservable().bind { device.deviceName = $0  }.addDisposableTo(disposeBag)
         deviceLocation.asObservable().bind { device.deviceLocation = $0  }.addDisposableTo(disposeBag)
@@ -63,33 +61,29 @@ class RMDeviceModifyViewModel: RMViewModel {
     
     func commit() -> Driver<Bool> {        
         guard let totalTerminals = Int(totalTerminals.value) else {
-            return self.action.alert(message: "请输入正确的数字！", success: false)
+            return self.action!.alert(message: "请输入正确的数字！", success: false)
         }
         
         if totalTerminals > 128 {
-            return self.action.alert(message: "端口总数不能大于128！", success: false)
+            return self.action!.alert(message: "端口总数不能大于128！", success: false)
         }
         
         if deviceType.value.characters.count <= 0 {
-            return self.action.alert(message: "请输入设备类型", success: false)
+            return self.action!.alert(message: "请输入设备类型", success: false)
         }
         
         if deviceProducer.value.characters.count <= 0 {
-            return self.action.alert(message: "请输入设备厂家", success: false)
+            return self.action!.alert(message: "请输入设备厂家", success: false)
         }
         
         if deviceModel.value.characters.count <= 0 {
-            return self.action.alert(message: "请输入设备型号", success: false)
+            return self.action!.alert(message: "请输入设备型号", success: false)
         }
         
-        return RMDeviceModifyDomain.shared.modifyDevice(device: device).do(onNext: { [weak self] result in
-            if let strongSelf = self {
-                strongSelf.action.animation.value = false
-            }
-        }).flatMapLatest({ result  in
-            return self.action.alert(result: result)
+        return self.domain.modifyDevice(device: device).flatMapLatest({ result  in
+            return self.action!.alert(result: result)
         }).flatMapLatest({ _  in
-            return self.action.alert(message: "修改成功！", success: true)
+            return self.action!.alert(message: "修改成功！", success: true)
         })
     }
 

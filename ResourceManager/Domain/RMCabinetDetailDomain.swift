@@ -7,12 +7,12 @@ import Result
 import RxCocoa
 import RxSwift
 import Moya
+import PCCWFoundationSwift
 
-class RMCabinetDetailDomain: RMDomain {
-    static let shared = RMCabinetDetailDomain()
+class RMCabinetDetailDomain: PFSDomain {
 
     func modifyCabinet(cabinet: RMCabinet) -> Driver<Result<String,Moya.Error>> {
-        return RMCabinetDetailDomain.repository.modifyCabinet(cabinet: cabinet).asDriver(onErrorRecover: { error in
+        return RMDataRepository.shared.modifyCabinet(cabinet: cabinet).asDriver(onErrorRecover: { error in
             print(error)
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))

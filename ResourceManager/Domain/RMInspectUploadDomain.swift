@@ -18,13 +18,13 @@ class RMInspectUploadValidate {
     func validate(_ parameters: [String : Any]) -> Driver<Result<[String : Any],Moya.Error>> {
      
         
-        _ = parameters["latitude"] as! CLLocationDegrees
-        _ = parameters["serial"] as! String
-        _ = parameters["longitude"] as! CLLocationDegrees
-        _ = parameters["locationName"] as! String
-        _ = parameters["reportContent"] as! String
-        _ = parameters["resourceType"] as! Int
-        _ = parameters["resourceId"] as! String
+//        _ = parameters["latitude"] as! CLLocationDegrees
+//        _ = parameters["serial"] as! String
+//        _ = parameters["longitude"] as! CLLocationDegrees
+//        _ = parameters["locationName"] as! String
+//        _ = parameters["reportContent"] as! String
+//        _ = parameters["resourceType"] as! Int
+//        _ = parameters["resourceId"] as! String
         
         let images = parameters["images"] as! [UIImage]
         

@@ -2370,12 +2370,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfb-hk-6St" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="QdF-WJ-6VL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3939.375" y="1650"/>
+            <point key="canvasLocation" x="3941" y="1650"/>
         </scene>
         <!--设备详情-->
         <scene sceneID="KN8-uC-oa6">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xbq-wK-ohy" customClass="RMDeviceViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xbq-wK-ohy" customClass="RMCabinetDeviceDetailViewController" customModule="ResourceManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J83-uW-hxi"/>
                         <viewControllerLayoutGuide type="bottom" id="ehd-Me-f0t"/>

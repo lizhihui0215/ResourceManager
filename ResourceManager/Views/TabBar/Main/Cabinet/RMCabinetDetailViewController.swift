@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import PCCWFoundationSwift
 
-class RMDeviceTableViewCell: RMTableViewCell {
+class RMDeviceTableViewCell: PFSTableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
@@ -27,7 +27,7 @@ protocol RMCabinetDetailViewControllerDelegate: class {
 }
 
 
-class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSource {
+class RMCabinetDetailViewController: PFSTableViewController, UITableViewDataSource {
     
     var viewModel: RMCabinetDetailViewModel?
     
@@ -126,7 +126,7 @@ class RMCabinetDetailViewController: RMTableViewController, UITableViewDataSourc
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let deviceViewController = segue.destination as! RMDeviceViewController
+        let deviceViewController = segue.destination as! RMCabinetDeviceDetailViewController
         
         let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
         

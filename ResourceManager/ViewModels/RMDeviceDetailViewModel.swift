@@ -70,7 +70,7 @@ protocol RMDeviceDetailViewAction: PFSViewAction {
     
 }
 
-class RMDeviceDetailViewModel: PFSViewModel<RMDeviceViewController, RMLinkDetailDomain>, RMListDataSource {
+class RMDeviceDetailViewModel: PFSViewModel<RMCabinetDeviceDetailViewController, RMLinkDetailDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMDevicePort, Void>> = []
     
     var device: RMDevice
@@ -85,7 +85,7 @@ class RMDeviceDetailViewModel: PFSViewModel<RMDeviceViewController, RMLinkDetail
     
     var links = [RMLink]()
     
-    init(device: RMDevice, deviceRoom: String, action: RMDeviceViewController) {
+    init(device: RMDevice, deviceRoom: String, action: RMCabinetDeviceDetailViewController) {
         self.device = device
         self.deviceCode.value = self.device.deviceCode ?? ""
         self.deviceLocation.value = self.device.deviceLocation ?? ""

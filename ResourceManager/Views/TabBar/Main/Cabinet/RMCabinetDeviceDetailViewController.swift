@@ -1,5 +1,5 @@
 //
-//  RMDeviceViewController.swift
+//  RMCabinetDeviceDetailViewController.swift
 //  ResourceManager
 //
 //  Created by 李智慧 on 2017/4/9.
@@ -12,7 +12,7 @@ import RxCocoa
 import PCCWFoundationSwift
 import RSKGrowingTextView
 
-extension RMDeviceViewController: UICollectionViewDelegateFlowLayout {
+extension RMCabinetDeviceDetailViewController: UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -21,7 +21,7 @@ extension RMDeviceViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension RMDeviceViewController: UICollectionViewDataSource {
+extension RMCabinetDeviceDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.numberOfRowsInSection(section: section) ?? 0
@@ -55,7 +55,7 @@ extension RMDeviceViewController: UICollectionViewDataSource {
     
 }
 
-extension RMDeviceViewController: RMDeviceDetailViewAction {
+extension RMCabinetDeviceDetailViewController: RMDeviceDetailViewAction {
     
 }
 
@@ -65,7 +65,7 @@ class RMDevicePortCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
 }
 
-class RMDeviceViewController: RMViewController {
+class RMCabinetDeviceDetailViewController: PFSViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var viewModel: RMDeviceDetailViewModel?

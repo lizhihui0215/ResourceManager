@@ -19,7 +19,7 @@ protocol RMDeviceDetailViewControllerDelegate: class {
     func didEndModify()
 }
 
-class RMDeviceDetailViewController: RMViewController {
+class RMDeviceDetailViewController: PFSViewController {
     @IBOutlet weak var deviceNameTextField: UITextField!
 
     @IBOutlet weak var deviceDescriptionTextField: UITextField!

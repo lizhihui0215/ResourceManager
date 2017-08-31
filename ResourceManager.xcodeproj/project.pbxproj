@@ -91,7 +91,7 @@
 		26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */; };
 		26F798A31F570940009E6382 /* RMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A21F570940009E6382 /* RMLoginViewController.swift */; };
 		26F798A51F57130F009E6382 /* RMResourceManagerDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */; };
-		5B8750E3484AF83BD9FF2DEA /* RMDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B62AE80F8ABA7DA0907 /* RMDeviceViewController.swift */; };
+		5B8750E3484AF83BD9FF2DEA /* RMCabinetDeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */; };
 		5B8751C5BFFC6A5624DC00E8 /* RMSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8757F1CCF30DC9E3C2D53F /* RMSearchViewController.swift */; };
 		5B875205CE2226769C8C3B4D /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875F6E17FA0A6AEC6F4C8A /* LBXPermissions.swift */; };
 		5B87531C72C3569548D2B7D5 /* RMLinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B6E81C67B996CBB86D2 /* RMLinkDetailViewController.swift */; };
@@ -262,7 +262,7 @@
 		5B8759B91CD63C988F7B6FF0 /* RMCabinetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetListViewController.swift; sourceTree = "<group>"; };
 		5B8759E9E01310C11B4B00E8 /* RMCabinetDetailDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetDetailDomain.swift; sourceTree = "<group>"; };
 		5B875AD3154A970B6CAAC4E2 /* RMDeviceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceListViewController.swift; sourceTree = "<group>"; };
-		5B875B62AE80F8ABA7DA0907 /* RMDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceViewController.swift; sourceTree = "<group>"; };
+		5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetDeviceDetailViewController.swift; sourceTree = "<group>"; };
 		5B875B6E81C67B996CBB86D2 /* RMLinkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkDetailViewController.swift; sourceTree = "<group>"; };
 		5B875C3B2254E34F9EE16756 /* LBXScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
 		5B875CA008787D4F66BEDE07 /* RMHelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMHelpViewController.swift; sourceTree = "<group>"; };
@@ -567,7 +567,7 @@
 			children = (
 				5B8759B91CD63C988F7B6FF0 /* RMCabinetListViewController.swift */,
 				5B875957134395048A3C48B3 /* RMCabinetDetailViewController.swift */,
-				5B875B62AE80F8ABA7DA0907 /* RMDeviceViewController.swift */,
+				5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */,
 			);
 			path = Cabinet;
 			sourceTree = "<group>";
@@ -1031,7 +1031,7 @@
 				5B8753C7ACBFD83B54EFA2CF /* RMTabBarViewController.swift in Sources */,
 				5B8755257FF6A304F4172C73 /* RMCabinetListViewController.swift in Sources */,
 				5B875D770FCDCD9CDA9054B2 /* RMCabinetDetailViewController.swift in Sources */,
-				5B8750E3484AF83BD9FF2DEA /* RMDeviceViewController.swift in Sources */,
+				5B8750E3484AF83BD9FF2DEA /* RMCabinetDeviceDetailViewController.swift in Sources */,
 				5B87531C72C3569548D2B7D5 /* RMLinkDetailViewController.swift in Sources */,
 				5B875C209B76727CACC2279A /* RMLinkListViewController.swift in Sources */,
 				5B875F830FC0F2B663391AEF /* RMDeviceListViewController.swift in Sources */,

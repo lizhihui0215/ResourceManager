@@ -9,37 +9,32 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PCCWFoundationSwift
 
-protocol RMCabinetDetailAction: RMViewModelAction {
+protocol RMCabinetDetailAction: PFSViewAction {
     
 }
 
-class RMCabinetDetailViewModel: RMViewModel, RMListDataSource {
+class RMCabinetDetailViewModel: PFSViewModel<RMCabinetDetailViewController, RMCabinetDetailDomain>, RMListDataSource {
     
     var datasource: Array<RMSection<RMDevice, Void>> = []
-//    var cabinetName = Variable<String>("")
     var cabinetCode = Variable<String>("")
     var cabinetLocation = Variable<String>("")
     var capacity = Variable<String>("")
     var cabinetRoom = Variable<String>("")
     var cabinet: RMCabinet
     var isModify: Bool
-    var action: RMCabinetDetailAction
-    
 
-    init(action: RMCabinetDetailAction, cabinet: RMCabinet, isModify: Bool) {
-        self.action = action
+    init(action: RMCabinetDetailViewController, cabinet: RMCabinet, isModify: Bool) {
         self.cabinet = cabinet
         self.isModify = isModify
-        super.init()
-//        self.cabinetName.value = self.cabinet.cabinetName ?? ""
+        super.init(action: action, domain: RMCabinetDetailDomain())
         self.cabinetCode.value = self.cabinet.cabinetCode ?? ""
         self.cabinetLocation.value = self.cabinet.cabinetLocation ?? ""
         self.capacity.value = self.cabinet.capacity ?? ""
         self.cabinetRoom.value = self.cabinet.cabinetRoom ?? ""
         
         cabinetRoom.asObservable().bind { cabinet.cabinetRoom = $0 }.addDisposableTo(disposeBag)
-//        cabinetName.asObservable().bind { cabinet.cabinetName = $0 }.addDisposableTo(disposeBag)
         cabinetCode.asObservable().bind { cabinet.cabinetCode = $0  }.addDisposableTo(disposeBag)
         cabinetLocation.asObservable().bind { cabinet.cabinetLocation = $0  }.addDisposableTo(disposeBag)
         capacity.asObservable().bind { cabinet.capacity = $0  }.addDisposableTo(disposeBag)
@@ -49,18 +44,10 @@ class RMCabinetDetailViewModel: RMViewModel, RMListDataSource {
     }
 
     func commit() -> Driver<Bool> {
-        self.action.animation.value = true
-        return RMCabinetDetailDomain.shared.modifyCabinet(cabinet:cabinet).do(onNext: { [weak self] result in
-            
-            if let strongSelf = self {
-                strongSelf.action.animation.value = false
-            }
-        }).flatMapLatest({ result  in
-            return self.action.alert(result: result)
-        }).flatMapLatest({ _  in
-            return self.action.alert(message: "修改成功！", success: true)
-        })
+        return self.domain.modifyCabinet(cabinet:cabinet).flatMapLatest{
+            return self.action!.alert(result: $0)
+        }.flatMapLatest{ _  in
+            return self.action!.alert(message: "修改成功！", success: true)
+        }
     }
-
-
 }

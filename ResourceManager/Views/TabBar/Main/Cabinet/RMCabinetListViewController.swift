@@ -7,9 +7,9 @@
 //
 
 import UIKit
-class RMCabinetTableViewCell: RMTableViewCell {
-//    @IBOutlet weak var cabinetCodeLabel: UILabel!
-    
+import PCCWFoundationSwift
+
+class RMCabinetTableViewCell: PFSTableViewCell {
     @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var cabintRoomLabel: UILabel!
     @IBOutlet weak var cabinetLocationLabel: UILabel!
@@ -21,7 +21,7 @@ class RMCabinetTableViewCell: RMTableViewCell {
     }
 }
 
-class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, UITableViewDataSource {
+class RMCabinetListViewController: PFSTableViewController, RMCabinetListAction, UITableViewDataSource {
     
     @IBAction func printButtonPressed(_ sender: UIButton) {
         let point = sender.superview?.convert(sender.center, to: self.tableView)
@@ -83,9 +83,7 @@ class RMCabinetListViewController: RMTableViewController, RMCabinetListAction, U
         if let viewModel = self.viewModel {
             
             let cabinet = viewModel.elementAt(indexPath: indexPath)
-            
-//            cell.cabinetCodeLabel.text = cabinet.cabinetCode
-            
+                        
             cell.cabinetNameLabel.text = cabinet.cabinetCode
             
             cell.cabinetLocationLabel.text = cabinet.cabinetLocation
