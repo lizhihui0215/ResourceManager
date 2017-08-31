@@ -9,8 +9,9 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import PCCWFoundationSwift
 
-class RMDeviceListCell: RMTableViewCell {
+class RMDeviceListCell: PFSTableViewCell {
     @IBOutlet weak var deviceNameLabel: UILabel!
     @IBOutlet weak var totalPortLabel: UILabel!
     @IBOutlet weak var freePortLabel: UILabel!
@@ -56,7 +57,7 @@ extension RMDeviceListViewController: UITableViewDataSource {
 
 }
 
-class RMDeviceListViewController: RMTableViewController, RMDeviceListViewAction {
+class RMDeviceListViewController: PFSTableViewController, RMDeviceListViewAction {
     var viewModel: RMDeviceListViewModel?
 
     override func viewDidLoad() {

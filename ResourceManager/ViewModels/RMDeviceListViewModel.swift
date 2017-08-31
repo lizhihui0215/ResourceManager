@@ -8,12 +8,12 @@
 
 import RxCocoa
 import RxSwift
-
-protocol RMDeviceListViewAction: RMViewModelAction {
+import PCCWFoundationSwift
+protocol RMDeviceListViewAction: PFSViewAction {
     
 }
 
-class RMDeviceListViewModel: RMViewModel, RMListDataSource {
+class RMDeviceListViewModel: PFSViewModel<RMDeviceListViewController, RMDeviceSearchDomain>, RMListDataSource {
     
     var deviceCode = Variable("")
     
@@ -23,21 +23,19 @@ class RMDeviceListViewModel: RMViewModel, RMListDataSource {
     
     var datasource: Array<RMSection<RMDevice, Void>> = []
     
-    var action: RMDeviceListViewAction
     
     var isModify: Bool
     
     
-    init(action: RMDeviceListViewAction, isAccess: Bool, isModify: Bool = false) {
+    init(action: RMDeviceListViewController, isAccess: Bool, isModify: Bool = false) {
         self.datasource.append(RMSection())
         self.isAccess = isAccess
         self.isModify = isModify
-        self.action = action
+        super.init(action: action, domain: RMDeviceSearchDomain())
     }
     
     func deviceList(refresh: Bool) -> Driver<Bool> {
-        self.action.animation.value = true
-        return RMDeviceSearchDomain.shared.deviceList(deviceCode: deviceCode.value,
+        return self.domain.deviceList(deviceCode: deviceCode.value,
                                                       deviceName: deviceName.value,
                                                       refresh: refresh)
             .do(onNext: { [weak self] result in
@@ -51,11 +49,10 @@ class RMDeviceListViewModel: RMViewModel, RMListDataSource {
                         strongSelf.section(at: 0).append(contentsOf: devices)
                     case.failure(_): break
                     }
-                    strongSelf.action.animation.value = false
                 }
             })
             .flatMapLatest({ result  in
-                return self.action.toast(message: result)
+                return self.action!.toast(message: result)
             })
     }
 }

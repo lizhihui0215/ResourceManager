@@ -2388,10 +2388,10 @@
                                 <rect key="frame" x="10" y="64" width="300" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIK-HP-SDs">
-                                        <rect key="frame" x="0.0" y="18.5" width="300" height="250"/>
+                                        <rect key="frame" x="0.0" y="18.5" width="300" height="283"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FNY-pp-7Ej">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="283"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppX-hY-i0R">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -2524,7 +2524,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-MQ-epO">
-                                                        <rect key="frame" x="0.0" y="200" width="300" height="50"/>
+                                                        <rect key="frame" x="0.0" y="200" width="300" height="83"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8G-OO-eFD">
                                                                 <rect key="frame" x="10" y="5" width="69.5" height="20.5"/>
@@ -2533,7 +2533,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="avf-Qe-La3" customClass="RSKGrowingTextView" customModule="RSKGrowingTextView">
-                                                                <rect key="frame" x="89.5" y="0.0" width="192.5" height="50"/>
+                                                                <rect key="frame" x="89.5" y="0.0" width="192.5" height="83"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2592,7 +2592,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQj-Lg-T1A">
-                                        <rect key="frame" x="0.0" y="278.5" width="300" height="180"/>
+                                        <rect key="frame" x="0.0" y="311.5" width="300" height="180"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ID-xe-pvT">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>

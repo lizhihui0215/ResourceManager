@@ -10,17 +10,17 @@ import RxCocoa
 import RxSwift
 import Result
 import Moya
+import PCCWFoundationSwift
 
 class RMLinkDetailValidate: RMValidate {
     static let shared = RMLinkDetailValidate()
 
 }
 
-class RMLinkDetailDomain: RMDomain {
-    static let shared = RMLinkDetailDomain()
+class RMLinkDetailDomain: PFSDomain {
 
     func linkModify(link: RMLink) -> Driver<Result<String, Moya.Error>> {
-        return RMLinkDetailDomain.repository.linkModify(link: link).asDriver(onErrorRecover: { error in
+        return RMDataRepository.shared.linkModify(link: link).asDriver(onErrorRecover: { error in
             print(error)
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
@@ -28,7 +28,7 @@ class RMLinkDetailDomain: RMDomain {
     }
 
     func link(deviceCode: String) -> Driver<Result<[RMLink], Moya.Error>> {
-        return RMLinkDetailDomain.repository.link(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
+        return RMDataRepository.shared.link(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
             print(error)
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
@@ -36,7 +36,7 @@ class RMLinkDetailDomain: RMDomain {
     }
     
     func ports(deviceCode: String) -> Driver<Result<[String], Moya.Error>> {
-        return RMLinkDetailDomain.repository.ports(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
+        return RMDataRepository.shared.ports(deviceCode: deviceCode).asDriver(onErrorRecover: { error in
             print(error)
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))

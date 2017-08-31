@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 import Result
+import PCCWFoundationSwift
 
 enum RMDevicePort {
     case free(Int)
@@ -65,17 +66,16 @@ enum RMDevicePort {
     }
 }
 
-protocol RMDeviceDetailViewAction: RMViewModelAction {
+protocol RMDeviceDetailViewAction: PFSViewAction {
     
 }
 
-class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
+class RMDeviceDetailViewModel: PFSViewModel<RMDeviceViewController, RMLinkDetailDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMDevicePort, Void>> = []
     
     var device: RMDevice
     
     var deviceCode = Variable("")
-//    var deviceName = Variable("")
     var deviceLocation = Variable("")
     var totalTerminals = Variable("")
     var terminalOccupied = Variable("")
@@ -85,29 +85,22 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
     
     var links = [RMLink]()
     
-    
-    var action: RMDeviceDetailViewAction
-    
-    init(device: RMDevice, deviceRoom: String, action: RMDeviceDetailViewAction) {
-        self.action = action
+    init(device: RMDevice, deviceRoom: String, action: RMDeviceViewController) {
         self.device = device
         self.deviceCode.value = self.device.deviceCode ?? ""
-//        self.deviceName.value = self.device.deviceName ?? ""
         self.deviceLocation.value = self.device.deviceLocation ?? ""
         self.totalTerminals.value = String(self.device.totalTerminals)
         self.terminalOccupied.value = String(self.device.terminalOccupied)
         self.terminalFree.value = String(self.device.terminalFree)
         self.deviceDesc.value = self.device.deviceDesc ?? ""
         self.deviceRoom.value = deviceRoom
-        super.init()
+        super.init(action: action, domain: RMLinkDetailDomain() )
         self.datasource.append(RMSection())
     }
     
     func link() -> Driver<Bool> {
-        self.action.animation.value = true
-        return RMLinkDetailDomain.shared.link(deviceCode: self.deviceCode.value)
+        return self.domain.link(deviceCode: self.deviceCode.value)
             .flatMapLatest({ result  in
-                self.action.animation.value = false
                 switch result {
                 case .success(let links):
                     let occupiedPorts: [RMDevicePort] = links.filter{
@@ -126,7 +119,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                         }.sorted(by: { $0.port() < $1.port()})
                     
                     if occupiedPorts.count != occupiedPorts.count {
-                        return self.action.alert(message: "程序异常，请联系管理员", success: false);
+                        return self.action!.alert(message: "程序异常，请联系管理员", success: false);
                     }
                     
                     for occupiedPort in occupiedPorts {
@@ -140,7 +133,7 @@ class RMDeviceDetailViewModel: RMViewModel, RMListDataSource {
                 default:
                     break
                 }
-                return self.action.alert(result: result)
+                return self.action!.alert(result: result)
             })
     }
 }

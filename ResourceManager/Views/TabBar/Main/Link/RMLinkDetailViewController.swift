@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
 protocol RMLinkDetailViewControllerDelegate: class {
     func didEndModify()
@@ -20,23 +21,17 @@ extension RMLinkDetailViewController: RMDeviceSearchViewControllerDelegate {
     func didEndSearch(device: RMDevice, isAccess: Bool){
         if isAccess {
             self.viewModel?.accessDevice = device
-//            self.viewModel?.accessDeviceId.value = device.deviceCode!
-//            self.accessDeviceNameTextField.text = device.deviceCode!
             self.viewModel?.accessDeviceName.value = device.deviceCode!
             self.viewModel?.accessDevicePort.value = ""
-
-//            self.accessDevicePortTapped.text = ""
         }else {
             self.viewModel?.farendDevice = device
-//            self.viewModel?.farendDeviceId.value = device.deviceCode!
             self.viewModel?.farendDeviceName.value = device.deviceCode!
             self.viewModel?.farendDevicePort.value = ""
-//            self.farendDevicePortTappped.text = ""
         }
     }
 }
 
-class RMLinkDetailViewController: RMViewController {
+class RMLinkDetailViewController: PFSViewController {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var linkRateTextField: UITextField!
     @IBOutlet weak var linkCodeTextField: UITextField!
@@ -241,19 +236,9 @@ class RMLinkDetailViewController: RMViewController {
             accessDeviceTypeTextField.rx.textInput <-> viewModel.accessDevicePortType
 
             orderNoTextField.rx.textInput <-> viewModel.orderNo
-            billingNoTextField.rx.text <-> viewModel.billingNo
+            billingNoTextField.rx.textInput <-> viewModel.billingNo
             billingNoTextField.keyboardType = .asciiCapableNumberPad
             businessTypeTextField.rx.textInput <-> viewModel.businessType
-            
-//            billingNoTextField.rx.controlEvent(UIControlEvents.editingChanged).subscribe(onNext: { [weak billingNoTextField] xx in
-//                if let textField = billingNoTextField {
-//                    if let text = textField.text, text.characters.count > 10 {
-//                        let index = text.index(text.startIndex, offsetBy: 10)
-//                        textField.text = text.substring(to: index)
-//                    }
-//                }
-//            }).disposed(by: disposeBag);
-
         }
     }
     
@@ -274,7 +259,6 @@ class RMLinkDetailViewController: RMViewController {
         let level3 = RMLevel(title: "A")
         let level4 = RMLevel(title: "普通")
         
-        
         self.presentPicker(items: [level1,level2,level3,level4]) {[weak self] (level: RMLevel) in
             self?.viewModel?.serviceLevel.value = level.title
         }
@@ -291,7 +275,6 @@ class RMLinkDetailViewController: RMViewController {
     
     
     @IBAction func unwindForDeviceSearch(segue:UIStoryboardSegue) {
-//        let deviceList = segue.destination as! RMDeviceListViewController
         
     }
 
@@ -314,12 +297,4 @@ class RMLinkDetailViewController: RMViewController {
      }
     
     
-}
-
-class RMLevel: RMPickerViewItem {
-    var title: String = ""
-
-    init(title: String){
-        self.title = title
-    }
 }

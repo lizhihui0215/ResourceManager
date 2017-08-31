@@ -7,7 +7,9 @@
 //
 
 import UIKit
-class RMLinkTableViewCell: RMTableViewCell {
+import PCCWFoundationSwift
+
+class RMLinkTableViewCell: PFSTableViewCell {
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var accessDevicePortLabel: UILabel!
     @IBOutlet weak var accessDeviceNameLabel: UILabel!
@@ -26,14 +28,14 @@ extension RMLinkListViewController: RMLinkDetailViewControllerDelegate {
     }
 }
 
-class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITableViewDataSource {
+class RMLinkListViewController: PFSTableViewController, RMLinkListAction, UITableViewDataSource {
 
     var viewModel: RMLinkListViewModel?
     
     @IBAction func printButtonPressed(_ sender: UIButton) {
         
         let point = sender.superview?.convert(sender.center, to: self.tableView)
-        
+
         let indexPath = self.tableView.indexPathForRow(at: point!)
         
         let link = self.viewModel?.elementAt(indexPath: indexPath!)
@@ -74,12 +76,12 @@ class RMLinkListViewController: RMTableViewController, RMLinkListAction, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    override func headerRefreshingFor(tableView: UITableView ) {
+     override func headerRefreshingFor(tableView: UITableView ) {
         tableView.mj_header.endRefreshing()
         self.reloadData(refresh: true)
     }
     
-    override func footerRefreshingFor(tableView: UITableView) {
+     override func footerRefreshingFor(tableView: UITableView) {
         tableView.mj_footer.endRefreshing()
         self.reloadData(refresh: false)
     }

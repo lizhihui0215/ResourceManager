@@ -8,9 +8,18 @@
 
 import RxCocoa
 import RxSwift
+import PCCWFoundationSwift
 
-protocol RMLinkDetailAction: RMViewModelAction {
+protocol RMLinkDetailAction: PFSViewAction {
     
+}
+
+class RMLevel: RMPickerViewItem {
+    var title: String = ""
+    
+    init(title: String){
+        self.title = title
+    }
 }
 
 class RMPortItem: RMPickerViewItem {
@@ -27,7 +36,7 @@ class RMPortItem: RMPickerViewItem {
     
 }
 
-class RMLinkDetailViewModel: RMViewModel {
+class RMLinkDetailViewModel: PFSViewModel<RMLinkDetailViewController, RMLinkDetailDomain> {
     
     var link: RMLink
     
@@ -63,13 +72,9 @@ class RMLinkDetailViewModel: RMViewModel {
     
     var isModify: Bool
     
-    var action: RMLinkDetailAction
-    
-    
-    init(link: RMLink, action: RMLinkDetailAction, isModify: Bool = false) {
+    init(link: RMLink, action: RMLinkDetailViewController, isModify: Bool = false) {
         self.link = link
         self.isModify = isModify
-        self.action = action
         account = Variable(link.linkName ?? "")
         linkRate = Variable(link.linkRate ?? "")
         linkCode = Variable(link.linkCode ?? "")
@@ -84,12 +89,12 @@ class RMLinkDetailViewModel: RMViewModel {
         serviceLevel = Variable(link.serviceLevel ?? "")
         accessDevicePortType = Variable(link.accessDevicePortType ?? "")
         farendDevicePortType = Variable(link.farendDevicePortType   ?? "")
-
+        
         
         orderNo = Variable(link.orderNo ?? "")
         billingNo = Variable(link.billingNo ?? "")
         businessType = Variable(link.businessType ?? "")
-        super.init()
+        super.init(action: action, domain: RMLinkDetailDomain())
         
         accessDevicePortType.asObservable().bind {
             link.accessDevicePortType = $0
@@ -102,7 +107,7 @@ class RMLinkDetailViewModel: RMViewModel {
         businessType.asObservable().bind {
             link.businessType = $0
             }.addDisposableTo(disposeBag)
-
+        
         
         serviceLevel.asObservable().bind {
             link.serviceLevel = $0
@@ -141,7 +146,7 @@ class RMLinkDetailViewModel: RMViewModel {
             }.addDisposableTo(disposeBag)
         
         farendDevicePort.asObservable().bind { farendDevicePort in
-            link.farendDevicePort = farendDevicePort 
+            link.farendDevicePort = farendDevicePort
             }.addDisposableTo(disposeBag)
         
         accessDevicePort.asObservable().bind { accessDevicePort in
@@ -163,17 +168,19 @@ class RMLinkDetailViewModel: RMViewModel {
     }
     
     func freePort(isAccess: Bool) -> Driver<[String]> {
-        self.action.animation.value = true
-        
         let deviceCode = isAccess ? accessDeviceId.value : farendDeviceId.value
         
         let message = isAccess ? "请选择本端设备" : "请选择对端设备"
-        return RMLinkDetailValidate.shared.validateNil(deviceCode, message: message).flatMapLatest{
-            return RMLinkDetailDomain.shared.ports(deviceCode: $0.value!)
-            }.do(onNext: { result in
-                self.action.animation.value = false
-            }).flatMapLatest { result  in
-                return  self.action.alert(result: result).flatMapLatest{ _ in
+        
+        let validateDeviceCode = deviceCode.notNull(message: message)
+        
+        
+        let validateResult = PFSValidate.of(validateDeviceCode)
+
+        return validateResult.flatMapLatest{ _ in
+            return self.domain.ports(deviceCode: deviceCode)
+            }.flatMapLatest { result  in
+                return  self.action!.alert(result: result).flatMapLatest{ _ in
                     switch result {
                     case .success(let ports):
                         return Driver.just(ports)
@@ -186,30 +193,18 @@ class RMLinkDetailViewModel: RMViewModel {
     
     func linkModify() -> Driver<Bool> {
         if link.farendDevicePort == "" {
-            return self.action.alert(message: "请选择对端端口", success: false)
+            return self.action!.alert(message: "请选择对端端口", success: false)
         }
         
         if link.accessDevicePort == "" {
-            return self.action.alert(message: "请选择本端端口", success: false)
+            return self.action!.alert(message: "请选择本端端口", success: false)
         }
         
-//        if link.billingNo?.characters.count != 10 {
-//            return self.action.alert(message: "专线计费号必须是10位数字！", success: false)
-//        }
-        
-        self.action.animation.value = true
-        return RMLinkDetailDomain.shared.linkModify(link: self.link)
-            .do(onNext: { [weak self] result in
-                
-                if let strongSelf = self {
-                    strongSelf.action.animation.value = false
-                }
-            })            .flatMapLatest({ result  in
-                return self.action.alert(result: result)
+        return self.domain.linkModify(link: self.link)
+            .flatMapLatest({ result  in
+                return self.action!.alert(result: result)
             }).flatMapLatest({ _  in
-                return self.action.alert(message: "修改成功！", success: true)
+                return self.action!.alert(message: "修改成功！", success: true)
             })
     }
-    
-    
 }

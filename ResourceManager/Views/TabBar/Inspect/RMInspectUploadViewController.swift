@@ -13,6 +13,7 @@ import RxCocoa
 import Photos
 import MapKit
 import RSKGrowingTextView
+import PCCWFoundationSwift
 
 protocol RMInspectUploadViewControllerDelegate {
     func inspectUpload(viewController: RMInspectUploadViewController, didEndCommit success: Bool);

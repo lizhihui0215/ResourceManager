@@ -44,6 +44,7 @@ class RMTableViewController: RMViewController, RMTableViewRefresh {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.emptyFooterView()
+        
     }
     
     func emptyFooterView()  {

@@ -8,6 +8,7 @@
 
 import UIKit
 import RxCocoa
+import PCCWFoundationSwift
 
 class RMDeviceTableViewCell: RMTableViewCell {
     

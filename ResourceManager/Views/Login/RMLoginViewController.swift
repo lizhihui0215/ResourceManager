@@ -53,7 +53,7 @@ class RMLoginViewController: PFSViewController, RMLoginViewModelAction {
         serverURLTextField.rx.textInput.text.subscribe(onNext: {[weak self] n in
             
             if let strongSelf = self {
-                let nonMarkedTextValue = nonMarkedText(strongSelf.serverURLTextField)
+                let nonMarkedTextValue = strongSelf.serverURLTextField.text
                 
                 if let nonMarkedTextValue = nonMarkedTextValue, nonMarkedTextValue != RMNetworkServices.kBaseURL {
                     if nonMarkedTextValue.isEmpty {
