@@ -9,7 +9,9 @@
 import UIKit
 import RxCocoa
 import RxSwift
-class RMHelpViewController: RMViewController {
+import PCCWFoundationSwift
+
+class RMHelpViewController: PFSViewController {
 
     @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {

@@ -11,6 +11,7 @@ import RxSwift
 import Moya
 import Result
 import MapKit
+import PCCWFoundationSwift
 
 class RMInspectUploadValidate {
     static let shared = RMInspectUploadValidate()
@@ -37,10 +38,7 @@ class RMInspectUploadValidate {
     }
 }
 
-class RMInspectUploadDomain: RMDomain {
-    static let shared = RMInspectUploadDomain()
-    
-    
+class RMInspectUploadDomain: PFSDomain {
     
     func upload(parameters: [String: Any], images: [UIImage]) -> Driver<Result<String, MoyaError>> {
         
@@ -53,8 +51,9 @@ class RMInspectUploadDomain: RMDomain {
             
             fromDatas.append(formData)
         }
-            
-        return RMInspectUploadDomain.repository.inspectUpload(parameter:parameters, images: fromDatas ).asDriver(onErrorRecover: { error in
+        
+        
+        return RMDataRepository.shared.inspectUpload(parameter:parameters, images: fromDatas ).asDriver(onErrorRecover: { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })

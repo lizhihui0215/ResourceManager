@@ -99,8 +99,10 @@ class RMDeviceDetailViewModel: PFSViewModel<RMCabinetDeviceDetailViewController,
     }
     
     func link() -> Driver<Bool> {
+        self.action?.animation.value = true
         return self.domain.link(deviceCode: self.deviceCode.value)
             .flatMapLatest({ result  in
+                self.action?.animation.value = false
                 switch result {
                 case .success(let links):
                     let occupiedPorts: [RMDevicePort] = links.filter{

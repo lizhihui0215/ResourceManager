@@ -42,12 +42,15 @@ class RMLoginViewModel: PFSViewModel<RMLoginViewController, RMLoginDomain> {
         let validatePassword = password.value.notNull(message: "密码不能为空！")
         
         let validateResult = PFSValidate.of(validateAccount, validatePassword)
+        self.action?.animation.value = true
 
         return validateResult.flatMapLatest{ result in
                 return self.action!.alert(result: result)
             }.flatMapLatest{ _ in
                 return self.domain.sigin(username: self.username.value, password: self.password.value)
             }.flatMapLatest{ result in
+                self.action?.animation.value = false
+
                 return self.action!.alert(result: result)
         }
     }

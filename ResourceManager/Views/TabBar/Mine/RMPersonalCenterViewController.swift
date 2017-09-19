@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
 class RMPersonalCenterCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
@@ -80,7 +81,7 @@ extension RMPersonalCenterViewController: RMPersonalCenterViewAction {
     
 }
 
-class RMPersonalCenterViewController: RMViewController {
+class RMPersonalCenterViewController: PFSViewController {
 
     var viewModel: RMPersonalCenterViewModel?
     

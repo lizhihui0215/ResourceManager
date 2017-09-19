@@ -8,8 +8,9 @@
 
 import UIKit
 import Kingfisher
+import PCCWFoundationSwift
 
-class RMContentViewController: RMViewController {
+class RMContentViewController: PFSViewController {
     var picture: RMPicture?
     var content: String?
     

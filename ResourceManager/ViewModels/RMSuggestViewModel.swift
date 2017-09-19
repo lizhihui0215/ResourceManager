@@ -8,37 +8,30 @@
 
 import RxCocoa
 import RxSwift
+import PCCWFoundationSwift
 
-protocol RMSuggestViewAction: RMViewModelAction {
+protocol RMSuggestViewAction: PFSViewAction {
     
 }
 
-class RMSuggestViewModel: RMViewModel {
-
-    var action: RMSuggestViewAction
+class RMSuggestViewModel: PFSViewModel<RMSuggestViewController, RMPersonalCenterDomain> {
     
     
-    init(action: RMSuggestViewAction) {
-        self.action = action
+    init(action: RMSuggestViewController) {
+        super.init(action: action, domain: RMPersonalCenterDomain())
     }
     
     func suggest(name: String, phone: String, detail: String) -> Driver<Bool> {
-        self.action.animation.value = true
         return RMPersonalCenterValidate.shared.validate(name, phone: phone, detail: detail)
             .flatMapLatest { result   in
-                return self.action.alert(result: result)
+                return self.action!.alert(result: result)
             }.flatMapLatest { _  in
-                return RMPersonalCenterDomain.shared.suggest(name: name, phone: phone, detail: detail)
-            }.do(onNext: { [weak self] result in
-                if let strongSelf = self {
-                    
-                    strongSelf.action.animation.value = false
-                }
-            }).flatMapLatest({ result  in
-                return self.action.alert(result: result)
+                return self.domain.suggest(name: name, phone: phone, detail: detail)
+            }.flatMapLatest({ result  in
+                return self.action!.alert(result: result)
             })
             .flatMapLatest({ _  in
-                return self.action.alert(message: "提交成功！", success: true)
+                return self.action!.alert(message: "提交成功！", success: true)
             })
         }
 }

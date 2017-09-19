@@ -8,24 +8,24 @@
 
 import RxCocoa
 import RxSwift
+import PCCWFoundationSwift
 
-protocol RMInpsectListAction: RMViewModelAction {
+protocol RMInpsectListAction: PFSViewAction {
     
 }
 
-class RMInspectListViewModel: RMViewModel, RMListDataSource {
+class RMInspectListViewModel: PFSViewModel<RMInspectListViewController ,RMInspectListDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMInspect, Void>> = []
     
-    weak var action: RMInpsectListAction?
-    
-    init(action: RMInpsectListAction) {
+    init(action: RMInspectListViewController) {
+        super.init(action: action, domain: RMInspectListDomain())
         self.datasource.append(RMSection())
         self.action = action
     }
     
     func inspectList(refresh: Bool) -> Driver<Bool> {
         self.action?.animation.value = true
-        return RMInspectListDomain.shared.inspectList(refresh: refresh)
+        return self.domain.inspectList(refresh: refresh)
             .do(onNext: { [weak self] result in
                 
                 if let strongSelf = self {

@@ -14,7 +14,7 @@ protocol RMLinkDetailAction: PFSViewAction {
     
 }
 
-class RMLevel: RMPickerViewItem {
+class RMLevel: PFSPickerViewItem {
     var title: String = ""
     
     init(title: String){
@@ -22,7 +22,7 @@ class RMLevel: RMPickerViewItem {
     }
 }
 
-class RMPortItem: RMPickerViewItem {
+class RMPortItem: PFSPickerViewItem {
     var title: String = ""
     
     

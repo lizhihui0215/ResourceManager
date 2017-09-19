@@ -8,12 +8,13 @@
 
 import UIKit
 import RSKGrowingTextView
+import PCCWFoundationSwift
 
 extension RMSuggestViewController: RMSuggestViewAction {
     
 }
 
-class RMSuggestViewController: RMViewController {
+class RMSuggestViewController: PFSViewController {
     @IBOutlet weak var nameTextField: UITextField!
 
     @IBOutlet weak var detailTextView: RSKGrowingTextView!

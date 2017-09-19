@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
-class RMInspectPhotoViewModel: RMViewModel, RMListDataSource {
+protocol RMInspectPhotoViewAction: PFSViewAction {
+    
+}
+
+class RMInspectPhotoViewModel: PFSViewModel<RMInspectPhotoViewController, RMInspectPhotoDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMPicture, Void>> = []
     
     var caption = ""
     
-    
-    init(pictures: [RMPicture], caption: String?) {
-        super.init()
+    init(action: RMInspectPhotoViewController, pictures: [RMPicture], caption: String?) {
+        super.init(action: action, domain: RMInspectPhotoDomain())
         self.caption = caption ?? ""
         self.datasource.append(RMSection())
         for picture in pictures {

@@ -9,10 +9,10 @@
 import RxSwift
 import RxCocoa
 import MapKit
+import PCCWFoundationSwift
 
 
-
-class RMResourceType: RMPickerViewItem {
+class RMResourceType: PFSPickerViewItem {
     enum Resource: Int {
         case unknow
         case device = 1
@@ -44,15 +44,13 @@ class RMImageItem {
     
 }
 
-protocol RMInspectUploadAction: RMViewModelAction {
+protocol RMInspectUploadAction: PFSViewAction {
     
 }
 
 
-class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
+class RMInspectUploadViewModel: PFSViewModel<RMInspectUploadViewController,RMInspectUploadDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMImageItem, Void>> = []
-    
-    var action: RMInspectUploadAction
     
     var latitude = Variable(kCLLocationCoordinate2DInvalid.latitude)
     
@@ -67,9 +65,8 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
     var resourceId = Variable("")
     
     
-    init(action: RMInspectUploadAction) {
-        self.action = action
-        super.init()
+    init(action: RMInspectUploadViewController) {
+        super.init(action: action, domain: RMInspectUploadDomain())
         self.datasource.append(RMSection())
         self.section(at: 0).append(item: RMImageItem(true, image: UIImage(named: "inspect-upload.plus")))
     }
@@ -81,7 +78,7 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
     }
     
     func upload() -> Driver<Bool> {
-        self.action.animation.value = true
+        self.action?.animation.value = true
         
         var images = [UIImage]()
         
@@ -105,20 +102,20 @@ class RMInspectUploadViewModel: RMViewModel, RMListDataSource {
         validateParameters["images"] = images
         
         return RMInspectUploadValidate.shared.validate(validateParameters).flatMapLatest { result  in
-            self.action.alert(result: result)
+            (self.action?.alert(result: result))!
             }.flatMapLatest { _ in
-                return RMInspectUploadDomain.shared.upload(parameters: parameters, images: images)
+                return self.domain.upload(parameters: parameters, images: images)
             } .do(onNext: { [weak self] result in
                 if let strongSelf = self {
                     
-                    strongSelf.action.animation.value = false
+                    strongSelf.action?.animation.value = false
                 }
             })
             .flatMapLatest({ result  in
-                return self.action.alert(result: result)
+                return self.action!.alert(result: result)
             })
             .flatMapLatest({ _  in
-                return self.action.alert(message: "提交成功！", success: true)
+                return self.action!.alert(message: "提交成功！", success: true)
             })
     }
     

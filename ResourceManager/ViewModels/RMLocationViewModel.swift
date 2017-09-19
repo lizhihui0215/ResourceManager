@@ -9,23 +9,23 @@
 import RxCocoa
 import RxSwift
 import MapKit
+import PCCWFoundationSwift
 
-protocol RMLocationAction: RMViewModelAction {
+protocol RMLocationAction: PFSViewAction {
     func reload()
 }
 
-class RMLocationViewModel: RMViewModel, RMListDataSource {
+class RMLocationViewModel: PFSViewModel<RMLocationViewController, RMLocationDomain>, RMListDataSource {
     var datasource: Array<RMSection<AMapPOI, Void>> = []
     var locationManager = AMLocationManager()
-    weak var action: RMLocationAction?
     var query = Variable("")
     
     var page: Int = 0
     
     
-    init(action:  RMLocationAction) {
+    init(action:  RMLocationViewController) {
+        super.init(action: action, domain: RMLocationDomain())
         self.datasource.append(RMSection())
-        self.action = action
     }
     
     

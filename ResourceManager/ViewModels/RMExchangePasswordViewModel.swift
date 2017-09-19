@@ -8,34 +8,32 @@
 
 import RxCocoa
 import RxSwift
+import PCCWFoundationSwift
 
-protocol RMExchangePasswordViewAction: RMViewModelAction {
+protocol RMExchangePasswordViewAction: PFSViewAction {
     
 }
 
-class RMExchangePasswordViewModel: RMViewModel {
+class RMExchangePasswordViewModel: PFSViewModel<RMExchangePasswordViewController, RMPersonalCenterDomain> {
 
     var user: RMUser
     
-    var action: RMExchangePasswordViewAction
     
-    init(action: RMExchangePasswordViewAction, user: RMUser) {
+    init(action: RMExchangePasswordViewController, user: RMUser) {
         self.user = user
-        self.action = action
+        super.init(action: action, domain: RMPersonalCenterDomain())
     }
     
     func exchangePassword(originPassword: String, newPassword: String, confirmPassword: String) -> Driver<Bool> {
-        self.action.animation.value = true
        return RMPersonalCenterValidate.shared.validate(originPassword, newPassword: newPassword, confirmPassword: confirmPassword)
             .flatMapLatest { result   in
-                return self.action.alert(result: result)
+                return self.action!.alert(result: result)
             }.flatMapLatest { _  in
-                return RMPersonalCenterDomain.shared.exchangePassword(password: originPassword, newPassword: newPassword)
+                return self.domain.exchangePassword(password: originPassword, newPassword: newPassword)
         }.flatMapLatest { result  -> Driver<Bool> in
-            self.action.animation.value = false
-            return self.action.alert(result: result)
+            return self.action!.alert(result: result)
         }.flatMapLatest({ _  in
-            return self.action.alert(message: "修改成功！", success: true)
+            return self.action!.alert(message: "修改成功！", success: true)
         })
     }
 }

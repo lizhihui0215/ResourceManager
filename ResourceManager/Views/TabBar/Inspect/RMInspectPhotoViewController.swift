@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
+
+extension RMInspectPhotoViewController: RMInspectPhotoViewAction {
+    
+}
 
 class RMInspectPhotoViewController: UIPageViewController, UIPageViewControllerDataSource {
 

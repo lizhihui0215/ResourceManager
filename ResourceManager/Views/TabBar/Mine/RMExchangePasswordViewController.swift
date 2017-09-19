@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
 extension RMExchangePasswordViewController: RMExchangePasswordViewAction {
     
 }
 
-class RMExchangePasswordViewController: RMViewController {
+class RMExchangePasswordViewController: PFSViewController {
     @IBOutlet weak var originPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!

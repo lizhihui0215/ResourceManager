@@ -11,6 +11,7 @@ import Result
 import Moya
 import RxCocoa
 import RealmSwift
+import PCCWFoundationSwift
 
 enum RMPersonalItem {
     case changePassword
@@ -63,20 +64,18 @@ enum RMPersonalItem {
     }
 }
 
-protocol RMPersonalCenterViewAction: RMViewModelAction {
+protocol RMPersonalCenterViewAction: PFSViewAction {
     
 }
 
-class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
+class RMPersonalCenterViewModel: PFSViewModel<RMPersonalCenterViewController, RMPersonalCenterDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMPersonalItem, Void>> = []
     
     var user: RMUser?
     
-    var action: RMViewModelAction
     
     
-    init(action: RMViewModelAction) {
-        self.action = action
+    init(action: RMPersonalCenterViewController) {
         let section: RMSection<RMPersonalItem, Void> = RMSection()
         section.append(item: .changePassword)
         section.append(item: .help)
@@ -84,6 +83,7 @@ class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
         
         
         self.datasource.append(section)
+        super.init(action: action, domain: RMPersonalCenterDomain())
     }
     
     func logout() {
@@ -94,7 +94,7 @@ class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
     }
     
     func loginUser() -> Driver<Bool> {
-        return RMPersonalCenterDomain.shared.user().do(onNext: { result in
+        return self.domain.user().do(onNext: { result in
             switch result {
             case .success(let user):
                 self.user = user
@@ -102,7 +102,7 @@ class RMPersonalCenterViewModel: RMViewModel, RMListDataSource {
                 break
             }
         }).flatMapLatest({ result in
-            return self.action.alert(result: result)
+            return self.action!.alert(result: result)
         })
     }
     

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import PCCWFoundationSwift
 
-class RMInspectListCell: RMTableViewCell {
+class RMInspectListCell: PFSTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -16,7 +17,7 @@ class RMInspectListCell: RMTableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
 }
 
-class RMInspectListViewController: RMTableViewController,UITableViewDataSource,RMInpsectListAction {
+class RMInspectListViewController: PFSTableViewController,UITableViewDataSource,RMInpsectListAction {
     
     var viewModel: RMInspectListViewModel?
 
@@ -113,7 +114,7 @@ class RMInspectListViewController: RMTableViewController,UITableViewDataSource,R
             
             let inspect = viewModel.elementAt(indexPath: indexPath!)
             
-            let viewModel = RMInspectPhotoViewModel(pictures: (inspect.pictures?.toArray())!, caption: inspect.reportContent)
+            let viewModel = RMInspectPhotoViewModel(action: inspectViewController, pictures: (inspect.pictures?.toArray())!, caption: inspect.reportContent)
             inspectViewController.viewModel = viewModel
         }
     }

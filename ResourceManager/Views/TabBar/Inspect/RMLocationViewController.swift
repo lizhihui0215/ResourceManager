@@ -13,8 +13,9 @@ import MapKit
 import UIKit
 import AddressBook
 import MapKit
+import PCCWFoundationSwift
 
-class RMLocationCell: RMTableViewCell {
+class RMLocationCell: PFSTableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -34,7 +35,7 @@ extension RMLocationViewController: UITableViewDelegate {
     }
 }
 
-class RMLocationViewController: RMTableViewController, UITableViewDataSource, RMLocationAction {
+class RMLocationViewController: PFSTableViewController, UITableViewDataSource, RMLocationAction {
     
     
     var viewModel: RMLocationViewModel?

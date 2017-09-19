@@ -11,6 +11,7 @@ import RxSwift
 import Moya
 import Result
 import RealmSwift
+import PCCWFoundationSwift
 
 class RMPersonalCenterValidate: RMValidate {
     static let shared = RMPersonalCenterValidate()
@@ -45,11 +46,11 @@ class RMPersonalCenterValidate: RMValidate {
     
 }
 
-class RMPersonalCenterDomain: RMDomain {
-    static let shared = RMPersonalCenterDomain()
+class RMPersonalCenterDomain: PFSDomain {
+//    static let shared = RMPersonalCenterDomain()
     
     func user() -> Driver<Result<RMUser, MoyaError>> {
-        return RMPersonalCenterDomain.repository.user().asDriver(onErrorRecover: { error in
+        return RMDataRepository.shared.user().asDriver(onErrorRecover: { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })
@@ -60,14 +61,14 @@ class RMPersonalCenterDomain: RMDomain {
     }
     
     func exchangePassword(password: String, newPassword: String) -> Driver<Result<String, MoyaError>> {
-        return RMPersonalCenterDomain.repository.exchangePassword(password: password, newPassword: newPassword).asDriver(onErrorRecover: { error in
+        return RMDataRepository.shared.exchangePassword(password: password, newPassword: newPassword).asDriver(onErrorRecover: { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })
     }
     
     func suggest(name: String, phone: String, detail: String) -> Driver<Result<String, MoyaError>> {
-        return RMPersonalCenterDomain.repository.suggest(name: name, phone: phone, detail: detail).asDriver(onErrorRecover: { error in
+        return RMDataRepository.shared.suggest(name: name, phone: phone, detail: detail).asDriver(onErrorRecover: { error in
             let x  = error as! Moya.Error;
             return Driver.just(Result(error: x))
         })

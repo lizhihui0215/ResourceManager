@@ -129,7 +129,7 @@ extension RMInspectUploadViewController: RMLocationViewControllerDelegate {
     }
 }
 
-class RMInspectUploadViewController: RMViewController, UICollectionViewDelegate, TZImagePickerControllerDelegate {
+class RMInspectUploadViewController: PFSViewController, UICollectionViewDelegate, TZImagePickerControllerDelegate {
     // 站点名称
     @IBOutlet weak var cabinetRoomTextField: UITextField!
     // 机柜名称
