@@ -35,11 +35,13 @@ class RMDeviceListViewModel: PFSViewModel<RMDeviceListViewController, RMDeviceSe
     }
     
     func deviceList(refresh: Bool) -> Driver<Bool> {
+        self.action?.animation.value = true
+
         return self.domain.deviceList(deviceCode: deviceCode.value,
                                                       deviceName: deviceName.value,
                                                       refresh: refresh)
             .do(onNext: { [weak self] result in
-                
+                self?.action?.animation.value = false
                 if let strongSelf = self {
                     switch result {
                     case.success(let devices):

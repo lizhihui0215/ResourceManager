@@ -86,7 +86,6 @@
 		26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */; };
 		26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */; };
 		26EFFA421F715927008263DC /* RMLocationDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFFA411F715927008263DC /* RMLocationDomain.swift */; };
-		26EFFA441F716857008263DC /* RMInspectPhotoDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFFA431F716857008263DC /* RMInspectPhotoDomain.swift */; };
 		26F798A31F570940009E6382 /* RMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A21F570940009E6382 /* RMLoginViewController.swift */; };
 		26F798A51F57130F009E6382 /* RMResourceManagerDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */; };
 		5B8750E3484AF83BD9FF2DEA /* RMCabinetDeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */; };
@@ -102,6 +101,7 @@
 		5B87581DAB67A3B5BC1D5703 /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875100AC99E77DAE1F47C0 /* LBXScanNetAnimation.swift */; };
 		5B87583892DE539754B6CA25 /* RMInspectUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8754B52BABD563A2E56C89 /* RMInspectUploadViewController.swift */; };
 		5B8758A0E3014876554785D4 /* RMExchangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8755983DDE9B0A046D6BF8 /* RMExchangePasswordViewController.swift */; };
+		5B8759CD806D05EDDE5F3F2A /* RMInspectPhotoDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875378BA295472947D049F /* RMInspectPhotoDomain.swift */; };
 		5B875ABB5231D371C46A5AC5 /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875C3B2254E34F9EE16756 /* LBXScanViewController.swift */; };
 		5B875AF2B584F2BF3A4F862E /* RMSuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87526D5C67C89A7D2D6351 /* RMSuggestViewController.swift */; };
 		5B875BFCE2F1D3463E2E0FFD /* RMLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875D468D382111810011E5 /* RMLocationViewController.swift */; };
@@ -209,7 +209,7 @@
 		26950F831ED331E80052D08A /* LICENCE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.txt; sourceTree = "<group>"; };
 		26950F841ED331E80052D08A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		26950F851ED331E80052D08A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		26950F861ED331E80052D08A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		26950F861ED331E80052D08A /* README.md */ = {isa = PBXFileReference; fileEncoding = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2695130F1ED3346F0052D08A /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		269A48921E822FD30024FC17 /* ResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269A48951E822FD30024FC17 /* RMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAppDelegate.swift; sourceTree = "<group>"; };
@@ -236,7 +236,6 @@
 		26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMNetworkServices.swift; sourceTree = "<group>"; };
 		26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResponseObject.swift; sourceTree = "<group>"; };
 		26EFFA411F715927008263DC /* RMLocationDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationDomain.swift; sourceTree = "<group>"; };
-		26EFFA431F716857008263DC /* RMInspectPhotoDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoDomain.swift; sourceTree = "<group>"; };
 		26F798A21F570940009E6382 /* RMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginViewController.swift; sourceTree = "<group>"; };
 		26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResourceManagerDomain.swift; sourceTree = "<group>"; };
 		5B8750DEC95FB7871BFE6B9D /* RMTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTabBarViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +245,7 @@
 		5B87524E8CD1EB8CA6BFBEA7 /* LBXScanViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewStyle.swift; sourceTree = "<group>"; };
 		5B87526D5C67C89A7D2D6351 /* RMSuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSuggestViewController.swift; sourceTree = "<group>"; };
 		5B8753317D77F462A62BD6F3 /* RMDeviceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceDetailViewController.swift; sourceTree = "<group>"; };
+		5B875378BA295472947D049F /* RMInspectPhotoDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoDomain.swift; sourceTree = "<group>"; };
 		5B8754B52BABD563A2E56C89 /* RMInspectUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadViewController.swift; sourceTree = "<group>"; };
 		5B8755983DDE9B0A046D6BF8 /* RMExchangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMExchangePasswordViewController.swift; sourceTree = "<group>"; };
 		5B87571FF2F4EC29E35C212C /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
@@ -515,7 +515,6 @@
 			isa = PBXGroup;
 			children = (
 				26D85E441EA079AE0036EBDF /* RMDeviceDetailViewModel.swift */,
-				26EFFA431F716857008263DC /* RMInspectPhotoDomain.swift */,
 				26C7C7AE1EAE3438006AC792 /* RMRootViewModel.swift */,
 				260C10941E8A429900011A8E /* RMLoginViewModel.swift */,
 				264D89FB1EA33FC4002B2A44 /* RMPersonalCenterViewModel.swift */,
@@ -609,6 +608,7 @@
 				5B8759E9E01310C11B4B00E8 /* RMCabinetDetailDomain.swift */,
 				260E96FF1EC611A80040DBF8 /* RMDeviceModifyDomain.swift */,
 				26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */,
+				5B875378BA295472947D049F /* RMInspectPhotoDomain.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -811,13 +811,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ResourceManager-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		87199D74587C2827BC08E6E6 /* [CP] Embed Pods Frameworks */ = {
@@ -841,9 +844,72 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ResourceManager/Pods-ResourceManager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/DLAlertView/DLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/PCCWFoundationSwift/PCCWFoundationSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKGrowingTextView/RSKGrowingTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKPlaceholderTextView/RSKPlaceholderTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
+				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/ZXingObjC/ZXingObjC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PCCWFoundationSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKGrowingTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKPlaceholderTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZXingObjC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -901,9 +967,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ResourceManager/Pods-ResourceManager-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -916,13 +985,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ResourceManagerTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FDFFE514AFD959A7187CEF23 /* [CP] Check Pods Manifest.lock */ = {
@@ -931,13 +1003,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ResourceManagerUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -969,7 +1044,6 @@
 				2695122E1ED331E90052D08A /* XmlUtil.m in Sources */,
 				26786E921E9B263800AB42FF /* RMCabinetSearchDomain.swift in Sources */,
 				2672C1011E8CE44900AD19EA /* RMError.swift in Sources */,
-				26EFFA441F716857008263DC /* RMInspectPhotoDomain.swift in Sources */,
 				2695122B1ED331E90052D08A /* ModelUtil.m in Sources */,
 				266F463C1EB225F100E79F4D /* RMDeviceScanViewModel.swift in Sources */,
 				263A7EBC1E9D240200201500 /* RMInspectPhotoViewModel.swift in Sources */,
@@ -1045,6 +1119,7 @@
 				5B87583892DE539754B6CA25 /* RMInspectUploadViewController.swift in Sources */,
 				5B875CC1EEBB8920D39869F6 /* RMContentViewController.swift in Sources */,
 				5B875BFCE2F1D3463E2E0FFD /* RMLocationViewController.swift in Sources */,
+				5B8759CD806D05EDDE5F3F2A /* RMInspectPhotoDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

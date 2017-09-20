@@ -33,8 +33,10 @@ class RMLocationViewModel: PFSViewModel<RMLocationViewController, RMLocationDoma
         
         if isRefresh { self.page = 0; self.section(at: 0).removeAll() }
         else { self.page += 1 }
-        
+        self.action?.animation.value = true
+
         locationManager.search(query: query, page: self.page, count: 20) {[weak self] result in
+            self?.action?.animation.value = false
             if let strongSelf = self {
                 let section = strongSelf.section(at: 0)
                 if isRefresh {

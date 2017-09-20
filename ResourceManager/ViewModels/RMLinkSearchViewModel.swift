@@ -43,9 +43,10 @@ class RMLinkSearchViewModel: RMSearchViewModel {
     }
     
     func linkList(refresh: Bool) -> Driver<Bool> {
+        self.action?.animation.value = true
         return self.domain.linkList(account: self.secondField.value, customerName: self.thirdField.value, linkCode: self.firstField.value, refresh: refresh)
             .do(onNext: { [weak self] result in
-                
+                self?.action?.animation.value = false
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):

@@ -18,6 +18,7 @@ protocol RMRootViewAction: PFSViewAction {
 class RMRootViewModel: PFSViewModel<RMRootViewController, RMLoginDomain> {
     
     func navigationTo() -> Driver<Bool> {
+        self.action?.animation.value = true
 //       return RMLoginDomain.shared.user().flatMapLatest { result  in
 //            switch result{
 //            case .success(let user):
@@ -36,7 +37,10 @@ class RMRootViewModel: PFSViewModel<RMRootViewController, RMLoginDomain> {
 //                return Driver.just(false)
 //            }
 //        }
-        return self.domain.sigin(username: "admin", password: "1234").flatMapLatest{ result  in Driver.just(true) }
+        return self.domain.sigin(username: "admin", password: "1234").flatMapLatest{ result  in
+            self.action?.animation.value = false
+            return Driver.just(true)
+        }
 
     }
 }

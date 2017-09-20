@@ -35,9 +35,12 @@ class RMLinkListViewModel: PFSViewModel<RMLinkListViewController, RMLinkSearchDo
     }
     
     func linkList(refresh: Bool) -> Driver<Bool> {
+        self.action?.animation.value = true
+
         return self.domain.linkList(account: self.account.value, customerName: self.customerName.value, linkCode: self.linkCode.value, refresh: refresh)
             .do(onNext: { [weak self] result in
-                
+                self?.action?.animation.value = false
+
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):

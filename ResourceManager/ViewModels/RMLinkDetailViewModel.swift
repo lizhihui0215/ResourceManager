@@ -176,10 +176,12 @@ class RMLinkDetailViewModel: PFSViewModel<RMLinkDetailViewController, RMLinkDeta
         
         
         let validateResult = PFSValidate.of(validateDeviceCode)
-
+        self.action?.animation.value = true
         return validateResult.flatMapLatest{ _ in
             return self.domain.ports(deviceCode: deviceCode)
             }.flatMapLatest { result  in
+                self.action?.animation.value = false
+
                 return  self.action!.alert(result: result).flatMapLatest{ _ in
                     switch result {
                     case .success(let ports):
@@ -199,12 +201,15 @@ class RMLinkDetailViewModel: PFSViewModel<RMLinkDetailViewController, RMLinkDeta
         if link.accessDevicePort == "" {
             return self.action!.alert(message: "请选择本端端口", success: false)
         }
-        
-        return self.domain.linkModify(link: self.link)
-            .flatMapLatest({ result  in
+        self.action?.animation.value = true
+
+        return self.domain.linkModify(link: self.link).do(onNext: { result in
+            self.action?.animation.value = false
+        })
+            .flatMapLatest{ result  in
                 return self.action!.alert(result: result)
-            }).flatMapLatest({ _  in
+            }.flatMapLatest{ _  in
                 return self.action!.alert(message: "修改成功！", success: true)
-            })
+            }
     }
 }
