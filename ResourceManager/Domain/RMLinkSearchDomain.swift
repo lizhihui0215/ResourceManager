@@ -19,12 +19,12 @@ class RMLinkSearchDomain: PFSDomain {
     
     var size = 20
     
-    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], Moya.Error>> {
+    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], MoyaError>> {
         if refresh { page = 0 } else { page += 1 }
         return RMDataRepository.shared.linkList(account: account, customerName: customerName, linkCode: linkCode , page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }

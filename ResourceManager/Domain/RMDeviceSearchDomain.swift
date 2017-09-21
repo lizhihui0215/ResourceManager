@@ -20,12 +20,12 @@ class RMDeviceSearchDomain: PFSDomain {
     
     var size = 20
     
-    func deviceList(deviceCode: String, deviceName: String, refresh: Bool) -> Driver<Result<[RMDevice], Moya.Error>> {
+    func deviceList(deviceCode: String, deviceName: String, refresh: Bool) -> Driver<Result<[RMDevice], MoyaError>> {
         if refresh { page = 0 } else { page += 1 }
         return RMDataRepository.shared.deviceList(deviceCode: deviceCode, deviceName: deviceName, page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }

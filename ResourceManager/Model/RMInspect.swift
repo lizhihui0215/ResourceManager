@@ -9,10 +9,11 @@
 import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
+import PCCWFoundationSwift
 
-class RMPicture: RMModel {
-    dynamic var thumbnail: String?
-    dynamic var picUrl: String?
+class RMPicture: PFSModel {
+   @objc dynamic var thumbnail: String?
+   @objc dynamic var picUrl: String?
     
     required convenience init?(map: Map) {
         self.init()
@@ -25,16 +26,16 @@ class RMPicture: RMModel {
     }
 }
 
-class RMInspect: RMModel {
-    dynamic var reportID: String?
-    dynamic var latitude: Float = 0.0
-    dynamic var longitude: Float = 0.0
-    dynamic var locationName: String?
-    dynamic var reportContent: String?
-    dynamic var resourceType: Int = 0
-    dynamic var createdtime: Int = 0
-    dynamic var resourceName: String?
-    dynamic var resourceId: String?
+class RMInspect: PFSModel {
+    @objc dynamic var reportID: String?
+    @objc dynamic var latitude: Float = 0.0
+    @objc dynamic var longitude: Float = 0.0
+    @objc dynamic var locationName: String?
+    @objc dynamic var reportContent: String?
+    @objc dynamic var resourceType: Int = 0
+    @objc dynamic var createdtime: Int = 0
+    @objc dynamic var resourceName: String?
+    @objc dynamic var resourceId: String?
     var pictures: List<RMPicture>?
     
     required convenience init?(map: Map) {
@@ -52,8 +53,6 @@ class RMInspect: RMModel {
         resourceName <- map["resourceName"]
         resourceId <- map["resourceId"]
         createdtime <- map["createdtime"]
-
-
         pictures <- (map["pictures"], ListTransform<RMPicture>())
     }
 

@@ -32,8 +32,6 @@
 		264D89FE1EA37FD6002B2A44 /* RMPersonalCenterDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264D89FD1EA37FD6002B2A44 /* RMPersonalCenterDomain.swift */; };
 		265653E81E825A7700F37064 /* RMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E71E825A7700F37064 /* RMModel.swift */; };
 		265653EA1E825BC200F37064 /* RMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653E91E825BC200F37064 /* RMUser.swift */; };
-		265653F01E8279C600F37064 /* RMDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653EF1E8279C600F37064 /* RMDog.swift */; };
-		265653F21E827A1300F37064 /* RMAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265653F11E827A1300F37064 /* RMAnimal.swift */; };
 		266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */; };
 		266597841E95D82A0035D344 /* RMLinkSearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266597831E95D82A0035D344 /* RMLinkSearchDomain.swift */; };
 		266F46361EB1026100E79F4D /* RMDeviceSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F46351EB1026100E79F4D /* RMDeviceSearchViewModel.swift */; };
@@ -84,7 +82,6 @@
 		26CB6A821E9795500092E3E9 /* RMLinkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */; };
 		26D85E451EA079AE0036EBDF /* RMDeviceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D85E441EA079AE0036EBDF /* RMDeviceDetailViewModel.swift */; };
 		26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */; };
-		26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */; };
 		26EFFA421F715927008263DC /* RMLocationDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFFA411F715927008263DC /* RMLocationDomain.swift */; };
 		26F798A31F570940009E6382 /* RMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A21F570940009E6382 /* RMLoginViewController.swift */; };
 		26F798A51F57130F009E6382 /* RMResourceManagerDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */; };
@@ -163,8 +160,6 @@
 		264D89FD1EA37FD6002B2A44 /* RMPersonalCenterDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPersonalCenterDomain.swift; sourceTree = "<group>"; };
 		265653E71E825A7700F37064 /* RMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMModel.swift; sourceTree = "<group>"; };
 		265653E91E825BC200F37064 /* RMUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMUser.swift; sourceTree = "<group>"; };
-		265653EF1E8279C600F37064 /* RMDog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDog.swift; sourceTree = "<group>"; };
-		265653F11E827A1300F37064 /* RMAnimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAnimal.swift; sourceTree = "<group>"; };
 		266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkSearchViewModel.swift; sourceTree = "<group>"; };
 		266597831E95D82A0035D344 /* RMLinkSearchDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkSearchDomain.swift; sourceTree = "<group>"; };
 		266F46351EB1026100E79F4D /* RMDeviceSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceSearchViewModel.swift; sourceTree = "<group>"; };
@@ -234,7 +229,6 @@
 		26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkListViewModel.swift; sourceTree = "<group>"; };
 		26D85E441EA079AE0036EBDF /* RMDeviceDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceDetailViewModel.swift; sourceTree = "<group>"; };
 		26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMNetworkServices.swift; sourceTree = "<group>"; };
-		26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResponseObject.swift; sourceTree = "<group>"; };
 		26EFFA411F715927008263DC /* RMLocationDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationDomain.swift; sourceTree = "<group>"; };
 		26F798A21F570940009E6382 /* RMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginViewController.swift; sourceTree = "<group>"; };
 		26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResourceManagerDomain.swift; sourceTree = "<group>"; };
@@ -484,11 +478,8 @@
 				265653E71E825A7700F37064 /* RMModel.swift */,
 				265653E91E825BC200F37064 /* RMUser.swift */,
 				269C8CAF1E8FB33B0049970E /* RMLink.swift */,
-				265653EF1E8279C600F37064 /* RMDog.swift */,
 				267641801E9B5647000EFB23 /* RMCabinet.swift */,
 				267641821E9B5696000EFB23 /* RMDevice.swift */,
-				265653F11E827A1300F37064 /* RMAnimal.swift */,
-				26E0C2F61E83A86A00C7C388 /* RMResponseObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -728,7 +719,7 @@
 			attributes = {
 				CLASSPREFIX = RM;
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "北京海睿兴业";
 				TargetAttributes = {
 					269A48911E822FD30024FC17 = {
@@ -1056,7 +1047,6 @@
 				26C7C7AF1EAE3438006AC792 /* RMRootViewModel.swift in Sources */,
 				263FD31F1EAEFD7500EB7814 /* BDLocationManager.swift in Sources */,
 				26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */,
-				265653F21E827A1300F37064 /* RMAnimal.swift in Sources */,
 				260C3C421E9CCA5500DE7C46 /* RMInspectListDomain.swift in Sources */,
 				26483F3B1EA1316600D6A3EC /* RMLinkDetailDomain.swift in Sources */,
 				268DEB3E1E9E182400056FC9 /* RMInspectUploadViewModel.swift in Sources */,
@@ -1066,12 +1056,10 @@
 				269512241ED331E90052D08A /* Data.m in Sources */,
 				260C3C461E9CDA4300DE7C46 /* RMInspect.swift in Sources */,
 				26CB6A7E1E978B840092E3E9 /* RMResourceManagerViewModel.swift in Sources */,
-				265653F01E8279C600F37064 /* RMDog.swift in Sources */,
 				2681BC051ED53F8B00361033 /* PrintServices.swift in Sources */,
 				267641831E9B5696000EFB23 /* RMDevice.swift in Sources */,
 				2695122C1ED331E90052D08A /* Print.m in Sources */,
 				260C3C401E9CC9F500DE7C46 /* RMInspectListViewModel.swift in Sources */,
-				26E0C2F71E83A86A00C7C388 /* RMResponseObject.swift in Sources */,
 				267641811E9B5647000EFB23 /* RMCabinet.swift in Sources */,
 				26C7C7B11EAE3CD0006AC792 /* NSDate+RM.swift in Sources */,
 				266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */,
@@ -1183,7 +1171,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1191,7 +1181,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1220,6 +1214,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1233,7 +1228,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1241,7 +1238,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1262,6 +1263,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1325,7 +1327,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResourceManager/ResourceManager-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1391,7 +1393,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ResourceManager/ResourceManager-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1407,7 +1409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ResourceManager.app/ResourceManager";
 			};
 			name = Debug;
@@ -1423,7 +1425,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ResourceManager.app/ResourceManager";
 			};
 			name = Release;
@@ -1438,7 +1440,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManagerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = ResourceManager;
 			};
 			name = Debug;
@@ -1453,7 +1455,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.ResourceManagerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = ResourceManager;
 			};
 			name = Release;

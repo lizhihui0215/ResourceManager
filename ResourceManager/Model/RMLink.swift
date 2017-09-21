@@ -9,41 +9,36 @@
 import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
+import PCCWFoundationSwift
 
-class RMLink: RMModel {
-    dynamic var linkCode: String?
-    dynamic var linkName: String?
-    dynamic var customerName: String?
-    dynamic var barcode: String?
-    dynamic var linkRate: String?
-    dynamic var customerLevel: String?
-    dynamic var serviceLevel: String?
-
-    dynamic var pictures: String?
-    dynamic var accessDeviceName: String?
-    dynamic var accessDevicePort: String?
-    dynamic var accessDeviceUpTime: String?
-    dynamic var localODFName: String?
-    dynamic var localODFID: String?
-    dynamic var localODFPort: String?
-    dynamic var farendDeviceName: String?
-    dynamic var farendDevicePort: String?
-    dynamic var farendODFName: String?
-    dynamic var farendODFID: String?
-    dynamic var farendODFPort: String?
-    dynamic var farendDeviceId: String?
-    dynamic var accessDeviceId: String?
-    
-    dynamic var farendDevicePortType: String?
-    dynamic var accessDevicePortType: String?
-    dynamic var businessType: String?
-    dynamic var linkId: String?
-    
-    
-
-    
-   dynamic var orderNo: String?
-   dynamic var billingNo: String?
+class RMLink: PFSModel {
+    @objc dynamic var linkCode: String?
+    @objc dynamic var linkName: String?
+    @objc dynamic var customerName: String?
+    @objc dynamic var barcode: String?
+    @objc dynamic var linkRate: String?
+    @objc dynamic var customerLevel: String?
+    @objc dynamic var serviceLevel: String?
+    @objc dynamic var pictures: String?
+    @objc dynamic var accessDeviceName: String?
+    @objc dynamic var accessDevicePort: String?
+    @objc dynamic var accessDeviceUpTime: String?
+    @objc dynamic var localODFName: String?
+    @objc dynamic var localODFID: String?
+    @objc dynamic var localODFPort: String?
+    @objc dynamic var farendDeviceName: String?
+    @objc dynamic var farendDevicePort: String?
+    @objc dynamic var farendODFName: String?
+    @objc dynamic var farendODFID: String?
+    @objc dynamic var farendODFPort: String?
+    @objc dynamic var farendDeviceId: String?
+    @objc dynamic var accessDeviceId: String?
+    @objc dynamic var farendDevicePortType: String?
+    @objc dynamic var accessDevicePortType: String?
+    @objc dynamic var businessType: String?
+    @objc dynamic var linkId: String?
+    @objc dynamic var orderNo: String?
+    @objc dynamic var billingNo: String?
 
     required convenience init?(map: Map) {
         self.init()
@@ -78,6 +73,4 @@ class RMLink: RMModel {
         businessType <- map["businessType"]
         linkId <- map["linkId"]
     }
-
-
 }

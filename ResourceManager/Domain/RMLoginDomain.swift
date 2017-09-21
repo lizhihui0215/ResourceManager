@@ -18,7 +18,7 @@ class RMLoginValidate: RMValidate {
 }
 
 class RMLoginDomain: PFSDomain {
-    func user() -> Driver<Result<RMUser?, Moya.Error>> {
+    func user() -> Driver<Result<RMUser?, MoyaError>> {
         
         let realm = try? Realm()
         
@@ -27,7 +27,7 @@ class RMLoginDomain: PFSDomain {
         return Driver.just(Result(value: user))
     }
     
-    func sigin(username: String, password: String) -> Driver<Result<RMUser, Moya.Error>> {
+    func sigin(username: String, password: String) -> Driver<Result<RMUser, MoyaError>> {
         return RMDataRepository.shared.sigin(username: username, password: password).map({ result in
             switch result {
             case .success(let user) :
@@ -47,7 +47,7 @@ class RMLoginDomain: PFSDomain {
                 return Result(error: error)
             }
         }).asDriver(onErrorRecover: { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }

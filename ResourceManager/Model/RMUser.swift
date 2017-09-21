@@ -10,16 +10,17 @@ import UIKit
 import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
+import PCCWFoundationSwift
 
-class RMUser: RMModel {
-    dynamic var nickname: String?
-    dynamic var password: String?
-    dynamic var loginName: String?
-    dynamic var avatar: String?
-    dynamic var name: String?
-    dynamic var mobile: String?
-    dynamic var sex: String?
-    dynamic var accessToken: String?
+class RMUser: PFSModel {
+    @objc dynamic var nickname: String?
+    @objc dynamic var password: String?
+    @objc dynamic var loginName: String?
+    @objc dynamic var avatar: String?
+    @objc dynamic var name: String?
+    @objc dynamic var mobile: String?
+    @objc dynamic var sex: String?
+    @objc dynamic var accessToken: String?
 
     required convenience init?(map: Map) {
         self.init()

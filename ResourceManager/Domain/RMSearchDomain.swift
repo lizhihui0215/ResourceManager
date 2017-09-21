@@ -20,21 +20,21 @@ class RMSearchDomain: PFSDomain {
     
     var deviceDomain = RMDeviceSearchDomain()
     
-    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], Moya.Error>> {
+    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], MoyaError>> {
         return linkDomain.linkList(account: account,
                                    customerName: customerName,
                                    linkCode: linkCode,
                                    refresh: refresh)
     }
     
-    func cabinetList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMCabinet], Moya.Error>> {
+    func cabinetList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMCabinet], MoyaError>> {
         return cabinetDomain.cabinetList(account: account,
                                          customerName: customerName,
                                          linkCode: linkCode,
                                          refresh: refresh)
     }
     
-    func deviceList(deviceCode: String, deviceName: String, refresh: Bool) -> Driver<Result<[RMDevice], Moya.Error>> {
+    func deviceList(deviceCode: String, deviceName: String, refresh: Bool) -> Driver<Result<[RMDevice], MoyaError>> {
         return deviceDomain.deviceList(deviceCode: deviceCode,
                                        deviceName: deviceName,
                                        refresh: refresh)

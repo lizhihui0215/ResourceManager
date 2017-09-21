@@ -19,12 +19,12 @@ class RMInspectListDomain: PFSDomain {
     
     var size = 20
     
-    func inspectList(refresh: Bool) -> Driver<Result<[RMInspect], Moya.Error>> {
+    func inspectList(refresh: Bool) -> Driver<Result<[RMInspect], MoyaError>> {
         if refresh { page = 0 } else { page += 1 }
         return RMDataRepository.shared.inspectList(page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }

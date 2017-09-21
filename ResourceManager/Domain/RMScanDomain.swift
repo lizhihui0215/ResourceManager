@@ -17,30 +17,30 @@ class RMScanDomain: PFSDomain {
     
     var linkDomain = RMLinkSearchDomain()
     
-    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], Moya.Error>> {
+    func linkList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMLink], MoyaError>> {
         return linkDomain.linkList(account: account,
                                    customerName: customerName,
                                    linkCode: linkCode,
                                    refresh: refresh)
     }
     
-    func link(linkCode: String) -> Driver<Result<RMLink, Moya.Error>> {
+    func link(linkCode: String) -> Driver<Result<RMLink, MoyaError>> {
         return RMDataRepository.shared.link(linkCode: linkCode).asDriver(onErrorRecover:  { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }
     
-    func cabinet(cabinetId: String) -> Driver<Result<RMCabinet, Moya.Error>> {
+    func cabinet(cabinetId: String) -> Driver<Result<RMCabinet, MoyaError>> {
         return RMDataRepository.shared.cabinet(cabinetId: cabinetId).asDriver(onErrorRecover:  { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }
     
-    func deviceDetail(deviceCode: String) -> Driver<Result<RMDevice, Moya.Error>> {
+    func deviceDetail(deviceCode: String) -> Driver<Result<RMDevice, MoyaError>> {
         return RMDataRepository.shared.device(deviceCode: deviceCode).asDriver(onErrorRecover:  { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }

@@ -16,7 +16,7 @@ import PCCWFoundationSwift
 class RMPersonalCenterValidate: RMValidate {
     static let shared = RMPersonalCenterValidate()
     
-    func validate(_ originPassword: String, newPassword: String, confirmPassword: String) -> Driver<Result<(String, String),Moya.Error>> {
+    func validate(_ originPassword: String, newPassword: String, confirmPassword: String) -> Driver<Result<(String, String),MoyaError>> {
         
         if originPassword.isEmpty {
             return .just(Result(error: error(code: 0, message: "原密码不能为空")))
@@ -37,7 +37,7 @@ class RMPersonalCenterValidate: RMValidate {
         return Driver.just(Result(value: (originPassword,confirmPassword )))
     }
     
-    func validate(_ name: String, phone: String, detail: String) -> Driver<Result<(String, String, String),Moya.Error>> {
+    func validate(_ name: String, phone: String, detail: String) -> Driver<Result<(String, String, String),MoyaError>> {
         
         return Driver.just(Result(value: (name,phone, detail)))
     }
@@ -51,7 +51,7 @@ class RMPersonalCenterDomain: PFSDomain {
     
     func user() -> Driver<Result<RMUser, MoyaError>> {
         return RMDataRepository.shared.user().asDriver(onErrorRecover: { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }
@@ -62,14 +62,14 @@ class RMPersonalCenterDomain: PFSDomain {
     
     func exchangePassword(password: String, newPassword: String) -> Driver<Result<String, MoyaError>> {
         return RMDataRepository.shared.exchangePassword(password: password, newPassword: newPassword).asDriver(onErrorRecover: { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }
     
     func suggest(name: String, phone: String, detail: String) -> Driver<Result<String, MoyaError>> {
         return RMDataRepository.shared.suggest(name: name, phone: phone, detail: detail).asDriver(onErrorRecover: { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
         

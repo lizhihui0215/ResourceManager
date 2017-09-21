@@ -13,7 +13,7 @@ import Result
 
 class RMValidate {
     
-    func validateNil(_ value: String, message: String = "") -> Driver<Result<String,Moya.Error>> {
+    func validateNil(_ value: String, message: String = "") -> Driver<Result<String,MoyaError>> {
         
         if value.characters.count == 0 {
             return .just(Result(error: error(code: 0, message: message)))

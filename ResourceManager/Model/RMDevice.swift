@@ -9,18 +9,19 @@
 import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
+import PCCWFoundationSwift
 
-class RMDevice: RMModel {
-    dynamic var deviceCode: String?
+@objc class RMDevice: PFSModel {
+    @objc dynamic var deviceCode: String?
 //    dynamic var deviceName: String?
-    dynamic var deviceLocation: String?
-    dynamic var totalTerminals: Int = 0
-    dynamic var terminalOccupied: Int = 0
-    dynamic var terminalFree: Int = 0
-    dynamic var deviceDesc: String?
-    dynamic var deviceType: String?
-    dynamic var deviceProducer: String?
-    dynamic var deviceModel: String?
+    @objc dynamic var deviceLocation: String?
+    @objc dynamic var totalTerminals: Int = 0
+    @objc dynamic var terminalOccupied: Int = 0
+    @objc dynamic var terminalFree: Int = 0
+    @objc dynamic var deviceDesc: String?
+    @objc dynamic var deviceType: String?
+    @objc dynamic var deviceProducer: String?
+    @objc dynamic var deviceModel: String?
 
     
     required convenience init?(map: Map) {

@@ -9,14 +9,15 @@
 import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
+import PCCWFoundationSwift
 
-class RMCabinet: RMModel {
-    dynamic var cabinetCode: String?
+class RMCabinet: PFSModel {
+    @objc dynamic var cabinetCode: String?
 //    dynamic var cabinetName: String?
-    dynamic var cabinetLocation: String?
-    dynamic var capacity: String?
-    dynamic var cabinetRoom: String?
-    dynamic var cabinetId: String?
+    @objc dynamic var cabinetLocation: String?
+    @objc dynamic var capacity: String?
+    @objc dynamic var cabinetRoom: String?
+    @objc dynamic var cabinetId: String?
     
     var devices: List<RMDevice>?
     

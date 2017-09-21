@@ -16,8 +16,11 @@ import PCCWFoundationSwift
 class RMDataRepository:  PFSDataRepository{
     static let shared = RMDataRepository()
 
-    func sigin(username: String, password: String) -> Observable<Result<RMUser, Moya.Error>> {
-        let result: Observable<RMResponseObject<RMUser>> = RMNetworkServices.shared.request(.login(username, password))
+    func sigin(username: String, password: String) -> Observable<Result<RMUser, MoyaError>> {
+//        let result: Single<PFSResponseMappableObject<IBLUser>> = PFSNetworkService<IBLAPITarget>.shared.request(.portalAuth(account, password, auth))
+
+        let result: Single<PFSResponseMappableObject<RMUser>> = PFSNetworkService<RMAPITarget>.shared.request(.login(username, password))
+            
         
         return self.handlerError(response: result).map { result in
             switch result {
@@ -29,8 +32,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func link(deviceCode: String) -> Observable<Result<[RMLink], Moya.Error>> {
-        let resukt: Observable<RMResponseArray<RMLink>> = RMNetworkServices.shared.request(.link((RMDomain.user?.accessToken)!, deviceCode))
+    func link(deviceCode: String) -> Observable<Result<[RMLink], MoyaError>> {
+        let resukt: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.link((RMDomain.user?.accessToken)!, deviceCode))
         
         return self.handlerError(response: resukt).map({ result in
             switch result {
@@ -42,8 +45,8 @@ class RMDataRepository:  PFSDataRepository{
         })
     }
     
-    func linkList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMLink], Moya.Error>> {
-        let resukt: Observable<RMResponseArray<RMLink>> = RMNetworkServices.shared.request(.linkList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
+    func linkList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMLink], MoyaError>> {
+        let resukt: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.linkList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
         
         return self.handlerError(response: resukt).map({ result in
             switch result {
@@ -55,8 +58,8 @@ class RMDataRepository:  PFSDataRepository{
         })
     }
     
-    func inspectList(page: Int, size: Int) -> Observable<Result<[RMInspect], Moya.Error>> {
-        let resukt: Observable<RMResponseArray<RMInspect>> = RMNetworkServices.shared.request(.inspectList((RMDomain.user?.accessToken)!, page, size))
+    func inspectList(page: Int, size: Int) -> Observable<Result<[RMInspect], MoyaError>> {
+        let resukt: Single<PFSResponseMappableArray<RMInspect>> = PFSNetworkService<RMAPITarget>.shared.request(.inspectList((RMDomain.user?.accessToken)!, page, size))
         
         return self.handlerError(response: resukt).map({ result in
             switch result {
@@ -68,8 +71,8 @@ class RMDataRepository:  PFSDataRepository{
         })
     }
     
-    func deviceList(deviceCode: String, deviceName: String, page: Int, size: Int) -> Observable<Result<[RMDevice], Moya.Error>> {
-        let resukt: Observable<RMResponseArray<RMDevice>> = RMNetworkServices.shared.request(.deviceList((RMDomain.user?.accessToken)!, deviceCode, deviceName, page, size))
+    func deviceList(deviceCode: String, deviceName: String, page: Int, size: Int) -> Observable<Result<[RMDevice], MoyaError>> {
+        let resukt: Single<PFSResponseMappableArray<RMDevice>> = PFSNetworkService<RMAPITarget>.shared.request(.deviceList((RMDomain.user?.accessToken)!, deviceCode, deviceName, page, size))
         
         return self.handlerError(response: resukt).map({ result in
             switch result {
@@ -82,8 +85,8 @@ class RMDataRepository:  PFSDataRepository{
     }
 
     
-    func cabinetList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMCabinet], Moya.Error>> {
-        let resukt: Observable<RMResponseArray<RMCabinet>> = RMNetworkServices.shared.request(.cabinetList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
+    func cabinetList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Observable<Result<[RMCabinet], MoyaError>> {
+        let resukt: Single<PFSResponseMappableArray<RMCabinet>> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetList((RMDomain.user?.accessToken)!, account, customerName, linkCode, page, size))
         
         return self.handlerError(response: resukt).map({ result in
             switch result {
@@ -95,8 +98,8 @@ class RMDataRepository:  PFSDataRepository{
         })
     }
 
-    func ports(deviceCode: String) -> Observable<Result<[String], Moya.Error>> {
-        let result: Observable<RMResponseBaseArray<String>> = RMNetworkServices.shared.request(.ports((RMDomain.user?.accessToken)!, deviceCode))
+    func ports(deviceCode: String) -> Observable<Result<[String], MoyaError>> {
+        let result: Single<PFSResponseArray<String>> = PFSNetworkService<RMAPITarget>.shared.request(.ports((RMDomain.user?.accessToken)!, deviceCode))
         return self.handlerError(response: result).map{ result in
             switch result {
             case.success(let device):
@@ -107,8 +110,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func link(linkCode: String) -> Observable<Result<RMLink, Moya.Error>> {
-        let result: Observable<RMResponseObject<RMLink>> = RMNetworkServices.shared.request(.linkDetail((RMDomain.user?.accessToken)!, linkCode))
+    func link(linkCode: String) -> Observable<Result<RMLink, MoyaError>> {
+        let result: Single<PFSResponseMappableObject<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.linkDetail((RMDomain.user?.accessToken)!, linkCode))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -120,8 +123,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func exchangePassword(password: String, newPassword: String) -> Observable<Result<String, Moya.Error>> {
-        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.exchangePassword((RMDomain.user?.accessToken)!, password,newPassword))
+    func exchangePassword(password: String, newPassword: String) -> Observable<Result<String, MoyaError>> {
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.exchangePassword((RMDomain.user?.accessToken)!, password,newPassword))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -133,8 +136,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func suggest(name: String, phone: String, detail: String) -> Observable<Result<String, Moya.Error>> {
-        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.suggest((RMDomain.user?.accessToken)!, name,phone,detail))
+    func suggest(name: String, phone: String, detail: String) -> Observable<Result<String, MoyaError>> {
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.suggest((RMDomain.user?.accessToken)!, name,phone,detail))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -146,8 +149,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func linkModify(link: RMLink) -> Observable<Result<String, Moya.Error>> {
-        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.linkModify((RMDomain.user?.accessToken)!, link.toJSON()))
+    func linkModify(link: RMLink) -> Observable<Result<String, MoyaError>> {
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.linkModify((RMDomain.user?.accessToken)!, link.toJSON()))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -159,8 +162,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
 
-    func modifyCabinet(cabinet: RMCabinet) -> Observable<Result<String, Moya.Error>> {
-        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.cabinetModify((RMDomain.user?.accessToken)!, cabinet.toJSON()))
+    func modifyCabinet(cabinet: RMCabinet) -> Observable<Result<String, MoyaError>> {
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetModify((RMDomain.user?.accessToken)!, cabinet.toJSON()))
 
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -172,8 +175,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func modifyDevice(device: RMDevice) -> Observable<Result<String, Moya.Error>> {
-        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.deviceModify((RMDomain.user?.accessToken)!, device.toJSON()))
+    func modifyDevice(device: RMDevice) -> Observable<Result<String, MoyaError>> {
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.deviceModify((RMDomain.user?.accessToken)!, device.toJSON()))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -187,12 +190,12 @@ class RMDataRepository:  PFSDataRepository{
     
     
     
-    func user() -> Observable<Result<RMUser, Moya.Error>> {
+    func user() -> Observable<Result<RMUser, MoyaError>> {
         return Observable.just(Result(value: RMDomain.user!))
     }
     
-    func inspectUpload(parameter: [String : Any], images: [MultipartFormData] ) -> Observable<Result<String, Moya.Error>> {
-        let result: Observable<RMResponseNil> = RMNetworkServices.shared.request(.inspectUpload((RMDomain.user?.accessToken)!, parameter, images))
+    func inspectUpload(parameter: [String : Any], images: [MultipartFormData] ) -> Observable<Result<String, MoyaError>> {
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.inspectUpload((RMDomain.user?.accessToken)!, parameter, images))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -204,8 +207,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func device(deviceCode: String) -> Observable<Result<RMDevice, Moya.Error>> {
-        let result: Observable<RMResponseObject<RMDevice>> = RMNetworkServices.shared.request(.deviceDetail((RMDomain.user?.accessToken)!, deviceCode))
+    func device(deviceCode: String) -> Observable<Result<RMDevice, MoyaError>> {
+        let result: Single<PFSResponseMappableObject<RMDevice>> = PFSNetworkService<RMAPITarget>.shared.request(.deviceDetail((RMDomain.user?.accessToken)!, deviceCode))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -217,8 +220,8 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
-    func cabinet(cabinetId: String) -> Observable<Result<RMCabinet, Moya.Error>> {
-        let result: Observable<RMResponseObject<RMCabinet>> = RMNetworkServices.shared.request(.cabinetDetail((RMDomain.user?.accessToken)!, cabinetId))
+    func cabinet(cabinetId: String) -> Observable<Result<RMCabinet, MoyaError>> {
+        let result: Single<PFSResponseMappableObject<RMCabinet>> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetDetail((RMDomain.user?.accessToken)!, cabinetId))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -229,49 +232,6 @@ class RMDataRepository:  PFSDataRepository{
             }
         }
     }
-    
-    func handlerError<T>(response: Observable<RMResponseObject<T>>) -> Observable<Result<T, Moya.Error>> {
-        return response.map { response  in
-            if response.code == 0 {
-                return Result(value: response.result!)
-            }else {
-                return Result(error: error(code: response.code, message: response.message) )
-            }
-        }
-    }
-    
-    func handlerError(response: Observable<RMResponseNil>, message: String = "") -> Observable<Result<String, Moya.Error>> {
-        return response.map { response  in
-            if response.code == 0 {
-                return Result(value: response.message ?? message)
-            }else {
-                return Result(error: error(code: response.code, message: response.message) )
-            }
-        }
-    }
-    
-    func handlerError<T>(response: Observable<RMResponseBaseArray<T>>, message: String = "") -> Observable<Result<[T], Moya.Error>> {
-        return response.map { response  in
-            if response.code == 0 {
-                return Result(value: response.results ?? [T]())
-            }else {
-                return Result(error: error(code: response.code, message: response.message) )
-            }
-        }
-    }
-
-    
-    func handlerError<T>(response: Observable<RMResponseArray<T>>) -> Observable<Result<[T], Moya.Error>> {
-        return response.map { response  in
-            if response.code == 0 {
-                return Result(value: response.results ?? [])
-            }else {
-                return Result(error: error(code: response.code, message: response.message) )
-            }
-        }
-    }
-
-
-
+   
 }
 

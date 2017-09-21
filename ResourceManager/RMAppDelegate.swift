@@ -34,10 +34,9 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        IQKeyboardManager.sharedManager().enable = true
-        
-        RMNetworkServices.shared.config(messageKey: "errmsg", codeKey: "errcode", resultsKey: "result")
-        
+        PFSNetworkService<IBLAPITarget>.config(message: "errmsg",
+                                               code: "errcode",
+                                               result: "result")
         
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
         

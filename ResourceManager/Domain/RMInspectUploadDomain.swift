@@ -16,7 +16,7 @@ import PCCWFoundationSwift
 class RMInspectUploadValidate {
     static let shared = RMInspectUploadValidate()
     
-    func validate(_ parameters: [String : Any]) -> Driver<Result<[String : Any],Moya.Error>> {
+    func validate(_ parameters: [String : Any]) -> Driver<Result<[String : Any],MoyaError>> {
      
         
 //        _ = parameters["latitude"] as! CLLocationDegrees
@@ -54,7 +54,7 @@ class RMInspectUploadDomain: PFSDomain {
         
         
         return RMDataRepository.shared.inspectUpload(parameter:parameters, images: fromDatas ).asDriver(onErrorRecover: { error in
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }

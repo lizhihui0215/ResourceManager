@@ -19,12 +19,12 @@ class RMCabinetSearchDomain: PFSDomain {
     
     var size = 20
     
-    func cabinetList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMCabinet], Moya.Error>> {
+    func cabinetList(account: String, customerName: String, linkCode: String, refresh: Bool) -> Driver<Result<[RMCabinet], MoyaError>> {
         if refresh { page = 0 } else { page += 1 }
         return RMDataRepository.shared.cabinetList(account: account, customerName: customerName, linkCode: linkCode , page: page, size: size).asDriver(onErrorRecover: {[weak self] error in
             print(error)
             self?.page -= 1
-            let x  = error as! Moya.Error;
+            let x  = error as! MoyaError;
             return Driver.just(Result(error: x))
         })
     }
