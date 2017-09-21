@@ -42,7 +42,7 @@ class RMInspectListViewModel: PFSViewModel<RMInspectListViewController ,RMInspec
             })
             .flatMapLatest({[weak self] result  in
                 if let action = self?.action {
-                    return action.toast(message: result)
+                    return action.toast(result: result)
                 }
                 return Driver.just(false)
             })

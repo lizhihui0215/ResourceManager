@@ -23,7 +23,7 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
    open var isOpenInterestRect = false
     
     //识别码的类型
-    var arrayCodeType:[String]?
+    var arrayCodeType:[AVMetadataObject.ObjectType]?
     
     //是否需要识别后的当前图像
     var isNeedCodeImage = false
@@ -83,10 +83,16 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
             //指定识别几种码
             if arrayCodeType == nil
             {
-                arrayCodeType = [AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN13Code,AVMetadataObjectTypeCode128Code]
+                arrayCodeType = [AVMetadataObject.ObjectType.qr,
+                                 AVMetadataObject.ObjectType.ean13,
+                                 AVMetadataObject.ObjectType.code128]
             }
             
-            scanObj = LBXScanWrapper(videoPreView: self.view,objType:arrayCodeType!, isCaptureImg: isNeedCodeImage,cropRect:cropRect, success: { [weak self] (arrayResult) -> Void in
+            scanObj = LBXScanWrapper(videoPreView: self.view,
+                                     objType:arrayCodeType!,
+                                     isCaptureImg: isNeedCodeImage,
+                                     cropRect:cropRect,
+                                     success: {[weak self] (arrayResult) -> Void in
                 
                 if let strongSelf = self
                 {

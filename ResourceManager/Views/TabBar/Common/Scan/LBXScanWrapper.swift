@@ -34,14 +34,17 @@ public struct  LBXScanResult {
 
 open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
     
-    let device:AVCaptureDevice? = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo);
+    let device: AVCaptureDevice = AVCaptureDevice.default(for: AVMediaType.video)!
+
+    var input:AVCaptureDeviceInput!
     
-    var input:AVCaptureDeviceInput?
     var output:AVCaptureMetadataOutput
     
     let session = AVCaptureSession()
-    var previewLayer:AVCaptureVideoPreviewLayer?
-    var stillImageOutput:AVCaptureStillImageOutput?
+    
+    var previewLayer: AVCaptureVideoPreviewLayer?
+    
+    var stillImageOutput: AVCaptureStillImageOutput
     
     //存储返回结果
     var arrayResult:[LBXScanResult] = [];
@@ -64,7 +67,12 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
      - parameter success:      返回识别信息
      - returns:
      */
-    init( videoPreView:UIView,objType:[String] = [AVMetadataObjectTypeQRCode],isCaptureImg:Bool,cropRect:CGRect=CGRect.zero,success:@escaping ( ([LBXScanResult]) -> Void) )
+    init(videoPreView: UIView,
+         objType: [AVMetadataObject.ObjectType] = [AVMetadataObject.ObjectType.qr],
+         isCaptureImg: Bool,
+         cropRect: CGRect = CGRect.zero,
+         success: @escaping(([LBXScanResult]) -> Void)
+        )
     {
         do{
             input = try AVCaptureDeviceInput(device: device)
@@ -80,30 +88,16 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         
         isNeedCaptureImage = isCaptureImg
         
-        stillImageOutput = AVCaptureStillImageOutput();
+        stillImageOutput = AVCaptureStillImageOutput()
         
         super.init()
         
-        if device == nil
-        {
-            return
-        }
-        
-        if session.canAddInput(input)
-        {
-            session.addInput(input)
-        }
-        if session.canAddOutput(output)
-        {
-            session.addOutput(output)
-        }
-        if session.canAddOutput(stillImageOutput)
-        {
-            session.addOutput(stillImageOutput)
-        }
+        if session.canAddInput(input) { session.addInput(input) }
+        if session.canAddOutput(output) { session.addOutput(output) }
+        if session.canAddOutput(stillImageOutput) { session.addOutput(stillImageOutput) }
         
         let outputSettings:Dictionary = [AVVideoCodecJPEG:AVVideoCodecKey]
-        stillImageOutput?.outputSettings = outputSettings
+        stillImageOutput.outputSettings = outputSettings
     
         session.sessionPreset = AVCaptureSessionPresetHigh
         
@@ -129,7 +123,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         
         videoPreView.layer .insertSublayer(previewLayer!, at: 0)
         
-        if ( device!.isFocusPointOfInterestSupported && device!.isFocusModeSupported(AVCaptureFocusMode.continuousAutoFocus) )
+        if (device.isFocusPointOfInterestSupported && device.isFocusModeSupported(AVCaptureFocusMode.continuousAutoFocus))
         {
             do
             {
@@ -141,10 +135,8 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
             }
             catch let error as NSError {
                 print("device.lockForConfiguration(): \(error)")
-                
             }
         }
-        
     }
     
     func start()
@@ -164,37 +156,28 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    open func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    open func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
-        if !isNeedScanResult
-        {
-            //上一帧处理中
-            return
-        }
+         //上一帧处理中
+        if !isNeedScanResult { return }
         
         isNeedScanResult = false
         
         arrayResult.removeAll()
         
         //识别扫码类型
-        for current:Any in metadataObjects
-        {
-            if (current as AnyObject).isKind(of: AVMetadataMachineReadableCodeObject.self)
-            {
-                let code = current as! AVMetadataMachineReadableCodeObject
-                
-                //码类型
-                let codeType = code.type
-                print("code type:%@",codeType ?? "")
-                //码内容
-                let codeContent = code.stringValue
-                print("code string:%@",codeContent ?? "")
-                
-                //4个字典，分别 左上角-右上角-右下角-左下角的 坐标百分百，可以使用这个比例抠出码的图像
-                // let arrayRatio = code.corners
-                
-                arrayResult.append(LBXScanResult(str: codeContent, img: UIImage(), barCodeType: codeType,corner: code.corners as [AnyObject]?))
-            }
+        for code in metadataObjects where code is AVMetadataMachineReadableCodeObject {
+            //码类型
+            let codeType = code.type
+            print("code type:%@",codeType ?? "")
+            //码内容
+            let codeContent = code.stringValue
+            print("code string:%@",codeContent ?? "")
+            
+            //4个字典，分别 左上角-右上角-右下角-左下角的 坐标百分百，可以使用这个比例抠出码的图像
+            // let arrayRatio = code.corners
+            
+            arrayResult.append(LBXScanResult(str: codeContent, img: UIImage(), barCodeType: codeType,corner: code.corners as [AnyObject]?))
         }
         
         if arrayResult.count > 0
@@ -214,14 +197,65 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         {
             isNeedScanResult = true
         }
-        
     }
+    
+//    open func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+//
+//        if !isNeedScanResult
+//        {
+//            //上一帧处理中
+//            return
+//        }
+//
+//        isNeedScanResult = false
+//
+//        arrayResult.removeAll()
+//
+//        //识别扫码类型
+//        for current:Any in metadataObjects
+//        {
+//            if (current as AnyObject).isKind(of: AVMetadataMachineReadableCodeObject.self)
+//            {
+//                let code = current as! AVMetadataMachineReadableCodeObject
+//
+//                //码类型
+//                let codeType = code.type
+//                print("code type:%@",codeType ?? "")
+//                //码内容
+//                let codeContent = code.stringValue
+//                print("code string:%@",codeContent ?? "")
+//
+//                //4个字典，分别 左上角-右上角-右下角-左下角的 坐标百分百，可以使用这个比例抠出码的图像
+//                // let arrayRatio = code.corners
+//
+//                arrayResult.append(LBXScanResult(str: codeContent, img: UIImage(), barCodeType: codeType,corner: code.corners as [AnyObject]?))
+//            }
+//        }
+//
+//        if arrayResult.count > 0
+//        {
+//            if isNeedCaptureImage
+//            {
+//                captureImage()
+//            }
+//            else
+//            {
+//                stop()
+//                successBlock(arrayResult)
+//            }
+//
+//        }
+//        else
+//        {
+//            isNeedScanResult = true
+//        }
+//
+//    }
     
     //MARK: ----拍照
     open func captureImage()
     {
         let stillImageConnection:AVCaptureConnection? = connectionWithMediaType(mediaType: AVMediaTypeVideo, connections: (stillImageOutput?.connections)! as [AnyObject])
-        
         
         stillImageOutput?.captureStillImageAsynchronously(from: stillImageConnection, completionHandler: { (imageDataSampleBuffer, error) -> Void in
             
@@ -239,7 +273,6 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
             }
             
             self.successBlock(self.arrayResult)
-            
         })
     }
     
@@ -688,11 +721,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         return newPic!;
     }
 
-    deinit
-    {
+    deinit{
         print("LBXScanWrapper deinit")
     }
-    
-    
-
 }

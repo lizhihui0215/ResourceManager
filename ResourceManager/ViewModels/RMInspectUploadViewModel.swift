@@ -94,14 +94,14 @@ class RMInspectUploadViewModel: PFSViewModel<RMInspectUploadViewController,RMIns
                                           "locationName": locationName.value,
                                           "reportContent": reportContent.value,
                                           "cabinetRoom": cabinetRoom.value,
-                                          "resourceId": resourceId.value
-        ]
+                                          "resourceId": resourceId.value,
+                                          "images": images]
         
-        var validateParameters = parameters
+        let validateSame = images.notEmpty(message: "新密码和确认密码不同")
         
-        validateParameters["images"] = images
-        
-        return RMInspectUploadValidate.shared.validate(validateParameters).flatMapLatest { result  in
+        let validateResult = PFSValidate.of(validateSame)
+
+        return validateResult.flatMapLatest { result  in
             (self.action?.alert(result: result))!
             }.flatMapLatest { _ in
                 return self.domain.upload(parameters: parameters, images: images)

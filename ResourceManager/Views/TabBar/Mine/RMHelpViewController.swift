@@ -18,7 +18,7 @@ class RMHelpViewController: PFSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let  urlString = RMNetworkServices.kBaseURL.appending("/helpDocsIOS/")
+        let  urlString = RMAPITarget.kBaseURL.appending("/helpDocsIOS/")
 
         webView.loadRequest(URLRequest(url: URL(string: urlString)!))
         

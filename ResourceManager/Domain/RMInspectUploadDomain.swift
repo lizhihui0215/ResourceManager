@@ -13,31 +13,31 @@ import Result
 import MapKit
 import PCCWFoundationSwift
 
-class RMInspectUploadValidate {
-    static let shared = RMInspectUploadValidate()
-    
-    func validate(_ parameters: [String : Any]) -> Driver<Result<[String : Any],MoyaError>> {
-     
-        
-//        _ = parameters["latitude"] as! CLLocationDegrees
-//        _ = parameters["serial"] as! String
-//        _ = parameters["longitude"] as! CLLocationDegrees
-//        _ = parameters["locationName"] as! String
-//        _ = parameters["reportContent"] as! String
-//        _ = parameters["resourceType"] as! Int
-//        _ = parameters["resourceId"] as! String
-        
-        let images = parameters["images"] as! [UIImage]
-        
-        if images.isEmpty  {
-            
-            return .just(Result(error: error(code: 0, message: "请选择图片")))
-        }
-        // do some network
-        
-        return Driver.just(Result(value: parameters))
-    }
-}
+//class RMInspectUploadValidate {
+//    static let shared = RMInspectUploadValidate()
+//    
+//    func validate(_ parameters: [String : Any]) -> Driver<Result<[String : Any],MoyaError>> {
+//     
+//        
+////        _ = parameters["latitude"] as! CLLocationDegrees
+////        _ = parameters["serial"] as! String
+////        _ = parameters["longitude"] as! CLLocationDegrees
+////        _ = parameters["locationName"] as! String
+////        _ = parameters["reportContent"] as! String
+////        _ = parameters["resourceType"] as! Int
+////        _ = parameters["resourceId"] as! String
+//        
+//        let images = parameters["images"] as! [UIImage]
+//        
+//        if images.isEmpty  {
+//            
+//            return .just(Result(error: error(code: 0, message: "请选择图片")))
+//        }
+//        // do some network
+//        
+//        return Driver.just(Result(value: parameters))
+//    }
+//}
 
 class RMInspectUploadDomain: PFSDomain {
     
