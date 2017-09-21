@@ -30,15 +30,15 @@ class RMLoginDomain: PFSDomain {
     func sigin(username: String, password: String) -> Driver<Result<RMUser, MoyaError>> {
         return RMDataRepository.shared.sigin(username: username, password: password).map({ result in
             switch result {
-            case .success(let user) :
+            case .success(let user):
                 do{
                     user.password = password
                     let realm = try Realm()
                     try? realm.write {
                         realm.delete(realm.objects(RMUser.self))
                     }
-                    try user.save()
-                    RMDomain.user = user
+                    PFSRealm.shared.save(obj: user)
+                    PFSDomain.login(user: user)
                 }catch{
                     print(error)
                 }
@@ -46,9 +46,6 @@ class RMLoginDomain: PFSDomain {
             case .failure(let error):
                 return Result(error: error)
             }
-        }).asDriver(onErrorRecover: { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
         })
     }
 }

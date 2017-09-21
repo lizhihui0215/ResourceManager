@@ -50,7 +50,7 @@ class RMCabinetListViewModel: PFSViewModel<RMCabinetListViewController, RMCabine
                 }
             })
             .flatMapLatest({ result  in
-                return self.action!.toast(message: result)
+                return self.action!.toast(result: result)
             })
     }
     

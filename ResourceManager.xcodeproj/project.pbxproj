@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		013EDF76E7B77030D0A1A47A /* Pods_ResourceManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2D54B3294D414F3F399907 /* Pods_ResourceManagerTests.framework */; };
+		2606764E1F73AD99001FA9E3 /* PFSDomain+RM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606764D1F73AD99001FA9E3 /* PFSDomain+RM.swift */; };
 		260C10951E8A429900011A8E /* RMLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C10941E8A429900011A8E /* RMLoginViewModel.swift */; };
 		260C109C1E8A593300011A8E /* RMLoginDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C109B1E8A593300011A8E /* RMLoginDomain.swift */; };
 		260C10A01E8A6F1800011A8E /* RMDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C109F1E8A6F1800011A8E /* RMDataRepository.swift */; };
@@ -135,6 +136,7 @@
 
 /* Begin PBXFileReference section */
 		1BC7CD2E51D927C3295F609B /* Pods-ResourceManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceManagerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResourceManagerUITests/Pods-ResourceManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2606764D1F73AD99001FA9E3 /* PFSDomain+RM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PFSDomain+RM.swift"; sourceTree = "<group>"; };
 		260C10941E8A429900011A8E /* RMLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginViewModel.swift; sourceTree = "<group>"; };
 		260C109B1E8A593300011A8E /* RMLoginDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginDomain.swift; sourceTree = "<group>"; };
 		260C109F1E8A6F1800011A8E /* RMDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDataRepository.swift; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 				260E96FF1EC611A80040DBF8 /* RMDeviceModifyDomain.swift */,
 				26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */,
 				5B875378BA295472947D049F /* RMInspectPhotoDomain.swift */,
+				2606764D1F73AD99001FA9E3 /* PFSDomain+RM.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1069,6 +1072,7 @@
 				260C10A01E8A6F1800011A8E /* RMDataRepository.swift in Sources */,
 				267035461E9F5D4D0049F0CC /* RMUploadScanViewModel.swift in Sources */,
 				265653EA1E825BC200F37064 /* RMUser.swift in Sources */,
+				2606764E1F73AD99001FA9E3 /* PFSDomain+RM.swift in Sources */,
 				26F798A31F570940009E6382 /* RMLoginViewController.swift in Sources */,
 				26483F3D1EA1458B00D6A3EC /* RMInspectUploadDomain.swift in Sources */,
 				26D85E451EA079AE0036EBDF /* RMDeviceDetailViewModel.swift in Sources */,

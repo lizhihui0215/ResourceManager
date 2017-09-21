@@ -123,13 +123,13 @@ public enum RMAPITarget {
 
 extension RMAPITarget: PFSTargetType {
     public var headers: [String : String]? {
-        return ["x": "q"]
+        return [:]
     }
     
     static var kBaseURL: String {
         
         get {
-            guard let baseURL = RMDataRepository.shared.cache(key: "BaseURL") else {
+            guard let baseURL: String = RMDataRepository.shared.cache(key: "BaseURL") else {
                 return "http://115.28.157.117:9080"
             }
             return baseURL

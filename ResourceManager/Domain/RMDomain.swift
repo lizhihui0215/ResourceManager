@@ -24,10 +24,3 @@ class RMValidate {
         return Driver.just(Result(value: value))
     }
 }
-
-class RMDomain {
-    static let repository = RMDataRepository()
-    
-    static var user: RMUser?
-    
-}
