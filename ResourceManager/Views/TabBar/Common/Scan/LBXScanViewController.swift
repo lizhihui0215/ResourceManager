@@ -61,7 +61,7 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     
-    open func startScan()
+    @objc open func startScan()
     {
         if(!LBXPermissions .isGetCameraPermission())
         {

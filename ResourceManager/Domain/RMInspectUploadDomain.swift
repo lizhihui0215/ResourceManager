@@ -30,6 +30,7 @@ class RMInspectUploadValidate {
         let images = parameters["images"] as! [UIImage]
         
         if images.isEmpty  {
+            
             return .just(Result(error: error(code: 0, message: "请选择图片")))
         }
         // do some network

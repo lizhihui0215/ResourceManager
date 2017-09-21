@@ -339,8 +339,8 @@ extension RMAPITarget: PFSTargetType {
             parameters = device
         case let .inspectUpload(_, parameters, formData):
             let json = parameters.toJSONString()
-            parameters = ["json" : json! ]
-            return .uploadCompositeMultipart(formData, urlParameters: parameters)
+            let param = ["json" : json! ]
+            return .uploadCompositeMultipart(formData, urlParameters: param)
         }
         
         

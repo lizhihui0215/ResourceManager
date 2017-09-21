@@ -25,7 +25,21 @@ class RMExchangePasswordViewModel: PFSViewModel<RMExchangePasswordViewController
     }
     
     func exchangePassword(originPassword: String, newPassword: String, confirmPassword: String) -> Driver<Bool> {
-       return RMPersonalCenterValidate.shared.validate(originPassword, newPassword: newPassword, confirmPassword: confirmPassword)
+
+        let validateOriginPassword = originPassword.notNull(message: "原密码不能为空")
+        
+        let validateNewPassword = newPassword.notNull(message: "新密码不能为空")
+        
+        let validateConfirmPassword = newPassword.notNull(message: "确认密码不能为空")
+        
+        let validateSame = newPassword.same(message: "新密码和确认密码不同", confirmPassword)
+        
+        let validateResult = PFSValidate.of(validateOriginPassword,
+                                            validateNewPassword,
+                                            validateConfirmPassword,
+                                            validateSame)
+        
+        return validateResult
             .flatMapLatest { result   in
                 return self.action!.alert(result: result)
             }.flatMapLatest { _  in

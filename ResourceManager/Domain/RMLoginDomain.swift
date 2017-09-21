@@ -13,10 +13,6 @@ import Result
 import RealmSwift
 import PCCWFoundationSwift
 
-class RMLoginValidate: RMValidate {
-    static let shared = RMLoginValidate()
-}
-
 class RMLoginDomain: PFSDomain {
     func user() -> Driver<Result<RMUser?, MoyaError>> {
         

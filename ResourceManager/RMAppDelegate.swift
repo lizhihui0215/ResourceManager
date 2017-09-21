@@ -34,7 +34,7 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        PFSNetworkService<IBLAPITarget>.config(message: "errmsg",
+        PFSNetworkService<RMAPITarget>.config(message: "errmsg",
                                                code: "errcode",
                                                result: "result")
         

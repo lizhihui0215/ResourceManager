@@ -12,7 +12,7 @@ import RealmSwift
 import ObjectMapper_Realm
 import PCCWFoundationSwift
 
-class RMUser: PFSModel {
+public class RMUser: PFSModel {
     @objc dynamic var nickname: String?
     @objc dynamic var password: String?
     @objc dynamic var loginName: String?
@@ -22,11 +22,11 @@ class RMUser: PFSModel {
     @objc dynamic var sex: String?
     @objc dynamic var accessToken: String?
 
-    required convenience init?(map: Map) {
+    public required convenience init?(map: Map) {
         self.init()
     }
     
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         super.mapping(map: map)
         nickname <- map["userinfo.nickname"]
         loginName <- map["userinfo.loginName"]

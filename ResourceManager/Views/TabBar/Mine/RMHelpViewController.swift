@@ -46,7 +46,7 @@ class RMHelpViewController: PFSViewController {
         
     }
     
-    func backButtonPressed(_ sender: UIBarButtonItem)  {
+    @objc func backButtonPressed(_ sender: UIBarButtonItem)  {
         
     }
 

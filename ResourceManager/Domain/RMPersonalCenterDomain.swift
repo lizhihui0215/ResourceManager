@@ -13,49 +13,8 @@ import Result
 import RealmSwift
 import PCCWFoundationSwift
 
-class RMPersonalCenterValidate: RMValidate {
-    static let shared = RMPersonalCenterValidate()
-    
-    func validate(_ originPassword: String, newPassword: String, confirmPassword: String) -> Driver<Result<(String, String),MoyaError>> {
-        
-        if originPassword.isEmpty {
-            return .just(Result(error: error(code: 0, message: "原密码不能为空")))
-        }
-        
-        if newPassword.isEmpty {
-            return .just(Result(error: error(code: 0, message: "新密码不能为空")))
-        }
-        
-        if confirmPassword.isEmpty {
-            return .just(Result(error: error(code: 0, message: "确认密码不能为空")))
-        }
-        
-        if newPassword != confirmPassword {
-            return .just(Result(error: error(code: 0, message: "新密码和确认密码不同")))
-        }
-        
-        return Driver.just(Result(value: (originPassword,confirmPassword )))
-    }
-    
-    func validate(_ name: String, phone: String, detail: String) -> Driver<Result<(String, String, String),MoyaError>> {
-        
-        return Driver.just(Result(value: (name,phone, detail)))
-    }
-    
-    
-    
-}
-
 class RMPersonalCenterDomain: PFSDomain {
-//    static let shared = RMPersonalCenterDomain()
-    
-    func user() -> Driver<Result<RMUser, MoyaError>> {
-        return RMDataRepository.shared.user().asDriver(onErrorRecover: { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
-    }
-    
+
     func logout() ->  Driver<Result<Bool, MoyaError>>{
         return Driver.just(Result(value: true))
     }

@@ -54,12 +54,11 @@ class RMLoginViewController: PFSViewController, RMLoginViewModelAction {
             
             if let strongSelf = self {
                 let nonMarkedTextValue = strongSelf.serverURLTextField.text
-                
-                if let nonMarkedTextValue = nonMarkedTextValue, nonMarkedTextValue != RMNetworkServices.kBaseURL {
+                if let nonMarkedTextValue = nonMarkedTextValue, nonMarkedTextValue != RMAPITarget.kBaseURL {
                     if nonMarkedTextValue.isEmpty {
-                        RMNetworkServices.kBaseURL = "http://115.28.157.117:9080"
+                        RMAPITarget.kBaseURL = "http://115.28.157.117:9080"
                     }else {
-                        RMNetworkServices.kBaseURL = nonMarkedTextValue
+                        RMAPITarget.kBaseURL = nonMarkedTextValue
                     }
                 }
             }

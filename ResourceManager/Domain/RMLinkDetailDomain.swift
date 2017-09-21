@@ -12,11 +12,6 @@ import Result
 import Moya
 import PCCWFoundationSwift
 
-class RMLinkDetailValidate: RMValidate {
-    static let shared = RMLinkDetailValidate()
-
-}
-
 class RMLinkDetailDomain: PFSDomain {
 
     func linkModify(link: RMLink) -> Driver<Result<String, MoyaError>> {

@@ -87,23 +87,11 @@ class RMPersonalCenterViewModel: PFSViewModel<RMPersonalCenterViewController, RM
     }
     
     func logout() {
-//        let realm = try! Realm()
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
+        try? PFSRealm.shared.clean()
     }
     
     func loginUser() -> Driver<Bool> {
-        return self.domain.user().do(onNext: { result in
-            switch result {
-            case .success(let user):
-                self.user = user
-            case .failure:
-                break
-            }
-        }).flatMapLatest({ result in
-            return self.action!.alert(result: result)
-        })
+        let flag = PFSDomain.login() != nil
+        return Driver.just(flag)
     }
-    
 }

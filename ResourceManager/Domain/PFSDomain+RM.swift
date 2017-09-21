@@ -10,11 +10,11 @@ import UIKit
 import PCCWFoundationSwift
 
 extension PFSDomain {
-    public static func login(user: IBLUser?) {
-        IBLDataRepository.shared.put(key: "user", value: user)
+    public static func login(user: RMUser?) {
+        RMDataRepository.shared.put(key: "user", value: user)
     }
     
-    public static func login() -> IBLUser? {
-        return IBLDataRepository.shared.get(key: "user")
+    public static func login() -> RMUser? {
+        return RMDataRepository.shared.get(key: "user")
     }
 }
