@@ -29,10 +29,12 @@ class RMLoginDomain: PFSDomain {
             case .success(let user):
                 do{
                     user.password = password
-                    let realm = try Realm()
-                    try? realm.write {
-                        realm.delete(realm.objects(RMUser.self))
+                    do {
+                        try PFSRealm.shared.deleteAll(typeOf: RMUser.self)
+                    }catch {
+                        print(error)
                     }
+                    
                     PFSRealm.shared.save(obj: user)
                     PFSDomain.login(user: user)
                 }catch{

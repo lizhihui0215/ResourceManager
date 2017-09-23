@@ -21,32 +21,35 @@ class RMInspectPhotoViewController: UIPageViewController, UIPageViewControllerDa
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        let index = contentViewControllers.index(of: viewController as! RMContentViewController)
-        self.navigationItem.title = "\(index! + 1 )/ \(contentViewControllers.count)"
+        let index = contentViewControllers.index(of: viewController as! RMContentViewController)!
+        
+        let next = index + 1
+        self.navigationItem.title = "\(index + 1)/ \(contentViewControllers.count)"
 
-        if var i = index, ++i < contentViewControllers.count {
-            let contentViewController = contentViewControllers[i]
-            
-            
-            
-            return contentViewController
-        }else{
+        guard next < contentViewControllers.count else {
             return nil
         }
+        
+        let contentViewController = contentViewControllers[next]
+        
+        return contentViewController
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        let index = contentViewControllers.index(of: viewController as! RMContentViewController)
-        self.navigationItem.title = "\(index! + 1 )/ \(contentViewControllers.count)"
-
-        if var i = index, --i >= 0 {
-            let contentViewController = contentViewControllers[i]
-            
-            return contentViewController
-        }else{
+        let index = contentViewControllers.index(of: viewController as! RMContentViewController)!
+        self.navigationItem.title = "\(index + 1 )/ \(contentViewControllers.count)"
+        
+        let previous = index - 1
+        
+        guard previous >= 0 else {
             return nil
         }
+
+        let contentViewController = contentViewControllers[previous]
+            
+        return contentViewController
+        
     }
     
     var viewModel: RMInspectPhotoViewModel?

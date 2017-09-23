@@ -112,13 +112,13 @@ class RMSearchViewController: PFSViewController, RMSearchListAction {
             if let linkSearchViewModel = self.viewModel as? RMLinkSearchViewModel {
                 scanViewController.viewModel = RMLinkScanViewModel(action: scanViewController,
                                                                    isModify: linkSearchViewModel.isModify)
-                scanViewController.delegate = self
+                scanViewController.scanControllerDelegate = self
             }
         }else if segue.identifier == "toCabinetScan" {
             let scanViewController = segue.destination as! RMScanViewController
             if let cabinetSearchViewModel = self.viewModel as? RMCabinetSearchViewModel {
                 scanViewController.viewModel = RMCabinetScanViewModel(action: scanViewController, isModify: cabinetSearchViewModel.isModify)
-                scanViewController.delegate = self
+                scanViewController.scanControllerDelegate = self
             }
         }else if segue.identifier == "toDeviceList" {
             if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
@@ -132,7 +132,7 @@ class RMSearchViewController: PFSViewController, RMSearchListAction {
             if let deviceSearchViewModel = self.viewModel as? RMDeviceSearchViewModel {
                 let scanViewController = segue.destination as! RMScanViewController
                 scanViewController.viewModel = RMDeviceScanViewModel(action: scanViewController, isAccess: deviceSearchViewModel.isAccess)
-                scanViewController.delegate = self
+                scanViewController.scanControllerDelegate = self
             }
         }
     }

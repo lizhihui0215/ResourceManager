@@ -201,7 +201,7 @@ class RMInspectUploadViewController: PFSViewController, UICollectionViewDelegate
         }else if segue.identifier == "toScan" {
             let scanViewConntroller = segue.destination as! RMScanViewController
             scanViewConntroller.viewModel = RMUploadScanViewModel(action: scanViewConntroller)
-            scanViewConntroller.delegate = self
+            scanViewConntroller.scanControllerDelegate = self
         }
     }
     

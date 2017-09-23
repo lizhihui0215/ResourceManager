@@ -8,23 +8,23 @@ target 'ResourceManager' do
 
   # Pods for ResourceManager
   pod 'PCCWFoundationSwift'
-  
+
   pod 'DLAlertView'
-  
-  
+
+
   pod 'ZXingObjC'
-  
+
   pod 'MBProgressHUD'
-  
+
   pod 'KissXML'
-  
+
   pod 'GPUImage'
-  
-  
+
+
   pod 'AMap3DMap'  #3D地图SDK
-  
+
   pod 'AMapSearch' #搜索功能
-  
+
   pod 'AMapLocation'
   
   post_install do |installer|
@@ -37,7 +37,7 @@ target 'ResourceManager' do
 
   target 'ResourceManagerTests' do
     inherit! :search_paths
-    
+
     # Pods for testing
   end
 
@@ -47,5 +47,3 @@ target 'ResourceManager' do
   end
 
 end
-
-

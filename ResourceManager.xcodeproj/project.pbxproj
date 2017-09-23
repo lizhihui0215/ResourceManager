@@ -86,29 +86,22 @@
 		26F798A51F57130F009E6382 /* RMResourceManagerDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */; };
 		5B8750E3484AF83BD9FF2DEA /* RMCabinetDeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */; };
 		5B8751C5BFFC6A5624DC00E8 /* RMSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8757F1CCF30DC9E3C2D53F /* RMSearchViewController.swift */; };
-		5B875205CE2226769C8C3B4D /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875F6E17FA0A6AEC6F4C8A /* LBXPermissions.swift */; };
 		5B87531C72C3569548D2B7D5 /* RMLinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B6E81C67B996CBB86D2 /* RMLinkDetailViewController.swift */; };
 		5B8753C7ACBFD83B54EFA2CF /* RMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8750DEC95FB7871BFE6B9D /* RMTabBarViewController.swift */; };
 		5B87542B24D3683062ED0A96 /* RMInspectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8757C0E57E11EF55A40FFD /* RMInspectListViewController.swift */; };
 		5B8755257FF6A304F4172C73 /* RMCabinetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8759B91CD63C988F7B6FF0 /* RMCabinetListViewController.swift */; };
-		5B8755E83CAB857CBCFD0D89 /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87516333583AAD1C874FCD /* LBXScanView.swift */; };
 		5B87576EAFD28E9B9AE79B1B /* RMCabinetDetailDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8759E9E01310C11B4B00E8 /* RMCabinetDetailDomain.swift */; };
 		5B875782C6F19C2BD6960CC4 /* RMHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875CA008787D4F66BEDE07 /* RMHelpViewController.swift */; };
-		5B87581DAB67A3B5BC1D5703 /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875100AC99E77DAE1F47C0 /* LBXScanNetAnimation.swift */; };
 		5B87583892DE539754B6CA25 /* RMInspectUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8754B52BABD563A2E56C89 /* RMInspectUploadViewController.swift */; };
 		5B8758A0E3014876554785D4 /* RMExchangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8755983DDE9B0A046D6BF8 /* RMExchangePasswordViewController.swift */; };
 		5B8759CD806D05EDDE5F3F2A /* RMInspectPhotoDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875378BA295472947D049F /* RMInspectPhotoDomain.swift */; };
-		5B875ABB5231D371C46A5AC5 /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875C3B2254E34F9EE16756 /* LBXScanViewController.swift */; };
 		5B875AF2B584F2BF3A4F862E /* RMSuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87526D5C67C89A7D2D6351 /* RMSuggestViewController.swift */; };
 		5B875BFCE2F1D3463E2E0FFD /* RMLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875D468D382111810011E5 /* RMLocationViewController.swift */; };
 		5B875C209B76727CACC2279A /* RMLinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875879531B9E6E1B7534FF /* RMLinkListViewController.swift */; };
 		5B875CAF5D8DE83BA9C44AE3 /* RMInspectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875D4D877832B58FCB5BD5 /* RMInspectPhotoViewController.swift */; };
 		5B875CC1EEBB8920D39869F6 /* RMContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87576D7E20E93BD98E0D2D /* RMContentViewController.swift */; };
 		5B875CD2BC04971763CB0789 /* RMDeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8753317D77F462A62BD6F3 /* RMDeviceDetailViewController.swift */; };
-		5B875CE7191BB981EA18AD25 /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87571FF2F4EC29E35C212C /* LBXScanLineAnimation.swift */; };
-		5B875D2ED2FAF50E566EA8EE /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87518C92E52566B2D63135 /* LBXScanWrapper.swift */; };
 		5B875D770FCDCD9CDA9054B2 /* RMCabinetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875957134395048A3C48B3 /* RMCabinetDetailViewController.swift */; };
-		5B875DC2F317E57947D6DFE8 /* LBXScanViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87524E8CD1EB8CA6BFBEA7 /* LBXScanViewStyle.swift */; };
 		5B875E1A68FC439C6B9D4ED5 /* RMPersonalCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758A1604250AB446104E4 /* RMPersonalCenterViewController.swift */; };
 		5B875F830FC0F2B663391AEF /* RMDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875AD3154A970B6CAAC4E2 /* RMDeviceListViewController.swift */; };
 		D097AD6149BDF471AEB37461 /* Pods_ResourceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A5250EB005BD868F340F58 /* Pods_ResourceManager.framework */; };
@@ -231,16 +224,11 @@
 		26F798A21F570940009E6382 /* RMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginViewController.swift; sourceTree = "<group>"; };
 		26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResourceManagerDomain.swift; sourceTree = "<group>"; };
 		5B8750DEC95FB7871BFE6B9D /* RMTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTabBarViewController.swift; sourceTree = "<group>"; };
-		5B875100AC99E77DAE1F47C0 /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
-		5B87516333583AAD1C874FCD /* LBXScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
-		5B87518C92E52566B2D63135 /* LBXScanWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
-		5B87524E8CD1EB8CA6BFBEA7 /* LBXScanViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewStyle.swift; sourceTree = "<group>"; };
 		5B87526D5C67C89A7D2D6351 /* RMSuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSuggestViewController.swift; sourceTree = "<group>"; };
 		5B8753317D77F462A62BD6F3 /* RMDeviceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceDetailViewController.swift; sourceTree = "<group>"; };
 		5B875378BA295472947D049F /* RMInspectPhotoDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoDomain.swift; sourceTree = "<group>"; };
 		5B8754B52BABD563A2E56C89 /* RMInspectUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectUploadViewController.swift; sourceTree = "<group>"; };
 		5B8755983DDE9B0A046D6BF8 /* RMExchangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMExchangePasswordViewController.swift; sourceTree = "<group>"; };
-		5B87571FF2F4EC29E35C212C /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
 		5B87576D7E20E93BD98E0D2D /* RMContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMContentViewController.swift; sourceTree = "<group>"; };
 		5B8757C0E57E11EF55A40FFD /* RMInspectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectListViewController.swift; sourceTree = "<group>"; };
 		5B8757F1CCF30DC9E3C2D53F /* RMSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSearchViewController.swift; sourceTree = "<group>"; };
@@ -252,11 +240,9 @@
 		5B875AD3154A970B6CAAC4E2 /* RMDeviceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceListViewController.swift; sourceTree = "<group>"; };
 		5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetDeviceDetailViewController.swift; sourceTree = "<group>"; };
 		5B875B6E81C67B996CBB86D2 /* RMLinkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkDetailViewController.swift; sourceTree = "<group>"; };
-		5B875C3B2254E34F9EE16756 /* LBXScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
 		5B875CA008787D4F66BEDE07 /* RMHelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMHelpViewController.swift; sourceTree = "<group>"; };
 		5B875D468D382111810011E5 /* RMLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationViewController.swift; sourceTree = "<group>"; };
 		5B875D4D877832B58FCB5BD5 /* RMInspectPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMInspectPhotoViewController.swift; sourceTree = "<group>"; };
-		5B875F6E17FA0A6AEC6F4C8A /* LBXPermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
 		60BC1AF07CFC7DE8E82A800D /* Pods_ResourceManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResourceManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6326FA90DF8232AA91C5506A /* Pods-ResourceManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResourceManager/Pods-ResourceManager.release.xcconfig"; sourceTree = "<group>"; };
 		7B2D54B3294D414F3F399907 /* Pods_ResourceManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResourceManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -537,7 +523,6 @@
 			isa = PBXGroup;
 			children = (
 				5B8757F1CCF30DC9E3C2D53F /* RMSearchViewController.swift */,
-				5B875BB3DA4EDAC253A435EF /* Scan */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -550,20 +535,6 @@
 				5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */,
 			);
 			path = Cabinet;
-			sourceTree = "<group>";
-		};
-		5B875BB3DA4EDAC253A435EF /* Scan */ = {
-			isa = PBXGroup;
-			children = (
-				5B875F6E17FA0A6AEC6F4C8A /* LBXPermissions.swift */,
-				5B87571FF2F4EC29E35C212C /* LBXScanLineAnimation.swift */,
-				5B875100AC99E77DAE1F47C0 /* LBXScanNetAnimation.swift */,
-				5B87516333583AAD1C874FCD /* LBXScanView.swift */,
-				5B875C3B2254E34F9EE16756 /* LBXScanViewController.swift */,
-				5B87524E8CD1EB8CA6BFBEA7 /* LBXScanViewStyle.swift */,
-				5B87518C92E52566B2D63135 /* LBXScanWrapper.swift */,
-			);
-			path = Scan;
 			sourceTree = "<group>";
 		};
 		5B875BBCC91405F61D462FEB /* Inspect */ = {
@@ -1086,14 +1057,7 @@
 				5B875F830FC0F2B663391AEF /* RMDeviceListViewController.swift in Sources */,
 				5B875CD2BC04971763CB0789 /* RMDeviceDetailViewController.swift in Sources */,
 				5B8751C5BFFC6A5624DC00E8 /* RMSearchViewController.swift in Sources */,
-				5B875205CE2226769C8C3B4D /* LBXPermissions.swift in Sources */,
-				5B875CE7191BB981EA18AD25 /* LBXScanLineAnimation.swift in Sources */,
-				5B87581DAB67A3B5BC1D5703 /* LBXScanNetAnimation.swift in Sources */,
-				5B8755E83CAB857CBCFD0D89 /* LBXScanView.swift in Sources */,
-				5B875ABB5231D371C46A5AC5 /* LBXScanViewController.swift in Sources */,
-				5B875DC2F317E57947D6DFE8 /* LBXScanViewStyle.swift in Sources */,
 				26EFFA421F715927008263DC /* RMLocationDomain.swift in Sources */,
-				5B875D2ED2FAF50E566EA8EE /* LBXScanWrapper.swift in Sources */,
 				5B8758A0E3014876554785D4 /* RMExchangePasswordViewController.swift in Sources */,
 				5B875E1A68FC439C6B9D4ED5 /* RMPersonalCenterViewController.swift in Sources */,
 				5B875782C6F19C2BD6960CC4 /* RMHelpViewController.swift in Sources */,

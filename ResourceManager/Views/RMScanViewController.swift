@@ -9,43 +9,19 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PCCWFoundationSwift
 
 protocol RMScanViewControllerDelegate: NSObjectProtocol {
       func scaned(result: Any, of scanViewController: RMScanViewController) -> Void
 }
 
-class RMScanViewController: LBXScanViewController, RMScanAction {
-    
-
-//    var disposeBag = DisposeBag()
-    
-    var delegate: RMScanViewControllerDelegate?
-
-    var viewModel: RMScanViewModel?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        var style = LBXScanViewStyle()
-        style.centerUpOffset = 44;
-        style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle.Inner;
-        style.photoframeLineW = 2;
-        style.photoframeAngleW = 18;
-        style.photoframeAngleH = 18;
-        style.isNeedShowRetangle = false;
-        style.anmiationStyle = LBXScanViewAnimationStyle.LineMove;
-        style.colorAngle = UIColor(red: 0.0/255, green: 200.0/255.0, blue: 20.0/255.0, alpha: 1.0)
-        style.animationImage = UIImage(named: "CodeScan.bundle/qrcode_Scan_weixin_Line")
-        self.scanStyle = style;
-    }
-    
-    override func handleCodeResult(arrayResult: [LBXScanResult]){
-        self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
+extension RMScanViewController: LBXScanViewControllerDelegate {
+    func scanResult(with array: [LBXScanResult]!) {
+        self.viewModel?.scaned(of: (array.first?.strScanned)!).drive(onNext: {
             success in
             if let _ = self.viewModel as? RMLinkScanViewModel,success {
                 self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
-//                self.performSegue(withIdentifier: "toLinkList", sender: nil)
+                //                self.performSegue(withIdentifier: "toLinkList", sender: nil)
                 
             }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
                 self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
@@ -55,33 +31,83 @@ class RMScanViewController: LBXScanViewController, RMScanAction {
                 
                 let result = viewModel.result
                 
-                self.delegate?.scaned(result: result ?? RMCabinet(), of: self)
+                self.scanControllerDelegate?.scaned(result: result ?? RMCabinet(), of: self)
                 self.navigationController?.popViewController(animated: true)
-
+                
             }
         }).disposed(by: disposeBag)
-        
-//        if let delegate = self.delegate , let _ = self.viewModel as? RMUploadScanViewModel {
-////            delegate.scaned(of: self , of:(arrayResult.first?.strScanned)!)
-//            delegate.scaned(code: (arrayResult.first?.strScanned)!, of: self)
-//            self.navigationController?.popViewController(animated: true)
-//        }
     }
+    
+    func rescan() {
+        
+    }
+}
+
+class RMScanViewController: LBXScanViewController, RMScanAction {
+    
+    
+    
+//    var disposeBag = DisposeBag()
+    
+    var scanControllerDelegate: RMScanViewControllerDelegate?
+
+    var viewModel: RMScanViewModel?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = self
+        // Do any additional setup after loading the view.
+        let style = LBXScanViewStyle()
+        style.centerUpOffset = 44;
+        style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle.Inner;
+        style.photoframeLineW = 2;
+        style.photoframeAngleW = 18;
+        style.photoframeAngleH = 18;
+        style.isNeedShowRetangle = false;
+        style.anmiationStyle = LBXScanViewAnimationStyle.LineMove;
+        style.colorAngle = UIColor(red: 0.0/255, green: 200.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+        style.animationImage = UIImage(named: "CodeScan.bundle/qrcode_Scan_weixin_Line")
+        self.style = style;
+        
+    }
+    
+    
+//    override func scanResultWithArray(arrayResult: [LBXScanResult]){
+//        self.viewModel?.scaned(of: (arrayResult.first?.strScanned)!).drive(onNext: {
+//            success in
+//            if let _ = self.viewModel as? RMLinkScanViewModel,success {
+//                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
+////                self.performSegue(withIdentifier: "toLinkList", sender: nil)
+//
+//            }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
+//                self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
+//            }else if let _ = self.viewModel as? RMDeviceScanViewModel, success {
+//                self.performSegue(withIdentifier: "endScan", sender: nil)
+//            }else if let viewModel = self.viewModel as? RMUploadScanViewModel, success {
+//
+//                let result = viewModel.result
+//
+//                self.scanControllerDelegate?.scaned(result: result ?? RMCabinet(), of: self)
+//                self.navigationController?.popViewController(animated: true)
+//
+//            }
+//        }).disposed(by: disposeBag)
+//
+////        if let delegate = self.delegate , let _ = self.viewModel as? RMUploadScanViewModel {
+//////            delegate.scaned(of: self , of:(arrayResult.first?.strScanned)!)
+////            delegate.scaned(code: (arrayResult.first?.strScanned)!, of: self)
+////            self.navigationController?.popViewController(animated: true)
+////        }
+//    }
     
     func navigationTo()  {
         
     }
     
-    func restartScan() {
-        self.startScan()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     
     // MARK: - Navigation
 

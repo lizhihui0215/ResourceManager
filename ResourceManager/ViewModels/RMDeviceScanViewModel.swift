@@ -34,7 +34,7 @@ class RMDeviceScanViewModel: RMScanViewModel {
         }).flatMapLatest { result  in
             switch result {
             case.failure(_):
-                self.action?.restartScan()
+                self.action?.rescan()
             default:
                 break
             }

@@ -11,7 +11,7 @@ import RxCocoa
 import PCCWFoundationSwift
 
 protocol RMScanAction: PFSViewAction {
-    func restartScan()
+    func rescan()
     func navigationTo()
 }
 
