@@ -94,10 +94,9 @@ class RMInspectUploadViewModel: PFSViewModel<RMInspectUploadViewController,RMIns
                                           "locationName": locationName.value,
                                           "reportContent": reportContent.value,
                                           "cabinetRoom": cabinetRoom.value,
-                                          "resourceId": resourceId.value,
-                                          "images": images]
+                                          "resourceId": resourceId.value]
         
-        let validateSame = images.notEmpty(message: "新密码和确认密码不同")
+        let validateSame = images.notEmpty(message: "图片不能为空！")
         
         let validateResult = PFSValidate.of(validateSame)
 

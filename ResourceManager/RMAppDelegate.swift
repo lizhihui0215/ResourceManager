@@ -38,7 +38,9 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
                                                code: "errcode",
                                                result: "result")
         
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
+//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
+        
+        
         
         UINavigationBar.appearance().tintColor = .white
         

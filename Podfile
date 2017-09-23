@@ -26,7 +26,7 @@ target 'ResourceManager' do
   pod 'AMapSearch' #搜索功能
 
   pod 'AMapLocation'
-  
+
   post_install do |installer|
       installer.pods_project.targets.each do |target|
           target.build_configurations.each do |config|

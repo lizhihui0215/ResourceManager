@@ -54,10 +54,7 @@ class RMInspectUploadDomain: PFSDomain {
         }
         
         
-        return RMDataRepository.shared.inspectUpload(parameter:parameters, images: fromDatas ).asDriver(onErrorRecover: { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
+        return RMDataRepository.shared.inspectUpload(parameter:parameters, images: fromDatas )
     }
 
 }

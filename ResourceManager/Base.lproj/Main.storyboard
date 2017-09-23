@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -249,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOn-ox-EMy">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1no-iX-Xmz">
                                         <rect key="frame" x="16" y="20" width="288" height="140"/>
@@ -413,7 +413,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入正确的编号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5XI-vh-0o4">
-                                                <rect key="frame" x="84" y="0.0" width="144" height="30"/>
+                                                <rect key="frame" x="92.5" y="0.0" width="135.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -423,7 +423,7 @@
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="4t6-ch-qgR" firstAttribute="centerY" secondItem="cQ4-TW-KdP" secondAttribute="centerY" id="3ft-sM-rKe"/>
-                                            <constraint firstItem="5XI-vh-0o4" firstAttribute="leading" secondItem="4t6-ch-qgR" secondAttribute="trailing" constant="44" id="7kS-0j-86G"/>
+                                            <constraint firstItem="5XI-vh-0o4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4t6-ch-qgR" secondAttribute="trailing" symbolic="YES" id="7kS-0j-86G"/>
                                             <constraint firstItem="4t6-ch-qgR" firstAttribute="leading" secondItem="cQ4-TW-KdP" secondAttribute="leading" constant="5" id="Cj1-P4-rtU"/>
                                             <constraint firstAttribute="trailing" secondItem="5XI-vh-0o4" secondAttribute="trailing" constant="60" id="m2H-JG-HCw"/>
                                             <constraint firstItem="4t6-ch-qgR" firstAttribute="centerY" secondItem="cQ4-TW-KdP" secondAttribute="centerY" id="thE-Lj-f4M"/>
@@ -451,7 +451,7 @@
                                                 <color key="backgroundColor" red="0.13429850339999999" green="0.16215988989999999" blue="0.37495356800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="7oj-z2-Mde"/>
-                                                    <constraint firstAttribute="width" constant="50" id="n3Y-ub-MWg"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="n3Y-ub-MWg"/>
                                                 </constraints>
                                                 <state key="normal" title="扫码">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -524,7 +524,9 @@
                             <constraint firstItem="rOn-ox-EMy" firstAttribute="leading" secondItem="D1K-6F-tFG" secondAttribute="leading" id="hXq-xz-Vav"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="巡检上报" id="caY-ab-zNF"/>
+                    <navigationItem key="navigationItem" title="巡检上报" id="caY-ab-zNF">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="ebn-Cr-tvk"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cabinetRoomTextField" destination="5XI-vh-0o4" id="e1f-4i-8fT"/>
                         <outlet property="collectionView" destination="9Ym-LQ-Lwv" id="ETh-Nw-ERy"/>
@@ -562,7 +564,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0I8-ou-dee">
-                                <rect key="frame" x="0.0" y="35" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="79" width="320" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kir-hq-YMQ">
                                         <rect key="frame" x="21" y="20" width="61" height="82"/>
@@ -617,7 +619,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DpC-9Q-WaT">
-                                <rect key="frame" x="20" y="185" width="280" height="383"/>
+                                <rect key="frame" x="20" y="229" width="280" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oXz-nq-tmD">
                                     <size key="itemSize" width="100" height="105"/>
@@ -673,7 +675,9 @@
                             <constraint firstAttribute="trailing" secondItem="DpC-9Q-WaT" secondAttribute="trailing" constant="20" id="yIr-T0-8T3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="个人中心" id="Uan-Qf-iOj"/>
+                    <navigationItem key="navigationItem" title="个人中心" id="Uan-Qf-iOj">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="Qf3-en-1sa"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="accountLabel" destination="BTd-LI-Tmi" id="fHr-4W-ffw"/>
                         <outlet property="avatarImageView" destination="Kir-hq-YMQ" id="Zwu-zo-qSz"/>
@@ -702,7 +706,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rkB-7w-rEC">
-                                <rect key="frame" x="10" y="60" width="300" height="110"/>
+                                <rect key="frame" x="10" y="104" width="300" height="110"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfP-Sd-4eb">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -791,7 +795,7 @@
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdj-lF-PPp">
-                                <rect key="frame" x="50" y="190" width="220" height="30"/>
+                                <rect key="frame" x="50" y="234" width="220" height="30"/>
                                 <color key="backgroundColor" red="0.1245682016" green="0.1619597971" blue="0.40774828200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="确    定">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -816,7 +820,10 @@
                             <constraint firstItem="jdj-lF-PPp" firstAttribute="leading" secondItem="rkB-7w-rEC" secondAttribute="leading" constant="40" id="xLn-F6-t7H"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="修改密码" id="VfM-zu-P5V"/>
+                    <navigationItem key="navigationItem" title="修改密码" id="VfM-zu-P5V">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="jQp-cg-eK4"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="hnH-BH-K0i" id="VdS-7x-1dA"/>
                         <outlet property="newPasswordTextField" destination="nYP-L0-4KA" id="DJT-Qs-DKT"/>
@@ -840,7 +847,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G8N-7r-ZJH">
-                                <rect key="frame" x="10" y="40" width="300" height="130"/>
+                                <rect key="frame" x="10" y="84" width="300" height="130"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIT-Gl-a5P">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -947,7 +954,7 @@
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-4v-uSs">
-                                <rect key="frame" x="50" y="190" width="220" height="30"/>
+                                <rect key="frame" x="50" y="234" width="220" height="30"/>
                                 <color key="backgroundColor" red="0.1245682016" green="0.1619597971" blue="0.40774828200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="确    定">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -972,7 +979,9 @@
                             <constraint firstItem="G8N-7r-ZJH" firstAttribute="leading" secondItem="5RX-n4-4Gd" secondAttribute="leading" constant="10" id="YO4-LG-9TR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="意见反馈" id="4ga-em-nhf"/>
+                    <navigationItem key="navigationItem" title="意见反馈" id="4ga-em-nhf">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="Phq-sn-4rm"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="detailTextView" destination="pms-y3-G41" id="GWI-CS-R3H"/>
                         <outlet property="nameTextField" destination="UXX-eS-lbB" id="0qt-lZ-UcC"/>
@@ -996,7 +1005,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cft-Ga-WA7">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -1008,7 +1017,9 @@
                             <constraint firstItem="Cft-Ga-WA7" firstAttribute="leading" secondItem="YGL-GL-KbF" secondAttribute="leading" id="kAg-sb-hnR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="帮助中心" id="P3b-M0-CUp"/>
+                    <navigationItem key="navigationItem" title="帮助中心" id="P3b-M0-CUp">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="LV8-cy-GWw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="Cft-Ga-WA7" id="9nP-DE-mGh"/>
                     </connections>
@@ -1030,7 +1041,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cRn-ID-jrX">
-                                <rect key="frame" x="20" y="40" width="280" height="508"/>
+                                <rect key="frame" x="20" y="84" width="280" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="rdX-us-eMv">
                                     <size key="itemSize" width="118" height="122"/>
@@ -1083,7 +1094,9 @@
                             <constraint firstItem="OoB-Hn-1yC" firstAttribute="top" secondItem="cRn-ID-jrX" secondAttribute="bottom" constant="20" id="hsD-dT-zaJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="资源管理" id="ajx-Dk-jxS"/>
+                    <navigationItem key="navigationItem" title="资源管理" id="ajx-Dk-jxS">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="NU5-5Z-nZA"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="cRn-ID-jrX" id="VUa-ee-7Qd"/>
                         <segue destination="t6A-qv-fwT" kind="show" identifier="toLinkSearch" id="VAp-Qn-Bg9"/>
@@ -1170,6 +1183,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="电路查询" id="mQV-Vs-ZJQ">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="bis-Km-rAY"/>
                         <barButtonItem key="rightBarButtonItem" title="扫码" id="xnm-Se-7Di">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1208,7 +1222,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="扫描" id="9S9-5C-eyO"/>
+                    <navigationItem key="navigationItem" title="扫描" id="9S9-5C-eyO">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="pn0-kC-0mk"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="2Dr-Cj-fSb" kind="show" identifier="toLinkDetail" id="Arb-ta-ep5"/>
                         <segue destination="NE0-Vi-aMK" kind="show" identifier="toCabinetDetail" id="Pge-bP-lUq"/>
@@ -1234,11 +1250,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="搜索所在位置" translatesAutoresizingMaskIntoConstraints="NO" id="XdU-RZ-5Ey">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R6B-WY-4VI">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RMLocationCell" rowHeight="53" id="FFw-yb-KQS" customClass="RMLocationCell" customModule="ResourceManager" customModuleProvider="target">
@@ -1293,7 +1309,9 @@
                             <constraint firstItem="R6B-WY-4VI" firstAttribute="top" secondItem="XdU-RZ-5Ey" secondAttribute="bottom" id="rBy-LG-sb4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="所在位置" id="Znu-Bv-Zui"/>
+                    <navigationItem key="navigationItem" title="所在位置" id="Znu-Bv-Zui">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="bSP-2F-erV"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="XdU-RZ-5Ey" id="rp8-RJ-8pf"/>
                         <outletCollection property="tableViews" destination="R6B-WY-4VI" collectionClass="NSMutableArray" id="p02-0F-auG"/>
@@ -1316,7 +1334,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="193" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pYv-Jv-qOD">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RMLinkTableViewCell" rowHeight="193" id="1sH-4H-mMx" customClass="RMLinkTableViewCell" customModule="ResourceManager" customModuleProvider="target">
@@ -1461,7 +1479,9 @@
                             <constraint firstItem="pYv-Jv-qOD" firstAttribute="top" secondItem="mfQ-Zo-0Iz" secondAttribute="bottom" id="i67-uN-FN4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="电路列表" id="2Ej-BJ-QDr"/>
+                    <navigationItem key="navigationItem" title="电路列表" id="2Ej-BJ-QDr">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="O0T-Ap-Cl1"/>
+                    </navigationItem>
                     <connections>
                         <outletCollection property="tableViews" destination="pYv-Jv-qOD" collectionClass="NSMutableArray" id="LKc-i9-OPd"/>
                     </connections>
@@ -1483,7 +1503,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umf-Z0-v75">
-                                <rect key="frame" x="10" y="64" width="300" height="504"/>
+                                <rect key="frame" x="10" y="64" width="300" height="455"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yC3-l2-uCT">
                                         <rect key="frame" x="0.0" y="10" width="300" height="421"/>
@@ -2186,6 +2206,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="电路详情" id="QRw-7A-DNj">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="ngf-0A-rw4"/>
                         <barButtonItem key="rightBarButtonItem" title="打印" id="E9a-Ld-vsx">
                             <connections>
                                 <action selector="printButtonPressed:" destination="2Dr-Cj-fSb" id="usz-7f-qTc"/>
@@ -2273,7 +2294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AxR-oa-Jm1">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RMDeviceListCell" rowHeight="83" id="Iwr-0w-Y9L" customClass="RMDeviceListCell" customModule="ResourceManager" customModuleProvider="target">
@@ -2359,10 +2380,12 @@
                             <constraint firstItem="AxR-oa-Jm1" firstAttribute="top" secondItem="55v-G7-OGg" secondAttribute="bottom" id="xxl-Io-LJp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="设备列表" id="ydt-e5-BsN"/>
+                    <navigationItem key="navigationItem" title="设备列表" id="ydt-e5-BsN">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="303-d2-2OG"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outletCollection property="tableViews" destination="AxR-oa-Jm1" id="Tg2-Pu-q8l"/>
+                        <outletCollection property="tableViews" destination="AxR-oa-Jm1" collectionClass="NSMutableArray" id="Tg2-Pu-q8l"/>
                         <segue destination="QdF-WJ-6VL" kind="unwind" identifier="endSearch" unwindAction="unwindForDeviceSearchWithSegue:" id="mhi-f0-oq5"/>
                         <segue destination="eVe-uD-64I" kind="show" identifier="toModifyDevice" id="JtF-nm-neI"/>
                     </connections>
@@ -2385,7 +2408,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jM3-e0-nzQ">
-                                <rect key="frame" x="10" y="64" width="300" height="504"/>
+                                <rect key="frame" x="10" y="64" width="300" height="455"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIK-HP-SDs">
                                         <rect key="frame" x="0.0" y="18.5" width="300" height="283"/>
@@ -2703,7 +2726,9 @@
                             <constraint firstItem="jM3-e0-nzQ" firstAttribute="leading" secondItem="PpV-1O-lJY" secondAttribute="leading" constant="10" id="tDe-AA-kiY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="设备详情" id="050-gp-wDi"/>
+                    <navigationItem key="navigationItem" title="设备详情" id="050-gp-wDi">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="951-TP-cSI"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="frt-ca-U4V" id="aEk-YY-xKX"/>
@@ -2747,7 +2772,7 @@
                     <tabBarItem key="tabBarItem" title="资源管理" image="tabbar.resource-manager.icon.normal" selectedImage="tabbar.resource-manager.icon.selected" id="1AT-vh-mei"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D2A-f9-dxq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.13429850339999999" green="0.16215988989999999" blue="0.37495356800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -2770,7 +2795,7 @@
                     <tabBarItem key="tabBarItem" title="巡检上报" image="tababr.inspect.icon.normal" selectedImage="tabbar.inspect.icon.selected" id="dK4-uO-gyA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3yf-eY-cqI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.13429850339999999" green="0.16215988989999999" blue="0.37495356800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -2793,7 +2818,7 @@
                     <tabBarItem key="tabBarItem" title="个人中心" image="tabbar.personal.icon.normal" selectedImage="tabbar.personal.icon.selected" id="RaK-P6-1Wy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NTX-1o-U45">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.13333333333333333" green="0.16078431372549018" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -2943,7 +2968,9 @@
                             <constraint firstAttribute="trailing" secondItem="YOg-js-DKm" secondAttribute="trailing" id="mMf-LS-Qgm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="机柜列表" id="Y1l-26-bFk"/>
+                    <navigationItem key="navigationItem" title="机柜列表" id="Y1l-26-bFk">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="0Qy-2b-wg0"/>
+                    </navigationItem>
                     <connections>
                         <outletCollection property="tableViews" destination="YOg-js-DKm" collectionClass="NSMutableArray" id="wfy-J4-nes"/>
                     </connections>
@@ -2965,7 +2992,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HO0-u2-gTR">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RMInspectListCell" rowHeight="150" id="dRL-iJ-IZH" customClass="RMInspectListCell" customModule="ResourceManager" customModuleProvider="target">
@@ -3037,7 +3064,9 @@
                             <constraint firstAttribute="trailing" secondItem="HO0-u2-gTR" secondAttribute="trailing" id="wCJ-17-JeL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="巡检列表" id="O9N-kf-ca4"/>
+                    <navigationItem key="navigationItem" title="巡检列表" id="O9N-kf-ca4">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="87O-Oi-34K"/>
+                    </navigationItem>
                     <connections>
                         <outletCollection property="tableViews" destination="HO0-u2-gTR" collectionClass="NSMutableArray" id="MjU-co-Oqb"/>
                     </connections>
@@ -3096,7 +3125,9 @@
                             <constraint firstItem="wSQ-T2-cgs" firstAttribute="top" secondItem="DRa-yg-F6J" secondAttribute="bottom" id="yHu-QG-g8h"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="6NR-Cv-zzk"/>
+                    <navigationItem key="navigationItem" id="6NR-Cv-zzk">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="9N1-Ei-kM2"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="contentLabel" destination="Qd8-hi-1Nx" id="e2X-6z-fRc"/>
@@ -3120,7 +3151,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N38-jq-As6">
-                                <rect key="frame" x="10" y="64" width="300" height="504"/>
+                                <rect key="frame" x="10" y="64" width="300" height="455"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ug-J8-6XG">
                                         <rect key="frame" x="0.0" y="10" width="300" height="205"/>
@@ -3425,7 +3456,9 @@
                             <constraint firstItem="N38-jq-As6" firstAttribute="leading" secondItem="d1a-f9-g0y" secondAttribute="leading" constant="10" id="gdh-e5-aG3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="机柜详情" id="2lx-ph-iio"/>
+                    <navigationItem key="navigationItem" title="机柜详情" id="2lx-ph-iio">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="EWx-61-Dwf"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cabinetLocationTextField" destination="Ed0-m0-FQp" id="t47-Hd-kiy"/>
                         <outlet property="cabinetNameLabel" destination="f5R-m4-Nkj" id="4aK-Pi-M3U"/>
@@ -3693,7 +3726,9 @@
                             <constraint firstItem="pMP-gi-o3H" firstAttribute="top" secondItem="TqH-Ra-xsw" secondAttribute="bottom" constant="10" id="zJn-6P-ZHf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="设备详情" id="PW8-dN-U4h"/>
+                    <navigationItem key="navigationItem" title="设备详情" id="PW8-dN-U4h">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="WG4-CF-zqY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="deviceDescriptionTextField" destination="EFS-s0-FWf" id="RHD-Cj-JkK"/>
                         <outlet property="deviceModelTextField" destination="KJV-fh-bee" id="QKM-l1-aB5"/>
@@ -3723,12 +3758,12 @@
         <image name="tabbar.resource-manager.icon.selected" width="23" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="na4-qI-5d8"/>
-        <segue reference="00Q-e4-sWd"/>
-        <segue reference="Y44-29-jCF"/>
-        <segue reference="GS1-Jt-sMB"/>
-        <segue reference="NKf-5K-aWg"/>
         <segue reference="tOz-5P-hcy"/>
-        <segue reference="R1I-fH-j2R"/>
+        <segue reference="na4-qI-5d8"/>
+        <segue reference="NKf-5K-aWg"/>
+        <segue reference="MfA-1c-Vjl"/>
+        <segue reference="Y44-29-jCF"/>
+        <segue reference="pUP-td-S4t"/>
+        <segue reference="00Q-e4-sWd"/>
     </inferredMetricsTieBreakers>
 </document>

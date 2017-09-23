@@ -36,10 +36,10 @@ extension RMScanViewController: LBXScanViewControllerDelegate {
                 
             }
         }).disposed(by: disposeBag)
+        self.qRScanView.stopScanAnimation()
     }
     
     func rescan() {
-        
     }
 }
 

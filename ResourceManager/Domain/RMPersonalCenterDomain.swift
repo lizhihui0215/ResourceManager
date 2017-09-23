@@ -20,17 +20,11 @@ class RMPersonalCenterDomain: PFSDomain {
     }
     
     func exchangePassword(password: String, newPassword: String) -> Driver<Result<String, MoyaError>> {
-        return RMDataRepository.shared.exchangePassword(password: password, newPassword: newPassword).asDriver(onErrorRecover: { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
+        return RMDataRepository.shared.exchangePassword(password: password, newPassword: newPassword)
     }
     
     func suggest(name: String, phone: String, detail: String) -> Driver<Result<String, MoyaError>> {
-        return RMDataRepository.shared.suggest(name: name, phone: phone, detail: detail).asDriver(onErrorRecover: { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
+        return RMDataRepository.shared.suggest(name: name, phone: phone, detail: detail)
         
     }
     

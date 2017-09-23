@@ -15,10 +15,6 @@ import PCCWFoundationSwift
 class RMDeviceModifyDomain: PFSDomain {
     
     func modifyDevice(device: RMDevice) -> Driver<Result<String,MoyaError>> {
-        return RMDataRepository.shared.modifyDevice(device: device).asDriver(onErrorRecover: { error in
-            print(error)
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
+        return RMDataRepository.shared.modifyDevice(device: device)
     }
 }

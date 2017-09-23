@@ -25,24 +25,15 @@ class RMScanDomain: PFSDomain {
     }
     
     func link(linkCode: String) -> Driver<Result<RMLink, MoyaError>> {
-        return RMDataRepository.shared.link(linkCode: linkCode).asDriver(onErrorRecover:  { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
+        return RMDataRepository.shared.link(linkCode: linkCode)
     }
     
     func cabinet(cabinetId: String) -> Driver<Result<RMCabinet, MoyaError>> {
-        return RMDataRepository.shared.cabinet(cabinetId: cabinetId).asDriver(onErrorRecover:  { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
+        return RMDataRepository.shared.cabinet(cabinetId: cabinetId)
     }
     
     func deviceDetail(deviceCode: String) -> Driver<Result<RMDevice, MoyaError>> {
-        return RMDataRepository.shared.device(deviceCode: deviceCode).asDriver(onErrorRecover:  { error in
-            let x  = error as! MoyaError;
-            return Driver.just(Result(error: x))
-        })
+        return RMDataRepository.shared.device(deviceCode: deviceCode)
     }
     
     
