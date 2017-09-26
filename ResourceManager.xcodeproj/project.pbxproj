@@ -79,7 +79,7 @@
 		26C7C7B11EAE3CD0006AC792 /* NSDate+RM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7C7B01EAE3CD0006AC792 /* NSDate+RM.swift */; };
 		26CB6A7E1E978B840092E3E9 /* RMResourceManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */; };
 		26CB6A821E9795500092E3E9 /* RMLinkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */; };
-		26D85E451EA079AE0036EBDF /* RMDeviceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D85E441EA079AE0036EBDF /* RMDeviceDetailViewModel.swift */; };
+		26D85E451EA079AE0036EBDF /* RMCabinetDeviceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D85E441EA079AE0036EBDF /* RMCabinetDeviceDetailViewModel.swift */; };
 		26E0C2F51E837B0300C7C388 /* RMNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */; };
 		26EFFA421F715927008263DC /* RMLocationDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFFA411F715927008263DC /* RMLocationDomain.swift */; };
 		26F798A31F570940009E6382 /* RMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A21F570940009E6382 /* RMLoginViewController.swift */; };
@@ -218,7 +218,7 @@
 		26C7C7B01EAE3CD0006AC792 /* NSDate+RM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+RM.swift"; path = "ResourceManager/ViewModels/NSDate+RM.swift"; sourceTree = SOURCE_ROOT; };
 		26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResourceManagerViewModel.swift; sourceTree = "<group>"; };
 		26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLinkListViewModel.swift; sourceTree = "<group>"; };
-		26D85E441EA079AE0036EBDF /* RMDeviceDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceDetailViewModel.swift; sourceTree = "<group>"; };
+		26D85E441EA079AE0036EBDF /* RMCabinetDeviceDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCabinetDeviceDetailViewModel.swift; sourceTree = "<group>"; };
 		26E0C2F41E837B0300C7C388 /* RMNetworkServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMNetworkServices.swift; sourceTree = "<group>"; };
 		26EFFA411F715927008263DC /* RMLocationDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationDomain.swift; sourceTree = "<group>"; };
 		26F798A21F570940009E6382 /* RMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginViewController.swift; sourceTree = "<group>"; };
@@ -283,6 +283,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		265B23401F7AA9A700FF614D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				260C10941E8A429900011A8E /* RMLoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		265B23411F7AA9C700FF614D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				265B23451F7AAC9A00FF614D /* Common */,
+				265B23421F7AA9F200FF614D /* Main */,
+				265B23471F7AAD2E00FF614D /* Inspect */,
+				265B23461F7AAD0900FF614D /* Mine */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		265B23421F7AA9F200FF614D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				265B23441F7AAB8600FF614D /* Link */,
+				265B23431F7AAA2A00FF614D /* Cabinet */,
+				26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		265B23431F7AAA2A00FF614D /* Cabinet */ = {
+			isa = PBXGroup;
+			children = (
+				262AB6981E9B345700986173 /* RMCabinetScanViewModel.swift */,
+				26786E8F1E9B25D600AB42FF /* RMCabinetSearchViewModel.swift */,
+				26D85E441EA079AE0036EBDF /* RMCabinetDeviceDetailViewModel.swift */,
+				267641861E9B62F7000EFB23 /* RMCabinetDetailViewModel.swift */,
+				26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */,
+			);
+			path = Cabinet;
+			sourceTree = "<group>";
+		};
+		265B23441F7AAB8600FF614D /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				262AB6961E9B344C00986173 /* RMLinkScanViewModel.swift */,
+				266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */,
+				2670EDE61E96536D00D2CA07 /* RMLinkDetailViewModel.swift */,
+				26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */,
+				267316E61EB18C4500A848B3 /* RMDeviceListViewModel.swift */,
+				260E96FD1EC60FF90040DBF8 /* RMDeviceModifyViewModel.swift */,
+			);
+			path = Link;
+			sourceTree = "<group>";
+		};
+		265B23451F7AAC9A00FF614D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2670EDE21E964FC900D2CA07 /* RMScanViewModel.swift */,
+				26786E8B1E9B221D00AB42FF /* RMSearchViewModel.swift */,
+				266F463B1EB225F100E79F4D /* RMDeviceScanViewModel.swift */,
+				266F46351EB1026100E79F4D /* RMDeviceSearchViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		265B23461F7AAD0900FF614D /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				26909D711EA4BD09008BE207 /* RMExchangePasswordViewModel.swift */,
+				261BB2751EA5F852006AA306 /* RMSuggestViewModel.swift */,
+				264D89FB1EA33FC4002B2A44 /* RMPersonalCenterViewModel.swift */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		265B23471F7AAD2E00FF614D /* Inspect */ = {
+			isa = PBXGroup;
+			children = (
+				268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */,
+				260C3C3F1E9CC9F500DE7C46 /* RMInspectListViewModel.swift */,
+				26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */,
+				263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */,
+				267035451E9F5D4D0049F0CC /* RMUploadScanViewModel.swift */,
+			);
+			path = Inspect;
+			sourceTree = "<group>";
+		};
 		26950F611ED331E80052D08A /* printExtra */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,33 +575,10 @@
 		5B875B08AD75AEE4268E89F5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				26D85E441EA079AE0036EBDF /* RMDeviceDetailViewModel.swift */,
 				26C7C7AE1EAE3438006AC792 /* RMRootViewModel.swift */,
-				260C10941E8A429900011A8E /* RMLoginViewModel.swift */,
-				264D89FB1EA33FC4002B2A44 /* RMPersonalCenterViewModel.swift */,
 				268B423B1E8F471200ADAC83 /* RMListViewModel.swift */,
-				266597811E95D7AB0035D344 /* RMLinkSearchViewModel.swift */,
-				26786E8F1E9B25D600AB42FF /* RMCabinetSearchViewModel.swift */,
-				266F46351EB1026100E79F4D /* RMDeviceSearchViewModel.swift */,
-				26786E931E9B276700AB42FF /* RMCabinetListViewModel.swift */,
-				26786E8B1E9B221D00AB42FF /* RMSearchViewModel.swift */,
-				26CB6A811E9795500092E3E9 /* RMLinkListViewModel.swift */,
-				267316E61EB18C4500A848B3 /* RMDeviceListViewModel.swift */,
-				26BFE8AE1E9E7CD100A636AA /* RMLocationViewModel.swift */,
-				260C3C3F1E9CC9F500DE7C46 /* RMInspectListViewModel.swift */,
-				2670EDE61E96536D00D2CA07 /* RMLinkDetailViewModel.swift */,
-				2670EDE21E964FC900D2CA07 /* RMScanViewModel.swift */,
-				262AB6961E9B344C00986173 /* RMLinkScanViewModel.swift */,
-				267035451E9F5D4D0049F0CC /* RMUploadScanViewModel.swift */,
-				262AB6981E9B345700986173 /* RMCabinetScanViewModel.swift */,
-				266F463B1EB225F100E79F4D /* RMDeviceScanViewModel.swift */,
-				26CB6A7D1E978B840092E3E9 /* RMResourceManagerViewModel.swift */,
-				268DEB3D1E9E182400056FC9 /* RMInspectUploadViewModel.swift */,
-				267641861E9B62F7000EFB23 /* RMCabinetDetailViewModel.swift */,
-				263A7EBB1E9D240200201500 /* RMInspectPhotoViewModel.swift */,
-				26909D711EA4BD09008BE207 /* RMExchangePasswordViewModel.swift */,
-				261BB2751EA5F852006AA306 /* RMSuggestViewModel.swift */,
-				260E96FD1EC60FF90040DBF8 /* RMDeviceModifyViewModel.swift */,
+				265B23401F7AA9A700FF614D /* Login */,
+				265B23411F7AA9C700FF614D /* TabBar */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1038,7 +1102,7 @@
 				2606764E1F73AD99001FA9E3 /* PFSDomain+RM.swift in Sources */,
 				26F798A31F570940009E6382 /* RMLoginViewController.swift in Sources */,
 				26483F3D1EA1458B00D6A3EC /* RMInspectUploadDomain.swift in Sources */,
-				26D85E451EA079AE0036EBDF /* RMDeviceDetailViewModel.swift in Sources */,
+				26D85E451EA079AE0036EBDF /* RMCabinetDeviceDetailViewModel.swift in Sources */,
 				260E97001EC611A80040DBF8 /* RMDeviceModifyDomain.swift in Sources */,
 				261BB2761EA5F852006AA306 /* RMSuggestViewModel.swift in Sources */,
 				262C7E811E8ADDF9004BD333 /* RMStoryboardSegue.swift in Sources */,

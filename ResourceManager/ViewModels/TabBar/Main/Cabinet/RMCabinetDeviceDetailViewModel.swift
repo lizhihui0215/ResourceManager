@@ -66,11 +66,11 @@ enum RMDevicePort {
     }
 }
 
-protocol RMDeviceDetailViewAction: PFSViewAction {
+protocol RMCabinetDeviceDetailViewAction: PFSViewAction {
     
 }
 
-class RMDeviceDetailViewModel: PFSViewModel<RMCabinetDeviceDetailViewController, RMLinkDetailDomain>, RMListDataSource {
+class RMCabinetDeviceDetailViewModel: PFSViewModel<RMCabinetDeviceDetailViewController, RMLinkDetailDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMDevicePort, Void>> = []
     
     var device: RMDevice

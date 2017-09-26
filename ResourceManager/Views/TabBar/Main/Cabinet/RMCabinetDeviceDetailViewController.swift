@@ -55,7 +55,7 @@ extension RMCabinetDeviceDetailViewController: UICollectionViewDataSource {
     
 }
 
-extension RMCabinetDeviceDetailViewController: RMDeviceDetailViewAction {
+extension RMCabinetDeviceDetailViewController: RMCabinetDeviceDetailViewAction {
     
 }
 
@@ -68,7 +68,7 @@ class RMDevicePortCell: UICollectionViewCell {
 class RMCabinetDeviceDetailViewController: PFSViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var viewModel: RMDeviceDetailViewModel?
+    var viewModel: RMCabinetDeviceDetailViewModel?
     
 //    @IBOutlet weak var deviceCodeTextField: UITextField!
     @IBOutlet weak var deviceNameTextField: UITextField!

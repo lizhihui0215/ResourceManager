@@ -134,7 +134,7 @@ class RMCabinetDetailViewController: PFSTableViewController, UITableViewDataSour
         
         let deviceRoom = self.viewModel?.cabinetRoom.value;
         
-        deviceViewController.viewModel = RMDeviceDetailViewModel(device: device!, deviceRoom: deviceRoom ?? "", action: deviceViewController)
+        deviceViewController.viewModel = RMCabinetDeviceDetailViewModel(device: device!, deviceRoom: deviceRoom ?? "", action: deviceViewController)
         
     }
     
