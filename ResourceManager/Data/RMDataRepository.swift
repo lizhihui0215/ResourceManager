@@ -21,11 +21,8 @@ class RMDataRepository:  PFSDataRepository{
             return PFSDomain.login()
         }
     }
-    
 
     func sigin(username: String, password: String) -> Driver<Result<RMUser, MoyaError>> {
-//        let result: Single<PFSResponseMappableObject<IBLUser>> = PFSNetworkService<IBLAPITarget>.shared.request(.portalAuth(account, password, auth))
-
         let result: Single<PFSResponseMappableObject<RMUser>> = PFSNetworkService<RMAPITarget>.shared.request(.login(username, password))
             
         
