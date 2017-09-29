@@ -17,4 +17,12 @@ extension PFSDomain {
     public static func login() -> RMUser? {
         return RMDataRepository.shared.get(key: "user")
     }
+
+    public static func last(username: String?) {
+        RMDataRepository.shared.cache(key: "LastLoginUsername", value: username)
+    }
+    
+    public static func lastUserName() -> String? {
+        return RMDataRepository.shared.cache(key: "LastLoginUsername")
+    }
 }

@@ -24,8 +24,7 @@ class RMDataRepository:  PFSDataRepository{
 
     func sigin(username: String, password: String) -> Driver<Result<RMUser, MoyaError>> {
         let result: Single<PFSResponseMappableObject<RMUser>> = PFSNetworkService<RMAPITarget>.shared.request(.login(username, password))
-            
-        
+
         return self.handlerError(response: result).map { result in
             switch result {
             case .success(let user):

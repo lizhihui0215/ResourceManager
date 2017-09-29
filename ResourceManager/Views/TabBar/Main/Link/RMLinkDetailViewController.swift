@@ -113,26 +113,24 @@ class RMLinkDetailViewController: PFSViewController {
             self?.viewModel?.businessType.value = level.title
         }
     }
-
+    
     
     @IBAction func farendDevicePortTappped(_ sender: UITapGestureRecognizer) {
-        if let viewModel = self.viewModel {
-            viewModel.freePort(isAccess: true).map({ (ints) -> [RMPortItem] in
-                var xx = [RMPortItem]()
-                for port in ints {
-                    xx.append(RMPortItem(port: port))
-                }
-                return xx
-            }).drive(onNext: {[weak self] ports in
-                if let strongSelf = self, ports.isEmpty == false {
-                    strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
-                        if let strongSelf = self {
-                            strongSelf.viewModel?.farendDevicePort.value = port.title
-                        }
-                    })
-                }
-            }).disposed(by: disposeBag)
-        }
+        self.viewModel?.freePort(isAccess: true).map({ (ints) -> [RMPortItem] in
+            var xx = [RMPortItem]()
+            for port in ints {
+                xx.append(RMPortItem(port: port))
+            }
+            return xx
+        }).drive(onNext: {[weak self] ports in
+            if let strongSelf = self, ports.isEmpty == false {
+                strongSelf.presentPicker(items: ports, completeHandler: {[weak self] port in
+                    if let strongSelf = self {
+                        strongSelf.viewModel?.farendDevicePort.value = port.title
+                    }
+                })
+            }
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func commitButtonPressed(_ sender: UIButton) {
@@ -146,41 +144,31 @@ class RMLinkDetailViewController: PFSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
-
         if let isModify = self.viewModel?.isModify, isModify == false {
-            
             self.accountTextField.isEnabled = false
             self.accountTextField.backgroundColor = UIColor.white
-            
             self.linkRateTextField.isEnabled = false
             self.linkRateTextField.backgroundColor = UIColor.white
-
             self.linkCodeTextField.isEnabled = false
             self.linkCodeTextField.backgroundColor = UIColor.white
-
             self.customerNameTextField.isEnabled = false
             self.customerNameTextField.backgroundColor = UIColor.white
             self.businessTypeTextField.isEnabled = false
             self.businessTypeTextField.backgroundColor = UIColor.white
-
-
             self.customerLevelTextField.isEnabled = false
             self.customerLevelTextField.backgroundColor = UIColor.white
-
+            self.orderNoTextField.isEnabled = false
+            self.billingNoTextField.isEnabled = false
+            self.billingNoTextField.backgroundColor = UIColor.white
+            self.orderNoTextField.backgroundColor = UIColor.white
             self.accessDeviceNameTextField.layer.borderWidth = 0
             self.accessDevicePortTextField.layer.borderWidth = 0
             self.accessDeviceTypeTextField.layer.borderWidth = 0
-
-            
             self.farendDeviceNameTextField.layer.borderWidth = 0
             self.farendDevicePortTextField.layer.borderWidth = 0
             self.farendDeviceTypeTextField.layer.borderWidth = 0
-
-            
             self.commitButtonHightConstraint.constant = 0
-            
             self.accessDeviceTapGesture.isEnabled = false
             self.accessDevicePortTapGesture.isEnabled = false
             self.farendDeviceNameTapGesture.isEnabled = false
@@ -188,15 +176,6 @@ class RMLinkDetailViewController: PFSViewController {
             self.customerLevelTapGesture.isEnabled = false
             self.serviceLevelTapGesture.isEnabled = false
             self.businessTypeTapGesture.isEnabled = false
-            
-            
-            self.orderNoTextField.isEnabled = false
-            self.orderNoTextField.backgroundColor = UIColor.white
-
-            self.billingNoTextField.isEnabled = false
-            self.billingNoTextField.backgroundColor = UIColor.white
-
-
         }else {
             self.linkCodeTextField.isEnabled = true
             self.accessDeviceTapGesture.isEnabled = true
@@ -213,13 +192,10 @@ class RMLinkDetailViewController: PFSViewController {
         
         self.customerLevelTextField.isEnabled = false
         self.customerLevelTextField.backgroundColor = UIColor.white
-
-        
         self.serviceLevelTextField.isEnabled = false
         self.serviceLevelTextField.backgroundColor = UIColor.white
         self.businessTypeTextField.isEnabled = false
         self.businessTypeTextField.backgroundColor = UIColor.white
-
         
         if let viewModel = self.viewModel {
             accountTextField.rx.textInput <-> viewModel.account
@@ -234,7 +210,6 @@ class RMLinkDetailViewController: PFSViewController {
             serviceLevelTextField.rx.textInput <-> viewModel.serviceLevel
             farendDeviceTypeTextField.rx.textInput <-> viewModel.farendDevicePortType
             accessDeviceTypeTextField.rx.textInput <-> viewModel.accessDevicePortType
-
             orderNoTextField.rx.textInput <-> viewModel.orderNo
             billingNoTextField.rx.textInput <-> viewModel.billingNo
             billingNoTextField.keyboardType = .asciiCapableNumberPad
@@ -247,11 +222,10 @@ class RMLinkDetailViewController: PFSViewController {
         let level2 = RMLevel(title: "银")
         let level3 = RMLevel(title: "铜")
         let level4 = RMLevel(title: "标准")
-
-
+        
         self.presentPicker(items: [level1,level2,level3,level4]) {[weak self] (level: RMLevel) in
             self?.viewModel?.customerLevel.value = level.title
-         }
+        }
     }
     @IBAction func serviceLevelTapped(_ sender: UITapGestureRecognizer) {
         let level1 = RMLevel(title: "AAA")
@@ -264,10 +238,6 @@ class RMLinkDetailViewController: PFSViewController {
         }
     }
     
-    @IBAction func test(_ sender: UIBarButtonItem) {
-        print(viewModel?.link ?? "")
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -277,24 +247,18 @@ class RMLinkDetailViewController: PFSViewController {
     @IBAction func unwindForDeviceSearch(segue:UIStoryboardSegue) {
         
     }
-
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         if segue.identifier == "toDeviceSearch" {
-            
             let searchViewController = segue.destination as! RMSearchViewController
-            
             let isAccess = sender as! UITapGestureRecognizer == accessDeviceTapGesture
             searchViewController.viewModel = RMDeviceSearchViewModel(actions: searchViewController, isAccess: isAccess)
             
         }
-        
-     }
-    
-    
+    }
 }

@@ -14,94 +14,6 @@ import RealmSwift
 import ObjectMapper
 import PCCWFoundationSwift
 
-
-//private func JSONResponseDataFormatter(_ data: Data) -> Data {
-//    do {
-//        let dataAsJSON = try JSONSerialization.jsonObject(with: data)
-//        let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
-//        return prettyData
-//    } catch {
-//        return data //fallback to original data if it cant be serialized
-//    }
-//}
-//
-//
-////let commonEndpointClosure = { (target: Target) -> Endpoint<Target> in
-////    var URL = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
-////
-////    let endpoint = Endpoint<Target>(URL: URL,
-////                                    sampleResponseClosure: {.NetworkResponse(200, target.sampleData)},
-////                                    method: target.method,
-////                                    parameters: target.parameters)
-////
-////    // 添加 AccessToken
-////    if let accessToken = currentUser.accessToken {
-////        return endpoint.endpointByAddingHTTPHeaderFields(["access-token": accessToken])
-////    } else {
-////        return endpoint
-////    }
-////}
-//
-//let endpointClosure = { (target: RMNetworkAPI) -> Endpoint<RMNetworkAPI> in
-//    let defaultEndpoint = MoyaProvider.defaultEndpointMapping(for: target)
-//    // Sign all non-authenticating requests
-//    switch target {
-//    case .inspectUpload:
-//        return defaultEndpoint.adding(newHTTPHeaderFields: ["accept" : "application/json"])
-//    default:
-//        return defaultEndpoint.adding(newHTTPHeaderFields: ["Content-Type" : "application/json"])
-//    }
-//}
-//
-//let requestClosure = { (endpoint: Endpoint<RMNetworkAPI>, done: MoyaProvider.RequestResultClosure) in
-//    var request = endpoint.urlRequest
-//
-//    // Modify the request however you like.
-//
-//    request?.allHTTPHeaderFields = [:]
-//
-//    done(Result(value: request!))
-//}
-//
-//
-//let RMNetworkServicesProvider = RxMoyaProvider<RMNetworkAPI>(endpointClosure: endpointClosure,requestClosure: requestClosure,plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
-//
-//class RMNetworkServices {
-//    static let shared = RMNetworkServices()
-//    static var kMessage : String = ""
-//    static var kCode : String = ""
-//    static var kResults : String = ""
-//
-//
-//    func config(messageKey: String? = "message",
-//                codeKey: String? = "code",
-//                resultsKey: String? = "results")  {
-//        RMNetworkServices.kMessage = messageKey!
-//        RMNetworkServices.kCode = codeKey!
-//        RMNetworkServices.kResults = resultsKey!
-//    }
-//
-//    func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseObject<T>> {
-//        return RMNetworkServicesProvider.request(token).mapObject(RMResponseObject<T>.self)
-//    }
-//
-//    func request(_ token: RMNetworkAPI) -> Observable<RMResponseNil> {
-//        return RMNetworkServicesProvider.request(token).mapObject(RMResponseNil.self)
-//    }
-//
-//    func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseArray<T>> {
-//        return RMNetworkServicesProvider.request(token).mapObject(RMResponseArray<T>.self)
-//    }
-//
-//    func request<T>(_ token: RMNetworkAPI) -> Observable<RMResponseBaseArray<T>> {
-//        return RMNetworkServicesProvider.request(token).mapObject(RMResponseBaseArray<T>.self)
-//    }
-//
-//    func baseURL() -> String {
-//        return "http://221.180.160.160:8080/"
-//    }
-//}
-
 public enum RMAPITarget {
     case login(String, String)
     case linkDetail(String, String)
@@ -127,7 +39,6 @@ extension RMAPITarget: PFSTargetType {
     }
     
     static var kBaseURL: String {
-        
         get {
             guard let baseURL: String = RMDataRepository.shared.cache(key: "BaseURL") else {
                 return "http://115.28.157.117:9080"
@@ -179,27 +90,14 @@ extension RMAPITarget: PFSTargetType {
         case let .deviceModify(accessToken, _):
             return "device/modify?access_token=\(accessToken)"
         }
-        
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login,
-             .linkDetail,
-             .linkList,
-             .cabinetDetail,
-             .cabinetList,
-             .inspectList,
-             .linkModify,
-             .exchangePassword,
-             .suggest,
-             .link,
-             .deviceList,
-             .deviceDetail,
-             .ports,
-             .cabinetModify,
-             .deviceModify,
-             .inspectUpload:
+        case .login, .linkDetail, .linkList, .cabinetDetail, .cabinetList,
+             .inspectList, .linkModify, .exchangePassword,
+             .suggest, .link, .deviceList, .deviceDetail, .ports,
+             .cabinetModify, .deviceModify, .inspectUpload:
             return .post
         }
     }
@@ -225,8 +123,6 @@ extension RMAPITarget: PFSTargetType {
             return ["cabinetId": cabinetId]
         case let .cabinetList(_,cabinetCode, _, _, pageNO, pageSize):
             return ["cabinetCode": cabinetCode,
-//                    "customerName": customerName,
-//                    "cabinetCode": cabinetCode,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
         case let .inspectList(_,pageNO, pageSize):
@@ -249,9 +145,7 @@ extension RMAPITarget: PFSTargetType {
         case let .link(_, deviceCode):
             return ["deviceCode": deviceCode]
         case let .deviceList(_,_, deviceCode,pageNO, pageSize):
-            return [
-                "deviceCode": deviceCode,
-//                    "deviceName": deviceName,
+            return ["deviceCode": deviceCode,
                     "pageSize": pageSize,
                     "pageNO": pageNO]
         case let .deviceDetail(_,deviceCode):
@@ -259,13 +153,7 @@ extension RMAPITarget: PFSTargetType {
         case let .ports(_, deviceCode):
             return ["deviceCode": deviceCode]
         case let .cabinetModify(_, cabinet):
-            let xxxx = cabinet.filter{ $0.key != "devices" }
-            var dic = [String : Any]()
-            xxxx.forEach({
-                dic[$0.key] = $0.value
-            })
-            
-            return dic
+            return cabinet.filter{ $0.key != "devices" }
         case let .deviceModify(_, device):
             return device
         }
@@ -280,61 +168,52 @@ extension RMAPITarget: PFSTargetType {
         switch self {
         case let .login(username, password):
             parameters = ["username" : username,
-                              "password" : password,
-                              "osType": 1,
-                              "osVersion" : device.systemVersion,
-                              "appVersion" : device.appVersion,
-                              "devicetoken": device.uuid]
+                          "password" : password,
+                          "osType": 1,
+                          "osVersion" : device.systemVersion,
+                          "appVersion" : device.appVersion,
+                          "devicetoken": device.uuid]
         case let .linkDetail(_, linkCode):
             parameters = ["linkId": linkCode]
         case let .linkList(_,account, customerName, linkCode, pageNO, pageSize):
             parameters = ["linkName": account,
-                    "customerName": customerName,
-                    "linkCode": linkCode,
-                    "pageSize": pageSize,
-                    "pageNO": pageNO]
+                          "customerName": customerName,
+                          "linkCode": linkCode,
+                          "pageSize": pageSize,
+                          "pageNO": pageNO]
         case let .cabinetDetail(_, cabinetId):
             parameters = ["cabinetId": cabinetId]
         case let .cabinetList(_,cabinetCode, _, _, pageNO, pageSize):
             parameters = ["cabinetCode": cabinetCode,
-                    //                    "customerName": customerName,
-                //                    "cabinetCode": cabinetCode,
-                "pageSize": pageSize,
-                "pageNO": pageNO]
+                          "pageSize": pageSize,
+                          "pageNO": pageNO]
         case let .inspectList(_,pageNO, pageSize):
             parameters = ["pageSize": pageSize,
-                    "pageNO": pageNO]
+                          "pageNO": pageNO]
         case let .linkModify(_, link):
             var parameter = link
             parameter["accessDeviceUpTime"] = Date().description
             parameters = parameter
-       
         case let .exchangePassword(_, oldpwd, newpwd):
             parameters = ["oldpwd": oldpwd,
-                    "newpwd": newpwd]
+                          "newpwd": newpwd]
         case let .suggest(_, name, phone,detail):
             parameters = ["name": name,
-                    "phone": phone,
-                    "detail": detail]
+                          "phone": phone,
+                          "detail": detail]
         case let .link(_, deviceCode):
             parameters = ["deviceCode": deviceCode]
         case let .deviceList(_,_, deviceCode,pageNO, pageSize):
-            parameters = [
-                "deviceCode": deviceCode,
-                //                    "deviceName": deviceName,
-                "pageSize": pageSize,
-                "pageNO": pageNO]
+            parameters = ["deviceCode": deviceCode,
+                          "pageSize": pageSize,
+                          "pageNO": pageNO]
         case let .deviceDetail(_,deviceCode):
             parameters = ["deviceCode": deviceCode]
         case let .ports(_, deviceCode):
             parameters = ["deviceCode": deviceCode]
         case let .cabinetModify(_, cabinet):
-            let xxxx = cabinet.filter{ $0.key != "devices" }
-            var dic = [String : Any]()
-            xxxx.forEach({
-                dic[$0.key] = $0.value
-            })
-            parameters = dic
+            let validateParameters = cabinet.filter{ $0.key != "devices" }
+            parameters = validateParameters
         case let .deviceModify(_, device):
             parameters = device
         case let .inspectUpload(_, parameters, formData):
@@ -343,37 +222,12 @@ extension RMAPITarget: PFSTargetType {
             return .uploadCompositeMultipart(formData, urlParameters: param)
         }
         
-        
-        
         return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-
-//        switch self {
-//        case .login,
-//             .linkDetail,
-//             .linkList,
-//             .cabinetDetail,
-//             .cabinetList,
-//             .inspectList,
-//             .exchangePassword,
-//             .suggest,
-//             .link,
-//             .deviceList,
-//             .deviceDetail,
-//             .ports,
-//             .cabinetModify,
-//             .deviceModify,
-//             .linkModify:
-//            return .request
-//        case let .inspectUpload(_,_, formData):
-//            return .upload(.multipart(formData))
-//
-//        }
     }
 }
 
 extension Dictionary {
     func toJSONString() -> String? {
-        
         if let data = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted) {
             return String(data: data, encoding: String.Encoding.utf8)
         }

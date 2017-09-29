@@ -18,34 +18,22 @@ class RMRootViewController: PFSViewController, RMRootViewAction {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-//        self.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
 
         self.viewModel = RMRootViewModel(action: self, domain: RMLoginDomain())
         
         self.viewModel?.navigationTo().drive(onNext: {[weak self] success in
-            
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            
 //            if success {
                 self?.performSegue(withIdentifier: "toMain", sender: nil)
-//
 //            }else {
 //                self?.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
 //            }
         }).disposed(by: disposeBag)
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

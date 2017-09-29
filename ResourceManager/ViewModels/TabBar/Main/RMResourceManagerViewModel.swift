@@ -89,7 +89,6 @@ enum RMResourceItem {
 class RMResourceManagerViewModel: PFSViewModel<RMResourceManagerViewController, RMResourceManagerDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMResourceItem, Void>> = []
     
-    
     override init(action: RMResourceManagerViewController, domain: RMResourceManagerDomain) {
         super.init(action: action, domain: domain)
         let section: RMSection<RMResourceItem, Void> = RMSection()

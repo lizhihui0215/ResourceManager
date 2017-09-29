@@ -47,7 +47,6 @@ class RMSection<Element, Item> {
     
     @discardableResult
     func append(contentsOf contents: [Element]) -> [RMSectionItem<Element>] {
-        
         var sectionItems = [RMSectionItem<Element>]()
         
         for element in contents {
@@ -55,15 +54,12 @@ class RMSection<Element, Item> {
         }
         
         self.items.append(contentsOf: sectionItems)
-        
         return sectionItems
     }
     
     func removeAll()  {
         self.items.removeAll()
     }
-    
-
     
     init(item: Item? = nil, isOpen: Bool? = false, items: [RMSectionItem<Element>]? = []) {
         self.item = item
@@ -80,7 +76,6 @@ protocol RMListDataSource {
     
     func elementAt(indexPath: IndexPath) -> Self.Element
 }
-
 
 extension RMListDataSource {
     @discardableResult
@@ -101,7 +96,6 @@ extension RMListDataSource {
     func removeAt(indexPath: IndexPath) -> Void {
         self.section(at: indexPath.section).items.remove(at: indexPath.row)
     }
-    
     
     func elementOf(selected: Bool, at section: Int) -> [Self.Element] {
         return self.section(at: section).items.filter { $0.isSelected == selected }.map{ $0.item }

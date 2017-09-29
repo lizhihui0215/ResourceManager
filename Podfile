@@ -11,7 +11,6 @@ target 'ResourceManager' do
 
   pod 'DLAlertView'
 
-
   pod 'ZXingObjC'
 
   pod 'MBProgressHUD'
@@ -19,7 +18,6 @@ target 'ResourceManager' do
   pod 'KissXML'
 
   pod 'GPUImage'
-
 
   pod 'AMap3DMap'  #3D地图SDK
 
