@@ -13,33 +13,78 @@ import PCCWFoundationSwift
 
 enum RMDevicePort {
     case free(Int)
-    case occupied(Bool, RMLink)
+    /// 1.端口名称，2电路总数， 3所属设备， 4，是否是对端 5，电路列表
+    case occupied(String, String, String, Bool, [RMLink])
     case other(RMLink)
     
     init(free port: Int) {
         self = .free(port)
     }
     
-    init(occupied link: RMLink, isFarend: Bool) {
-        self = .occupied(isFarend, link)
+    init(occupied portName: String,
+         linkCount: String,
+         inDevice: String,
+         isFarend: Bool,
+         links: [RMLink]) {
+        self = .occupied(portName, linkCount,inDevice, isFarend, links)
     }
     
     init(other link: RMLink) {
         self = .other(link)
     }
     
-    func port() -> String {
+    func portName() -> String {
         switch self {
         case let .free(port):
             return String(port)
-        case let .occupied(isFarend, link):
-            if isFarend {
-                return link.farendDevicePort ?? ""
-            }else {
-                return link.accessDevicePort ?? ""
-            }
+        case let .occupied(portName,_, _, _, _):
+            return portName
         case .other:
             return "unknow"
+        }
+    }
+    
+    func isFarend() -> Bool {
+        switch self {
+        case let .free(port):
+            return false
+        case let .occupied(_,_, _, isFarend, _):
+            return isFarend
+        case .other:
+            return false
+        }
+    }
+    
+    func deviceName() -> String {
+        switch self {
+        case let .free(port):
+            return String(port)
+        case let .occupied(_,_, deviceName, _, _):
+            return deviceName
+        case .other:
+            return "unknow"
+        }
+    }
+    
+    func portCount() -> String {
+        switch self {
+        case let .free(port):
+            return String(port)
+        case let .occupied(_, linkCount, _, _, _):
+            return linkCount
+        case .other:
+            return "unknow"
+        }
+    }
+    
+    func links() -> [RMLink] {
+        switch self {
+        case .free:
+            return []
+        case let .occupied(_, _, _, _, links):
+            return links
+        case .other:
+            return []
         }
     }
     
@@ -70,6 +115,21 @@ protocol RMCabinetDeviceDetailViewAction: PFSViewAction {
     
 }
 
+extension Array {
+    func unique<T:Hashable>(map: ((Element) -> (T)))  -> [Element] {
+        var set = Set<T>() //the unique list kept in a Set for fast retrieval
+        var arrayOrdered = [Element]() //keeping the unique list of elements but ordered
+        for value in self {
+            if !set.contains(map(value)) {
+                set.insert(map(value))
+                arrayOrdered.append(value)
+            }
+        }
+        
+        return arrayOrdered
+    }
+}
+
 class RMCabinetDeviceDetailViewModel: PFSViewModel<RMCabinetDeviceDetailViewController, RMLinkDetailDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMDevicePort, Void>> = []
     
@@ -98,6 +158,48 @@ class RMCabinetDeviceDetailViewModel: PFSViewModel<RMCabinetDeviceDetailViewCont
         self.datasource.append(RMSection())
     }
     
+    func groupPorts(with links: [RMLink])  {
+        
+        let sameAccessDeviceIds = links.filter { $0.accessDeviceId == self.deviceCode.value }
+        
+        let sameFarendDeviceIds = links.filter{ $0.farendDeviceId == self.deviceCode.value }
+        
+        
+        let sameAccessDevicePorts: [RMLink] = sameAccessDeviceIds.unique { link  in
+            return link.accessDevicePort!
+        }
+        
+        let sameFarendDevicePorts: [RMLink] = sameFarendDeviceIds.unique { link  in
+            return link.farendDevicePort!
+        }
+        
+        for link in sameAccessDevicePorts {
+            let access = sameAccessDeviceIds.filter{ $0.accessDevicePort == link.accessDevicePort}
+
+            let occupiedPort = RMDevicePort(occupied: link.accessDevicePort!,
+                                            linkCount: String(access.count),
+                                            inDevice: self.deviceCode.value,
+                                            isFarend: false,
+                                            links: access)
+            self.section(at: 0).append(item: occupiedPort)
+        }
+        for link in sameFarendDevicePorts {
+            let farends = sameFarendDeviceIds.filter{ $0.farendDevicePort == link.farendDevicePort}
+            let occupiedPort = RMDevicePort(occupied: link.farendDevicePort!,
+                                            linkCount: String(farends.count),
+                                            inDevice: self.deviceCode.value,
+                                            isFarend: true,
+                                            links: farends)
+            self.section(at: 0).append(item: occupiedPort)
+        }
+        
+        let occupiedPorts = self.section(at: 0).items.count
+        
+        for i in occupiedPorts..<self.device.totalTerminals {
+            self.section(at: 0).append(item: RMDevicePort(free: i))
+        }
+    }
+    
     func link() -> Driver<Bool> {
         self.action?.animation.value = true
         return self.domain.link(deviceCode: self.deviceCode.value)
@@ -105,33 +207,7 @@ class RMCabinetDeviceDetailViewModel: PFSViewModel<RMCabinetDeviceDetailViewCont
                 self.action?.animation.value = false
                 switch result {
                 case .success(let links):
-                    let occupiedPorts: [RMDevicePort] = links.filter{
-                        $0.farendDeviceId == self.deviceCode.value || $0.accessDeviceId == self.deviceCode.value
-                        }
-                        .map{
-                            if $0.farendDeviceId == self.deviceCode.value {
-                                return RMDevicePort(occupied: $0, isFarend: true)
-                            }
-                            
-                            if $0.accessDeviceId == self.deviceCode.value {
-                                return RMDevicePort(occupied: $0, isFarend: false)
-                            }
-                            
-                            return RMDevicePort(free: -1)
-                        }.sorted(by: { $0.port() < $1.port()})
-                    
-                    if occupiedPorts.count != occupiedPorts.count {
-                        return self.action!.alert(message: "程序异常，请联系管理员", success: false);
-                    }
-                    
-                    for occupiedPort in occupiedPorts {
-                        self.section(at: 0).append(item: occupiedPort)
-                    }
-                    
-                    for i in occupiedPorts.count..<self.device.totalTerminals {
-                        self.section(at: 0).append(item: RMDevicePort(free: i))
-                    }
-                    
+                    self.groupPorts(with: links)
                 default:
                     break
                 }

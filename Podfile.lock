@@ -1,22 +1,22 @@
 PODS:
   - Alamofire (4.5.1)
-  - AMap3DMap (5.3.0):
+  - AMap3DMap (5.4.0):
     - AMapFoundation (~> 1.3)
   - AMapFoundation (1.4.2)
   - AMapLocation (2.4.0):
     - AMapFoundation (~> 1.4)
-  - AMapSearch (5.3.0):
-    - AMapFoundation (~> 1.2)
+  - AMapSearch (5.4.0):
+    - AMapFoundation (~> 1.4)
   - CryptoSwift (0.7.2)
-  - DeviceKit (1.3.2)
+  - DeviceKit (1.4.0)
   - DLAlertView (1.2.5)
   - GPUImage (0.1.7)
-  - IQKeyboardManagerSwift (4.0.13)
+  - IQKeyboardManagerSwift (5.0.3)
   - KeychainAccess (3.1.0)
   - Kingfisher (3.13.1)
   - KissXML (5.2.0)
   - MBProgressHUD (1.0.0)
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.13)
   - Moya (9.0.0):
     - Moya/Core (= 9.0.0)
   - Moya-ObjectMapper/Core (2.4.2):
@@ -32,9 +32,9 @@ PODS:
   - Moya/RxSwift (9.0.0):
     - Moya/Core
     - RxSwift (~> 3.3)
-  - NVActivityIndicatorView (3.7.0):
-    - NVActivityIndicatorView/Presenter (= 3.7.0)
-  - NVActivityIndicatorView/Presenter (3.7.0)
+  - NVActivityIndicatorView (4.0.0):
+    - NVActivityIndicatorView/Presenter (= 4.0.0)
+  - NVActivityIndicatorView/Presenter (4.0.0)
   - ObjectMapper (2.2.9)
   - ObjectMapper+Realm (0.5):
     - ObjectMapper
@@ -59,15 +59,15 @@ PODS:
     - TZImagePickerController
     - UIColor_Hex_Swift
     - WebViewJavascriptBridge
-  - Realm (2.10.1):
-    - Realm/Headers (= 2.10.1)
-  - Realm/Headers (2.10.1)
-  - RealmSwift (2.10.1):
-    - Realm (= 2.10.1)
-  - Result (3.2.3)
-  - RSKGrowingTextView (2.0.0):
-    - RSKPlaceholderTextView (= 2.0.0)
-  - RSKPlaceholderTextView (2.0.0)
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
+  - Result (3.2.4)
+  - RSKGrowingTextView (3.0.0):
+    - RSKPlaceholderTextView (= 3.0.0)
+  - RSKPlaceholderTextView (3.0.0)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxRealm (0.6.0):
@@ -75,7 +75,7 @@ PODS:
     - RxSwift (~> 3.2)
   - RxSwift (3.6.1)
   - SnapKit (3.2.0)
-  - Toaster (2.0.4)
+  - Toaster (2.1.0)
   - TZImagePickerController (1.9.3)
   - UIColor_Hex_Swift (3.0.2)
   - WebViewJavascriptBridge (6.0.2)
@@ -96,36 +96,36 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  AMap3DMap: 0614b5b7ed7a8b69f1d9ba7bc40ce30362497dc5
+  AMap3DMap: 3eb906ac6b9d488413ab26c24f67eca4b4ad4641
   AMapFoundation: 6c0471c9a6a0ad17dad46e3d800ad56ca170f82a
   AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
-  AMapSearch: beb01c6b2e7be18fb4898e97162fedf144420c6f
+  AMapSearch: 97042f81c1c8ea8adc4b1dadf1b1a688210aa141
   CryptoSwift: cd2158be2bf639aabc63ec804707c7137c90157c
-  DeviceKit: f763607473cdd286a69d1957de099bdbd8391db5
+  DeviceKit: fa74d97499660e88081718b16688e19217595dba
   DLAlertView: 774c1242cc854177fdc07634ed3f8c250a38864d
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  IQKeyboardManagerSwift: fb399c4cddcd8d9bbcd2d0c7c81ed290b61c088e
+  IQKeyboardManagerSwift: e257e513744cf32123eca7061272acea0246fc83
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
   KissXML: 1c1eeeb6b94e4522cd2f2373e5d0d03c9227738f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MJRefresh: 56a28aa628c9895e97a518dabaecf70b18f92f32
   Moya: cf5e6ee93af526532f92614004b8ad2ea60fd845
   Moya-ObjectMapper: 96cde46cc673000dc45dde7c476b2d53d59f0159
-  NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
+  NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
   ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
   ObjectMapper+Realm: 3188789fb77c189c7a83cb625333a607eb61a08f
   PCCWFoundationSwift: ada0de7ce578e00d47f7af8d98587cb9057ded0d
-  Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
-  RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
-  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
-  RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
-  RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RSKGrowingTextView: 6bcc9d4565ce4a66de4b7c42875439bde99dab21
+  RSKPlaceholderTextView: 0ce73a19998e236323b3f1f16bf4a4e4a76c2c28
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  Toaster: f13031c636ef065281bc11857be9a16c7659e04f
+  Toaster: 8c3225dc465bef4aa57e147a288724576df8e439
   TZImagePickerController: 079ab986018c22793462e531045a75e366b18252
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
   WebViewJavascriptBridge: 791ee0e26d1bf15efe5fb7fb9666a71a19b89d77
@@ -133,4 +133,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f9ec285692c061c3029f0505e3df9cc757433234
 
-COCOAPODS: 1.4.0.beta.1
+COCOAPODS: 1.3.1

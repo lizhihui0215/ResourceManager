@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CryptoSwift
 @testable import ResourceManager
 
 class ResourceManagerTests: XCTestCase {
@@ -24,6 +25,11 @@ class ResourceManagerTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let md516 = "123".md5(bit: .bit16)
+        
+        print(md516)
+        
     }
     
     func testPerformanceExample() {

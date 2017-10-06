@@ -26,12 +26,17 @@ extension RMCabinetDeviceDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let devicePort = self.viewModel?.elementAt(indexPath: indexPath) {
-            switch devicePort {
-            case let .occupied(_, link):
-                performSegue(withIdentifier: "toLinkDetail", sender: link)
-            default:
-                break
-            }
+            performSegue(withIdentifier: "toLinkList", sender: devicePort)
+
+            
+            
+//            switch devicePort {
+//            case let .occupied(_, link):
+////                performSegue(withIdentifier: "toLinkDetail", sender: link)
+//
+//            default:
+//                break
+//            }
         }
     }
     
@@ -39,7 +44,7 @@ extension RMCabinetDeviceDetailViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMDevicePortCell", for: indexPath) as! RMDevicePortCell
         let devicePort = self.viewModel?.elementAt(indexPath: indexPath)
         cell.imageView.image = devicePort?.image()
-        cell.titleLabel.text = devicePort?.port()
+//        cell.titleLabel.text = devicePort?.port()
         cell.titleLabel.textColor = devicePort?.titleColor()
         return cell
     }
@@ -101,6 +106,10 @@ class RMCabinetDeviceDetailViewController: PFSViewController {
         if segue.identifier == "toLinkDetail" {
             let linkDetailViewController = segue.destination as! RMLinkDetailViewController
             linkDetailViewController.viewModel = RMLinkDetailViewModel(link: sender as! RMLink, action: linkDetailViewController)
+        }else if segue.identifier == "toLinkList" {
+            let linkDetailViewController = segue.destination as! RMDevicePortDetailViewController
+            linkDetailViewController.viewModel = RMDevicePortDetailViewModel(action: linkDetailViewController, port: sender as! RMDevicePort)
+
         }
     }
 }
