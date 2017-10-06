@@ -44,6 +44,25 @@ class RMLinkScanViewModel: RMScanViewModel {
     
     func linkDetail(of code: String ) -> Driver<Bool> {
         self.scanedCode.value = code
+        if code.hasPrefix("a`") {
+            return self.domain.portLinks(code: code).do(onNext: { result in
+                switch result {
+                case .success(let link):
+                    self.result = link
+                case .failure(_): break;
+                }
+            }).flatMapLatest { result  in
+                switch result {
+                case.failure(_):
+                    self.action?.rescan()
+                default:
+                    break
+                }
+                return self.action!.alert(result: result)
+            }
+        }
+        
+        
         return  self.domain.link(linkCode: code).do(onNext: { result in
             switch result {
             case .success(let link):

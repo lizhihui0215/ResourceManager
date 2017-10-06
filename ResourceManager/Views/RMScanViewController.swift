@@ -20,9 +20,11 @@ extension RMScanViewController: LBXScanViewControllerDelegate {
         self.viewModel?.scaned(of: (array.first?.strScanned)!).drive(onNext: {
             success in
             if let _ = self.viewModel as? RMLinkScanViewModel,success {
-                self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
-                //                self.performSegue(withIdentifier: "toLinkList", sender: nil)
-                
+                if (array.first?.strScanned.hasPrefix("a`"))! {
+                    self.performSegue(withIdentifier: "toLinkList", sender: nil)
+                }else {
+                    self.performSegue(withIdentifier: "toLinkDetail", sender: nil)
+                }
             }else if let _ = self.viewModel as? RMCabinetScanViewModel, success {
                 self.performSegue(withIdentifier: "toCabinetDetail", sender: nil)
             }else if let _ = self.viewModel as? RMDeviceScanViewModel, success {

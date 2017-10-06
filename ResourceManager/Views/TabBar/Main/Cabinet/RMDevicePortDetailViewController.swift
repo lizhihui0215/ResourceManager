@@ -67,7 +67,7 @@ class RMDevicePortDetailViewController: PFSTableViewController {
 
     @IBAction func printButtonTapped(_ sender: UIBarButtonItem) {
         let printContant = "\(self.deviceNameTextField.text!)`\(self.portNameTextField.text!)"
-        let md5Str = printContant.md5Bit16().uppercased()
+        let md5Str = printContant.md5Bit16()
         let template = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>1005</CodeType><Code>a`\(md5Str)</Code><Text>汇聚端口</Text></Print></Data>"
         
 //        let te = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><Data><Print><CodeType>60-40</CodeType><Code>3121-00000600</Code><Text>站点名称:辽阳刘二堡中心学校资源点</Text><Text>服务热线:10086-8</Text><Text>机柜名称:1015039967154400</Text></Print></Data>"

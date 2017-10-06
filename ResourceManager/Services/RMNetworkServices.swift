@@ -31,6 +31,7 @@ public enum RMAPITarget {
     case inspectList(String,Int, Int)
     case exchangePassword(String, String, String)
     case suggest(String, String, String, String)
+    case portLinks(String, String)
 }
 
 extension RMAPITarget: PFSTargetType {
@@ -89,6 +90,8 @@ extension RMAPITarget: PFSTargetType {
             return "cabinet/modify?access_token=\(accessToken)"
         case let .deviceModify(accessToken, _):
             return "device/modify?access_token=\(accessToken)"
+        case let .portLinks(accessToken, _) :
+            return "device/portlinks?access_token=\(accessToken)"
         }
     }
     
@@ -97,7 +100,7 @@ extension RMAPITarget: PFSTargetType {
         case .login, .linkDetail, .linkList, .cabinetDetail, .cabinetList,
              .inspectList, .linkModify, .exchangePassword,
              .suggest, .link, .deviceList, .deviceDetail, .ports,
-             .cabinetModify, .deviceModify, .inspectUpload:
+             .cabinetModify, .deviceModify, .inspectUpload, .portLinks:
             return .post
         }
     }
@@ -159,6 +162,8 @@ extension RMAPITarget: PFSTargetType {
             parameters = validateParameters
         case let .deviceModify(_, device):
             parameters = device
+        case let .portLinks(_, code):
+            parameters = ["md5str" : code]
         case let .inspectUpload(_, parameters, formData):
             let json = parameters.toJSONString()
             let param = ["json" : json! ]

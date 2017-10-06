@@ -126,6 +126,19 @@ class RMDataRepository:  PFSDataRepository{
         }
     }
     
+    func portLinks(code: String) -> Driver<Result<[RMLink], MoyaError>> {
+        let result: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.portLinks((self.user?.accessToken)!, code))
+        
+        return self.handlerError(response: result).map{ result in
+            switch result {
+            case.success(let link):
+                return Result(value: link)
+            case.failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+    
     func exchangePassword(password: String, newPassword: String) -> Driver<Result<String, MoyaError>> {
         let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.exchangePassword((self.user?.accessToken)!, password,newPassword))
         

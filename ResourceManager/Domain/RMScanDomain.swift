@@ -28,6 +28,10 @@ class RMScanDomain: PFSDomain {
         return RMDataRepository.shared.link(linkCode: linkCode)
     }
     
+    func portLinks(code: String) -> Driver<Result<[RMLink], MoyaError>> {
+        return RMDataRepository.shared.portLinks(code: code)
+    }
+    
     func cabinet(cabinetId: String) -> Driver<Result<RMCabinet, MoyaError>> {
         return RMDataRepository.shared.cabinet(cabinetId: cabinetId)
     }

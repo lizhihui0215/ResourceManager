@@ -60,10 +60,11 @@ class RMLinkListViewController: PFSTableViewController, RMLinkListAction, UITabl
             self.navigationItem.title = isModify ? "电路修改" : "电路查询"
         }
         
-        // Do any additional setup after loading the view.
-        self.tableView.headerRefresh(enable: true, target: self)
-        
-        self.tableView.footerRefresh(enable: true, target: self)
+        if !self.viewModel?.linkCode.value.hasPrefix("a`") {
+            self.tableView.headerRefresh(enable: true, target: self)
+            
+            self.tableView.footerRefresh(enable: true, target: self)
+        }
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
