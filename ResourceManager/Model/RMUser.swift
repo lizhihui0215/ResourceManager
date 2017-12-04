@@ -13,14 +13,14 @@ import ObjectMapper_Realm
 import PCCWFoundationSwift
 
 public class RMUser: PFSModel {
-    @objc dynamic var nickname: String?
-    @objc dynamic var password: String?
-    @objc dynamic var loginName: String?
-    @objc dynamic var avatar: String?
-    @objc dynamic var name: String?
-    @objc dynamic var mobile: String?
-    @objc dynamic var sex: String?
-    @objc dynamic var accessToken: String?
+    @objc dynamic var nickname: String? = nil
+    @objc dynamic var password: String? = nil
+    @objc dynamic var loginName: String? = nil
+    @objc dynamic var avatar: String? = nil
+    @objc dynamic var name: String? = nil
+    @objc dynamic var mobile: String? = nil
+    @objc dynamic var sex: String? = nil
+    @objc dynamic var accessToken: String? = nil
 
     public required convenience init?(map: Map) {
         self.init()

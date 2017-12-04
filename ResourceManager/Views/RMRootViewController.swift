@@ -22,11 +22,11 @@ class RMRootViewController: PFSViewController, RMRootViewAction {
         self.viewModel = RMRootViewModel(action: self, domain: RMLoginDomain())
         
         self.viewModel?.navigationTo().drive(onNext: {[weak self] success in
-//            if success {
+            if success {
                 self?.performSegue(withIdentifier: "toMain", sender: nil)
-//            }else {
-//                self?.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
-//            }
+            }else {
+                self?.perform(segue: StoryboardSegue.Main.toLogin, sender: nil)
+            }
         }).disposed(by: disposeBag)
     }
 

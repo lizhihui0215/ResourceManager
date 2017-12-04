@@ -39,7 +39,7 @@ class RMCabinetDetailViewModel: PFSViewModel<RMCabinetDetailViewController, RMCa
         cabinetLocation.asObservable().bind { cabinet.cabinetLocation = $0  }.addDisposableTo(disposeBag)
         capacity.asObservable().bind { cabinet.capacity = $0  }.addDisposableTo(disposeBag)
         let section = RMSection<RMDevice, Void>()
-        section.append(contentsOf: cabinet.devices?.toArray() ?? [])
+        section.append(contentsOf: cabinet.devices.toArray())
         datasource.append(section)
     }
 

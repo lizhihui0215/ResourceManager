@@ -12,33 +12,33 @@ import ObjectMapper_Realm
 import PCCWFoundationSwift
 
 class RMLink: PFSModel {
-    @objc dynamic var linkCode: String?
-    @objc dynamic var linkName: String?
-    @objc dynamic var customerName: String?
-    @objc dynamic var barcode: String?
-    @objc dynamic var linkRate: String?
-    @objc dynamic var customerLevel: String?
-    @objc dynamic var serviceLevel: String?
-    @objc dynamic var pictures: String?
-    @objc dynamic var accessDeviceName: String?
-    @objc dynamic var accessDevicePort: String?
-    @objc dynamic var accessDeviceUpTime: String?
-    @objc dynamic var localODFName: String?
-    @objc dynamic var localODFID: String?
-    @objc dynamic var localODFPort: String?
-    @objc dynamic var farendDeviceName: String?
-    @objc dynamic var farendDevicePort: String?
-    @objc dynamic var farendODFName: String?
-    @objc dynamic var farendODFID: String?
-    @objc dynamic var farendODFPort: String?
-    @objc dynamic var farendDeviceId: String?
-    @objc dynamic var accessDeviceId: String?
-    @objc dynamic var farendDevicePortType: String?
-    @objc dynamic var accessDevicePortType: String?
-    @objc dynamic var businessType: String?
-    @objc dynamic var linkId: String?
-    @objc dynamic var orderNo: String?
-    @objc dynamic var billingNo: String?
+    @objc dynamic var linkCode: String? = nil
+    @objc dynamic var linkName: String? = nil
+    @objc dynamic var customerName: String? = nil
+    @objc dynamic var barcode: String? = nil
+    @objc dynamic var linkRate: String? = nil
+    @objc dynamic var customerLevel: String? = nil
+    @objc dynamic var serviceLevel: String? = nil
+    @objc dynamic var pictures: String? = nil
+    @objc dynamic var accessDeviceName: String? = nil
+    @objc dynamic var accessDevicePort: String? = nil
+    @objc dynamic var accessDeviceUpTime: String? = nil
+    @objc dynamic var localODFName: String? = nil
+    @objc dynamic var localODFID: String? = nil
+    @objc dynamic var localODFPort: String? = nil
+    @objc dynamic var farendDeviceName: String? = nil
+    @objc dynamic var farendDevicePort: String? = nil
+    @objc dynamic var farendODFName: String? = nil
+    @objc dynamic var farendODFID: String? = nil
+    @objc dynamic var farendODFPort: String? = nil
+    @objc dynamic var farendDeviceId: String? = nil
+    @objc dynamic var accessDeviceId: String? = nil
+    @objc dynamic var farendDevicePortType: String? = nil
+    @objc dynamic var accessDevicePortType: String? = nil
+    @objc dynamic var businessType: String? = nil
+    @objc dynamic var linkId: String? = nil
+    @objc dynamic var orderNo: String? = nil
+    @objc dynamic var billingNo: String? = nil
 
     required convenience init?(map: Map) {
         self.init()

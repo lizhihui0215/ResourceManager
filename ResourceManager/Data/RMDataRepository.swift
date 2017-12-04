@@ -34,7 +34,20 @@ class RMDataRepository:  PFSDataRepository{
             }
         }
     }
-    
+
+    func offlineData() -> Driver<Result<[RMCabinet], MoyaError>> {
+        let result: Single<PFSResponseMappableArray<RMCabinet>> = PFSNetworkService<RMAPITarget>.shared.request(.offlineData((self.user?.accessToken)!, "0"))
+
+        return self.handlerError(response: result).map { result  in
+            switch result {
+            case .success(let cabinets):
+                return Result(value: cabinets)
+            case .failure(let error):
+                return Result(error: error)
+            }
+        }
+    }
+
     func link(deviceCode: String) -> Driver<Result<[RMLink], MoyaError>> {
         let resukt: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.link((self.user?.accessToken)!, deviceCode))
         

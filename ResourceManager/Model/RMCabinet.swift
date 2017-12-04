@@ -12,14 +12,14 @@ import ObjectMapper_Realm
 import PCCWFoundationSwift
 
 class RMCabinet: PFSModel {
-    @objc dynamic var cabinetCode: String?
+    @objc dynamic var cabinetCode: String? = nil
 //    dynamic var cabinetName: String?
-    @objc dynamic var cabinetLocation: String?
-    @objc dynamic var capacity: String?
-    @objc dynamic var cabinetRoom: String?
-    @objc dynamic var cabinetId: String?
+    @objc dynamic var cabinetLocation: String? = nil
+    @objc dynamic var capacity: String? = nil
+    @objc dynamic var cabinetRoom: String? = nil
+    @objc dynamic var cabinetId: String? = nil
     
-    var devices: List<RMDevice>?
+    var devices: List<RMDevice> = List<RMDevice>()
     
     required convenience init?(map: Map) {
         self.init()

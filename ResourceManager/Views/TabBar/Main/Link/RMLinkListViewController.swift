@@ -30,7 +30,7 @@ extension RMLinkListViewController: RMLinkDetailViewControllerDelegate {
 
 class RMLinkListViewController: PFSTableViewController, RMLinkListAction, UITableViewDataSource {
 
-    var viewModel: RMLinkListViewModel?
+    var viewModel: RMLinkListViewModel!
     
     @IBAction func printButtonPressed(_ sender: UIButton) {
         
@@ -55,12 +55,9 @@ class RMLinkListViewController: PFSTableViewController, RMLinkListAction, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = self.viewModel.isModify ? "电路修改" : "电路查询"
         
-        if let isModify = self.viewModel?.isModify, isModify {
-            self.navigationItem.title = isModify ? "电路修改" : "电路查询"
-        }
-        
-        if !self.viewModel?.linkCode.value.hasPrefix("a`") {
+        if self.viewModel.linkCode.value.hasPrefix("a`") {
             self.tableView.headerRefresh(enable: true, target: self)
             
             self.tableView.footerRefresh(enable: true, target: self)

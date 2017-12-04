@@ -92,11 +92,11 @@ class RMInspectListViewController: PFSTableViewController,UITableViewDataSource,
             
             let inspect = viewModel.elementAt(indexPath: indexPath!)
             
-            guard let pictures = inspect.pictures  else {
-                return false
-            }
+//            guard let pictures = inspect.pictures  else {
+//                return false
+//            }
             
-            return !pictures.isEmpty
+            return inspect.pictures.isEmpty
         }
         
         return false
@@ -114,7 +114,7 @@ class RMInspectListViewController: PFSTableViewController,UITableViewDataSource,
             
             let inspect = viewModel.elementAt(indexPath: indexPath!)
             
-            let viewModel = RMInspectPhotoViewModel(action: inspectViewController, pictures: (inspect.pictures?.toArray())!, caption: inspect.reportContent)
+            let viewModel = RMInspectPhotoViewModel(action: inspectViewController, pictures: inspect.pictures.toArray(), caption: inspect.reportContent)
             inspectViewController.viewModel = viewModel
         }
     }

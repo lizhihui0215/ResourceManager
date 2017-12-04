@@ -18,8 +18,15 @@ class RMLoginDomain: PFSDomain {
         guard let lastUsername = PFSDomain.lastUserName() else {
             return Driver.just(Result(error: error(message: "没有登录用户！")))
         }
-        let user: RMUser = PFSRealm.shared.object("loginName = %@", lastUsername) as! RMUser
-        return Driver.just(Result(value: user))
+        let user: RMUser? = PFSRealm.shared.object("loginName = %@", "admin")
+        
+        let c: RMUser? = PFSRealm.shared.object()
+        
+        guard let loginUser = user else {
+            return Driver.just(Result(error: error(message: "没有登录用户！")))
+        }
+        
+        return Driver.just(Result(value: loginUser))
     }
     
     func sigin(username: String, password: String) -> Driver<Result<RMUser, MoyaError>> {

@@ -60,8 +60,11 @@ extension RMPersonalCenterViewController: UICollectionViewDelegate{
         
         let identifier = self.viewModel?.elementAt(indexPath: indexPath).idenfitier()
         
-        self.performSegue(withIdentifier: identifier!, sender: indexPath)
-        
+        if identifier == "updateOfflineData" {
+            self.updateOfflineData()
+        }else {
+            self.performSegue(withIdentifier: identifier!, sender: indexPath)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -83,7 +86,7 @@ extension RMPersonalCenterViewController: RMPersonalCenterViewAction {
 
 class RMPersonalCenterViewController: PFSViewController {
 
-    var viewModel: RMPersonalCenterViewModel?
+    var viewModel: RMPersonalCenterViewModel!
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -118,7 +121,9 @@ class RMPersonalCenterViewController: PFSViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func updateOfflineData()  {
+        self.viewModel.updateOfflineData().drive()
+    }
     
     // MARK: - Navigation
 

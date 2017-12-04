@@ -27,6 +27,13 @@ class RMPersonalCenterDomain: PFSDomain {
         return RMDataRepository.shared.suggest(name: name, phone: phone, detail: detail)
         
     }
-    
 
+
+    func updateOfflineData() -> Driver<Result<Bool, MoyaError>> {
+        let result = RMDataRepository.shared.offlineData()
+        return result.map { result  in
+            print(result)
+            return Result(value: true)
+        }
+    }
 }
