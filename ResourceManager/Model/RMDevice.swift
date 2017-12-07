@@ -22,7 +22,7 @@ class RMDevice: PFSModel {
     @objc dynamic var deviceType: String? = nil
     @objc dynamic var deviceProducer: String? = nil
     @objc dynamic var deviceModel: String? = nil
-
+    var ports: List<RMPort> = List<RMPort>()
     
     required convenience init?(map: Map) {
         self.init()
@@ -40,6 +40,6 @@ class RMDevice: PFSModel {
         deviceType <- map["deviceType"]
         deviceProducer <- map["deviceProducer"]
         deviceModel <- map["deviceModel"]
-
+        ports <- (map["ports"], ListTransform<RMPort>())
     }
 }

@@ -18,9 +18,7 @@ class RMLoginDomain: PFSDomain {
         guard let lastUsername = PFSDomain.lastUserName() else {
             return Driver.just(Result(error: error(message: "没有登录用户！")))
         }
-        let user: RMUser? = PFSRealm.shared.object("loginName = %@", "admin")
-        
-        let c: RMUser? = PFSRealm.shared.object()
+        let user: RMUser? = PFSRealm.shared.object("loginName = %@", lastUsername)
         
         guard let loginUser = user else {
             return Driver.just(Result(error: error(message: "没有登录用户！")))

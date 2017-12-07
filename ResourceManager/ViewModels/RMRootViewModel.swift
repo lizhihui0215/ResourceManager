@@ -21,7 +21,7 @@ class RMRootViewModel: PFSViewModel<RMRootViewController, RMLoginDomain> {
         self.action?.animation.value = true
         return self.domain.user().flatMapLatest { result  in
             guard let user = try? result.dematerialize() else { return Driver.just(false) }
-            return self.domain.sigin(username: user.loginName!, password: user.password!).map{ $0.value == nil }
+            return self.domain.sigin(username: user.loginName!, password: user.password!).map{ $0.value != nil }
         }
 //        return self.domain.sigin(username: "admin", password: "1234").flatMapLatest{ result  in
 //            self.action?.animation.value = false

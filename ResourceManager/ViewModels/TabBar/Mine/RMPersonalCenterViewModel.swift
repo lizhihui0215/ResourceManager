@@ -101,7 +101,7 @@ class RMPersonalCenterViewModel: PFSViewModel<RMPersonalCenterViewController, RM
                 }).flatMapLatest { result in
                     return self.action!.alert(result: result)
                 }.flatMapLatest { _ in
-                    return self.action!.alert(message: "修改成功！", success: true)
+                    return self.action!.alert(message: "更新成功！", success: true)
                 }
     }
     

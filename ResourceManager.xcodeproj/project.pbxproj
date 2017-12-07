@@ -86,6 +86,7 @@
 		26EFFA421F715927008263DC /* RMLocationDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFFA411F715927008263DC /* RMLocationDomain.swift */; };
 		26F798A31F570940009E6382 /* RMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A21F570940009E6382 /* RMLoginViewController.swift */; };
 		26F798A51F57130F009E6382 /* RMResourceManagerDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */; };
+		26FA48861FD6F20100D684FA /* RMPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA48851FD6F20100D684FA /* RMPort.swift */; };
 		4B5C81E8B2D7183079E442A5 /* Pods_ResourceManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B487386A116A714DD9113FBA /* Pods_ResourceManagerUITests.framework */; };
 		5B8750E3484AF83BD9FF2DEA /* RMCabinetDeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B62AE80F8ABA7DA0907 /* RMCabinetDeviceDetailViewController.swift */; };
 		5B8751C5BFFC6A5624DC00E8 /* RMSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8757F1CCF30DC9E3C2D53F /* RMSearchViewController.swift */; };
@@ -226,6 +227,7 @@
 		26EFFA411F715927008263DC /* RMLocationDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocationDomain.swift; sourceTree = "<group>"; };
 		26F798A21F570940009E6382 /* RMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLoginViewController.swift; sourceTree = "<group>"; };
 		26F798A41F57130F009E6382 /* RMResourceManagerDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMResourceManagerDomain.swift; sourceTree = "<group>"; };
+		26FA48851FD6F20100D684FA /* RMPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPort.swift; sourceTree = "<group>"; };
 		5B8750DEC95FB7871BFE6B9D /* RMTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTabBarViewController.swift; sourceTree = "<group>"; };
 		5B87526D5C67C89A7D2D6351 /* RMSuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSuggestViewController.swift; sourceTree = "<group>"; };
 		5B8753317D77F462A62BD6F3 /* RMDeviceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDeviceDetailViewController.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				269C8CAF1E8FB33B0049970E /* RMLink.swift */,
 				267641801E9B5647000EFB23 /* RMCabinet.swift */,
 				267641821E9B5696000EFB23 /* RMDevice.swift */,
+				26FA48851FD6F20100D684FA /* RMPort.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1094,6 +1097,7 @@
 				266597821E95D7AB0035D344 /* RMLinkSearchViewModel.swift in Sources */,
 				260E96FE1EC60FF90040DBF8 /* RMDeviceModifyViewModel.swift in Sources */,
 				264D89FC1EA33FC4002B2A44 /* RMPersonalCenterViewModel.swift in Sources */,
+				26FA48861FD6F20100D684FA /* RMPort.swift in Sources */,
 				268B423C1E8F471200ADAC83 /* RMListViewModel.swift in Sources */,
 				260C10A01E8A6F1800011A8E /* RMDataRepository.swift in Sources */,
 				267035461E9F5D4D0049F0CC /* RMUploadScanViewModel.swift in Sources */,

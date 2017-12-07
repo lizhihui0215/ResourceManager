@@ -12,15 +12,19 @@ import Result
 import Moya
 import RealmSwift
 import PCCWFoundationSwift
+import class Alamofire.NetworkReachabilityManager
 
 class RMDataRepository:  PFSDataRepository{
+    let networkReachabilityManager = NetworkReachabilityManager()!
+
     static let shared = RMDataRepository()
-    
+
     var user: RMUser? {
         get {
             return PFSDomain.login()
         }
     }
+
 
     func sigin(username: String, password: String) -> Driver<Result<RMUser, MoyaError>> {
         let result: Single<PFSResponseMappableObject<RMUser>> = PFSNetworkService<RMAPITarget>.shared.request(.login(username, password))
@@ -102,16 +106,23 @@ class RMDataRepository:  PFSDataRepository{
 
     
     func cabinetList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Driver<Result<[RMCabinet], MoyaError>> {
-        let resukt: Single<PFSResponseMappableArray<RMCabinet>> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetList((self.user?.accessToken)!, account, customerName, linkCode, page, size))
-        
-        return self.handlerError(response: resukt).map({ result in
-            switch result {
-            case .success(let links):
-                return Result(value: links)
-            case .failure(let error):
-                return Result(error: error)
-            }
-        })
+
+        if networkReachabilityManager.isReachable {
+            let resukt: Single<PFSResponseMappableArray<RMCabinet>> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetList((self.user?.accessToken)!, account, customerName, linkCode, page, size))
+
+            return self.handlerError(response: resukt).map({ result in
+                switch result {
+                case .success(let links):
+                    return Result(value: links)
+                case .failure(let error):
+                    return Result(error: error)
+                }
+            })
+        }
+
+        var cabinets: [RMCabinet] = PFSRealm.shared.objects(offset: page, limit: size, predicateFormat: "cabinetCode CONTAINS %@", account)
+
+        return Driver.just(Result(value: cabinets))
     }
 
     func ports(deviceCode: String) -> Driver<Result<[String], MoyaError>> {
