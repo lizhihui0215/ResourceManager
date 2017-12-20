@@ -96,75 +96,110 @@ class RMLinkDetailViewModel: PFSViewModel<RMLinkDetailViewController, RMLinkDeta
         businessType = Variable(link.businessType ?? "")
         super.init(action: action, domain: RMLinkDetailDomain())
         
-        accessDevicePortType.asObservable().bind {
-            link.accessDevicePortType = $0
+        accessDevicePortType.asObservable().bind { accessDevicePortType in
+            try? PFSRealm.realm.write {
+                link.accessDevicePortType = accessDevicePortType
+            }
+        }.addDisposableTo(disposeBag)
+        
+        farendDevicePortType.asObservable().bind { farendDevicePortType in
+            try? PFSRealm.realm.write {
+                link.farendDevicePortType = farendDevicePortType
+            }
+
+        }.addDisposableTo(disposeBag)
+        
+        businessType.asObservable().bind { businessType in
+            try? PFSRealm.realm.write {
+                link.businessType = businessType
+            }
+        }.addDisposableTo(disposeBag)
+        
+        
+        serviceLevel.asObservable().bind { serviceLevel in
+            try? PFSRealm.realm.write {
+                link.serviceLevel = serviceLevel
+            }
+
             }.addDisposableTo(disposeBag)
         
-        farendDevicePortType.asObservable().bind {
-            link.farendDevicePortType = $0
-            }.addDisposableTo(disposeBag)
+        farendDeviceId.asObservable().bind { farendDeviceId in
+            try? PFSRealm.realm.write {
+                link.farendDeviceId = farendDeviceId
+            }
+        }.addDisposableTo(disposeBag)
         
-        businessType.asObservable().bind {
-            link.businessType = $0
-            }.addDisposableTo(disposeBag)
-        
-        
-        serviceLevel.asObservable().bind {
-            link.serviceLevel = $0
-            }.addDisposableTo(disposeBag)
-        
-        farendDeviceId.asObservable().bind {
-            link.farendDeviceId = $0
-            }.addDisposableTo(disposeBag)
-        
-        accessDeviceId.asObservable().bind {
-            link.accessDeviceId = $0
-            }.addDisposableTo(disposeBag)
+        accessDeviceId.asObservable().bind { accessDeviceId in
+            try? PFSRealm.realm.write {
+                link.accessDeviceId = accessDeviceId
+            }
+        }.addDisposableTo(disposeBag)
         
         account.asObservable().bind { account in
-            link.linkName = account
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.linkName = account
+            }
+        }.addDisposableTo(disposeBag)
         
         linkRate.asObservable().bind { linkRate in
-            link.linkRate = linkRate
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.linkRate = linkRate
+            }
+        }.addDisposableTo(disposeBag)
         
         linkCode.asObservable().bind { linkCode in
-            link.linkCode = linkCode
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.linkCode = linkCode
+            }
+        }.addDisposableTo(disposeBag)
         
         customerName.asObservable().bind { customerName in
-            link.customerName = customerName
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.customerName = customerName
+            }
+        }.addDisposableTo(disposeBag)
         
         customerLevel.asObservable().bind { customerLevel in
-            link.customerLevel = customerLevel
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.customerLevel = customerLevel
+            }
+        }.addDisposableTo(disposeBag)
         
         farendDeviceName.asObservable().bind { farendDeviceName in
-            link.farendDeviceName = farendDeviceName
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.farendDeviceName = farendDeviceName
+            }
+        }.addDisposableTo(disposeBag)
         
         farendDevicePort.asObservable().bind { farendDevicePort in
-            link.farendDevicePort = farendDevicePort
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.farendDevicePort = farendDevicePort
+            }
+        }.addDisposableTo(disposeBag)
         
         accessDevicePort.asObservable().bind { accessDevicePort in
-            link.accessDevicePort = accessDevicePort
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.accessDevicePort = accessDevicePort
+            }
+        }.addDisposableTo(disposeBag)
         
         accessDeviceName.asObservable().bind { accessDeviceName in
-            link.accessDeviceName = accessDeviceName
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.accessDeviceName = accessDeviceName
+            }
+        }.addDisposableTo(disposeBag)
         
         orderNo.asObservable().bind { orderNo in
-            link.orderNo = orderNo
-            }.addDisposableTo(disposeBag)
+            try? PFSRealm.realm.write {
+                link.orderNo = orderNo
+            }
+        }.addDisposableTo(disposeBag)
         
         billingNo.asObservable().bind { billingNo in
-            link.billingNo = billingNo
-            }.addDisposableTo(disposeBag)
-        
+            try? PFSRealm.realm.write {
+                link.billingNo = billingNo
+            }
+        }.addDisposableTo(disposeBag)
     }
     
     func freePort(isAccess: Bool) -> Driver<[String]> {

@@ -11,7 +11,7 @@ import RealmSwift
 import ObjectMapper_Realm
 import PCCWFoundationSwift
 
-class RMPort: PFSModel {
+class RMPort: RMModel, NSCopying {
     @objc dynamic var portType: String? = nil
     //    dynamic var deviceName: String?
     @objc dynamic var deviceCode: String? = nil
@@ -29,5 +29,14 @@ class RMPort: PFSModel {
         portType <- map["portType"]
         portName <- map["portName"]
         links <- (map["links"], ListTransform<RMLink>())
+    }
+    func copy(with zone: NSZone? = nil) -> Any {
+        var JSONString: String?
+        try? PFSRealm.realm.write {
+            JSONString = self.toJSONString()
+        }
+        let copy = RMPort(JSONString: JSONString ?? "")
+        copy?.uuid = self.uuid
+        return copy ?? RMPort()
     }
 }

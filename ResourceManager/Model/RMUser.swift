@@ -12,7 +12,7 @@ import RealmSwift
 import ObjectMapper_Realm
 import PCCWFoundationSwift
 
-public class RMUser: PFSModel {
+public class RMUser: RMModel, NSCopying {
     @objc dynamic var nickname: String? = nil
     @objc dynamic var password: String? = nil
     @objc dynamic var loginName: String? = nil
@@ -21,6 +21,7 @@ public class RMUser: PFSModel {
     @objc dynamic var mobile: String? = nil
     @objc dynamic var sex: String? = nil
     @objc dynamic var accessToken: String? = nil
+    @objc dynamic var isLogin: Bool = false
 
     public required convenience init?(map: Map) {
         self.init()
@@ -38,5 +39,13 @@ public class RMUser: PFSModel {
         accessToken <- map["accessToken"]
         password <- map["password"]
     }
-
+    public func copy(with zone: NSZone? = nil) -> Any {
+        var JSONString: String?
+        try? PFSRealm.realm.write {
+            JSONString = self.toJSONString()
+        }
+        let copy = RMUser(JSONString: JSONString ?? "")
+        copy?.uuid = self.uuid
+        return copy ?? RMUser()
+    }
 }

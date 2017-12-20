@@ -27,16 +27,30 @@ class RMDataRepository:  PFSDataRepository{
 
 
     func sigin(username: String, password: String) -> Driver<Result<RMUser, MoyaError>> {
-        let result: Single<PFSResponseMappableObject<RMUser>> = PFSNetworkService<RMAPITarget>.shared.request(.login(username, password))
-
-        return self.handlerError(response: result).map { result in
-            switch result {
-            case .success(let user):
-                return Result(value: user)
-            case.failure(let error) :
-                return Result(error: error)
+        if networkReachabilityManager.isReachable {
+            let result: Single<PFSResponseMappableObject<RMUser>> = PFSNetworkService<RMAPITarget>.shared.request(.login(username, password))
+            
+            return self.handlerError(response: result).map { result in
+                switch result {
+                case .success(let user):
+                    return Result(value: user)
+                case.failure(let error) :
+                    return Result(error: error)
+                }
             }
         }
+        
+        let user: RMUser? = PFSRealm.shared.object("loginName = %@", username)
+        
+        guard let theUser = user else {
+            return Driver.just(Result(error: error(message: "用户不存在！")))
+        }
+        
+        guard theUser.password == password else {
+            return Driver.just(Result(error: error(message: "密码不正确！")))
+        }
+        
+        return Driver.just(Result(value: theUser))
     }
 
     func offlineData() -> Driver<Result<[RMCabinet], MoyaError>> {
@@ -53,29 +67,50 @@ class RMDataRepository:  PFSDataRepository{
     }
 
     func link(deviceCode: String) -> Driver<Result<[RMLink], MoyaError>> {
-        let resukt: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.link((self.user?.accessToken)!, deviceCode))
+        if networkReachabilityManager.isReachable {
+            let resukt: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.link((self.user?.accessToken)!, deviceCode))
+            return self.handlerError(response: resukt).map({ result in
+                switch result {
+                case .success(let links):
+                    return Result(value: links)
+                case .failure(let error):
+                    return Result(error: error)
+                }
+            })
+        }
         
-        return self.handlerError(response: resukt).map({ result in
-            switch result {
-            case .success(let links):
-                return Result(value: links)
-            case .failure(let error):
-                return Result(error: error)
-            }
-        })
+        let ports: [RMPort] = PFSRealm.shared.objects(offset: nil, limit: nil, predicateFormat: "deviceCode = %@", deviceCode)
+        
+        var links = [RMLink]()
+        
+        for port in ports {
+            let linksOfPort = port.links.toArray()
+            
+            links.append(contentsOf: linksOfPort)
+            
+        }
+        
+        return Driver.just(Result(value: links))
     }
     
     func linkList(account: String, customerName: String, linkCode: String, page: Int, size: Int) -> Driver<Result<[RMLink], MoyaError>> {
-        let resukt: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.linkList((self.user?.accessToken)!, account, customerName, linkCode, page, size))
         
-        return self.handlerError(response: resukt).map({ result in
-            switch result {
-            case .success(let links):
-                return Result(value: links)
-            case .failure(let error):
-                return Result(error: error)
-            }
-        })
+        if networkReachabilityManager.isReachable {
+            let resukt: Single<PFSResponseMappableArray<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.linkList((self.user?.accessToken)!, account, customerName, linkCode, page, size))
+            
+            return self.handlerError(response: resukt).map({ result in
+                switch result {
+                case .success(let links):
+                    return Result(value: links)
+                case .failure(let error):
+                    return Result(error: error)
+                }
+            })
+        }
+        
+        let links: [RMLink] = PFSRealm.shared.objects(offset: page, limit: size, predicateFormat: "linkCode CONTAINS %@ OR linkName CONTAINS %@ OR customerName CONTAINS %@", linkCode, account, customerName)
+
+        return Driver.just(Result(value: links))
     }
     
     func inspectList(page: Int, size: Int) -> Driver<Result<[RMInspect], MoyaError>> {
@@ -92,16 +127,24 @@ class RMDataRepository:  PFSDataRepository{
     }
     
     func deviceList(deviceCode: String, deviceName: String, page: Int, size: Int) -> Driver<Result<[RMDevice], MoyaError>> {
-        let resukt: Single<PFSResponseMappableArray<RMDevice>> = PFSNetworkService<RMAPITarget>.shared.request(.deviceList((self.user?.accessToken)!, deviceCode, deviceName, page, size))
+        if networkReachabilityManager.isReachable {
+            let resukt: Single<PFSResponseMappableArray<RMDevice>> = PFSNetworkService<RMAPITarget>.shared.request(.deviceList((self.user?.accessToken)!, deviceCode, deviceName, page, size))
+            
+            return self.handlerError(response: resukt).map({ result in
+                switch result {
+                case .success(let links):
+                    return Result(value: links)
+                case .failure(let error):
+                    return Result(error: error)
+                }
+            })
+        }
         
-        return self.handlerError(response: resukt).map({ result in
-            switch result {
-            case .success(let links):
-                return Result(value: links)
-            case .failure(let error):
-                return Result(error: error)
-            }
-        })
+        let devices: [RMDevice] = PFSRealm.shared.objects(offset: page, limit: size, predicateFormat: "deviceCode CONTAINS %@", deviceCode)
+        
+        return Driver.just(Result(value: devices))
+        
+        
     }
 
     
@@ -120,7 +163,7 @@ class RMDataRepository:  PFSDataRepository{
             })
         }
 
-        var cabinets: [RMCabinet] = PFSRealm.shared.objects(offset: page, limit: size, predicateFormat: "cabinetCode CONTAINS %@", account)
+        let cabinets: [RMCabinet] = PFSRealm.shared.objects(offset: page, limit: size, predicateFormat: "cabinetCode CONTAINS %@", account)
 
         return Driver.just(Result(value: cabinets))
     }
@@ -138,16 +181,26 @@ class RMDataRepository:  PFSDataRepository{
     }
     
     func link(linkCode: String) -> Driver<Result<RMLink, MoyaError>> {
-        let result: Single<PFSResponseMappableObject<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.linkDetail((self.user?.accessToken)!, linkCode))
-        
-        return self.handlerError(response: result).map{ result in
-            switch result {
-            case.success(let link):
-                return Result(value: link)
-            case.failure(let error):
-                return Result(error: error)
+        if networkReachabilityManager.isReachable {
+            let result: Single<PFSResponseMappableObject<RMLink>> = PFSNetworkService<RMAPITarget>.shared.request(.linkDetail((self.user?.accessToken)!, linkCode))
+            
+            return self.handlerError(response: result).map{ result in
+                switch result {
+                case.success(let link):
+                    return Result(value: link)
+                case.failure(let error):
+                    return Result(error: error)
+                }
             }
         }
+        
+        let link: RMLink? = PFSRealm.shared.object("linkId = %@", linkCode)
+        
+        guard let theLink = link else {
+            return Driver.just(Result(error: error(message: "查询无结果")))
+        }
+        
+        return Driver.just(Result(value: theLink))
     }
     
     func portLinks(code: String) -> Driver<Result<[RMLink], MoyaError>> {
@@ -190,7 +243,12 @@ class RMDataRepository:  PFSDataRepository{
     }
     
     func linkModify(link: RMLink) -> Driver<Result<String, MoyaError>> {
-        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.linkModify((self.user?.accessToken)!, link.toJSON()))
+        var json: [String : Any]!
+        try? PFSRealm.realm.write {
+            json = link.toJSON()
+        }
+
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.linkModify((self.user?.accessToken)!, json))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -203,7 +261,12 @@ class RMDataRepository:  PFSDataRepository{
     }
 
     func modifyCabinet(cabinet: RMCabinet) -> Driver<Result<String, MoyaError>> {
-        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetModify((self.user?.accessToken)!, cabinet.toJSON()))
+        var json: [String : Any]!
+        try? PFSRealm.realm.write {
+            json = cabinet.toJSON()
+        }
+        
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetModify((self.user?.accessToken)!, json))
 
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -216,7 +279,12 @@ class RMDataRepository:  PFSDataRepository{
     }
     
     func modifyDevice(device: RMDevice) -> Driver<Result<String, MoyaError>> {
-        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.deviceModify((self.user?.accessToken)!, device.toJSON()))
+        var json: [String : Any]!
+        try? PFSRealm.realm.write {
+           json = device.toJSON()
+        }
+        
+        let result: Single<PFSResponseNil> = PFSNetworkService<RMAPITarget>.shared.request(.deviceModify((self.user?.accessToken)!, json))
         
         return self.handlerError(response: result).map{ result in
             switch result {
@@ -242,29 +310,51 @@ class RMDataRepository:  PFSDataRepository{
     }
     
     func device(deviceCode: String) -> Driver<Result<RMDevice, MoyaError>> {
-        let result: Single<PFSResponseMappableObject<RMDevice>> = PFSNetworkService<RMAPITarget>.shared.request(.deviceDetail((self.user?.accessToken)!, deviceCode))
         
-        return self.handlerError(response: result).map{ result in
-            switch result {
-            case.success(let device):
-                return Result(value: device)
-            case.failure(let error):
-                return Result(error: error)
+        
+        if networkReachabilityManager.isReachable {
+            let result: Single<PFSResponseMappableObject<RMDevice>> = PFSNetworkService<RMAPITarget>.shared.request(.deviceDetail((self.user?.accessToken)!, deviceCode))
+            
+            return self.handlerError(response: result).map{ result in
+                switch result {
+                case.success(let device):
+                    return Result(value: device)
+                case.failure(let error):
+                    return Result(error: error)
+                }
             }
         }
+        
+        let device: RMDevice? = PFSRealm.shared.object("deviceCode = %@", deviceCode)
+        
+        guard let theDevice = device else {
+            return Driver.just(Result(error: error(message: "查询无结果")))
+        }
+        
+        return Driver.just(Result(value: theDevice))
     }
     
     func cabinet(cabinetId: String) -> Driver<Result<RMCabinet, MoyaError>> {
-        let result: Single<PFSResponseMappableObject<RMCabinet>> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetDetail((self.user?.accessToken)!, cabinetId))
-        
-        return self.handlerError(response: result).map{ result in
-            switch result {
-            case.success(let link):
-                return Result(value: link)
-            case.failure(let error):
-                return Result(error: error)
+        if networkReachabilityManager.isReachable {
+            let result: Single<PFSResponseMappableObject<RMCabinet>> = PFSNetworkService<RMAPITarget>.shared.request(.cabinetDetail((self.user?.accessToken)!, cabinetId))
+            
+            return self.handlerError(response: result).map{ result in
+                switch result {
+                case.success(let link):
+                    return Result(value: link)
+                case.failure(let error):
+                    return Result(error: error)
+                }
             }
         }
+        
+        let cabinet: RMCabinet? = PFSRealm.shared.object("cabinetId = %@", cabinetId)
+        
+        guard let theCabinet = cabinet else {
+            return Driver.just(Result(error: error(message: "查询无结果")))
+        }
+        
+        return Driver.just(Result(value: theCabinet))
     }
    
 }

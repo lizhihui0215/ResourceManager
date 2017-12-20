@@ -97,11 +97,11 @@ class RMPersonalCenterViewController: PFSViewController {
         super.viewDidLoad()
         self.viewModel = RMPersonalCenterViewModel(action: self)
         
-        self.viewModel?.loginUser().drive(onNext: {[weak self] _ in
+        self.viewModel.loginUser().drive(onNext: {[weak self] _ in
             if let viewModel = self?.viewModel {
-                self?.phoneLabel.text = viewModel.user?.mobile
-                self?.accountLabel.text = viewModel.user?.loginName
-                if let avatar = viewModel.user?.avatar {
+                self?.phoneLabel.text = viewModel.user.mobile
+                self?.accountLabel.text = viewModel.user.loginName
+                if let avatar = viewModel.user.avatar {
                     let url = URL(string: avatar)
                     self?.avatarImageView.kf.setImage(with: url)
                 }

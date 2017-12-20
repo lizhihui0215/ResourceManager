@@ -31,8 +31,30 @@ class RMLoginDomain: PFSDomain {
         return RMDataRepository.shared.sigin(username: username, password: password)
             .do(onNext: { result in
                 guard let user = try? result.dematerialize() else { return }
-                user.password = password
-                PFSRealm.shared.save(obj: user)
+                
+                PFSRealm.shared.update(obj: user, { theUser in
+                    user.password = password
+                    user.isLogin = true
+                })
+
+                let dbUser: RMUser? = PFSRealm.shared.object("loginName = %@", username)
+                
+                if let dbUser = dbUser {
+                    PFSRealm.shared.update(obj: dbUser, { theUser in
+                        theUser.nickname = user.nickname
+                        theUser.password = user.password
+                        theUser.loginName = user.loginName
+                        theUser.avatar = user.avatar
+                        theUser.name = user.name
+                        theUser.mobile = user.mobile
+                        theUser.sex = user.sex
+                        theUser.accessToken = user.accessToken
+                        theUser.isLogin = user.isLogin
+                    })
+                }else {
+                    PFSRealm.shared.update(obj: user)
+                }
+
                 PFSDomain.login(user: user)
                 PFSDomain.last(username: user.loginName)
             })

@@ -111,7 +111,8 @@ class RMDeviceListViewController: PFSTableViewController, RMDeviceListViewAction
             let deviceDetailViewController = segue.destination as! RMDeviceDetailViewController
             let device = viewModel?.elementAt(indexPath: sender as! IndexPath)
             
-            deviceDetailViewController.viewModel = RMDeviceModifyViewModel(action: deviceDetailViewController, device: device!)
+            let theDevice = device?.copy() as! RMDevice
+            deviceDetailViewController.viewModel = RMDeviceModifyViewModel(action: deviceDetailViewController, device: theDevice)
             
             deviceDetailViewController.delegate = self
         }

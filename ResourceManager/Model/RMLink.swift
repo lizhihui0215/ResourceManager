@@ -11,7 +11,8 @@ import RealmSwift
 import ObjectMapper_Realm
 import PCCWFoundationSwift
 
-class RMLink: PFSModel {
+class RMLink: RMModel, NSCopying {
+    
     @objc dynamic var linkCode: String? = nil
     @objc dynamic var linkName: String? = nil
     @objc dynamic var customerName: String? = nil
@@ -73,4 +74,16 @@ class RMLink: PFSModel {
         businessType <- map["businessType"]
         linkId <- map["linkId"]
     }
+    func copy(with zone: NSZone? = nil) -> Any {
+        var JSONString: String?
+        try? PFSRealm.realm.write {
+            JSONString = self.toJSONString()
+        }
+        let copy = RMLink(JSONString: JSONString ?? "")
+        copy?.uuid = self.uuid
+        return copy ?? RMLink()
+    }
+    
 }
+
+

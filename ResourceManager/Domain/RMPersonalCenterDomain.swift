@@ -36,7 +36,10 @@ class RMPersonalCenterDomain: PFSDomain {
             guard let cabinet = try? result.dematerialize() else {
                 return Driver.just(Result(error: error(message: "更新失败！")) )
             }
-
+            try? PFSRealm.shared.deleteAll(typeOf: RMInspect.self)
+            try? PFSRealm.shared.deleteAll(typeOf: RMLink.self)
+            try? PFSRealm.shared.deleteAll(typeOf: RMDevice.self)
+            try? PFSRealm.shared.deleteAll(typeOf: RMPort.self)
             return self.save(cabinets: cabinet)
          }
     }

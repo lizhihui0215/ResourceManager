@@ -81,7 +81,7 @@ protocol RMPersonalCenterViewAction: PFSViewAction {
 class RMPersonalCenterViewModel: PFSViewModel<RMPersonalCenterViewController, RMPersonalCenterDomain>, RMListDataSource {
     var datasource: Array<RMSection<RMPersonalItem, Void>> = []
     
-    var user: RMUser?
+    var user: RMUser!
     
     init(action: RMPersonalCenterViewController) {
         let section: RMSection<RMPersonalItem, Void> = RMSection()
@@ -106,11 +106,18 @@ class RMPersonalCenterViewModel: PFSViewModel<RMPersonalCenterViewController, RM
     }
     
     func logout() {
-        try? PFSRealm.shared.clean()
+        PFSRealm.shared.update(obj: self.user) { user in
+            user.isLogin = false
+        }        
+//        try? PFSRealm.shared.delete(obj: user)
     }
     
     func loginUser() -> Driver<Bool> {
-        let flag = PFSDomain.login() != nil
-        return Driver.just(flag)
+        guard let user = PFSDomain.login() else {
+           return Driver.just(false)
+        }
+        
+        self.user = user
+        return Driver.just(true)
     }
 }

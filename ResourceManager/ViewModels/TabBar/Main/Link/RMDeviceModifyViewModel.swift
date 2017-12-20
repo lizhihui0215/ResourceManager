@@ -44,22 +44,40 @@ class RMDeviceModifyViewModel: PFSViewModel<RMDeviceDetailViewController, RMDevi
         self.deviceType.value = self.device.deviceType ?? ""
         self.deviceProducer.value = self.device.deviceProducer ?? ""
         self.deviceModel.value = self.device.deviceModel ?? ""
-
+        
         super.init(action: action, domain: RMDeviceModifyDomain())
-        deviceCode.asObservable().bind { device.deviceCode = $0  }.addDisposableTo(disposeBag)
+        deviceCode.asObservable().bind { deviceCode in
+                device.deviceCode = deviceCode
+        }.addDisposableTo(disposeBag)
 //        deviceName.asObservable().bind { device.deviceName = $0  }.addDisposableTo(disposeBag)
-        deviceLocation.asObservable().bind { device.deviceLocation = $0  }.addDisposableTo(disposeBag)
-        totalTerminals.asObservable().bind { device.totalTerminals = Int($0) ?? 0  }.addDisposableTo(disposeBag)
-        terminalOccupied.asObservable().bind { device.terminalOccupied = Int($0) ?? 0  }.addDisposableTo(disposeBag)
-        terminalFree.asObservable().bind { device.terminalFree = Int($0) ?? 0  }.addDisposableTo(disposeBag)
-        deviceDesc.asObservable().bind { device.deviceDesc = $0  }.addDisposableTo(disposeBag)
-        deviceType.asObservable().bind { device.deviceType = $0  }.addDisposableTo(disposeBag)
-        deviceProducer.asObservable().bind { device.deviceProducer = $0  }.addDisposableTo(disposeBag)
-        deviceModel.asObservable().bind { device.deviceModel = $0  }.addDisposableTo(disposeBag)
+        deviceLocation.asObservable().bind { deviceLocation in
+                device.deviceLocation = deviceLocation
+       }.addDisposableTo(disposeBag)
+        totalTerminals.asObservable().bind { totalTerminals in
+                device.totalTerminals = Int(totalTerminals) ?? 0
+        }.addDisposableTo(disposeBag)
+        terminalOccupied.asObservable().bind { terminalOccupied in
+                device.terminalOccupied = Int(terminalOccupied) ?? 0
+        }.addDisposableTo(disposeBag)
+        terminalFree.asObservable().bind { terminalFree in
+                device.terminalFree = Int(terminalFree) ?? 0
+        }.addDisposableTo(disposeBag)
+        deviceDesc.asObservable().bind { deviceDesc in
+                device.deviceDesc = deviceDesc
+        }.addDisposableTo(disposeBag)
+        deviceType.asObservable().bind { deviceType in
+                device.deviceType = deviceType
+        }.addDisposableTo(disposeBag)
+        deviceProducer.asObservable().bind { deviceProducer in
+                device.deviceProducer = deviceProducer
+        }.addDisposableTo(disposeBag)
+        deviceModel.asObservable().bind { deviceModel in
+                device.deviceModel = deviceModel
+        }.addDisposableTo(disposeBag)
 
     }
     
-    func commit() -> Driver<Bool> {        
+    func commit() -> Driver<Bool> {
         guard let totalTerminals = Int(totalTerminals.value) else {
             return self.action!.alert(message: "请输入正确的数字！", success: false)
         }
@@ -79,7 +97,8 @@ class RMDeviceModifyViewModel: PFSViewModel<RMDeviceDetailViewController, RMDevi
         if deviceModel.value.characters.count <= 0 {
             return self.action!.alert(message: "请输入设备型号", success: false)
         }
-        
+        PFSRealm.shared.update(obj: device)
+
         return self.domain.modifyDevice(device: device).flatMapLatest({ result  in
             return self.action!.alert(result: result)
         }).flatMapLatest({ _  in

@@ -11,7 +11,7 @@ import RealmSwift
 import ObjectMapper_Realm
 import PCCWFoundationSwift
 
-class RMPicture: PFSModel {
+class RMPicture: RMModel {
    @objc dynamic var thumbnail: String? = nil
    @objc dynamic var picUrl: String? = nil
     
@@ -26,7 +26,7 @@ class RMPicture: PFSModel {
     }
 }
 
-class RMInspect: PFSModel {
+class RMInspect: RMModel {
     @objc dynamic var reportID: String? = nil
     @objc dynamic var latitude: Float = 0.0
     @objc dynamic var longitude: Float = 0.0

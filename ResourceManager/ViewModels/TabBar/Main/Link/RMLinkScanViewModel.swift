@@ -28,7 +28,6 @@ class RMLinkScanViewModel: RMScanViewModel {
     func linkList(refresh: Bool, code: String) -> Driver<Bool> {
         return self.domain.linkList(account: "", customerName: "", linkCode: code, refresh: refresh)
             .do(onNext: { [weak self] result in
-                
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):
