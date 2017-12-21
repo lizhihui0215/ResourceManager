@@ -36,25 +36,17 @@ class RMCabinetDetailViewModel: PFSViewModel<RMCabinetDetailViewController, RMCa
         
         
         cabinetRoom.asObservable().bind { cabinetRoom in
-            try? PFSRealm.realm.write {
                 cabinet.cabinetRoom = cabinetRoom
-            }
         }.addDisposableTo(disposeBag)
         
         cabinetCode.asObservable().bind { cabinetCode in
-            try? PFSRealm.realm.write {
                 cabinet.cabinetCode = cabinetCode
-            }
         }.addDisposableTo(disposeBag)
         cabinetLocation.asObservable().bind { cabinetLocation in
-            try? PFSRealm.realm.write {
                 cabinet.cabinetLocation = cabinetLocation
-            }
         }.addDisposableTo(disposeBag)
         capacity.asObservable().bind { capacity in
-            try? PFSRealm.realm.write {
                 cabinet.capacity = capacity
-            }
         }.addDisposableTo(disposeBag)
         let section = RMSection<RMDevice, Void>()
         section.append(contentsOf: cabinet.devices.toArray())

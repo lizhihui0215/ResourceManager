@@ -100,7 +100,9 @@ class RMDevicePortDetailViewController: PFSTableViewController {
             let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
             let link = self.viewModel.elementAt(indexPath: indexPath!);
             let linkDetailViewController = segue.destination as! RMLinkDetailViewController
-            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link, action: linkDetailViewController)
+            let copyLink = link.copy() as! RMLink
+
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: copyLink, action: linkDetailViewController)
         }
     }
     

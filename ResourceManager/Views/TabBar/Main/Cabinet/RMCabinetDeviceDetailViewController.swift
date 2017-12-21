@@ -105,7 +105,9 @@ class RMCabinetDeviceDetailViewController: PFSViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "toLinkDetail" {
             let linkDetailViewController = segue.destination as! RMLinkDetailViewController
-            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: sender as! RMLink, action: linkDetailViewController)
+            let theLink = sender as! RMLink
+            let copyLink = theLink.copy() as! RMLink
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: copyLink, action: linkDetailViewController)
         }else if segue.identifier == "toLinkList" {
             let linkDetailViewController = segue.destination as! RMDevicePortDetailViewController
             linkDetailViewController.viewModel = RMDevicePortDetailViewModel(action: linkDetailViewController, port: sender as! RMDevicePort)

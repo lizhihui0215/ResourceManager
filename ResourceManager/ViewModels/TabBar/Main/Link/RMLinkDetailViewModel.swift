@@ -97,108 +97,73 @@ class RMLinkDetailViewModel: PFSViewModel<RMLinkDetailViewController, RMLinkDeta
         super.init(action: action, domain: RMLinkDetailDomain())
         
         accessDevicePortType.asObservable().bind { accessDevicePortType in
-            try? PFSRealm.realm.write {
                 link.accessDevicePortType = accessDevicePortType
-            }
         }.addDisposableTo(disposeBag)
         
         farendDevicePortType.asObservable().bind { farendDevicePortType in
-            try? PFSRealm.realm.write {
                 link.farendDevicePortType = farendDevicePortType
-            }
-
         }.addDisposableTo(disposeBag)
         
         businessType.asObservable().bind { businessType in
-            try? PFSRealm.realm.write {
                 link.businessType = businessType
-            }
         }.addDisposableTo(disposeBag)
         
         
         serviceLevel.asObservable().bind { serviceLevel in
-            try? PFSRealm.realm.write {
                 link.serviceLevel = serviceLevel
-            }
-
+            
             }.addDisposableTo(disposeBag)
         
         farendDeviceId.asObservable().bind { farendDeviceId in
-            try? PFSRealm.realm.write {
                 link.farendDeviceId = farendDeviceId
-            }
         }.addDisposableTo(disposeBag)
         
         accessDeviceId.asObservable().bind { accessDeviceId in
-            try? PFSRealm.realm.write {
                 link.accessDeviceId = accessDeviceId
-            }
         }.addDisposableTo(disposeBag)
         
         account.asObservable().bind { account in
-            try? PFSRealm.realm.write {
                 link.linkName = account
-            }
         }.addDisposableTo(disposeBag)
         
         linkRate.asObservable().bind { linkRate in
-            try? PFSRealm.realm.write {
                 link.linkRate = linkRate
-            }
         }.addDisposableTo(disposeBag)
         
         linkCode.asObservable().bind { linkCode in
-            try? PFSRealm.realm.write {
                 link.linkCode = linkCode
-            }
         }.addDisposableTo(disposeBag)
         
         customerName.asObservable().bind { customerName in
-            try? PFSRealm.realm.write {
                 link.customerName = customerName
-            }
         }.addDisposableTo(disposeBag)
         
         customerLevel.asObservable().bind { customerLevel in
-            try? PFSRealm.realm.write {
                 link.customerLevel = customerLevel
-            }
         }.addDisposableTo(disposeBag)
         
         farendDeviceName.asObservable().bind { farendDeviceName in
-            try? PFSRealm.realm.write {
                 link.farendDeviceName = farendDeviceName
-            }
         }.addDisposableTo(disposeBag)
         
         farendDevicePort.asObservable().bind { farendDevicePort in
-            try? PFSRealm.realm.write {
                 link.farendDevicePort = farendDevicePort
-            }
         }.addDisposableTo(disposeBag)
         
         accessDevicePort.asObservable().bind { accessDevicePort in
-            try? PFSRealm.realm.write {
                 link.accessDevicePort = accessDevicePort
-            }
         }.addDisposableTo(disposeBag)
         
         accessDeviceName.asObservable().bind { accessDeviceName in
-            try? PFSRealm.realm.write {
                 link.accessDeviceName = accessDeviceName
-            }
         }.addDisposableTo(disposeBag)
         
         orderNo.asObservable().bind { orderNo in
-            try? PFSRealm.realm.write {
                 link.orderNo = orderNo
-            }
         }.addDisposableTo(disposeBag)
         
         billingNo.asObservable().bind { billingNo in
-            try? PFSRealm.realm.write {
                 link.billingNo = billingNo
-            }
         }.addDisposableTo(disposeBag)
     }
     

@@ -118,8 +118,8 @@ class RMLinkListViewController: PFSTableViewController, RMLinkListAction, UITabl
             let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
             
             let link = viewModel.elementAt(indexPath: indexPath!)
-            
-            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: link, action: linkDetailViewController, isModify: viewModel.isModify)
+            let copyLink = link.copy() as! RMLink
+            linkDetailViewController.viewModel = RMLinkDetailViewModel(link: copyLink, action: linkDetailViewController, isModify: viewModel.isModify)
             linkDetailViewController.delegate = self
         }
         
