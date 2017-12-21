@@ -97,7 +97,7 @@ class RMDeviceModifyViewModel: PFSViewModel<RMDeviceDetailViewController, RMDevi
         if deviceModel.value.characters.count <= 0 {
             return self.action!.alert(message: "请输入设备型号", success: false)
         }
-        PFSRealm.shared.update(obj: device)
+//        PFSRealm.shared.update(obj: device)
 
         return self.domain.modifyDevice(device: device).flatMapLatest({ result  in
             return self.action!.alert(result: result)
