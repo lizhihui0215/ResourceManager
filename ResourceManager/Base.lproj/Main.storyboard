@@ -412,7 +412,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入正确的编号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5XI-vh-0o4">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入站点名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5XI-vh-0o4">
                                                 <rect key="frame" x="92.5" y="0.0" width="135.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -423,7 +423,7 @@
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="4t6-ch-qgR" firstAttribute="centerY" secondItem="cQ4-TW-KdP" secondAttribute="centerY" id="3ft-sM-rKe"/>
-                                            <constraint firstItem="5XI-vh-0o4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4t6-ch-qgR" secondAttribute="trailing" symbolic="YES" id="7kS-0j-86G"/>
+                                            <constraint firstItem="5XI-vh-0o4" firstAttribute="leading" secondItem="4t6-ch-qgR" secondAttribute="trailing" id="A0A-NW-itH"/>
                                             <constraint firstItem="4t6-ch-qgR" firstAttribute="leading" secondItem="cQ4-TW-KdP" secondAttribute="leading" constant="5" id="Cj1-P4-rtU"/>
                                             <constraint firstAttribute="trailing" secondItem="5XI-vh-0o4" secondAttribute="trailing" constant="60" id="m2H-JG-HCw"/>
                                             <constraint firstItem="4t6-ch-qgR" firstAttribute="centerY" secondItem="cQ4-TW-KdP" secondAttribute="centerY" id="thE-Lj-f4M"/>
@@ -440,7 +440,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入正确的编号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZ8-sw-3cS">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入机柜名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZ8-sw-3cS">
                                                 <rect key="frame" x="84" y="0.0" width="144" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2909,13 +2909,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="机柜高度：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRr-Ey-MQJ">
-                                                    <rect key="frame" x="15" y="61" width="87" height="21"/>
+                                                    <rect key="frame" x="7" y="61" width="87" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1269158125" green="0.15818423030000001" blue="0.37443542480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="啊是" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKT-DI-Zcm">
-                                                    <rect key="frame" x="107" y="61" width="35" height="21"/>
+                                                    <rect key="frame" x="99" y="61" width="35" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.4313226342" green="0.43140128249999998" blue="0.43131768700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2937,12 +2937,12 @@
                                                 <constraint firstItem="eRr-Ey-MQJ" firstAttribute="top" secondItem="eBd-If-gbw" secondAttribute="bottom" constant="7.5" id="RpM-99-AQy"/>
                                                 <constraint firstItem="8z9-Zz-c5f" firstAttribute="top" secondItem="VpY-TL-Gsh" secondAttribute="top" id="Xl9-G6-LYI"/>
                                                 <constraint firstItem="FKT-DI-Zcm" firstAttribute="leading" secondItem="eRr-Ey-MQJ" secondAttribute="trailing" constant="5" id="aTU-tr-1Zw"/>
+                                                <constraint firstItem="eRr-Ey-MQJ" firstAttribute="leading" secondItem="1vu-mG-iBN" secondAttribute="leading" id="bXm-Qc-Lbk"/>
                                                 <constraint firstAttribute="trailing" secondItem="EW2-p3-l19" secondAttribute="trailing" constant="5" id="gCY-WB-gDF"/>
                                                 <constraint firstItem="eRr-Ey-MQJ" firstAttribute="top" secondItem="1vu-mG-iBN" secondAttribute="bottom" constant="7.5" id="gDa-2F-ovh"/>
                                                 <constraint firstAttribute="bottom" secondItem="2Wt-aO-uIP" secondAttribute="bottom" constant="6" id="m6y-Oc-Vte"/>
                                                 <constraint firstItem="8z9-Zz-c5f" firstAttribute="leading" secondItem="VpY-TL-Gsh" secondAttribute="trailing" constant="5" id="qix-bC-YeL"/>
                                                 <constraint firstItem="eBd-If-gbw" firstAttribute="leading" secondItem="1vu-mG-iBN" secondAttribute="trailing" constant="5" id="uDa-d5-Hxa"/>
-                                                <constraint firstItem="eRr-Ey-MQJ" firstAttribute="leading" secondItem="X15-5L-CTN" secondAttribute="leadingMargin" id="uF2-OF-BcQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="eNs-s4-fRI" secondAttribute="bottom" constant="6" id="zZK-1Q-kby"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -4097,7 +4097,7 @@
         <segue reference="na4-qI-5d8"/>
         <segue reference="NKf-5K-aWg"/>
         <segue reference="MfA-1c-Vjl"/>
-        <segue reference="1Xe-EI-HU0"/>
+        <segue reference="Y44-29-jCF"/>
         <segue reference="R1I-fH-j2R"/>
         <segue reference="00Q-e4-sWd"/>
     </inferredMetricsTieBreakers>
