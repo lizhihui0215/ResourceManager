@@ -40,8 +40,6 @@ class RMAppDelegate: UIResponder, UIApplicationDelegate {
         
 //        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
         
-        
-        
         UINavigationBar.appearance().tintColor = .white
         
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .normal)

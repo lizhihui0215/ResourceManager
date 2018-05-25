@@ -44,7 +44,6 @@ extension UIViewController {
 enum StoryboardScene {
   enum Main: StoryboardSceneType {
     static let storyboardName = "Main"
-
     static func initialViewController() -> ResourceManager.RMRootViewController {
       guard let vc = storyboard().instantiateInitialViewController() as? ResourceManager.RMRootViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")

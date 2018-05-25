@@ -256,7 +256,7 @@ class RMLinkDetailViewController: PFSViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "toDeviceSearch" {
             let searchViewController = segue.destination as! RMSearchViewController
-            let isAccess = sender as! UITapGestureRecognizer == accessDeviceTapGesture
+            let isAccess = sender as? UITapGestureRecognizer == accessDeviceTapGesture
             searchViewController.viewModel = RMDeviceSearchViewModel(actions: searchViewController, isAccess: isAccess)
             
         }
