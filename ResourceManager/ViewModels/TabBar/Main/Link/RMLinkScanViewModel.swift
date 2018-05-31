@@ -28,7 +28,6 @@ class RMLinkScanViewModel: RMScanViewModel {
     func linkList(refresh: Bool, code: String) -> Driver<Bool> {
         return self.domain.linkList(account: "", customerName: "", linkCode: code, refresh: refresh)
             .do(onNext: { [weak self] result in
-                
                 if let strongSelf = self {
                     switch result {
                     case.success(let links):
@@ -44,6 +43,25 @@ class RMLinkScanViewModel: RMScanViewModel {
     
     func linkDetail(of code: String ) -> Driver<Bool> {
         self.scanedCode.value = code
+        if code.hasPrefix("a`") {
+            return self.domain.portLinks(code: code).do(onNext: { result in
+                switch result {
+                case .success(let link):
+                    self.result = link
+                case .failure(_): break;
+                }
+            }).flatMapLatest { result  in
+                switch result {
+                case.failure(_):
+                    self.action?.rescan()
+                default:
+                    break
+                }
+                return self.action!.alert(result: result)
+            }
+        }
+        
+        
         return  self.domain.link(linkCode: code).do(onNext: { result in
             switch result {
             case .success(let link):

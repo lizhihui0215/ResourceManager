@@ -31,6 +31,8 @@ public enum RMAPITarget {
     case inspectList(String,Int, Int)
     case exchangePassword(String, String, String)
     case suggest(String, String, String, String)
+    case portLinks(String, String)
+    case offlineData(String, String)
 }
 
 extension RMAPITarget: PFSTargetType {
@@ -89,6 +91,10 @@ extension RMAPITarget: PFSTargetType {
             return "cabinet/modify?access_token=\(accessToken)"
         case let .deviceModify(accessToken, _):
             return "device/modify?access_token=\(accessToken)"
+        case let .portLinks(accessToken, _) :
+            return "device/portlinks?access_token=\(accessToken)"
+        case let .offlineData(accessToken, version):
+            return "cabinet/queryAll?access_token=\(accessToken)"
         }
     }
     
@@ -97,65 +103,10 @@ extension RMAPITarget: PFSTargetType {
         case .login, .linkDetail, .linkList, .cabinetDetail, .cabinetList,
              .inspectList, .linkModify, .exchangePassword,
              .suggest, .link, .deviceList, .deviceDetail, .ports,
-             .cabinetModify, .deviceModify, .inspectUpload:
+             .cabinetModify, .deviceModify, .inspectUpload, .portLinks:
             return .post
-        }
-    }
-    
-    public var parameters: [String: Any]? {
-        switch self {
-        case let .login(username, password):
-            return ["username" : username,
-                    "password" : password,
-                    "osType": 1,
-                    "osVersion" : device.systemVersion,
-                    "appVersion" : device.appVersion,
-                    "devicetoken": device.uuid]
-        case let .linkDetail(_, linkCode):
-            return ["linkId": linkCode]
-        case let .linkList(_,account, customerName, linkCode, pageNO, pageSize):
-            return ["linkName": account,
-                    "customerName": customerName,
-                    "linkCode": linkCode,
-                    "pageSize": pageSize,
-                    "pageNO": pageNO]
-        case let .cabinetDetail(_, cabinetId):
-            return ["cabinetId": cabinetId]
-        case let .cabinetList(_,cabinetCode, _, _, pageNO, pageSize):
-            return ["cabinetCode": cabinetCode,
-                    "pageSize": pageSize,
-                    "pageNO": pageNO]
-        case let .inspectList(_,pageNO, pageSize):
-            return ["pageSize": pageSize,
-                    "pageNO": pageNO]
-        case let .linkModify(_, link):
-            var parameter = link
-            parameter["accessDeviceUpTime"] = Date().description
-            return parameter
-        case let .inspectUpload(_, parameters, _):
-            let json = parameters.toJSONString()
-            return ["json" : json! ]
-        case let .exchangePassword(_, oldpwd, newpwd):
-            return ["oldpwd": oldpwd,
-                    "newpwd": newpwd]
-        case let .suggest(_, name, phone,detail):
-            return ["name": name,
-                    "phone": phone,
-                    "detail": detail]
-        case let .link(_, deviceCode):
-            return ["deviceCode": deviceCode]
-        case let .deviceList(_,_, deviceCode,pageNO, pageSize):
-            return ["deviceCode": deviceCode,
-                    "pageSize": pageSize,
-                    "pageNO": pageNO]
-        case let .deviceDetail(_,deviceCode):
-            return ["deviceCode": deviceCode]
-        case let .ports(_, deviceCode):
-            return ["deviceCode": deviceCode]
-        case let .cabinetModify(_, cabinet):
-            return cabinet.filter{ $0.key != "devices" }
-        case let .deviceModify(_, device):
-            return device
+        case .offlineData:
+            return .get
         }
     }
     
@@ -216,6 +167,10 @@ extension RMAPITarget: PFSTargetType {
             parameters = validateParameters
         case let .deviceModify(_, device):
             parameters = device
+        case let .portLinks(_, code):
+            parameters = ["md5str" : code]
+        case let .offlineData(_, version):
+            parameters = ["version" : version]
         case let .inspectUpload(_, parameters, formData):
             let json = parameters.toJSONString()
             let param = ["json" : json! ]

@@ -9,26 +9,11 @@
 import RealmSwift
 import ObjectMapper
 import RealmSwift
+import PCCWFoundationSwift
 
-class RMModel: Object, Mappable {
+public class RMModel: PFSModel {
     
-    static func config(_ config: Realm.Configuration) {
-        Realm.Configuration.defaultConfiguration = config
-    }
-    
-    required convenience init?(map: Map) {
+    public required convenience init?(map: Map) {
         self.init()
     }
-    
-    func mapping(map: Map) {
-        
-    }
-    
-    func save() throws {
-        let realm = try Realm()
-        try realm.write {
-            realm.add(self)
-        }
-    }
-    
 }

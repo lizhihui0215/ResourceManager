@@ -96,75 +96,75 @@ class RMLinkDetailViewModel: PFSViewModel<RMLinkDetailViewController, RMLinkDeta
         businessType = Variable(link.businessType ?? "")
         super.init(action: action, domain: RMLinkDetailDomain())
         
-        accessDevicePortType.asObservable().bind {
-            link.accessDevicePortType = $0
+        accessDevicePortType.asObservable().bind { accessDevicePortType in
+                link.accessDevicePortType = accessDevicePortType
+        }.addDisposableTo(disposeBag)
+        
+        farendDevicePortType.asObservable().bind { farendDevicePortType in
+                link.farendDevicePortType = farendDevicePortType
+        }.addDisposableTo(disposeBag)
+        
+        businessType.asObservable().bind { businessType in
+                link.businessType = businessType
+        }.addDisposableTo(disposeBag)
+        
+        
+        serviceLevel.asObservable().bind { serviceLevel in
+                link.serviceLevel = serviceLevel
+            
             }.addDisposableTo(disposeBag)
         
-        farendDevicePortType.asObservable().bind {
-            link.farendDevicePortType = $0
-            }.addDisposableTo(disposeBag)
+        farendDeviceId.asObservable().bind { farendDeviceId in
+                link.farendDeviceId = farendDeviceId
+        }.addDisposableTo(disposeBag)
         
-        businessType.asObservable().bind {
-            link.businessType = $0
-            }.addDisposableTo(disposeBag)
-        
-        
-        serviceLevel.asObservable().bind {
-            link.serviceLevel = $0
-            }.addDisposableTo(disposeBag)
-        
-        farendDeviceId.asObservable().bind {
-            link.farendDeviceId = $0
-            }.addDisposableTo(disposeBag)
-        
-        accessDeviceId.asObservable().bind {
-            link.accessDeviceId = $0
-            }.addDisposableTo(disposeBag)
+        accessDeviceId.asObservable().bind { accessDeviceId in
+                link.accessDeviceId = accessDeviceId
+        }.addDisposableTo(disposeBag)
         
         account.asObservable().bind { account in
-            link.linkName = account
-            }.addDisposableTo(disposeBag)
+                link.linkName = account
+        }.addDisposableTo(disposeBag)
         
         linkRate.asObservable().bind { linkRate in
-            link.linkRate = linkRate
-            }.addDisposableTo(disposeBag)
+                link.linkRate = linkRate
+        }.addDisposableTo(disposeBag)
         
         linkCode.asObservable().bind { linkCode in
-            link.linkCode = linkCode
-            }.addDisposableTo(disposeBag)
+                link.linkCode = linkCode
+        }.addDisposableTo(disposeBag)
         
         customerName.asObservable().bind { customerName in
-            link.customerName = customerName
-            }.addDisposableTo(disposeBag)
+                link.customerName = customerName
+        }.addDisposableTo(disposeBag)
         
         customerLevel.asObservable().bind { customerLevel in
-            link.customerLevel = customerLevel
-            }.addDisposableTo(disposeBag)
+                link.customerLevel = customerLevel
+        }.addDisposableTo(disposeBag)
         
         farendDeviceName.asObservable().bind { farendDeviceName in
-            link.farendDeviceName = farendDeviceName
-            }.addDisposableTo(disposeBag)
+                link.farendDeviceName = farendDeviceName
+        }.addDisposableTo(disposeBag)
         
         farendDevicePort.asObservable().bind { farendDevicePort in
-            link.farendDevicePort = farendDevicePort
-            }.addDisposableTo(disposeBag)
+                link.farendDevicePort = farendDevicePort
+        }.addDisposableTo(disposeBag)
         
         accessDevicePort.asObservable().bind { accessDevicePort in
-            link.accessDevicePort = accessDevicePort
-            }.addDisposableTo(disposeBag)
+                link.accessDevicePort = accessDevicePort
+        }.addDisposableTo(disposeBag)
         
         accessDeviceName.asObservable().bind { accessDeviceName in
-            link.accessDeviceName = accessDeviceName
-            }.addDisposableTo(disposeBag)
+                link.accessDeviceName = accessDeviceName
+        }.addDisposableTo(disposeBag)
         
         orderNo.asObservable().bind { orderNo in
-            link.orderNo = orderNo
-            }.addDisposableTo(disposeBag)
+                link.orderNo = orderNo
+        }.addDisposableTo(disposeBag)
         
         billingNo.asObservable().bind { billingNo in
-            link.billingNo = billingNo
-            }.addDisposableTo(disposeBag)
-        
+                link.billingNo = billingNo
+        }.addDisposableTo(disposeBag)
     }
     
     func freePort(isAccess: Bool) -> Driver<[String]> {

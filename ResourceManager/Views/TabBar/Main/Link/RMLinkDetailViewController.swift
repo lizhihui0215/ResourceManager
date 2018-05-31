@@ -37,7 +37,7 @@ class RMLinkDetailViewController: PFSViewController {
     @IBOutlet weak var linkCodeTextField: UITextField!
     @IBOutlet weak var customerNameTextField: UITextField!
     @IBOutlet weak var customerLevelTextField: UITextField!
-    var viewModel: RMLinkDetailViewModel? = nil
+    var viewModel: RMLinkDetailViewModel!
     weak var delegate: RMLinkDetailViewControllerDelegate?
     
     @IBOutlet weak var commitButton: UIButton!

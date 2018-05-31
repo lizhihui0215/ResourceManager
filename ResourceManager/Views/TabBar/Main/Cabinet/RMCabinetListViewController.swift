@@ -96,8 +96,9 @@ class RMCabinetListViewController: PFSTableViewController, RMCabinetListAction, 
         if let viewModel = self.viewModel {
             let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
             let cabinet = viewModel.elementAt(indexPath: indexPath!)
+            let copyCabinet = cabinet.copy() as! RMCabinet
             cabinetDetailViewController.viewModel = RMCabinetDetailViewModel(action: cabinetDetailViewController,
-                                                                             cabinet: cabinet,
+                                                                             cabinet: copyCabinet,
                                                                              isModify: viewModel.isModify)
             cabinetDetailViewController.delegate = self
         }
